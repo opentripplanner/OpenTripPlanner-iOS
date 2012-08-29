@@ -26,6 +26,10 @@
 		CCCDFBC915EEBABF00B26133 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */; };
 		CCCDFBCB15EEBACE00B26133 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBCA15EEBACE00B26133 /* QuartzCore.framework */; };
 		CCCDFBCD15EEBAEA00B26133 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */; };
+		CCCDFBDF15EEC16C00B26133 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */; };
+		CCCDFBE015EEC18F00B26133 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBDA15EEC0B000B26133 /* libMapView.a */; };
+		CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */; };
+		CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE315EEC1BC00B26133 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,20 @@
 			remoteGlobalIDString = 25160D1514564E810060A5C5;
 			remoteInfo = RestKit;
 		};
+		CCCDFBD915EEC0B000B26133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F31EFA1331050A00122B16;
+			remoteInfo = MapView;
+		};
+		CCCDFBDC15EEC15600B26133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +123,10 @@
 		CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CCCDFBCA15EEBACE00B26133 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "mapbox-ios-sdk/MapView/MapView.xcodeproj"; sourceTree = "<group>"; };
+		CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CCCDFBE315EEC1BC00B26133 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +134,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */,
+				CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */,
+				CCCDFBE015EEC18F00B26133 /* libMapView.a in Frameworks */,
+				CCCDFBDF15EEC16C00B26133 /* CoreLocation.framework in Frameworks */,
 				CCCDFBCD15EEBAEA00B26133 /* libxml2.dylib in Frameworks */,
 				CCCDFBCB15EEBACE00B26133 /* QuartzCore.framework in Frameworks */,
 				CCCDFBC915EEBABF00B26133 /* SystemConfiguration.framework in Frameworks */,
@@ -142,6 +168,10 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
+				CCCDFBE315EEC1BC00B26133 /* libz.dylib */,
+				CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */,
+				CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */,
+				CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */,
 				CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */,
 				CCCDFBCA15EEBACE00B26133 /* QuartzCore.framework */,
 				CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */,
@@ -229,6 +259,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CCCDFBCF15EEC0AF00B26133 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFBDA15EEC0B000B26133 /* libMapView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,6 +281,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CCCDFBDD15EEC15600B26133 /* PBXTargetDependency */,
 				CCCDFBBE15EEB84800B26133 /* PBXTargetDependency */,
 			);
 			name = OpenTripPlanner;
@@ -291,6 +330,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = CCCDFBCF15EEC0AF00B26133 /* Products */;
+					ProjectRef = CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */;
+				},
+				{
 					ProductGroup = CCCDFBA815EEB5E600B26133 /* Products */;
 					ProjectRef = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
 				},
@@ -337,6 +380,13 @@
 			fileType = wrapper.cfbundle;
 			path = RestKitResources.bundle;
 			remoteRef = CCCDFBBA15EEB5E600B26133 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CCCDFBDA15EEC0B000B26133 /* libMapView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapView.a;
+			remoteRef = CCCDFBD915EEC0B000B26133 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -406,6 +456,11 @@
 			isa = PBXTargetDependency;
 			name = RestKit;
 			targetProxy = CCCDFBBD15EEB84800B26133 /* PBXContainerItemProxy */;
+		};
+		CCCDFBDD15EEC15600B26133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = CCCDFBDC15EEC15600B26133 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -485,7 +540,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"\"$(SRCROOT)/mapbox-ios-sdk/**\"",
+				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -501,7 +559,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"\"$(SRCROOT)/mapbox-ios-sdk/**\"",
+				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
