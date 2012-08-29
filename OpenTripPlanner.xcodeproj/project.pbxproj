@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
+		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
+		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
+		CCCDFB7215EEAAC600B26133 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCCDFB7015EEAAC600B26133 /* InfoPlist.strings */; };
+		CCCDFB7415EEAAC600B26133 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCDFB7315EEAAC600B26133 /* main.m */; };
+		CCCDFB7815EEAAC600B26133 /* OTPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */; };
+		CCCDFB8015EEAAC600B26133 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB7F15EEAAC600B26133 /* SenTestingKit.framework */; };
+		CCCDFB8115EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
+		CCCDFB8215EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
+		CCCDFB8A15EEAAC600B26133 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCCDFB8815EEAAC600B26133 /* InfoPlist.strings */; };
+		CCCDFB8D15EEAAC600B26133 /* OpenTripPlannerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCDFB8C15EEAAC600B26133 /* OpenTripPlannerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCCDFB8315EEAAC600B26133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCCDFB5A15EEAAC600B26133 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCCDFB6215EEAAC600B26133;
+			remoteInfo = OpenTripPlanner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CCCDFB6F15EEAAC600B26133 /* OpenTripPlanner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenTripPlanner-Info.plist"; sourceTree = "<group>"; };
+		CCCDFB7115EEAAC600B26133 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CCCDFB7315EEAAC600B26133 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CCCDFB7515EEAAC600B26133 /* OpenTripPlanner-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenTripPlanner-Prefix.pch"; sourceTree = "<group>"; };
+		CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTPAppDelegate.h; sourceTree = "<group>"; };
+		CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTPAppDelegate.m; sourceTree = "<group>"; };
+		CCCDFB7E15EEAAC600B26133 /* OpenTripPlannerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenTripPlannerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCDFB7F15EEAAC600B26133 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CCCDFB8715EEAAC600B26133 /* OpenTripPlannerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenTripPlannerTests-Info.plist"; sourceTree = "<group>"; };
+		CCCDFB8915EEAAC600B26133 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CCCDFB8B15EEAAC600B26133 /* OpenTripPlannerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenTripPlannerTests.h; sourceTree = "<group>"; };
+		CCCDFB8C15EEAAC600B26133 /* OpenTripPlannerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenTripPlannerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CCCDFB6015EEAAC600B26133 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */,
+				CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */,
+				CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCCDFB7A15EEAAC600B26133 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB8015EEAAC600B26133 /* SenTestingKit.framework in Frameworks */,
+				CCCDFB8115EEAAC600B26133 /* UIKit.framework in Frameworks */,
+				CCCDFB8215EEAAC600B26133 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CCCDFB5815EEAAC600B26133 = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
+				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
+				CCCDFB6615EEAAC600B26133 /* Frameworks */,
+				CCCDFB6415EEAAC600B26133 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCCDFB6415EEAAC600B26133 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */,
+				CCCDFB7E15EEAAC600B26133 /* OpenTripPlannerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCCDFB6615EEAAC600B26133 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB6715EEAAC600B26133 /* UIKit.framework */,
+				CCCDFB6915EEAAC600B26133 /* Foundation.framework */,
+				CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */,
+				CCCDFB7F15EEAAC600B26133 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
+				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
+				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
+			);
+			path = OpenTripPlanner;
+			sourceTree = "<group>";
+		};
+		CCCDFB6E15EEAAC600B26133 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB6F15EEAAC600B26133 /* OpenTripPlanner-Info.plist */,
+				CCCDFB7015EEAAC600B26133 /* InfoPlist.strings */,
+				CCCDFB7315EEAAC600B26133 /* main.m */,
+				CCCDFB7515EEAAC600B26133 /* OpenTripPlanner-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB8B15EEAAC600B26133 /* OpenTripPlannerTests.h */,
+				CCCDFB8C15EEAAC600B26133 /* OpenTripPlannerTests.m */,
+				CCCDFB8615EEAAC600B26133 /* Supporting Files */,
+			);
+			path = OpenTripPlannerTests;
+			sourceTree = "<group>";
+		};
+		CCCDFB8615EEAAC600B26133 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CCCDFB8715EEAAC600B26133 /* OpenTripPlannerTests-Info.plist */,
+				CCCDFB8815EEAAC600B26133 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CCCDFB6215EEAAC600B26133 /* OpenTripPlanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCCDFB9015EEAAC600B26133 /* Build configuration list for PBXNativeTarget "OpenTripPlanner" */;
+			buildPhases = (
+				CCCDFB5F15EEAAC600B26133 /* Sources */,
+				CCCDFB6015EEAAC600B26133 /* Frameworks */,
+				CCCDFB6115EEAAC600B26133 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenTripPlanner;
+			productName = OpenTripPlanner;
+			productReference = CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CCCDFB7D15EEAAC600B26133 /* OpenTripPlannerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCCDFB9315EEAAC600B26133 /* Build configuration list for PBXNativeTarget "OpenTripPlannerTests" */;
+			buildPhases = (
+				CCCDFB7915EEAAC600B26133 /* Sources */,
+				CCCDFB7A15EEAAC600B26133 /* Frameworks */,
+				CCCDFB7B15EEAAC600B26133 /* Resources */,
+				CCCDFB7C15EEAAC600B26133 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCCDFB8415EEAAC600B26133 /* PBXTargetDependency */,
+			);
+			name = OpenTripPlannerTests;
+			productName = OpenTripPlannerTests;
+			productReference = CCCDFB7E15EEAAC600B26133 /* OpenTripPlannerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CCCDFB5A15EEAAC600B26133 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OTP;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = OpenPlans;
+			};
+			buildConfigurationList = CCCDFB5D15EEAAC600B26133 /* Build configuration list for PBXProject "OpenTripPlanner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CCCDFB5815EEAAC600B26133;
+			productRefGroup = CCCDFB6415EEAAC600B26133 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CCCDFB6215EEAAC600B26133 /* OpenTripPlanner */,
+				CCCDFB7D15EEAAC600B26133 /* OpenTripPlannerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CCCDFB6115EEAAC600B26133 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB7215EEAAC600B26133 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCCDFB7B15EEAAC600B26133 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB8A15EEAAC600B26133 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CCCDFB7C15EEAAC600B26133 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CCCDFB5F15EEAAC600B26133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB7415EEAAC600B26133 /* main.m in Sources */,
+				CCCDFB7815EEAAC600B26133 /* OTPAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCCDFB7915EEAAC600B26133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCCDFB8D15EEAAC600B26133 /* OpenTripPlannerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCCDFB8415EEAAC600B26133 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCCDFB6215EEAAC600B26133 /* OpenTripPlanner */;
+			targetProxy = CCCDFB8315EEAAC600B26133 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CCCDFB7015EEAAC600B26133 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCCDFB7115EEAAC600B26133 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CCCDFB8815EEAAC600B26133 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCCDFB8915EEAAC600B26133 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CCCDFB8E15EEAAC600B26133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCCDFB8F15EEAAC600B26133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CCCDFB9115EEAAC600B26133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
+				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CCCDFB9215EEAAC600B26133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
+				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CCCDFB9415EEAAC600B26133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenTripPlanner.app/OpenTripPlanner";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
+				INFOPLIST_FILE = "OpenTripPlannerTests/OpenTripPlannerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CCCDFB9515EEAAC600B26133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenTripPlanner.app/OpenTripPlanner";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
+				INFOPLIST_FILE = "OpenTripPlannerTests/OpenTripPlannerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CCCDFB5D15EEAAC600B26133 /* Build configuration list for PBXProject "OpenTripPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCCDFB8E15EEAAC600B26133 /* Debug */,
+				CCCDFB8F15EEAAC600B26133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCCDFB9015EEAAC600B26133 /* Build configuration list for PBXNativeTarget "OpenTripPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCCDFB9115EEAAC600B26133 /* Debug */,
+				CCCDFB9215EEAAC600B26133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CCCDFB9315EEAAC600B26133 /* Build configuration list for PBXNativeTarget "OpenTripPlannerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCCDFB9415EEAAC600B26133 /* Debug */,
+				CCCDFB9515EEAAC600B26133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CCCDFB5A15EEAAC600B26133 /* Project object */;
+}
