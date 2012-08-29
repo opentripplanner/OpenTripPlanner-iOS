@@ -541,8 +541,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
-					"\"$(SRCROOT)/mapbox-ios-sdk/**\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"$(SRCROOT)/mapbox-ios-sdk/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				OTHER_LDFLAGS = (
@@ -560,8 +560,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
-					"\"$(SRCROOT)/mapbox-ios-sdk/**\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"$(SRCROOT)/mapbox-ios-sdk/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				OTHER_LDFLAGS = (
