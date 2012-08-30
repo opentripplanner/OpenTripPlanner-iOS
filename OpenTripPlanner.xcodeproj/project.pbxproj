@@ -12,9 +12,8 @@
 		CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6915EFC3030070712C /* LegGeometry.m */; };
 		CC9CFC7115EFC3030070712C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6B15EFC3030070712C /* Place.m */; };
 		CC9CFC7215EFC3030070712C /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6D15EFC3030070712C /* Plan.m */; };
-		CC9CFC7915EFC3540070712C /* LocationSelectionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */; };
-		CC9CFC7A15EFC3540070712C /* TripEndAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */; };
-		CC9CFC7B15EFC3540070712C /* TripStartAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */; };
+		CC9CFCC515EFCCDE0070712C /* OTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFCC415EFCCDE0070712C /* OTPViewController.m */; };
+		CC9CFCCC15EFCDA00070712C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
 		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
@@ -117,12 +116,9 @@
 		CC9CFC6B15EFC3030070712C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		CC9CFC6C15EFC3030070712C /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
 		CC9CFC6D15EFC3030070712C /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
-		CC9CFC7315EFC3540070712C /* LocationSelectionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSelectionAnnotation.h; sourceTree = "<group>"; };
-		CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSelectionAnnotation.m; sourceTree = "<group>"; };
-		CC9CFC7515EFC3540070712C /* TripEndAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripEndAnnotation.h; sourceTree = "<group>"; };
-		CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripEndAnnotation.m; sourceTree = "<group>"; };
-		CC9CFC7715EFC3540070712C /* TripStartAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripStartAnnotation.h; sourceTree = "<group>"; };
-		CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripStartAnnotation.m; sourceTree = "<group>"; };
+		CC9CFCC315EFCCDE0070712C /* OTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPViewController.h; sourceTree = "<group>"; };
+		CC9CFCC415EFCCDE0070712C /* OTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPViewController.m; sourceTree = "<group>"; };
+		CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -259,16 +255,13 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				CC9CFC7315EFC3540070712C /* LocationSelectionAnnotation.h */,
-				CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */,
-				CC9CFC7515EFC3540070712C /* TripEndAnnotation.h */,
-				CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */,
-				CC9CFC7715EFC3540070712C /* TripStartAnnotation.h */,
-				CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */,
 				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
 				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
+				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
+				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
+				CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -453,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCCDFB7215EEAAC600B26133 /* InfoPlist.strings in Resources */,
+				CC9CFCCC15EFCDA00070712C /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,9 +488,7 @@
 				CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */,
 				CC9CFC7115EFC3030070712C /* Place.m in Sources */,
 				CC9CFC7215EFC3030070712C /* Plan.m in Sources */,
-				CC9CFC7915EFC3540070712C /* LocationSelectionAnnotation.m in Sources */,
-				CC9CFC7A15EFC3540070712C /* TripEndAnnotation.m in Sources */,
-				CC9CFC7B15EFC3540070712C /* TripStartAnnotation.m in Sources */,
+				CC9CFCC515EFCCDE0070712C /* OTPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
