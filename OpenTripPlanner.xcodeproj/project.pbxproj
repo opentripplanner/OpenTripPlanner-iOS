@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC9CFC6E15EFC3030070712C /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6515EFC3030070712C /* Itinerary.m */; };
+		CC9CFC6F15EFC3030070712C /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6715EFC3030070712C /* Leg.m */; };
+		CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6915EFC3030070712C /* LegGeometry.m */; };
+		CC9CFC7115EFC3030070712C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6B15EFC3030070712C /* Place.m */; };
+		CC9CFC7215EFC3030070712C /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6D15EFC3030070712C /* Plan.m */; };
+		CC9CFC7915EFC3540070712C /* LocationSelectionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */; };
+		CC9CFC7A15EFC3540070712C /* TripEndAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */; };
+		CC9CFC7B15EFC3540070712C /* TripStartAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
 		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
@@ -99,6 +107,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC9CFC6415EFC3030070712C /* Itinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
+		CC9CFC6515EFC3030070712C /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Itinerary.m; sourceTree = "<group>"; };
+		CC9CFC6615EFC3030070712C /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leg.h; sourceTree = "<group>"; };
+		CC9CFC6715EFC3030070712C /* Leg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Leg.m; sourceTree = "<group>"; };
+		CC9CFC6815EFC3030070712C /* LegGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegGeometry.h; sourceTree = "<group>"; };
+		CC9CFC6915EFC3030070712C /* LegGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegGeometry.m; sourceTree = "<group>"; };
+		CC9CFC6A15EFC3030070712C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		CC9CFC6B15EFC3030070712C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		CC9CFC6C15EFC3030070712C /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
+		CC9CFC6D15EFC3030070712C /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
+		CC9CFC7315EFC3540070712C /* LocationSelectionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSelectionAnnotation.h; sourceTree = "<group>"; };
+		CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSelectionAnnotation.m; sourceTree = "<group>"; };
+		CC9CFC7515EFC3540070712C /* TripEndAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripEndAnnotation.h; sourceTree = "<group>"; };
+		CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripEndAnnotation.m; sourceTree = "<group>"; };
+		CC9CFC7715EFC3540070712C /* TripStartAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripStartAnnotation.h; sourceTree = "<group>"; };
+		CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripStartAnnotation.m; sourceTree = "<group>"; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,25 +189,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CCCDFB5815EEAAC600B26133 = {
+		CC9CFC6215EFC1920070712C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				CCCDFBE315EEC1BC00B26133 /* libz.dylib */,
 				CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */,
-				CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */,
-				CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */,
 				CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */,
-				CCCDFBCA15EEBACE00B26133 /* QuartzCore.framework */,
-				CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */,
-				CCCDFBC615EEBAB100B26133 /* Security.framework */,
-				CCCDFBC415EEBAA200B26133 /* MobileCoreServices.framework */,
-				CCCDFBC215EEBA8F00B26133 /* CoreData.framework */,
-				CCCDFBC015EEBA7600B26133 /* CFNetwork.framework */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		CC9CFC6315EFC29E0070712C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC9CFC6415EFC3030070712C /* Itinerary.h */,
+				CC9CFC6515EFC3030070712C /* Itinerary.m */,
+				CC9CFC6615EFC3030070712C /* Leg.h */,
+				CC9CFC6715EFC3030070712C /* Leg.m */,
+				CC9CFC6815EFC3030070712C /* LegGeometry.h */,
+				CC9CFC6915EFC3030070712C /* LegGeometry.m */,
+				CC9CFC6A15EFC3030070712C /* Place.h */,
+				CC9CFC6B15EFC3030070712C /* Place.m */,
+				CC9CFC6C15EFC3030070712C /* Plan.h */,
+				CC9CFC6D15EFC3030070712C /* Plan.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CCCDFB5815EEAAC600B26133 = {
+			isa = PBXGroup;
+			children = (
+				CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */,
 				CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */,
+				CCCDFB6615EEAAC600B26133 /* Frameworks */,
+				CC9CFC6215EFC1920070712C /* Libraries */,
+				CCCDFB6415EEAAC600B26133 /* Products */,
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
 				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
-				CCCDFB6615EEAAC600B26133 /* Frameworks */,
-				CCCDFB6415EEAAC600B26133 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,10 +241,17 @@
 		CCCDFB6615EEAAC600B26133 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCCDFB6715EEAAC600B26133 /* UIKit.framework */,
-				CCCDFB6915EEAAC600B26133 /* Foundation.framework */,
+				CCCDFBC015EEBA7600B26133 /* CFNetwork.framework */,
+				CCCDFBC215EEBA8F00B26133 /* CoreData.framework */,
 				CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */,
+				CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */,
+				CCCDFB6915EEAAC600B26133 /* Foundation.framework */,
+				CCCDFBC415EEBAA200B26133 /* MobileCoreServices.framework */,
+				CCCDFBCA15EEBACE00B26133 /* QuartzCore.framework */,
+				CCCDFBC615EEBAB100B26133 /* Security.framework */,
 				CCCDFB7F15EEAAC600B26133 /* SenTestingKit.framework */,
+				CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */,
+				CCCDFB6715EEAAC600B26133 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,6 +259,13 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				CC9CFC7315EFC3540070712C /* LocationSelectionAnnotation.h */,
+				CC9CFC7415EFC3540070712C /* LocationSelectionAnnotation.m */,
+				CC9CFC7515EFC3540070712C /* TripEndAnnotation.h */,
+				CC9CFC7615EFC3540070712C /* TripEndAnnotation.m */,
+				CC9CFC7715EFC3540070712C /* TripStartAnnotation.h */,
+				CC9CFC7815EFC3540070712C /* TripStartAnnotation.m */,
+				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
 				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
@@ -433,6 +489,14 @@
 			files = (
 				CCCDFB7415EEAAC600B26133 /* main.m in Sources */,
 				CCCDFB7815EEAAC600B26133 /* OTPAppDelegate.m in Sources */,
+				CC9CFC6E15EFC3030070712C /* Itinerary.m in Sources */,
+				CC9CFC6F15EFC3030070712C /* Leg.m in Sources */,
+				CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */,
+				CC9CFC7115EFC3030070712C /* Place.m in Sources */,
+				CC9CFC7215EFC3030070712C /* Plan.m in Sources */,
+				CC9CFC7915EFC3540070712C /* LocationSelectionAnnotation.m in Sources */,
+				CC9CFC7A15EFC3540070712C /* TripEndAnnotation.m in Sources */,
+				CC9CFC7B15EFC3540070712C /* TripStartAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
