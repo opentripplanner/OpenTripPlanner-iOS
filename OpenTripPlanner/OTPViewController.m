@@ -7,12 +7,15 @@
 //
 
 #import "OTPViewController.h"
+#import "RMMapBoxSource.h"
 
 @interface OTPViewController ()
 
 @end
 
 @implementation OTPViewController
+
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +30,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    RMMapBoxSource* source = [[RMMapBoxSource alloc] initWithReferenceURL:[NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/openplans.map-ky03eiac.jsonp"]];
+    self.mapView.tileSource = source;
 }
 
 - (void)viewDidUnload

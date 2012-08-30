@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RMMapView.h"
 
 @interface OTPViewController : UIViewController
+{
+    RMMapView* _mapView;
+}
+
+@property (nonatomic, retain) IBOutlet RMMapView* mapView;
 
 @end
