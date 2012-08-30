@@ -14,18 +14,6 @@
 		CC9CFC7215EFC3030070712C /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6D15EFC3030070712C /* Plan.m */; };
 		CC9CFCC515EFCCDE0070712C /* OTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFCC415EFCCDE0070712C /* OTPViewController.m */; };
 		CC9CFCCC15EFCDA00070712C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */; };
-		CC9CFCDA15EFD90A0070712C /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCCE15EFD90A0070712C /* HeadingAngleSmall.png */; };
-		CC9CFCDB15EFD90A0070712C /* HeadingAngleSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCCF15EFD90A0070712C /* HeadingAngleSmall@2x.png */; };
-		CC9CFCDC15EFD90A0070712C /* LoadingTile.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD015EFD90A0070712C /* LoadingTile.png */; };
-		CC9CFCDD15EFD90A0070712C /* LoadingTileZoom.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD115EFD90A0070712C /* LoadingTileZoom.png */; };
-		CC9CFCDE15EFD90A0070712C /* TrackingDot.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD215EFD90A0070712C /* TrackingDot.png */; };
-		CC9CFCDF15EFD90A0070712C /* TrackingDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD315EFD90A0070712C /* TrackingDot@2x.png */; };
-		CC9CFCE015EFD90A0070712C /* TrackingDotHalo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD415EFD90A0070712C /* TrackingDotHalo.png */; };
-		CC9CFCE115EFD90A0070712C /* TrackingDotHalo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD515EFD90A0070712C /* TrackingDotHalo@2x.png */; };
-		CC9CFCE215EFD90A0070712C /* TrackingHeading.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD615EFD90A0070712C /* TrackingHeading.png */; };
-		CC9CFCE315EFD90A0070712C /* TrackingHeading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD715EFD90A0070712C /* TrackingHeading@2x.png */; };
-		CC9CFCE415EFD90A0070712C /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD815EFD90A0070712C /* TrackingLocation.png */; };
-		CC9CFCE515EFD90A0070712C /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9CFCD915EFD90A0070712C /* TrackingLocation@2x.png */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
 		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
@@ -131,18 +119,6 @@
 		CC9CFCC315EFCCDE0070712C /* OTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPViewController.h; sourceTree = "<group>"; };
 		CC9CFCC415EFCCDE0070712C /* OTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPViewController.m; sourceTree = "<group>"; };
 		CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		CC9CFCCE15EFD90A0070712C /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeadingAngleSmall.png; sourceTree = "<group>"; };
-		CC9CFCCF15EFD90A0070712C /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
-		CC9CFCD015EFD90A0070712C /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingTile.png; sourceTree = "<group>"; };
-		CC9CFCD115EFD90A0070712C /* LoadingTileZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingTileZoom.png; sourceTree = "<group>"; };
-		CC9CFCD215EFD90A0070712C /* TrackingDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingDot.png; sourceTree = "<group>"; };
-		CC9CFCD315EFD90A0070712C /* TrackingDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingDot@2x.png"; sourceTree = "<group>"; };
-		CC9CFCD415EFD90A0070712C /* TrackingDotHalo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingDotHalo.png; sourceTree = "<group>"; };
-		CC9CFCD515EFD90A0070712C /* TrackingDotHalo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingDotHalo@2x.png"; sourceTree = "<group>"; };
-		CC9CFCD615EFD90A0070712C /* TrackingHeading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingHeading.png; sourceTree = "<group>"; };
-		CC9CFCD715EFD90A0070712C /* TrackingHeading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingHeading@2x.png"; sourceTree = "<group>"; };
-		CC9CFCD815EFD90A0070712C /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingLocation.png; sourceTree = "<group>"; };
-		CC9CFCD915EFD90A0070712C /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingLocation@2x.png"; sourceTree = "<group>"; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,30 +212,9 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		CC9CFCCD15EFD90A0070712C /* MapBoxResources */ = {
-			isa = PBXGroup;
-			children = (
-				CC9CFCCE15EFD90A0070712C /* HeadingAngleSmall.png */,
-				CC9CFCCF15EFD90A0070712C /* HeadingAngleSmall@2x.png */,
-				CC9CFCD015EFD90A0070712C /* LoadingTile.png */,
-				CC9CFCD115EFD90A0070712C /* LoadingTileZoom.png */,
-				CC9CFCD215EFD90A0070712C /* TrackingDot.png */,
-				CC9CFCD315EFD90A0070712C /* TrackingDot@2x.png */,
-				CC9CFCD415EFD90A0070712C /* TrackingDotHalo.png */,
-				CC9CFCD515EFD90A0070712C /* TrackingDotHalo@2x.png */,
-				CC9CFCD615EFD90A0070712C /* TrackingHeading.png */,
-				CC9CFCD715EFD90A0070712C /* TrackingHeading@2x.png */,
-				CC9CFCD815EFD90A0070712C /* TrackingLocation.png */,
-				CC9CFCD915EFD90A0070712C /* TrackingLocation@2x.png */,
-			);
-			name = MapBoxResources;
-			path = "mapbox-ios-sdk/MapView/Map/Resources";
-			sourceTree = "<group>";
-		};
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
-				CC9CFCCD15EFD90A0070712C /* MapBoxResources */,
 				CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */,
 				CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */,
 				CCCDFB6615EEAAC600B26133 /* Frameworks */,
@@ -492,18 +447,6 @@
 			files = (
 				CCCDFB7215EEAAC600B26133 /* InfoPlist.strings in Resources */,
 				CC9CFCCC15EFCDA00070712C /* MainStoryboard_iPhone.storyboard in Resources */,
-				CC9CFCDA15EFD90A0070712C /* HeadingAngleSmall.png in Resources */,
-				CC9CFCDB15EFD90A0070712C /* HeadingAngleSmall@2x.png in Resources */,
-				CC9CFCDC15EFD90A0070712C /* LoadingTile.png in Resources */,
-				CC9CFCDD15EFD90A0070712C /* LoadingTileZoom.png in Resources */,
-				CC9CFCDE15EFD90A0070712C /* TrackingDot.png in Resources */,
-				CC9CFCDF15EFD90A0070712C /* TrackingDot@2x.png in Resources */,
-				CC9CFCE015EFD90A0070712C /* TrackingDotHalo.png in Resources */,
-				CC9CFCE115EFD90A0070712C /* TrackingDotHalo@2x.png in Resources */,
-				CC9CFCE215EFD90A0070712C /* TrackingHeading.png in Resources */,
-				CC9CFCE315EFD90A0070712C /* TrackingHeading@2x.png in Resources */,
-				CC9CFCE415EFD90A0070712C /* TrackingLocation.png in Resources */,
-				CC9CFCE515EFD90A0070712C /* TrackingLocation@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
