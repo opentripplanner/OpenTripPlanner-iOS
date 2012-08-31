@@ -56,6 +56,8 @@
         RMShape *polyline = [[RMShape alloc] initWithView:self.mapView];
         polyline.lineColor = [UIColor blueColor];
         polyline.lineWidth = 3;
+        polyline.lineCap = kCALineCapRound;
+        polyline.lineJoin = kCALineJoinRound;
         
         int counter = 0;
         
@@ -177,7 +179,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    RMMapBoxSource* source = [[RMMapBoxSource alloc] initWithReferenceURL:[NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/openplans.map-ky03eiac.jsonp"]];
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    NSString *mapUrl = nil;
+    if (scale == 1) {
+        mapUrl = @"http://a.tiles.mapbox.com/v3/openplans.map-ky03eiac.jsonp";
+    } else {
+        mapUrl = @"http://a.tiles.mapbox.com/v3/openplans.map-pq6tfzg7.jsonp";
+    }
+    RMMapBoxSource* source = [[RMMapBoxSource alloc] initWithReferenceURL:[NSURL URLWithString:mapUrl]];
+    self.mapView.adjustTilesForRetinaDisplay = NO;
     self.mapView.tileSource = source;
     
     NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
