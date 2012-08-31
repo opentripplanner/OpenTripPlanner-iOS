@@ -14,6 +14,9 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="delegate" destination="poE-bm-fth" id="60D-PA-mlu"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="c0J-EL-EBX" id="bI7-V8-FUV"/>

@@ -6,13 +6,78 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
 #import "OTPAppDelegate.h"
+
+#import "Place.h"
+#import "LegGeometry.h"
+#import "Leg.h"
+#import "Itinerary.h"
+#import "Plan.h"
 
 @implementation OTPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    
+    // Initialize RestKit
+    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://demo.opentripplanner.org/opentripplanner-api-webapp/ws"];
+    
+    // Enable automatic network activity indicator management
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+    
+    RKObjectMapping* placeMapping = [RKObjectMapping mappingForClass:[Place class]];
+    [placeMapping mapKeyPathsToAttributes:
+     @"name", @"name",
+     @"lon", @"lon",
+     @"lat", @"lat",
+     @"geometry", @"geometry",
+     nil];
+    
+    RKObjectMapping* legGeometryMapping = [RKObjectMapping mappingForClass:[LegGeometry class]];
+    [legGeometryMapping mapKeyPathsToAttributes:
+     @"length", @"length",
+     @"points", @"points",
+     nil];
+    
+    RKObjectMapping* legMapping = [RKObjectMapping mappingForClass:[Leg class]];
+    [legMapping mapKeyPathsToAttributes:
+     @"startTime", @"startTime",
+     @"endTime", @"endTime",
+     @"distance", @"distance",
+     @"duration", @"duration",
+     nil];
+    [legMapping mapKeyPath:@"from" toRelationship:@"from" withMapping:placeMapping];
+    [legMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:placeMapping];
+    [legMapping mapKeyPath:@"legGeometry" toRelationship:@"legGeometry" withMapping:legGeometryMapping];
+    
+    RKObjectMapping* itineraryMapping = [RKObjectMapping mappingForClass:[Itinerary class]];
+    [itineraryMapping mapKeyPathsToAttributes:
+     @"duration", @"duration",
+     @"startTime", @"startTime",
+     @"endTime", @"endTime",
+     @"walkTime", @"walkTime",
+     @"transitTime", @"transitTime",
+     @"waitingTime", @"waitingTime",
+     @"walkDistance", @"walkDistance",
+     @"elevationLost", @"elevationLost",
+     @"elevationGained", @"elevationGained",
+     @"transfers", @"transfers",
+     nil];
+    [itineraryMapping mapKeyPath:@"legs" toRelationship:@"legs" withMapping:legMapping];
+    
+    RKObjectMapping* planMapping = [RKObjectMapping mappingForClass:[Plan class]];
+    [planMapping mapKeyPathsToAttributes:
+     @"plan.date", @"date",
+     nil];
+    [planMapping mapKeyPath:@"plan.from" toRelationship:@"from" withMapping:placeMapping];
+    [planMapping mapKeyPath:@"plan.to" toRelationship:@"to" withMapping:placeMapping];
+    [planMapping mapKeyPath:@"plan.itineraries" toRelationship:@"itineraries" withMapping:itineraryMapping];
+    
+    [objectManager.mappingProvider setObjectMapping:planMapping forResourcePathPattern:@"/plan"];
+    
     return YES;
 }
 

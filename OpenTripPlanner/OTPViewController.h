@@ -7,13 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RMMapView.h"
+#import <RestKit/RestKit.h>
 
-@interface OTPViewController : UIViewController
+#import "RouteMe.h"
+#import "Itinerary.h"
+#import "Leg.h"
+
+@interface OTPViewController : UIViewController <RKObjectLoaderDelegate, RMMapViewDelegate>
 {
     RMMapView* _mapView;
+    Itinerary* _currentItinerary;
+    Leg* _currentLeg;
 }
 
 @property (nonatomic, retain) IBOutlet RMMapView* mapView;
+@property (nonatomic, retain) Itinerary* currentItinerary;
+@property (nonatomic, retain) Leg* currentLeg;
 
 @end
