@@ -209,16 +209,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC9CFC6215EFC1920070712C /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				CCCDFBE315EEC1BC00B26133 /* libz.dylib */,
-				CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */,
-				CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
 		CC9CFC6315EFC29E0070712C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +253,6 @@
 				CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */,
 				CC9CFCF315EFF8AC0070712C /* MapBoxResources */,
 				CCCDFB6615EEAAC600B26133 /* Frameworks */,
-				CC9CFC6215EFC1920070712C /* Libraries */,
 				CCCDFB6415EEAAC600B26133 /* Products */,
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
 				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
@@ -293,6 +282,9 @@
 				CCCDFB7F15EEAAC600B26133 /* SenTestingKit.framework */,
 				CCCDFBC815EEBABF00B26133 /* SystemConfiguration.framework */,
 				CCCDFB6715EEAAC600B26133 /* UIKit.framework */,
+				CCCDFBE315EEC1BC00B26133 /* libz.dylib */,
+				CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */,
+				CCCDFBCC15EEBAEA00B26133 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
