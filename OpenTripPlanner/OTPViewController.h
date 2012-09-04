@@ -20,6 +20,8 @@
     Leg* _currentLeg;
 }
 
+- (void) planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint;
+
 @property (nonatomic, retain) IBOutlet RMMapView* mapView;
 @property (nonatomic, retain) Itinerary* currentItinerary;
 @property (nonatomic, retain) Leg* currentLeg;

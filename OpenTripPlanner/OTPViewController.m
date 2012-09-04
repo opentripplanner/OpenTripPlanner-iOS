@@ -22,6 +22,38 @@
 @synthesize currentItinerary = _currentItinerary;
 @synthesize currentLeg = _currentLeg;
 
+- (void)planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint
+{
+    // TODO: Look at how time zone plays into all this.
+    NSDate *now = [[NSDate alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:now];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    NSString *timeString = [dateFormatter stringFromDate:now];
+    
+    NSString *fromString = [NSString stringWithFormat:@"%f,%f", startPoint.latitude, startPoint.longitude];
+    NSString *toString = [NSString stringWithFormat:@"%f,%f", endPoint.latitude, endPoint.longitude];
+    
+    
+    NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
+                            @"optimize", @"QUICK",
+                            @"time", timeString,
+                            @"arriveBy", @"false",
+                            @"routerId", @"req-91",
+                            @"maxWalkDistance", @"840",
+                            @"fromPlace", fromString,
+                            @"toPlace", toString,
+                            @"date", dateString,
+                            @"mode", @"TRANSIT,WALK",
+                            nil];
+    
+    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
+    
+    RKObjectManager* objectManager = [RKObjectManager sharedManager];
+    [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
+}
+
 - (void) displayItinerary: (Itinerary*)itinerary
 {
     [self.mapView removeAllAnnotations];
@@ -190,24 +222,22 @@
     self.mapView.adjustTilesForRetinaDisplay = NO;
     self.mapView.tileSource = source;
     
-    NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
-                            @"optimize", @"QUICK",
-                            @"time", @"11:41 am",
-                            @"arriveBy", @"false",
-                            @"routerId", @"req-91",
-                            @"maxWalkDistance", @"840",
-                            @"fromPlace", @"40.731007,-73.957879",
-                            @"toPlace", @"40.719591,-73.999614",
-                            @"ui_date", @"7/13/2012",
-                            @"_dc", @"1342194186540",
-                            @"date", @"2012-07-13",
-                            @"mode", @"TRANSIT,WALK",
-                            nil];
-    
-    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
-    
-    RKObjectManager* objectManager = [RKObjectManager sharedManager];
-    [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
+//    NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
+//                            @"optimize", @"QUICK",
+//                            @"time", @"11:41 am",
+//                            @"arriveBy", @"false",
+//                            @"routerId", @"req-91",
+//                            @"maxWalkDistance", @"840",
+//                            @"fromPlace", @"40.731007,-73.957879",
+//                            @"toPlace", @"40.719591,-73.999614",
+//                            @"date", @"2012-07-13",
+//                            @"mode", @"TRANSIT,WALK",
+//                            nil];
+//    
+//    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
+//    
+//    RKObjectManager* objectManager = [RKObjectManager sharedManager];
+//    [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
 - (void)viewDidUnload
