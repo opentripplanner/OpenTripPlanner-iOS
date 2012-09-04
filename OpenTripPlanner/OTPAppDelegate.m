@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import <RestKit/RestKit.h>
 #import "OTPAppDelegate.h"
 
@@ -79,6 +80,21 @@
     [objectManager.mappingProvider setObjectMapping:planMapping forResourcePathPattern:@"/plan"];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    if ([MKDirectionsRequest isDirectionsRequestURL:url]) {
+        MKDirectionsRequest* directionsInfo = [[MKDirectionsRequest alloc] initWithContentsOfURL:url];
+        // TO DO: Plot and display the route using the
+        //   source and destination properties of directionsInfo.
+        return YES;
+    }
+    else {
+        // Handle other URL types...
+    }
+    
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
