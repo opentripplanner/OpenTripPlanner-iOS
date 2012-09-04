@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC088DE715F69E4900C6F372 /* OP.png in Resources */ = {isa = PBXBuildFile; fileRef = CC088DE615F69E4900C6F372 /* OP.png */; };
 		CC9CFC6E15EFC3030070712C /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6515EFC3030070712C /* Itinerary.m */; };
 		CC9CFC6F15EFC3030070712C /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6715EFC3030070712C /* Leg.m */; };
 		CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6915EFC3030070712C /* LegGeometry.m */; };
@@ -118,6 +119,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
+		CC088DE615F69E4900C6F372 /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OP.png; sourceTree = "<group>"; };
 		CC9CFC6415EFC3030070712C /* Itinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
 		CC9CFC6515EFC3030070712C /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Itinerary.m; sourceTree = "<group>"; };
 		CC9CFC6615EFC3030070712C /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leg.h; sourceTree = "<group>"; };
@@ -209,6 +212,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC088DE515F69DD900C6F372 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CC088DE615F69E4900C6F372 /* OP.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		CC9CFC6315EFC29E0070712C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +260,7 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
+				CC088DE515F69DD900C6F372 /* Images */,
 				CCCDFBCE15EEC0AF00B26133 /* MapView.xcodeproj */,
 				CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */,
 				CC9CFCF315EFF8AC0070712C /* MapBoxResources */,
@@ -310,6 +322,7 @@
 				CCCDFB7015EEAAC600B26133 /* InfoPlist.strings */,
 				CCCDFB7315EEAAC600B26133 /* main.m */,
 				CCCDFB7515EEAAC600B26133 /* OpenTripPlanner-Prefix.pch */,
+				CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -496,6 +509,7 @@
 				CC9CFD0915EFF8AC0070712C /* TrackingHeading@2x.png in Resources */,
 				CC9CFD0A15EFF8AC0070712C /* TrackingLocation.png in Resources */,
 				CC9CFD0B15EFF8AC0070712C /* TrackingLocation@2x.png in Resources */,
+				CC088DE715F69E4900C6F372 /* OP.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
