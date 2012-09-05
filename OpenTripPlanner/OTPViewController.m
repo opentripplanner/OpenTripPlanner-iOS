@@ -168,6 +168,33 @@ BOOL needsRouting = NO;
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:southWestPoint northEast:northEastPoint animated:YES];
 }
 
+#pragma mark RMMapViewDelegate methods
+
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    self.userLocation = userLocation;
+    
+    if (needsRouting) {
+        //[self performSelector:currentLocationRoutingSelector withObject:currentLocationToOrFromPoint];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[OTPViewController instanceMethodSignatureForSelector:currentLocationRoutingSelector]];
+        [invocation setSelector:currentLocationRoutingSelector];
+        [invocation setTarget:self];
+        [invocation setArgument:&currentLocationToOrFromPoint atIndex:2];
+        [invocation performSelector:@selector(invoke)];
+        needsRouting = NO;
+    }
+}
+
+- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    // Alert user that location couldn't be detirmined.
+}
+
+- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    return [annotation.userInfo objectForKey:@"layer"];
+}
+
 // http://code.google.com/apis/maps/documentation/utilities/polylinealgorithm.html
 -(NSMutableArray *)decodePolyLine:(NSString *)encodedStr
 {
@@ -230,33 +257,6 @@ BOOL needsRouting = NO;
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     NSLog(@"Hit error: %@", error);
-}
-
-#pragma mark RMMapViewDelegate methods
-
-- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
-{
-    self.userLocation = userLocation;
-    
-    if (needsRouting) {
-        //[self performSelector:currentLocationRoutingSelector withObject:currentLocationToOrFromPoint];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[OTPViewController instanceMethodSignatureForSelector:currentLocationRoutingSelector]];
-        [invocation setSelector:currentLocationRoutingSelector];
-        [invocation setTarget:self];
-        [invocation setArgument:&currentLocationToOrFromPoint atIndex:2];
-        [invocation performSelector:@selector(invoke)];
-        needsRouting = NO;
-    }
-}
-
-- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
-{
-    // Alert user that location couldn't be detirmined.
-}
-
-- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
-    return [annotation.userInfo objectForKey:@"layer"];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
