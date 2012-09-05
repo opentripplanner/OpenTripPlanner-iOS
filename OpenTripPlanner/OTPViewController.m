@@ -88,7 +88,7 @@ BOOL needsRouting = NO;
 
 - (void)showUserLocation
 {
-    self.mapView.userTrackingMode = RMUserTrackingModeFollowWithHeading;
+    self.mapView.userTrackingMode = RMUserTrackingModeNone;
     self.mapView.showsUserLocation = YES;
 }
 
@@ -107,15 +107,17 @@ BOOL needsRouting = NO;
                                              coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
                                              andTitle:leg.from.name];
             RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor greenColor]];
+            marker.zPosition = 10;
             startAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [startAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.mapView addAnnotation:startAnnotation];
         } else if (legCounter == itinerary.legs.count - 1) {
             RMAnnotation* endAnnotation = [RMAnnotation
                                              annotationWithMapView:self.mapView
-                                             coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
+                                             coordinate:CLLocationCoordinate2DMake(leg.to.lat.floatValue, leg.to.lon.floatValue)
                                              andTitle:leg.from.name];
             RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor redColor]];
+            marker.zPosition = 10;
             endAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [endAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.mapView addAnnotation:endAnnotation];
@@ -128,6 +130,7 @@ BOOL needsRouting = NO;
         polyline.lineWidth = 6;
         polyline.lineCap = kCALineCapRound;
         polyline.lineJoin = kCALineJoinRound;
+        polyline.zPosition = 0;
         
         int counter = 0;
         
