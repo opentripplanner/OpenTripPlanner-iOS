@@ -28,6 +28,8 @@ CLLocationCoordinate2D currentLocationToOrFromPoint;
 SEL currentLocationRoutingSelector;
 BOOL needsRouting = NO;
 
+#pragma mark OTP methods
+
 - (void)planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint
 {
     // TODO: Look at how time zone plays into all this.
@@ -168,33 +170,6 @@ BOOL needsRouting = NO;
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:southWestPoint northEast:northEastPoint animated:YES];
 }
 
-#pragma mark RMMapViewDelegate methods
-
-- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
-{
-    self.userLocation = userLocation;
-    
-    if (needsRouting) {
-        //[self performSelector:currentLocationRoutingSelector withObject:currentLocationToOrFromPoint];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[OTPViewController instanceMethodSignatureForSelector:currentLocationRoutingSelector]];
-        [invocation setSelector:currentLocationRoutingSelector];
-        [invocation setTarget:self];
-        [invocation setArgument:&currentLocationToOrFromPoint atIndex:2];
-        [invocation performSelector:@selector(invoke)];
-        needsRouting = NO;
-    }
-}
-
-- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
-{
-    // Alert user that location couldn't be detirmined.
-}
-
-- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
-{
-    return [annotation.userInfo objectForKey:@"layer"];
-}
-
 // http://code.google.com/apis/maps/documentation/utilities/polylinealgorithm.html
 -(NSMutableArray *)decodePolyLine:(NSString *)encodedStr
 {
@@ -238,6 +213,33 @@ BOOL needsRouting = NO;
     return array;
 }
 
+#pragma mark RMMapViewDelegate methods
+
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    self.userLocation = userLocation;
+    
+    if (needsRouting) {
+        //[self performSelector:currentLocationRoutingSelector withObject:currentLocationToOrFromPoint];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[OTPViewController instanceMethodSignatureForSelector:currentLocationRoutingSelector]];
+        [invocation setSelector:currentLocationRoutingSelector];
+        [invocation setTarget:self];
+        [invocation setArgument:&currentLocationToOrFromPoint atIndex:2];
+        [invocation performSelector:@selector(invoke)];
+        needsRouting = NO;
+    }
+}
+
+- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    // Alert user that location couldn't be detirmined.
+}
+
+- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    return [annotation.userInfo objectForKey:@"layer"];
+}
+
 #pragma mark RKObjectLoaderDelegate methods
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
@@ -258,6 +260,8 @@ BOOL needsRouting = NO;
     [alert show];
     NSLog(@"Hit error: %@", error);
 }
+
+#pragma mark UIViewController methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -282,23 +286,6 @@ BOOL needsRouting = NO;
     RMMapBoxSource* source = [[RMMapBoxSource alloc] initWithReferenceURL:[NSURL URLWithString:mapUrl]];
     self.mapView.adjustTilesForRetinaDisplay = NO;
     self.mapView.tileSource = source;
-    
-//    NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
-//                            @"optimize", @"QUICK",
-//                            @"time", @"11:41 am",
-//                            @"arriveBy", @"false",
-//                            @"routerId", @"req-91",
-//                            @"maxWalkDistance", @"840",
-//                            @"fromPlace", @"40.731007,-73.957879",
-//                            @"toPlace", @"40.719591,-73.999614",
-//                            @"date", @"2012-07-13",
-//                            @"mode", @"TRANSIT,WALK",
-//                            nil];
-//    
-//    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
-//    
-//    RKObjectManager* objectManager = [RKObjectManager sharedManager];
-//    [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
 - (void)viewDidUnload
