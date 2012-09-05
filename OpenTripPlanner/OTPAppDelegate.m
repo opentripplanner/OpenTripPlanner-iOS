@@ -90,11 +90,17 @@
         // TO DO: Plot and display the route using the
         //   source and destination properties of directionsInfo.
         OTPViewController *viewContorller = (OTPViewController*)self.window.rootViewController;
-        CLLocationCoordinate2D startCoordinate = directionsInfo.source.placemark.coordinate;
-        CLLocationCoordinate2D endCoordinate = directionsInfo.destination.placemark.coordinate;
         
-        [viewContorller planTripFrom:startCoordinate to:endCoordinate];
-        
+        if (directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
+            [viewContorller planTripFromCurrentLocationTo:directionsInfo.destination.placemark.coordinate];
+        } else if (!directionsInfo.source.isCurrentLocation && directionsInfo.destination.isCurrentLocation) {
+            [viewContorller planTripToCurrentLocationFrom:directionsInfo.source.placemark.coordinate];
+        } else if (!directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
+            [viewContorller planTripFrom:directionsInfo.source.placemark.coordinate
+                                      to:directionsInfo.destination.placemark.coordinate];
+        } else {
+            return NO;
+        }
         return YES;
     }
     else {

@@ -12,6 +12,7 @@
 @interface OTPViewController ()
 
 - (void)displayItinerary:(Itinerary*)itinerary;
+- (void)showUserLocation;
 - (NSMutableArray *)decodePolyLine:(NSString *)encodedStr;
 
 @end
@@ -21,6 +22,11 @@
 @synthesize mapView = _mapView;
 @synthesize currentItinerary = _currentItinerary;
 @synthesize currentLeg = _currentLeg;
+@synthesize userLocation = _userLocation;
+
+CLLocationCoordinate2D currentLocationToOrFromPoint;
+SEL currentLocationRoutingSelector;
+BOOL needsRouting = NO;
 
 - (void)planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint
 {
@@ -40,7 +46,7 @@
                             @"optimize", @"QUICK",
                             @"time", timeString,
                             @"arriveBy", @"false",
-                            @"routerId", @"req-91",
+                            @"routerId", @"req-241",
                             @"maxWalkDistance", @"840",
                             @"fromPlace", fromString,
                             @"toPlace", toString,
@@ -52,6 +58,36 @@
     
     RKObjectManager* objectManager = [RKObjectManager sharedManager];
     [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
+}
+
+- (void)planTripFromCurrentLocationTo:(CLLocationCoordinate2D)endPoint
+{
+    if (self.userLocation == nil) {
+        needsRouting = YES;
+        currentLocationRoutingSelector = @selector(planTripFromCurrentLocationTo:);
+        currentLocationToOrFromPoint = endPoint;
+        [self showUserLocation];
+    } else {
+        [self planTripFrom:self.userLocation.coordinate to:endPoint];
+    }
+}
+
+- (void)planTripToCurrentLocationFrom:(CLLocationCoordinate2D)startPoint
+{
+    if (self.userLocation == nil) {
+        needsRouting = YES;
+        currentLocationRoutingSelector = @selector(planTripToCurrentLocationFrom:);
+        currentLocationToOrFromPoint = startPoint;
+        [self showUserLocation];
+    } else {
+        [self planTripFrom:startPoint to:self.userLocation.coordinate];
+    }
+}
+
+- (void)showUserLocation
+{
+    self.mapView.userTrackingMode = RMUserTrackingModeFollowWithHeading;
+    self.mapView.showsUserLocation = YES;
 }
 
 - (void) displayItinerary: (Itinerary*)itinerary
@@ -86,8 +122,8 @@
         NSMutableArray* decodedPoints = [self decodePolyLine:leg.legGeometry.points];
         
         RMShape *polyline = [[RMShape alloc] initWithView:self.mapView];
-        polyline.lineColor = [UIColor blueColor];
-        polyline.lineWidth = 3;
+        polyline.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
+        polyline.lineWidth = 6;
         polyline.lineCap = kCALineCapRound;
         polyline.lineJoin = kCALineJoinRound;
         
@@ -177,20 +213,45 @@
 
 #pragma mark RKObjectLoaderDelegate methods
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
+{
     NSLog(@"Loaded payload: %@", [response bodyAsString]);
 }
 
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
     NSLog(@"Loaded plan: %@", objects);
     Plan* plan = (Plan*)[objects objectAtIndex:0];
     [self displayItinerary:[plan.itineraries objectAtIndex:0]];
 }
 
-- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error {
+- (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
+{
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     NSLog(@"Hit error: %@", error);
+}
+
+#pragma mark RMMapViewDelegate methods
+
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    self.userLocation = userLocation;
+    
+    if (needsRouting) {
+        //[self performSelector:currentLocationRoutingSelector withObject:currentLocationToOrFromPoint];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[OTPViewController instanceMethodSignatureForSelector:currentLocationRoutingSelector]];
+        [invocation setSelector:currentLocationRoutingSelector];
+        [invocation setTarget:self];
+        [invocation setArgument:&currentLocationToOrFromPoint atIndex:2];
+        [invocation performSelector:@selector(invoke)];
+        needsRouting = NO;
+    }
+}
+
+- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    // Alert user that location couldn't be detirmined.
 }
 
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
