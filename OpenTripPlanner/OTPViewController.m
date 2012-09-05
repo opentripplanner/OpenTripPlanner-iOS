@@ -14,12 +14,14 @@
 - (void)displayItinerary:(Itinerary*)itinerary;
 - (void)showUserLocation;
 - (NSMutableArray *)decodePolyLine:(NSString *)encodedStr;
+- (void)hideSearchBar;
 
 @end
 
 @implementation OTPViewController
 
 @synthesize mapView = _mapView;
+@synthesize searchBar = _searchBar;
 @synthesize currentItinerary = _currentItinerary;
 @synthesize currentLeg = _currentLeg;
 @synthesize userLocation = _userLocation;
@@ -216,6 +218,88 @@ BOOL needsRouting = NO;
     return array;
 }
 
+- (void)showSearchBar:(id)sender
+{
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.2;
+    [self.searchBar.layer addAnimation:animation forKey:nil];
+    self.searchBar.hidden = NO;
+    [self.searchBar becomeFirstResponder];
+}
+
+- (void)hideSearchBar
+{
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.2;
+    [self.searchBar.layer addAnimation:animation forKey:nil];
+    self.searchBar.hidden = YES;
+    [self.searchBar resignFirstResponder];
+}
+
+#pragma mark UISearchBarDelegate methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.mapView removeAllAnnotations];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    CLLocationCoordinate2D regionCoordinate;
+    if (self.userLocation != nil) {
+        regionCoordinate = self.userLocation.coordinate;
+    } else {
+        regionCoordinate = self.mapView.centerCoordinate;
+    }
+    
+    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:regionCoordinate radius:2000 identifier:@"test"];
+    
+    [geocoder geocodeAddressString:searchBar.text inRegion:region completionHandler:^(NSArray* placemarks, NSError* error) {
+        
+        int counter = 0;
+        CLLocationCoordinate2D northEastPoint;
+        CLLocationCoordinate2D southWestPoint;
+        
+        for (CLPlacemark* aPlacemark in placemarks) {
+            RMAnnotation* placeAnnotation = [RMAnnotation
+                                             annotationWithMapView:self.mapView
+                                             coordinate:aPlacemark.location.coordinate
+                                             andTitle:aPlacemark.name];
+            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
+            marker.zPosition = 10;
+            placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
+            [self.mapView addAnnotation:placeAnnotation];
+            
+            if (counter == 0) {
+                northEastPoint = aPlacemark.location.coordinate;
+                southWestPoint = aPlacemark.location.coordinate;
+            } else {
+                if (aPlacemark.location.coordinate.longitude > northEastPoint.longitude)
+                    northEastPoint.longitude = aPlacemark.location.coordinate.longitude;
+                if(aPlacemark.location.coordinate.latitude > northEastPoint.latitude)
+                    northEastPoint.latitude = aPlacemark.location.coordinate.latitude;
+                if (aPlacemark.location.coordinate.longitude < southWestPoint.longitude)
+                    southWestPoint.longitude = aPlacemark.location.coordinate.longitude;
+                if (aPlacemark.location.coordinate.latitude < southWestPoint.latitude)
+                    southWestPoint.latitude = aPlacemark.location.coordinate.latitude;
+            }
+            counter++;
+        }
+        if (placemarks.count > 0) {
+            [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:southWestPoint northEast:northEastPoint animated:YES];
+            [self hideSearchBar];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No search results." message:@"Try providing a more specific query." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self hideSearchBar];
+}
+
 #pragma mark RMMapViewDelegate methods
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
@@ -278,7 +362,11 @@ BOOL needsRouting = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
+    
+    self.searchBar.hidden = YES;
+    
     CGFloat scale = [[UIScreen mainScreen] scale];
     NSString *mapUrl = nil;
     if (scale == 1) {
