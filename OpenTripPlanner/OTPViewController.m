@@ -7,7 +7,9 @@
 //
 
 #import "OTPViewController.h"
+#import "OTPTransitTimesViewController.h"
 #import "Plan.h"
+#import "SMCalloutView.h"
 
 @interface OTPViewController ()
 
@@ -15,6 +17,7 @@
 - (void)showUserLocation;
 - (NSMutableArray *)decodePolyLine:(NSString *)encodedStr;
 - (void)hideSearchBar;
+- (IBAction)showDirectionsInput:(id)sender;
 
 @end
 
@@ -22,10 +25,15 @@
 
 @synthesize mapView = _mapView;
 @synthesize searchBar = _searchBar;
+@synthesize toolbar;
+@synthesize infoView;
+@synthesize infoLabel;
 @synthesize currentItinerary = _currentItinerary;
 @synthesize currentLeg = _currentLeg;
 @synthesize userLocation = _userLocation;
 
+OTPDirectionsInputViewController *directionsInputViewController;
+Plan *currentPlan;
 CLLocationCoordinate2D currentLocationToOrFromPoint;
 SEL currentLocationRoutingSelector;
 BOOL needsRouting = NO;
@@ -171,7 +179,8 @@ BOOL needsRouting = NO;
         
         legCounter++;
     }
-    
+    //self.toolbar.hidden = NO;
+    //self.infoView.hidden = NO;
     [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:southWestPoint northEast:northEastPoint animated:YES];
 }
 
@@ -234,6 +243,16 @@ BOOL needsRouting = NO;
     [self.searchBar.layer addAnimation:animation forKey:nil];
     self.searchBar.hidden = YES;
     [self.searchBar resignFirstResponder];
+}
+
+- (void)showDirectionsInput:(id)sender
+{
+    if (!directionsInputViewController) {
+        directionsInputViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DirectionsInputView"];
+    }
+    directionsInputViewController.delegate = self;
+    [self.view addSubview:directionsInputViewController.view];
+addSubview:directionsInputViewController.view.hidden = NO;
 }
 
 #pragma mark UISearchBarDelegate methods
@@ -327,6 +346,76 @@ BOOL needsRouting = NO;
     return [annotation.userInfo objectForKey:@"layer"];
 }
 
+- (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point
+{
+    NSLog(@"Long tap.");
+    [self.mapView removeAllAnnotations];
+    
+    RMAnnotation* placeAnnotation = [RMAnnotation
+                                     annotationWithMapView:self.mapView
+                                     coordinate:[self.mapView pixelToCoordinate:point]
+                                     andTitle:@"Dropped Pin"];
+    
+    RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
+    marker.zPosition = 10;
+    
+    SMCalloutView *callout = [[SMCalloutView alloc] init];
+    callout.title = @"test";
+    marker.label = callout;
+    
+    placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+    [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
+    [self.mapView addAnnotation:placeAnnotation];
+}
+
+- (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
+{
+    NSLog(@"Tapped on annotation");
+    //RMMarker* marker = [[annotation userInfo] objectForKey:@"layer"];
+    //SMCalloutView *callout = [[SMCalloutView alloc] init];
+    //callout.title = @"test";
+    //[(SMCalloutView*)marker.label ];
+}
+
+#pragma mark OTPDirectionsInputViewDelegate methods
+
+- (void)directionsInputViewCancelButtonClicked:(OTPDirectionsInputViewController *)directionsInputView
+{
+    directionsInputViewController.view.hidden = YES;
+    [directionsInputViewController.view removeFromSuperview];
+}
+
+- (void)directionsInputViewRouteButtonClicked:(OTPDirectionsInputViewController *)directionsInputView
+{
+    
+}
+
+- (void)directionsInputView:(OTPDirectionsInputViewController *)directionsInputView geocodedPlacemark:(CLPlacemark *)placemark
+{
+    [self.mapView removeAllAnnotations];
+    RMAnnotation* placeAnnotation = [RMAnnotation
+                                     annotationWithMapView:self.mapView
+                                     coordinate:placemark.location.coordinate
+                                     andTitle:placemark.name];
+    RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
+    marker.zPosition = 10;
+    placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+    [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
+    [self.mapView addAnnotation:placeAnnotation];
+    
+    CLLocationCoordinate2D swCoordinate = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude - 0.015, placemark.location.coordinate.longitude - 0.015);
+    CLLocationCoordinate2D nwCoordinate = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude + 0.015, placemark.location.coordinate.longitude + 0.015);
+    
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:swCoordinate northEast:nwCoordinate animated:YES];
+}
+
+- (void)directionsInputView:(OTPDirectionsInputViewController *)directionsInputView choseRouteFrom:(CLPlacemark *)from to:(CLPlacemark *)to
+{
+    directionsInputViewController.view.hidden = YES;
+    [directionsInputViewController.view removeFromSuperview];
+    [self planTripFrom:from.location.coordinate to:to.location.coordinate];
+}
+
 #pragma mark RKObjectLoaderDelegate methods
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
@@ -337,8 +426,8 @@ BOOL needsRouting = NO;
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     NSLog(@"Loaded plan: %@", objects);
-    Plan* plan = (Plan*)[objects objectAtIndex:0];
-    [self displayItinerary:[plan.itineraries objectAtIndex:0]];
+    currentPlan = (Plan*)[objects objectAtIndex:0];
+    [self displayItinerary:[currentPlan.itineraries objectAtIndex:0]];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
@@ -346,6 +435,13 @@ BOOL needsRouting = NO;
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     NSLog(@"Hit error: %@", error);
+}
+
+#pragma mark segue methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // pass itineraries to next view controller
+    //((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController).itineraries = currentPlan.itineraries;
 }
 
 #pragma mark UIViewController methods
@@ -366,6 +462,8 @@ BOOL needsRouting = NO;
 	// Do any additional setup after loading the view.
     
     self.searchBar.hidden = YES;
+    self.toolbar.hidden = YES;
+    self.infoView.hidden = YES;
     
     CGFloat scale = [[UIScreen mainScreen] scale];
     NSString *mapUrl = nil;

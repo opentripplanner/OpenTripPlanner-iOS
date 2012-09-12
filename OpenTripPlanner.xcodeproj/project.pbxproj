@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CC088DE715F69E4900C6F372 /* OP.png in Resources */ = {isa = PBXBuildFile; fileRef = CC088DE615F69E4900C6F372 /* OP.png */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
+		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
+		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
+		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
 		CC9CFC6E15EFC3030070712C /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6515EFC3030070712C /* Itinerary.m */; };
 		CC9CFC6F15EFC3030070712C /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6715EFC3030070712C /* Leg.m */; };
 		CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6915EFC3030070712C /* LegGeometry.m */; };
@@ -51,6 +54,9 @@
 		CCCDFBE015EEC18F00B26133 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBDA15EEC0B000B26133 /* libMapView.a */; };
 		CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */; };
 		CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE315EEC1BC00B26133 /* libz.dylib */; };
+		CCE8191D160120E70034E8AC /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8191B160120E70034E8AC /* check.png */; };
+		CCE8191E160120E70034E8AC /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8191C160120E70034E8AC /* x.png */; };
+		CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +129,12 @@
 		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
 		CC088DE615F69E4900C6F372 /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OP.png; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGeocodedTextField.h; sourceTree = "<group>"; };
+		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
+		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
+		CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPTransitTimesViewController.h; sourceTree = "<group>"; };
+		CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransitTimesViewController.m; sourceTree = "<group>"; };
 		CC9CFC6415EFC3030070712C /* Itinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
 		CC9CFC6515EFC3030070712C /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Itinerary.m; sourceTree = "<group>"; };
 		CC9CFC6615EFC3030070712C /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leg.h; sourceTree = "<group>"; };
@@ -176,6 +188,10 @@
 		CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CCCDFBE315EEC1BC00B26133 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CCE8191B160120E70034E8AC /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		CCE8191C160120E70034E8AC /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionsInputViewController.h; sourceTree = "<group>"; };
+		CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDirectionsInputViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +234,8 @@
 		CC088DE515F69DD900C6F372 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CCE8191B160120E70034E8AC /* check.png */,
+				CCE8191C160120E70034E8AC /* x.png */,
 				CC088DE615F69E4900C6F372 /* OP.png */,
 			);
 			name = Images;
@@ -308,13 +326,21 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */,
+				CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */,
 				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
 				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
 				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
 				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
+				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
+				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
 				CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */,
+				CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */,
+				CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */,
+				CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */,
+				CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -514,6 +540,8 @@
 				CC9CFD0A15EFF8AC0070712C /* TrackingLocation.png in Resources */,
 				CC9CFD0B15EFF8AC0070712C /* TrackingLocation@2x.png in Resources */,
 				CC088DE715F69E4900C6F372 /* OP.png in Resources */,
+				CCE8191D160120E70034E8AC /* check.png in Resources */,
+				CCE8191E160120E70034E8AC /* x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +584,10 @@
 				CC9CFC7115EFC3030070712C /* Place.m in Sources */,
 				CC9CFC7215EFC3030070712C /* Plan.m in Sources */,
 				CC9CFCC515EFCCDE0070712C /* OTPViewController.m in Sources */,
+				CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */,
+				CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */,
+				CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */,
+				CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
