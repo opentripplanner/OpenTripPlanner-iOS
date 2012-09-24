@@ -11,6 +11,11 @@
 #import "Place.h"
 #import "LegGeometry.h"
 
+struct OTPBounds {
+    CLLocationCoordinate2D swCorner;
+    CLLocationCoordinate2D neCorner;
+};
+
 @interface Leg : NSObject {
     NSDate* _startTime;
     NSDate* _endTime;
@@ -19,6 +24,8 @@
     Place* _to;
     LegGeometry* _legGeometry;
     NSNumber* _duration;
+    NSArray *_decodedLegGeometry;
+    struct OTPBounds _bounds;
 }
 
 @property (nonatomic, retain) NSDate* startTime;
@@ -28,5 +35,7 @@
 @property (nonatomic, retain) Place* to;
 @property (nonatomic, retain) LegGeometry* legGeometry;
 @property (nonatomic, retain) NSNumber* duration;
+@property (nonatomic, readonly) NSArray *decodedLegGeometry;
+@property (nonatomic, readonly) struct OTPBounds bounds;
 
 @end

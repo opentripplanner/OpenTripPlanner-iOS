@@ -91,16 +91,16 @@
         //   source and destination properties of directionsInfo.
         OTPViewController *viewContorller = (OTPViewController*)self.window.rootViewController;
         
-        if (directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
-            [viewContorller planTripFromCurrentLocationTo:directionsInfo.destination.placemark.coordinate];
-        } else if (!directionsInfo.source.isCurrentLocation && directionsInfo.destination.isCurrentLocation) {
-            [viewContorller planTripToCurrentLocationFrom:directionsInfo.source.placemark.coordinate];
-        } else if (!directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
-            [viewContorller planTripFrom:directionsInfo.source.placemark.coordinate
-                                      to:directionsInfo.destination.placemark.coordinate];
-        } else {
-            return NO;
-        }
+//        if (directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
+//            [viewContorller planTripFromCurrentLocationTo:directionsInfo.destination.placemark.coordinate];
+//        } else if (!directionsInfo.source.isCurrentLocation && directionsInfo.destination.isCurrentLocation) {
+//            [viewContorller planTripToCurrentLocationFrom:directionsInfo.source.placemark.coordinate];
+//        } else if (!directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
+//            [viewContorller planTripFrom:directionsInfo.source.placemark.coordinate
+//                                      to:directionsInfo.destination.placemark.coordinate];
+//        } else {
+//            return NO;
+//        }
         return YES;
     }
     else {

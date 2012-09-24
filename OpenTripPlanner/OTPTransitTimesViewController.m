@@ -7,6 +7,7 @@
 //
 
 #import "OTPTransitTimesViewController.h"
+#import "OTPItineraryViewController.h"
 
 @interface OTPTransitTimesViewController ()
 
@@ -133,6 +134,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    [(OTPItineraryViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
 }
 
 - (void)dismiss:(id)sender

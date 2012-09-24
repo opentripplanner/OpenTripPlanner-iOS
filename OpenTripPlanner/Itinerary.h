@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Leg.h"
+
 @interface Itinerary : NSObject {
     NSNumber* _duration;
     NSDate* _startTime;
@@ -20,6 +22,7 @@
     NSNumber* _elevationGained;
     NSNumber* _transfers;
     NSArray* _legs;
+    struct OTPBounds _bounds;
 }
 
 @property (nonatomic, retain) NSNumber* duration;
@@ -33,5 +36,6 @@
 @property (nonatomic, retain) NSNumber* elevationGained;
 @property (nonatomic, retain) NSNumber* transfers;
 @property (nonatomic, retain) NSArray* legs;
+@property (nonatomic, readonly) struct OTPBounds bounds;
 
 @end
