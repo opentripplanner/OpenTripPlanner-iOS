@@ -52,15 +52,12 @@ BOOL visible;
 
 - (NSTimeInterval)calloutView:(SMCalloutView *)calloutView delayForRepositionWithSize:(CGSize)offset
 {
-    if (CGRectIntersectsRect(calloutView.frame, self.map.frame)) {
-        CLLocationCoordinate2D currentMapCenterCoord = self.map.centerCoordinate;
-        CGPoint currentMapCenterPoint= [self.map coordinateToPixel:currentMapCenterCoord];
-        CGPoint newCenterPoint = CGPointMake(currentMapCenterPoint.x - offset.width, currentMapCenterPoint.y - offset.height - 4);
-        CLLocationCoordinate2D newCenterCoordinate = [self.map pixelToCoordinate:newCenterPoint];
-        [self.map setCenterCoordinate:newCenterCoordinate animated:YES];
-        return 0.2;
-    }
-    return 0;
+    CLLocationCoordinate2D currentMapCenterCoord = self.map.centerCoordinate;
+    CGPoint currentMapCenterPoint= [self.map coordinateToPixel:currentMapCenterCoord];
+    CGPoint newCenterPoint = CGPointMake(currentMapCenterPoint.x - offset.width, currentMapCenterPoint.y - offset.height - 4);
+    CLLocationCoordinate2D newCenterCoordinate = [self.map pixelToCoordinate:newCenterPoint];
+    [self.map setCenterCoordinate:newCenterCoordinate animated:YES];
+    return 0.2;
 }
 
 /*

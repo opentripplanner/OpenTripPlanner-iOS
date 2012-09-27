@@ -17,12 +17,18 @@
 NSString * const kTransitModeTypeArray[] = {
     @"WALK,TRANSIT",
     @"BIKE,TRANSIT",
-    @"WALK",
-    @"BIKE"
+    @"BIKE",
+    @"WALK"
+};
+
+NSString * const kArriveByArray[] = {
+    @"false",
+    @"true"
 };
 
 @interface OTPDirectionsInputViewController ()
 
+- (void)showTimeSelector:(id)sender;
 - (void)switchFromAndTo:(id)sender;
 - (void)geocodeStringInTextField:(OTPGeocodedTextField *)textField;
 - (void)didShowKeyboard:(NSNotification *)notification;
@@ -39,6 +45,8 @@ NSString * const kTransitModeTypeArray[] = {
 @synthesize dummyField = _dummyField;
 @synthesize switchFromAndToButton = _switchFromAndToButton;
 @synthesize mapView = _mapView;
+@synthesize arriveOrDepartByIndex = _arriveOrDepartByIndex;
+@synthesize date = _date;
 @synthesize userLocation = _userLocation;
 
 CLGeocoder *geocoder;
@@ -60,6 +68,13 @@ Plan *currentPlan;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.arriveOrDepartByIndex = [NSNumber numberWithInt:0];
+    self.date = [[NSDate alloc] init];
+    
+    UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(showTimeSelector:)];
+    UIBarButtonItem *modeSelector = [[UIBarButtonItem alloc] initWithCustomView:self.modeControl];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:modeSelector, timeButton, nil];
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(didShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
@@ -119,16 +134,16 @@ Plan *currentPlan;
     
     self.fromTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     self.toTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
-    
-    self.textFieldContainer.layer.shadowOffset = CGSizeMake(0, 2);
-    self.textFieldContainer.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
-    self.textFieldContainer.layer.shadowRadius = 3.0;
-    self.textFieldContainer.layer.shadowOpacity = 0.8;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.fromTextField becomeFirstResponder];
+}
+
+- (void)showTimeSelector:(id)sender
+{
+    [self performSegueWithIdentifier:@"TransitTimes" sender:self];
 }
 
 - (void)didShowKeyboard:(NSNotification *)notification
@@ -159,27 +174,29 @@ Plan *currentPlan;
 - (void)planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint
 {
     // TODO: Look at how time zone plays into all this.
-    NSDate *now = [[NSDate alloc] init];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateString = [dateFormatter stringFromDate:now];
+    NSString *dateString = [dateFormatter stringFromDate:self.date];
     [dateFormatter setDateFormat:@"HH:mm"];
-    NSString *timeString = [dateFormatter stringFromDate:now];
+    NSString *timeString = [dateFormatter stringFromDate:self.date];
     
     NSString *fromString = [NSString stringWithFormat:@"%f,%f", startPoint.latitude, startPoint.longitude];
     NSString *toString = [NSString stringWithFormat:@"%f,%f", endPoint.latitude, endPoint.longitude];
+    
+    NSString *mode = kTransitModeTypeArray[self.modeControl.selectedSegmentIndex];
+    NSString *arriveBy = kArriveByArray[self.arriveOrDepartByIndex.intValue];
     
     
     NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
                             @"optimize", @"QUICK",
                             @"time", timeString,
-                            @"arriveBy", @"false",
+                            @"arriveBy", arriveBy,
                             @"routerId", @"req-241",
                             @"maxWalkDistance", @"840",
                             @"fromPlace", fromString,
                             @"toPlace", toString,
                             @"date", dateString,
-                            @"mode", @"TRANSIT,WALK",
+                            @"mode", mode,
                             nil];
     
     NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
@@ -242,6 +259,8 @@ Plan *currentPlan;
             // Got one result, process it.
             CLPlacemark *result = [placemarks objectAtIndex:0];
             
+            [self.mapView removeAllAnnotations];
+            
             RMAnnotation* placeAnnotation = [RMAnnotation
                                              annotationWithMapView:self.mapView
                                              coordinate:result.location.coordinate
@@ -251,7 +270,7 @@ Plan *currentPlan;
             marker.zPosition = 10;
             
             SMCalloutView *calloutView = [[SMCalloutView alloc] init];
-            calloutView.title = @"Dropped Pin";
+            calloutView.title = [(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] objectAtIndex:0];
             
             OTPCallout *callout = [[OTPCallout alloc] initWithCallout:calloutView forMarker:marker inMap:self.mapView];
             
@@ -261,10 +280,16 @@ Plan *currentPlan;
             [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
             
             [self.mapView setZoom:13];
-            [self.mapView setCenterCoordinate:result.location.coordinate animated:YES];
+            
+            CGPoint mapCenterScreen = [self.view convertPoint:self.mapView.center toView:nil];
+            CGFloat shift = mapCenterScreen.y - topOfKeyboard + 10;
+            
+            RMProjectedPoint projectedLocation = [self.mapView coordinateToProjectedPoint:result.location.coordinate];
+            projectedLocation.y = projectedLocation.y - shift * self.mapView.metersPerPixel;
             
             [self.mapView addAnnotation:placeAnnotation];
-            [callout toggle];
+            
+            [self.mapView setCenterProjectedPoint:projectedLocation animated:YES];
             
             textField.placemark = result;
             textField.text = [(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
@@ -376,9 +401,21 @@ Plan *currentPlan;
 
 }
 
-- (void)mapViewRegionDidChange:(RMMapView *)mapView
+- (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction
 {
-    
+    if (!wasUserAction && self.mapView.annotations.count > 0) {
+        RMAnnotation *annotation = [self.mapView.annotations objectAtIndex:0];
+        RMMarker* marker = [[annotation userInfo] objectForKey:@"layer"];
+        [((OTPCallout *)marker.label) toggle];
+    }
+}
+
+#pragma mark OTPTransitTimeViewControllerDelegate methods
+
+- (void)transitTimeViewController:(OTPTransitTimeViewController *)transitTimeViewController didChooseArrivingOrDepartingIndex:(NSNumber *)arrivingOrDepartingIndex atTime:(NSDate *)time
+{
+    self.arriveOrDepartByIndex = arrivingOrDepartingIndex;
+    self.date = time;
 }
 
 #pragma mark RKObjectLoaderDelegate methods
@@ -406,7 +443,14 @@ Plan *currentPlan;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // pass itineraries to next view controller
-    ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController).itineraries = currentPlan.itineraries;
+    if ([segue.identifier isEqualToString:@"ExploreItineraries"]) {
+        ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController).itineraries = currentPlan.itineraries;
+    } else if ([segue.identifier isEqualToString:@"TransitTimes"]) {
+        OTPTransitTimeViewController *vc = (OTPTransitTimeViewController *)segue.destinationViewController;
+        vc.delegate = self;
+        vc.date = [[NSDate alloc] init];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

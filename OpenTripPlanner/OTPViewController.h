@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RouteMe.h"
+
 #import "OTPDirectionsInputViewController.h"
 #import "OTPSearchBarWithActivity.h"
-#import "RouteMe.h"
 
 @interface OTPViewController : UIViewController <RMMapViewDelegate, UISearchBarDelegate>
 {

@@ -34,7 +34,7 @@
 
 #import "UIView+Screenshot.h"
 #import <QuartzCore/QuartzCore.h>
-#import "RMMapView.h"
+#import "RouteMe.h"
 
 @implementation UIView (Screenshot)
 

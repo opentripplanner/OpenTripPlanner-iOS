@@ -11,6 +11,7 @@
 
 #import "RouteMe.h"
 
+#import "OTPTransitTimeViewController.h"
 #import "OTPGeocodedTextField.h"
 
 typedef enum {
@@ -22,7 +23,7 @@ typedef enum {
 
 @protocol OTPDirectionsInputViewControllerDelegate;
 
-@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate>
+@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate, OTPTransitTimeViewControllerDelegate>
 {
     UISegmentedControl *_modeControl;
     UIView *_textFieldContainer;
@@ -31,6 +32,9 @@ typedef enum {
     UITextField *_dummyField;
     UISegmentedControl *_switchFromAndToButton;
     RMMapView *_mapView;
+    
+    NSNumber *_arriveOrDepartByIndex;
+    NSDate *_date;
     
     RMUserLocation *_userLocation;
 }
@@ -42,6 +46,8 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet UITextField *dummyField;
 @property (nonatomic, retain) UISegmentedControl *switchFromAndToButton;
 @property (nonatomic, retain) IBOutlet RMMapView *mapView;
+@property (nonatomic, retain) NSNumber *arriveOrDepartByIndex;
+@property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) RMUserLocation *userLocation;
 
 - (void) planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint;
