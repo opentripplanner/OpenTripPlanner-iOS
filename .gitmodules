@@ -1,6 +1,3 @@
 [submodule "RestKit"]
 	path = RestKit
 	url = git://github.com/RestKit/RestKit.git
-[submodule "mapbox-ios-sdk"]
-	path = mapbox-ios-sdk
-	url = git://github.com/mapbox/mapbox-ios-sdk.git
