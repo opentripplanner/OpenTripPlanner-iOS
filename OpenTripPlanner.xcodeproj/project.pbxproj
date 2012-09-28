@@ -21,7 +21,6 @@
 		CC0A1F7B1603B47A003085B2 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F7A1603B47A003085B2 /* UIView+Origami.m */; };
 		CC0A1F851603D3C5003085B2 /* OTPShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F841603D3C5003085B2 /* OTPShadow.m */; };
 		CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */; };
-		CC44EB37161506F300B7FE93 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC44EB311615065800B7FE93 /* libMapView.a */; };
 		CC44EB451615077D00B7FE93 /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CC44EB391615077D00B7FE93 /* HeadingAngleSmall.png */; };
 		CC44EB461615077D00B7FE93 /* HeadingAngleSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC44EB3A1615077D00B7FE93 /* HeadingAngleSmall@2x.png */; };
 		CC44EB471615077D00B7FE93 /* LoadingTile.png in Resources */ = {isa = PBXBuildFile; fileRef = CC44EB3B1615077D00B7FE93 /* LoadingTile.png */; };
@@ -58,7 +57,6 @@
 		CCCDFB8215EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB8A15EEAAC600B26133 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCCDFB8815EEAAC600B26133 /* InfoPlist.strings */; };
 		CCCDFB8D15EEAAC600B26133 /* OpenTripPlannerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCDFB8C15EEAAC600B26133 /* OpenTripPlannerTests.m */; };
-		CCCDFBBF15EEBA5400B26133 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBB315EEB5E600B26133 /* libRestKit.a */; };
 		CCCDFBC115EEBA7600B26133 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBC015EEBA7600B26133 /* CFNetwork.framework */; };
 		CCCDFBC315EEBA8F00B26133 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBC215EEBA8F00B26133 /* CoreData.framework */; };
 		CCCDFBC515EEBAA200B26133 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBC415EEBAA200B26133 /* MobileCoreServices.framework */; };
@@ -76,68 +74,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CC44EB301615065800B7FE93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC44EB251615065700B7FE93 /* MapView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 17F31EFA1331050A00122B16;
-			remoteInfo = MapView;
-		};
-		CC44EB35161506EB00B7FE93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC44EB251615065700B7FE93 /* MapView.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
-			remoteInfo = MapView;
-		};
 		CCCDFB8315EEAAC600B26133 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CCCDFB5A15EEAAC600B26133 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CCCDFB6215EEAAC600B26133;
 			remoteInfo = OpenTripPlanner;
-		};
-		CCCDFBB215EEB5E600B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		CCCDFBB415EEB5E600B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		CCCDFBB615EEB5E600B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		CCCDFBB815EEB5E600B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		CCCDFBBA15EEB5E600B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 259C301615128079003066A2;
-			remoteInfo = RestKitResources;
-		};
-		CCCDFBBD15EEB84800B26133 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -169,7 +111,6 @@
 		CC0A1F841603D3C5003085B2 /* OTPShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPShadow.m; sourceTree = "<group>"; };
 		CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPSearchBarWithActivity.h; sourceTree = "<group>"; };
 		CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPSearchBarWithActivity.m; sourceTree = "<group>"; };
-		CC44EB251615065700B7FE93 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = MapBox/MapView/MapView.xcodeproj; sourceTree = "<group>"; };
 		CC44EB391615077D00B7FE93 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeadingAngleSmall.png; sourceTree = "<group>"; };
 		CC44EB3A1615077D00B7FE93 /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
 		CC44EB3B1615077D00B7FE93 /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingTile.png; sourceTree = "<group>"; };
@@ -223,7 +164,6 @@
 		CCCDFB8915EEAAC600B26133 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CCCDFB8B15EEAAC600B26133 /* OpenTripPlannerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenTripPlannerTests.h; sourceTree = "<group>"; };
 		CCCDFB8C15EEAAC600B26133 /* OpenTripPlannerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenTripPlannerTests.m; sourceTree = "<group>"; };
-		CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		CCCDFBC015EEBA7600B26133 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CCCDFBC215EEBA8F00B26133 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CCCDFBC415EEBAA200B26133 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -247,7 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC44EB37161506F300B7FE93 /* libMapView.a in Frameworks */,
 				CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */,
 				CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */,
 				CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */,
@@ -259,7 +198,6 @@
 				CCCDFBC515EEBAA200B26133 /* MobileCoreServices.framework in Frameworks */,
 				CCCDFBC315EEBA8F00B26133 /* CoreData.framework in Frameworks */,
 				CCCDFBC115EEBA7600B26133 /* CFNetwork.framework in Frameworks */,
-				CCCDFBBF15EEBA5400B26133 /* libRestKit.a in Frameworks */,
 				CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */,
 				CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */,
 				CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */,
@@ -321,14 +259,6 @@
 			path = XYOrigami;
 			sourceTree = "<group>";
 		};
-		CC44EB261615065700B7FE93 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CC44EB311615065800B7FE93 /* libMapView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CC44EB381615077D00B7FE93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,10 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				CC44EB381615077D00B7FE93 /* Resources */,
-				CC44EB251615065700B7FE93 /* MapView.xcodeproj */,
 				CC0A1F781603B47A003085B2 /* XYOrigami */,
 				CC0A1F5316038F6A003085B2 /* PaperFold */,
-				CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */,
 				CCCDFB6615EEAAC600B26133 /* Frameworks */,
 				CCCDFB6415EEAAC600B26133 /* Products */,
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
@@ -480,18 +408,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CCCDFBA815EEB5E600B26133 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CCCDFBB315EEB5E600B26133 /* libRestKit.a */,
-				CCCDFBB515EEB5E600B26133 /* RestKitTests.octest */,
-				CCCDFBB715EEB5E600B26133 /* RestKit.framework */,
-				CCCDFBB915EEB5E600B26133 /* RestKitFrameworkTests.octest */,
-				CCCDFBBB15EEB5E600B26133 /* RestKitResources.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,8 +422,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CC44EB36161506EB00B7FE93 /* PBXTargetDependency */,
-				CCCDFBBE15EEB84800B26133 /* PBXTargetDependency */,
 			);
 			name = OpenTripPlanner;
 			productName = OpenTripPlanner;
@@ -553,16 +467,6 @@
 			mainGroup = CCCDFB5815EEAAC600B26133;
 			productRefGroup = CCCDFB6415EEAAC600B26133 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CC44EB261615065700B7FE93 /* Products */;
-					ProjectRef = CC44EB251615065700B7FE93 /* MapView.xcodeproj */;
-				},
-				{
-					ProductGroup = CCCDFBA815EEB5E600B26133 /* Products */;
-					ProjectRef = CCCDFBA715EEB5E600B26133 /* RestKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CCCDFB6215EEAAC600B26133 /* OpenTripPlanner */,
@@ -570,51 +474,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CC44EB311615065800B7FE93 /* libMapView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMapView.a;
-			remoteRef = CC44EB301615065800B7FE93 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CCCDFBB315EEB5E600B26133 /* libRestKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRestKit.a;
-			remoteRef = CCCDFBB215EEB5E600B26133 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CCCDFBB515EEB5E600B26133 /* RestKitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitTests.octest;
-			remoteRef = CCCDFBB415EEB5E600B26133 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CCCDFBB715EEB5E600B26133 /* RestKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RestKit.framework;
-			remoteRef = CCCDFBB615EEB5E600B26133 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CCCDFBB915EEB5E600B26133 /* RestKitFrameworkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitFrameworkTests.octest;
-			remoteRef = CCCDFBB815EEB5E600B26133 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CCCDFBBB15EEB5E600B26133 /* RestKitResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitResources.bundle;
-			remoteRef = CCCDFBBA15EEB5E600B26133 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CCCDFB6115EEAAC600B26133 /* Resources */ = {
@@ -714,20 +573,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CC44EB36161506EB00B7FE93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MapView;
-			targetProxy = CC44EB35161506EB00B7FE93 /* PBXContainerItemProxy */;
-		};
 		CCCDFB8415EEAAC600B26133 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CCCDFB6215EEAAC600B26133 /* OpenTripPlanner */;
 			targetProxy = CCCDFB8315EEAAC600B26133 /* PBXContainerItemProxy */;
-		};
-		CCCDFBBE15EEB84800B26133 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = CCCDFBBD15EEB84800B26133 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
