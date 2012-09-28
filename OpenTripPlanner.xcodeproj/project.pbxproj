@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9378875B16154885007CF24C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378875016154866007CF24C /* libRestKit.a */; };
+		9378877C16154DA1007CF24C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378877616154AF2007CF24C /* libMapView.a */; };
 		CC088DE715F69E4900C6F372 /* OP.png in Resources */ = {isa = PBXBuildFile; fileRef = CC088DE615F69E4900C6F372 /* OP.png */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
 		CC0A1F6416038F6B003085B2 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F5516038F6B003085B2 /* FacingView.m */; };
@@ -105,6 +106,20 @@
 			remoteGlobalIDString = 25160D1514564E810060A5C5;
 			remoteInfo = RestKit;
 		};
+		9378877516154AF2007CF24C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9378876A16154AF2007CF24C /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F31EFA1331050A00122B16;
+			remoteInfo = MapView;
+		};
+		9378877A16154D97007CF24C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9378876A16154AF2007CF24C /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
 		CCCDFB8315EEAAC600B26133 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CCCDFB5A15EEAAC600B26133 /* Project object */;
@@ -116,6 +131,7 @@
 
 /* Begin PBXFileReference section */
 		9378874416154865007CF24C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		9378876A16154AF2007CF24C /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = MapBox/MapView/MapView.xcodeproj; sourceTree = "<group>"; };
 		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
 		CC088DE615F69E4900C6F372 /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OP.png; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -207,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9378877C16154DA1007CF24C /* libMapView.a in Frameworks */,
 				9378875B16154885007CF24C /* libRestKit.a in Frameworks */,
 				CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */,
 				CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */,
@@ -246,6 +263,14 @@
 				9378875416154866007CF24C /* RestKit.framework */,
 				9378875616154866007CF24C /* RestKitFrameworkTests.octest */,
 				9378875816154866007CF24C /* RestKitResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9378876B16154AF2007CF24C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9378877616154AF2007CF24C /* libMapView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,6 +337,7 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
+				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
 				9378874416154865007CF24C /* RestKit.xcodeproj */,
 				CC0A1F781603B47A003085B2 /* XYOrigami */,
 				CC0A1F5316038F6A003085B2 /* PaperFold */,
@@ -435,6 +461,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9378877B16154D97007CF24C /* PBXTargetDependency */,
 				9378875A16154879007CF24C /* PBXTargetDependency */,
 			);
 			name = OpenTripPlanner;
@@ -483,6 +510,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 9378876B16154AF2007CF24C /* Products */;
+					ProjectRef = 9378876A16154AF2007CF24C /* MapView.xcodeproj */;
+				},
+				{
 					ProductGroup = 9378874516154865007CF24C /* Products */;
 					ProjectRef = 9378874416154865007CF24C /* RestKit.xcodeproj */;
 				},
@@ -529,6 +560,13 @@
 			fileType = wrapper.cfbundle;
 			path = RestKitResources.bundle;
 			remoteRef = 9378875716154866007CF24C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9378877616154AF2007CF24C /* libMapView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapView.a;
+			remoteRef = 9378877516154AF2007CF24C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -623,6 +661,11 @@
 			isa = PBXTargetDependency;
 			name = RestKit;
 			targetProxy = 9378875916154879007CF24C /* PBXContainerItemProxy */;
+		};
+		9378877B16154D97007CF24C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = 9378877A16154D97007CF24C /* PBXContainerItemProxy */;
 		};
 		CCCDFB8415EEAAC600B26133 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
