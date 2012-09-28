@@ -20,8 +20,8 @@
     RMUserLocation* _userLocation;
 }
 
-@property (nonatomic, retain) IBOutlet RMMapView* mapView;
-@property (nonatomic, retain) IBOutlet OTPSearchBarWithActivity *searchBar;
-@property (nonatomic, retain) RMUserLocation* userLocation;
+@property (nonatomic, strong) IBOutlet RMMapView* mapView;
+@property (nonatomic, strong) IBOutlet OTPSearchBarWithActivity *searchBar;
+@property (nonatomic, strong) RMUserLocation* userLocation;
 
 @end

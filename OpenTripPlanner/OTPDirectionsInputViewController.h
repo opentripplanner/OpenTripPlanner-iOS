@@ -39,16 +39,16 @@ typedef enum {
     RMUserLocation *_userLocation;
 }
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl *modeControl;
-@property (nonatomic, retain) IBOutlet UIView *textFieldContainer;
-@property (nonatomic, retain) IBOutlet OTPGeocodedTextField *fromTextField;
-@property (nonatomic, retain) IBOutlet OTPGeocodedTextField *toTextField;
-@property (nonatomic, retain) IBOutlet UITextField *dummyField;
-@property (nonatomic, retain) UISegmentedControl *switchFromAndToButton;
-@property (nonatomic, retain) IBOutlet RMMapView *mapView;
-@property (nonatomic, retain) NSNumber *arriveOrDepartByIndex;
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) RMUserLocation *userLocation;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *modeControl;
+@property (nonatomic, strong) IBOutlet UIView *textFieldContainer;
+@property (nonatomic, strong) IBOutlet OTPGeocodedTextField *fromTextField;
+@property (nonatomic, strong) IBOutlet OTPGeocodedTextField *toTextField;
+@property (nonatomic, strong) IBOutlet UITextField *dummyField;
+@property (nonatomic, strong) UISegmentedControl *switchFromAndToButton;
+@property (nonatomic, strong) IBOutlet RMMapView *mapView;
+@property (nonatomic, strong) NSNumber *arriveOrDepartByIndex;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) RMUserLocation *userLocation;
 
 - (void) planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint;
 //- (void) planTripFromCurrentLocationTo:(CLLocationCoordinate2D)endPoint;

@@ -26,13 +26,13 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGColorRef startColor = [UIColor colorWithRed:161.0/255.0 green:177.0/255.0 blue:203.0/255.0 alpha:1.0].CGColor;
-    CGColorRef endColor = [UIColor colorWithRed:72.0/255.0 green:94.0/255.0 blue:136.0/255.0 alpha:1.0].CGColor;
-    CGColorRef redColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
-    CGColorRef highlightColor1 = [UIColor colorWithRed:60.0/255.0 green:77.0/255.0 blue:107.0/255.0 alpha:1.0].CGColor;
-    CGColorRef highlightColor2 = [UIColor colorWithRed:101.0/255.0 green:115.0/255.0 blue:148.0/255.0 alpha:1.0].CGColor;
-    CGColorRef highlightColor3 = [UIColor colorWithRed:119.0/255.0 green:133.0/255.0 blue:168.0/255.0 alpha:1.0].CGColor;
-    CGColorRef shadowColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5].CGColor;
+    CGColorRef startColor = CGColorRetain([UIColor colorWithRed:161.0/255.0 green:177.0/255.0 blue:203.0/255.0 alpha:1.0].CGColor);
+    CGColorRef endColor = CGColorRetain([UIColor colorWithRed:72.0/255.0 green:94.0/255.0 blue:136.0/255.0 alpha:1.0].CGColor);
+    CGColorRef redColor = CGColorRetain([UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0].CGColor);
+    CGColorRef highlightColor1 = CGColorRetain([UIColor colorWithRed:60.0/255.0 green:77.0/255.0 blue:107.0/255.0 alpha:1.0].CGColor);
+    CGColorRef highlightColor2 = CGColorRetain([UIColor colorWithRed:101.0/255.0 green:115.0/255.0 blue:148.0/255.0 alpha:1.0].CGColor);
+    CGColorRef highlightColor3 = CGColorRetain([UIColor colorWithRed:119.0/255.0 green:133.0/255.0 blue:168.0/255.0 alpha:1.0].CGColor);
+    CGColorRef shadowColor = CGColorRetain([UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.5].CGColor);
     
     CGRect paperRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height - 5);
     
