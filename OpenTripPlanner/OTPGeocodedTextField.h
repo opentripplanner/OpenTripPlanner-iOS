@@ -10,15 +10,9 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface OTPGeocodedTextField : UITextField
-{
-    CLPlacemark *_placemark;
 
-    OTPGeocodedTextField *_otherTextField;
-    BOOL _isDirty;
-}
-
-@property (nonatomic, retain) CLPlacemark *placemark;
-@property (nonatomic, retain) OTPGeocodedTextField *otherTextField;
+@property (nonatomic, strong) CLPlacemark *placemark;
+@property (nonatomic, strong) OTPGeocodedTextField *otherTextField;
 @property BOOL isDirty;
 
 @end

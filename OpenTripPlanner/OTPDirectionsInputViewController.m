@@ -28,7 +28,6 @@ NSString * const kArriveByArray[] = {
 
 @interface OTPDirectionsInputViewController ()
 
-- (void)showTimeSelector:(id)sender;
 - (void)switchFromAndTo:(id)sender;
 - (void)geocodeStringInTextField:(OTPGeocodedTextField *)textField;
 - (void)didShowKeyboard:(NSNotification *)notification;
@@ -37,17 +36,6 @@ NSString * const kArriveByArray[] = {
 @end
 
 @implementation OTPDirectionsInputViewController
-
-@synthesize modeControl = _modeControl;
-@synthesize textFieldContainer = _textFieldContainer;
-@synthesize fromTextField = _fromTextField;
-@synthesize toTextField = _toTextField;
-@synthesize dummyField = _dummyField;
-@synthesize switchFromAndToButton = _switchFromAndToButton;
-@synthesize mapView = _mapView;
-@synthesize arriveOrDepartByIndex = _arriveOrDepartByIndex;
-@synthesize date = _date;
-@synthesize userLocation = _userLocation;
 
 CLGeocoder *geocoder;
 CLPlacemark *fromPlacemark;
@@ -69,20 +57,19 @@ Plan *currentPlan;
 {
     [super viewDidLoad];
     
+    self.goButton.enabled = NO;
+    
     self.arriveOrDepartByIndex = [NSNumber numberWithInt:0];
+    self.modeControl.selectedSegmentIndex = 0;
     self.date = [[NSDate alloc] init];
     
-    UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(showTimeSelector:)];
-    UIBarButtonItem *modeSelector = [[UIBarButtonItem alloc] initWithCustomView:self.modeControl];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:modeSelector, timeButton, nil];
+    self.navBar.topItem.titleView = self.modeControl;
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(didShowKeyboard:) name:UIKeyboardDidShowNotification object:nil];
     [center addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
     
     geocoder = [[CLGeocoder alloc] init];
-    
-    self.dummyField.hidden = YES;
     
     CGFloat scale = [[UIScreen mainScreen] scale];
     NSString *mapUrl = nil;
@@ -138,7 +125,21 @@ Plan *currentPlan;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.fromTextField becomeFirstResponder];
+    //[self.fromTextField becomeFirstResponder];
+}
+
+- (void)go:(id)sender
+{
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:HUD];
+	HUD.labelText = @"Routing";
+	HUD.dimBackground = YES;
+    HUD.removeFromSuperViewOnHide = YES;
+	[HUD show:YES];
+    
+    [self planTripFrom:self.fromTextField.placemark.location.coordinate to:self.toTextField.placemark.location.coordinate];
+    [self.fromTextField resignFirstResponder];
+    [self.toTextField resignFirstResponder];
 }
 
 - (void)showTimeSelector:(id)sender
@@ -153,11 +154,6 @@ Plan *currentPlan;
         CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
         topOfKeyboard = keyboardRect.origin.y - keyboardRect.size.height;
     }
-//    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//    CGRect currentMapFrame = self.mapView.frame;
-//    CGFloat newMapHeight = currentMapFrame.size.height - keyboardRect.size.height;
-//    CGRect newMapFrame = CGRectMake(currentMapFrame.origin.x, currentMapFrame.origin.y, currentMapFrame.size.width, newMapHeight);
-//    self.mapView.frame = newMapFrame;
 }
 
 - (void)willHideKeyboard:(NSNotification *)notification
@@ -241,10 +237,8 @@ Plan *currentPlan;
     textField.rightView = loadingIndicator;
     textField.isDirty = NO;
     textField.placemark = nil;
-    textField.returnKeyType = UIReturnKeyNext;
-    self.dummyField.returnKeyType = UIReturnKeyNext;
-    [textField reloadInputViews];
-    [self.dummyField reloadInputViews];
+    
+    self.goButton.enabled = NO;
     
     [geocoder geocodeAddressString:textField.text inRegion:nil completionHandler:^(NSArray* placemarks, NSError* error) {
         if (placemarks.count == 0) {
@@ -296,12 +290,7 @@ Plan *currentPlan;
             textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
             
             if (textField.otherTextField.placemark != nil && textField.otherTextField.text != nil && ![textField.otherTextField.text isEqualToString:@""]) {
-                textField.returnKeyType = UIReturnKeyRoute;
-                textField.otherTextField.returnKeyType = UIReturnKeyRoute;
-                self.dummyField.returnKeyType = UIReturnKeyRoute;
-                [textField reloadInputViews];
-                [textField.otherTextField reloadInputViews];
-                [self.dummyField reloadInputViews];
+                self.goButton.enabled = YES;
             }
         }
     }];
@@ -324,23 +313,15 @@ Plan *currentPlan;
     self.toTextField.placemark = tmpPlacemark;
     self.toTextField.rightView = tmpView;
     self.toTextField.isDirty = tmpIsDirty;
-    
-    [self.fromTextField reloadInputViews];
-    [self.toTextField reloadInputViews];
 }
 
 - (void)updatedTextField:(id)sender
 {
     NSLog(@"updated text field");
+    self.goButton.enabled = NO;
     OTPGeocodedTextField *textField = (OTPGeocodedTextField *)sender;
     textField.isDirty = YES;
     textField.rightView = nil;
-    textField.returnKeyType = UIReturnKeyNext;
-    textField.otherTextField.returnKeyType = UIReturnKeyNext;
-    self.dummyField.returnKeyType = UIReturnKeyNext;
-    [textField reloadInputViews];
-    [textField.otherTextField reloadInputViews];
-    [self.dummyField reloadInputViews];
 }
 
 - (void)doneEditingTextField:(id)sender
@@ -355,18 +336,9 @@ Plan *currentPlan;
 {
     OTPGeocodedTextField *field = (OTPGeocodedTextField *)textField;
     
-    // If the user is submitting a route query, don't do anything other than launch the query
-    if (field.returnKeyType == UIReturnKeyRoute) {
-        // Launch the route query
-        [self planTripFrom:self.fromTextField.placemark.location.coordinate to:self.toTextField.placemark.location.coordinate];
-        [self.fromTextField resignFirstResponder];
-        [self.toTextField resignFirstResponder];
-        [self.dummyField resignFirstResponder];
-        return NO;
-    }
     // If the other text field has valid geocoded data, we don't need to do anything
     if (field.otherTextField.placemark != nil && field.otherTextField.text != nil && ![field.otherTextField.text isEqualToString:@""]) {
-        [self.dummyField becomeFirstResponder];
+        [textField resignFirstResponder];
         return YES;
     }
     // The other text field needs input so make it the first responder
@@ -389,6 +361,11 @@ Plan *currentPlan;
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
     return [annotation.userInfo objectForKey:@"layer"];
+}
+
+- (void)singleTapOnMap:(RMMapView *)map at:(CGPoint)point
+{
+    [self.view endEditing:YES];
 }
 
 - (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point
@@ -428,6 +405,7 @@ Plan *currentPlan;
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     NSLog(@"Loaded plan: %@", objects);
+    [HUD hide:YES];
     currentPlan = (Plan*)[objects objectAtIndex:0];
     //[self displayItinerary:[currentPlan.itineraries objectAtIndex:0]];
     [self performSegueWithIdentifier:@"ExploreItineraries" sender:self];
@@ -480,4 +458,8 @@ Plan *currentPlan;
     return (kTransitModeType)retVal;
 }
 
+- (void)viewDidUnload {
+    [self setTimeButton:nil];
+    [super viewDidUnload];
+}
 @end

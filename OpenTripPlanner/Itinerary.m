@@ -12,19 +12,6 @@
 
 @implementation Itinerary
 
-@synthesize duration = _duration;
-@synthesize startTime = _startTime;
-@synthesize endTime = _endTime;
-@synthesize walkTime = _walkTime;
-@synthesize transitTime = _transitTime;
-@synthesize waitingTime = _waitingTime;
-@synthesize walkDistance = _walkDistance;
-@synthesize elevationLost = _elevationLost;
-@synthesize elevationGained = _elevationGained;
-@synthesize transfers = _transfers;
-@synthesize legs = _legs;
-@synthesize bounds = _bounds;
-
 - (void)setLegs:(NSArray *)legs
 {
     _legs = legs;

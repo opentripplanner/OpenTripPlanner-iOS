@@ -11,17 +11,11 @@
 @protocol OTPTransitTimeViewControllerDelegate;
 
 @interface OTPTransitTimeViewController : UIViewController
-{
-    UISegmentedControl *_arrivingOrDepartingControl;
-    UIDatePicker *_datePicker;
-    NSDate *_date;
-    NSObject<OTPTransitTimeViewControllerDelegate> *_delegate;
-}
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl *arrivingOrDepartingControl;
-@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSObject<OTPTransitTimeViewControllerDelegate> *delegate;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *arrivingOrDepartingControl;
+@property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSObject<OTPTransitTimeViewControllerDelegate> *delegate;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;

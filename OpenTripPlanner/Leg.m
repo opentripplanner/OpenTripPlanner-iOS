@@ -18,16 +18,6 @@
 
 @implementation Leg
 
-@synthesize startTime = _startTime;
-@synthesize endTime = _endTime;
-@synthesize distance = _distance;
-@synthesize from = _from;
-@synthesize to = _to;
-@synthesize legGeometry = _legGeometry;
-@synthesize duration = _duration;
-@synthesize decodedLegGeometry = _decodedLegGeometry;
-@synthesize bounds = _bounds;
-
 - (void)setLegGeometry:(LegGeometry *)legGeometry
 {
     _legGeometry = legGeometry;

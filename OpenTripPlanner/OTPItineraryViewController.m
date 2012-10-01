@@ -21,11 +21,6 @@
 
 @implementation OTPItineraryViewController
 
-@synthesize itinerary = _itinerary;
-@synthesize paperFoldView = _paperFoldView;
-@synthesize mapView = _mapView;
-@synthesize tableView = _tableView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

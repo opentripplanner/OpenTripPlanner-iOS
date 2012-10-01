@@ -16,25 +16,15 @@ struct OTPBounds {
     CLLocationCoordinate2D neCorner;
 };
 
-@interface Leg : NSObject {
-    NSDate* _startTime;
-    NSDate* _endTime;
-    NSNumber* _distance;
-    Place* _from;
-    Place* _to;
-    LegGeometry* _legGeometry;
-    NSNumber* _duration;
-    NSArray *_decodedLegGeometry;
-    struct OTPBounds _bounds;
-}
+@interface Leg : NSObject
 
-@property (nonatomic, retain) NSDate* startTime;
-@property (nonatomic, retain) NSDate* endTime;
-@property (nonatomic, retain) NSNumber* distance;
-@property (nonatomic, retain) Place* from;
-@property (nonatomic, retain) Place* to;
-@property (nonatomic, retain) LegGeometry* legGeometry;
-@property (nonatomic, retain) NSNumber* duration;
+@property (nonatomic, strong) NSDate* startTime;
+@property (nonatomic, strong) NSDate* endTime;
+@property (nonatomic, strong) NSNumber* distance;
+@property (nonatomic, strong) Place* from;
+@property (nonatomic, strong) Place* to;
+@property (nonatomic, strong) LegGeometry* legGeometry;
+@property (nonatomic, strong) NSNumber* duration;
 @property (nonatomic, readonly) NSArray *decodedLegGeometry;
 @property (nonatomic, readonly) struct OTPBounds bounds;
 

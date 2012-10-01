@@ -9,14 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface OTPSearchBarWithActivity : UISearchBar
-{
-    UIBarButtonItem *_directionsButton;
-    UIActivityIndicatorView *activityIndicatorView;
-    int startCount;
-}
 
-@property (nonatomic, retain) UIBarButtonItem *directionsButton;
-@property(retain) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIBarButtonItem *directionsButton;
+@property(strong) UIActivityIndicatorView *activityIndicatorView;
 @property int startCount;
 
 - (void)startActivity;  // increments startCount and shows activity indicator

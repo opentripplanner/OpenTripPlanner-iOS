@@ -8,12 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LegGeometry : NSObject {
-    NSNumber* _length;
-    NSString* _points;
-}
+@interface LegGeometry : NSObject
 
-@property (nonatomic, retain) NSNumber* length;
-@property (nonatomic, retain) NSString* points;
+@property (nonatomic, strong) NSNumber* length;
+@property (nonatomic, strong) NSString* points;
 
 @end

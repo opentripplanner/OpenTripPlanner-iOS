@@ -13,18 +13,13 @@
 #import "SMCalloutView.h"
 
 @interface OTPCallout : UIView <SMCalloutViewDelegate>
-{
-    SMCalloutView *_calloutView;
-    RMMarker *_marker;
-    RMMapView *_map;
-}
 
 - (id)initWithCallout:(SMCalloutView *)callout forMarker:(RMMarker* )marker inMap:(RMMapView *)map;
 
 - (void)toggle;
 
-@property (nonatomic, retain) SMCalloutView *calloutView;
-@property (nonatomic, retain) RMMarker *marker;
-@property (nonatomic, retain) RMMapView *map;
+@property (nonatomic, strong) SMCalloutView *calloutView;
+@property (nonatomic, strong) RMMarker *marker;
+@property (nonatomic, strong) RMMapView *map;
 
 @end

@@ -20,10 +20,6 @@
 
 @implementation OTPViewController
 
-@synthesize mapView = _mapView;
-@synthesize searchBar = _searchBar;
-@synthesize userLocation = _userLocation;
-
 OTPDirectionsInputViewController *directionsInputViewController;
 CLLocationCoordinate2D currentLocationToOrFromPoint;
 SEL currentLocationRoutingSelector;

@@ -10,9 +10,4 @@
 
 @implementation Plan
 
-@synthesize date = _date;
-@synthesize from = _from;
-@synthesize to = _to;
-@synthesize itineraries = _itineraries;
-
 @end

@@ -8,16 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Place : NSObject {
-    NSString* _name;
-    NSNumber* _lon;
-    NSNumber* _lat;
-    NSString* _geometry;
-}
+@interface Place : NSObject
 
-@property (nonatomic, retain) NSString* name;
-@property (nonatomic, retain) NSNumber* lon;
-@property (nonatomic, retain) NSNumber* lat;
-@property (nonatomic, retain) NSString* geometry;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSNumber* lon;
+@property (nonatomic, strong) NSNumber* lat;
+@property (nonatomic, strong) NSString* geometry;
 
 @end

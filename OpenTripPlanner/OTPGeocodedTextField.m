@@ -10,10 +10,6 @@
 
 @implementation OTPGeocodedTextField
 
-@synthesize placemark = _placemark;
-@synthesize otherTextField = _otherTextField;
-@synthesize isDirty = _isDirty;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

@@ -15,8 +15,6 @@
 
 @implementation OTPTransitTimesViewController
 
-@synthesize itineraries = _itineraries;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

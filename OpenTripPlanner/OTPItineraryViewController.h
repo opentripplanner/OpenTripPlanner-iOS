@@ -13,16 +13,10 @@
 #import "Itinerary.h"
 
 @interface OTPItineraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate>
-{
-    Itinerary *_itinerary;
-    PaperFoldView *_paperFoldView;
-    RMMapView *_mapView;
-    UITableView *_tableView;
-}
 
-@property (nonatomic, retain) Itinerary *itinerary;
-@property (nonatomic, retain) PaperFoldView *paperFoldView;
-@property (nonatomic, retain) RMMapView *mapView;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) Itinerary *itinerary;
+@property (nonatomic, strong) PaperFoldView *paperFoldView;
+@property (nonatomic, strong) RMMapView *mapView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

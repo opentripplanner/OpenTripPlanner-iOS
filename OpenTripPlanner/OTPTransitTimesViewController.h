@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface OTPTransitTimesViewController : UITableViewController
-{
-    NSArray *_itineraries;
-}
 
-@property (nonatomic, retain) NSArray *itineraries;
+@property (nonatomic, strong) NSArray *itineraries;
 
 - (IBAction)dismiss:(id)sender;
 

@@ -10,7 +10,4 @@
 
 @implementation LegGeometry
 
-@synthesize length = _length;
-@synthesize points = _points;
-
 @end

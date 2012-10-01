@@ -14,11 +14,6 @@
 
 @implementation OTPTransitTimeViewController
 
-@synthesize arrivingOrDepartingControl = _arrivingOrDepartingControl;
-@synthesize datePicker = _datePicker;
-@synthesize date;
-@synthesize delegate = _delegate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -10,9 +10,6 @@
 
 @implementation OTPSearchBarWithActivity
 
-@synthesize activityIndicatorView;
-@synthesize directionsButton = _directionsButton;
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
@@ -44,7 +41,7 @@
             taiv.hidesWhenStopped = YES;
             taiv.backgroundColor = [UIColor whiteColor];
             self.activityIndicatorView = taiv;
-            startCount = 0;
+            self.startCount = 0;
             
             [searchField.leftView addSubview:self.activityIndicatorView];
         }
@@ -54,20 +51,20 @@
 }
 
 - (void)startActivity  {
-    self.startCount = startCount + 1;
+    self.startCount = self.startCount + 1;
 }
 
 - (void)finishActivity {
-    self.startCount = startCount - 1;
+    self.startCount = self.startCount - 1;
 }
 
 - (int)startCount {
-    return startCount;
+    return self.startCount;
 }
 
 - (void)setStartCount:(int)startCount_ {
-    startCount = startCount_;
-    if (startCount > 0)
+    self.startCount = startCount_;
+    if (self.startCount > 0)
         [self.activityIndicatorView startAnimating];
     else {
         [self.activityIndicatorView stopAnimating];

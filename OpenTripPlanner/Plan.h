@@ -10,16 +10,11 @@
 
 #import "Place.h"
 
-@interface Plan : NSObject {
-    NSDate* _date;
-    Place* _from;
-    Place* _to;
-    NSArray* _itineraries;
-}
+@interface Plan : NSObject
 
-@property (nonatomic, retain) NSDate* date;
-@property (nonatomic, retain) Place* from;
-@property (nonatomic, retain) Place* to;
-@property (nonatomic, retain) NSArray* itineraries;
+@property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) Place* from;
+@property (nonatomic, strong) Place* to;
+@property (nonatomic, strong) NSArray* itineraries;
 
 @end

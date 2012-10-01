@@ -10,10 +10,6 @@
 
 @implementation OTPCallout
 
-@synthesize calloutView = _calloutView;
-@synthesize marker = _marker;
-@synthesize map = _map;
-
 BOOL visible;
 
 - (id)initWithFrame:(CGRect)frame

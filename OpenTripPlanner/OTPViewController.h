@@ -14,11 +14,6 @@
 #import "OTPSearchBarWithActivity.h"
 
 @interface OTPViewController : UIViewController <RMMapViewDelegate, UISearchBarDelegate>
-{
-    RMMapView* _mapView;
-    OTPSearchBarWithActivity *_searchBar;
-    RMUserLocation* _userLocation;
-}
 
 @property (nonatomic, strong) IBOutlet RMMapView* mapView;
 @property (nonatomic, strong) IBOutlet OTPSearchBarWithActivity *searchBar;
