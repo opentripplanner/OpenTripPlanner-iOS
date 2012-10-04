@@ -11,8 +11,12 @@
 
 @interface OTPGeocodedTextField : UITextField
 
-@property (nonatomic, strong) CLPlacemark *placemark;
+@property (nonatomic, strong, readonly) CLLocation *location;
 @property (nonatomic, strong) OTPGeocodedTextField *otherTextField;
 @property BOOL isDirty;
+
+- (void)setText:(NSString *)text andLocation:(CLLocation *)location;
+- (void)switchValuesWithOther;
+- (BOOL)isGeocoded;
 
 @end

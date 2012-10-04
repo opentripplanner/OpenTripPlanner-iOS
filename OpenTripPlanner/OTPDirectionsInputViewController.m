@@ -59,6 +59,8 @@ Plan *currentPlan;
     
     self.goButton.enabled = NO;
     
+    [self modeChanged:self.modeControl];
+    
     self.arriveOrDepartByIndex = [NSNumber numberWithInt:0];
     self.modeControl.selectedSegmentIndex = 0;
     self.date = [[NSDate alloc] init];
@@ -137,14 +139,9 @@ Plan *currentPlan;
     HUD.removeFromSuperViewOnHide = YES;
 	[HUD show:YES];
     
-    [self planTripFrom:self.fromTextField.placemark.location.coordinate to:self.toTextField.placemark.location.coordinate];
+    [self planTripFrom:self.fromTextField.location.coordinate to:self.toTextField.location.coordinate];
     [self.fromTextField resignFirstResponder];
     [self.toTextField resignFirstResponder];
-}
-
-- (void)showTimeSelector:(id)sender
-{
-    [self performSegueWithIdentifier:@"TransitTimes" sender:self];
 }
 
 - (void)didShowKeyboard:(NSNotification *)notification
@@ -236,19 +233,15 @@ Plan *currentPlan;
     [loadingIndicator startAnimating];
     textField.rightView = loadingIndicator;
     textField.isDirty = NO;
-    textField.placemark = nil;
     
     self.goButton.enabled = NO;
     
     [geocoder geocodeAddressString:textField.text inRegion:nil completionHandler:^(NSArray* placemarks, NSError* error) {
         if (placemarks.count == 0) {
             // no results
-            textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x.png"]];
+            [textField setText:textField.text andLocation:nil];
         } else if (placemarks.count > 1) {
             // TODO: disambigate
-            UILabel *l = [[UILabel alloc] init];
-            l.text = @"?";
-            textField.rightView = l;
         } else {
             // Got one result, process it.
             CLPlacemark *result = [placemarks objectAtIndex:0];
@@ -285,11 +278,9 @@ Plan *currentPlan;
             
             [self.mapView setCenterProjectedPoint:projectedLocation animated:YES];
             
-            textField.placemark = result;
-            textField.text = [(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-            textField.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
+            [textField setText:[(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "] andLocation:result.location];
             
-            if (textField.otherTextField.placemark != nil && textField.otherTextField.text != nil && ![textField.otherTextField.text isEqualToString:@""]) {
+            if (textField.otherTextField.location != nil && textField.otherTextField.text != nil && ![textField.otherTextField.text isEqualToString:@""]) {
                 self.goButton.enabled = YES;
             }
         }
@@ -299,20 +290,7 @@ Plan *currentPlan;
 
 - (void)switchFromAndTo:(id)sender
 {
-    NSString *tmpText = self.fromTextField.text;
-    CLPlacemark *tmpPlacemark = self.fromTextField.placemark;
-    UIView *tmpView = self.fromTextField.rightView;
-    BOOL tmpIsDirty = self.fromTextField.isDirty;
-    
-    self.fromTextField.text = self.toTextField.text;
-    self.fromTextField.placemark = self.toTextField.placemark;
-    self.fromTextField.rightView = self.toTextField.rightView;
-    self.fromTextField.isDirty = self.toTextField.isDirty;
-    
-    self.toTextField.text = tmpText;
-    self.toTextField.placemark = tmpPlacemark;
-    self.toTextField.rightView = tmpView;
-    self.toTextField.isDirty = tmpIsDirty;
+    [self.fromTextField switchValuesWithOther];
 }
 
 - (void)updatedTextField:(id)sender
@@ -332,12 +310,20 @@ Plan *currentPlan;
     }
 }
 
+- (IBAction)modeChanged:(id)sender {
+    if (((UISegmentedControl *)sender).selectedSegmentIndex < 2) {
+        self.timeButton.enabled = YES;
+    } else {
+        self.timeButton.enabled = NO;
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     OTPGeocodedTextField *field = (OTPGeocodedTextField *)textField;
     
     // If the other text field has valid geocoded data, we don't need to do anything
-    if (field.otherTextField.placemark != nil && field.otherTextField.text != nil && ![field.otherTextField.text isEqualToString:@""]) {
+    if (field.otherTextField.location != nil && field.otherTextField.text != nil && ![field.otherTextField.text isEqualToString:@""]) {
         [textField resignFirstResponder];
         return YES;
     }
@@ -346,11 +332,31 @@ Plan *currentPlan;
     return YES;
 }
 
+- (void)showUserLocation:(id)sender
+{
+    self.needsPanToUserLocation = YES;
+    self.mapView.showsUserLocation = YES;
+}
+
 #pragma mark RMMapViewDelegate methods
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
 {
-    
+    self.userLocation = userLocation;
+    if (self.needsPanToUserLocation) {
+        // Show user location on the map
+        self.mapView.zoom = 13;
+        [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+        
+        // Set the from or to textfields to user location
+        if (![self.fromTextField isGeocoded]) {
+            [self.fromTextField setText:@"Current Location" andLocation:userLocation.location];
+        } else if (![self.toTextField isGeocoded]) {
+            [self.toTextField setText:@"Current Location" andLocation:userLocation.location];
+        }
+        
+        self.needsPanToUserLocation = NO;
+    }
 }
 
 - (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error

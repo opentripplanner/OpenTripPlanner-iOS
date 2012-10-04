@@ -11,12 +11,15 @@
 #import "RouteMe.h"
 #import "PaperFoldView.h"
 #import "Itinerary.h"
+#import "PPRevealSideViewController.h"
+#import "OTPItineraryTableViewController.h"
+#import "OTPItineraryMapViewController.h"
 
-@interface OTPItineraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate>
+@interface OTPItineraryViewController : UIViewController
 
 @property (nonatomic, strong) Itinerary *itinerary;
-@property (nonatomic, strong) PaperFoldView *paperFoldView;
-@property (nonatomic, strong) RMMapView *mapView;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
+@property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;
+@property (nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
 
 @end

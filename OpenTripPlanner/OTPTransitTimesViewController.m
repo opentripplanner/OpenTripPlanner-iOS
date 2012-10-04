@@ -7,7 +7,7 @@
 //
 
 #import "OTPTransitTimesViewController.h"
-#import "OTPItineraryViewController.h"
+#import "OTPItineraryTableViewController.h"
 
 @interface OTPTransitTimesViewController ()
 
@@ -137,7 +137,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    [(OTPItineraryViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
+    [(OTPItineraryTableViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
 }
 
 - (void)dismiss:(id)sender

@@ -22,11 +22,13 @@
 		CC0A1F6B16038F6B003085B2 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F6316038F6B003085B2 /* UIView+Screenshot.m */; };
 		CC0A1F771603AB3C003085B2 /* OTPItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */; };
 		CC0A1F7B1603B47A003085B2 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F7A1603B47A003085B2 /* UIView+Origami.m */; };
-		CC0A1F851603D3C5003085B2 /* OTPShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F841603D3C5003085B2 /* OTPShadow.m */; };
 		CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */; };
+		CC2463B31619FCA6009B3468 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
+		CC922FB5161A1A940072E22F /* OTPItineraryMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */; };
+		CC922FB8161A1AD20072E22F /* OTPItineraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */; };
 		CC9CFC6E15EFC3030070712C /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6515EFC3030070712C /* Itinerary.m */; };
 		CC9CFC6F15EFC3030070712C /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6715EFC3030070712C /* Leg.m */; };
 		CC9CFC7015EFC3030070712C /* LegGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9CFC6915EFC3030070712C /* LegGeometry.m */; };
@@ -158,16 +160,20 @@
 		CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryViewController.m; sourceTree = "<group>"; };
 		CC0A1F791603B47A003085B2 /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		CC0A1F7A1603B47A003085B2 /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
-		CC0A1F831603D3C5003085B2 /* OTPShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPShadow.h; sourceTree = "<group>"; };
-		CC0A1F841603D3C5003085B2 /* OTPShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPShadow.m; sourceTree = "<group>"; };
 		CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPSearchBarWithActivity.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPSearchBarWithActivity.m; sourceTree = "<group>"; };
+		CC2463AC1619F6C1009B3468 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
+		CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
 		CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPTransitTimesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransitTimesViewController.m; sourceTree = "<group>"; };
+		CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryMapViewController.h; sourceTree = "<group>"; };
+		CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryMapViewController.m; sourceTree = "<group>"; };
+		CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryTableViewController.h; sourceTree = "<group>"; };
+		CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryTableViewController.m; sourceTree = "<group>"; };
 		CC9CFC6415EFC3030070712C /* Itinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Itinerary.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC9CFC6515EFC3030070712C /* Itinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Itinerary.m; sourceTree = "<group>"; };
 		CC9CFC6615EFC3030070712C /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leg.h; sourceTree = "<group>"; };
@@ -386,6 +392,8 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				CC2463AC1619F6C1009B3468 /* PPRevealSideViewController.h */,
+				CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */,
 				9388193E161927A5002021EA /* MBProgressHUD.h */,
 				9388193F161927A6002021EA /* MBProgressHUD.m */,
 				CC9DC0421614F5F200C8B22E /* OTPTransitTimeViewController.h */,
@@ -411,12 +419,14 @@
 				CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */,
 				CCE8191F160131FD0034E8AC /* OTPCallout.h */,
 				CCE81920160131FD0034E8AC /* OTPCallout.m */,
-				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
-				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
-				CC0A1F831603D3C5003085B2 /* OTPShadow.h */,
-				CC0A1F841603D3C5003085B2 /* OTPShadow.m */,
 				CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */,
 				CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */,
+				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
+				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
+				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
+				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
+				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
+				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -643,12 +653,14 @@
 				CC0A1F6B16038F6B003085B2 /* UIView+Screenshot.m in Sources */,
 				CC0A1F771603AB3C003085B2 /* OTPItineraryViewController.m in Sources */,
 				CC0A1F7B1603B47A003085B2 /* UIView+Origami.m in Sources */,
-				CC0A1F851603D3C5003085B2 /* OTPShadow.m in Sources */,
 				CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */,
 				CC9DC0471614F5F200C8B22E /* OTPTransitTimeViewController.m in Sources */,
 				CC9DC0481614F5F200C8B22E /* OTPVerticalGradientView.m in Sources */,
 				CC9DC0491614F5F200C8B22E /* OTPGraphicsCommon.m in Sources */,
 				9388194116193310002021EA /* MBProgressHUD.m in Sources */,
+				CC2463B31619FCA6009B3468 /* PPRevealSideViewController.m in Sources */,
+				CC922FB5161A1A940072E22F /* OTPItineraryMapViewController.m in Sources */,
+				CC922FB8161A1AD20072E22F /* OTPItineraryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

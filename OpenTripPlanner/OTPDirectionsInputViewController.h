@@ -41,14 +41,16 @@ typedef enum {
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) RMUserLocation *userLocation;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *timeButton;
+@property (nonatomic) BOOL needsPanToUserLocation;
 
 - (void) planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint;
 //- (void) planTripFromCurrentLocationTo:(CLLocationCoordinate2D)endPoint;
 //- (void) planTripToCurrentLocationFrom:(CLLocationCoordinate2D)startPoint;
 
 - (IBAction)go:(id)sender;
-- (IBAction)showTimeSelector:(id)sender;
 - (IBAction)updatedTextField:(id)sender;
 - (IBAction)doneEditingTextField:(id)sender;
+- (IBAction)modeChanged:(id)sender;
+- (IBAction)showUserLocation:(id)sender;
 
 @end

@@ -27,6 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 
 #import "UIView+Origami.h"
+#import "RMMapView.h"
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -229,7 +230,8 @@ static XYOrigamiTransitionState XY_Origami_Current_State = XYOrigamiTransitionSt
     
     UIGraphicsBeginImageContext(view.frame.size);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+    //UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *viewSnapShot = [(RMMapView *)view takeSnapshotAndIncludeOverlay:YES];
     UIGraphicsEndImageContext();
     
     //set 3D depth
@@ -350,7 +352,8 @@ static XYOrigamiTransitionState XY_Origami_Current_State = XYOrigamiTransitionSt
     
     UIGraphicsBeginImageContext(view.frame.size);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+    //UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *viewSnapShot = [(RMMapView *)view takeSnapshotAndIncludeOverlay:YES];
     UIGraphicsEndImageContext();
     
     //set 3D depth
