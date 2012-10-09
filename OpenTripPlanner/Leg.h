@@ -19,6 +19,9 @@ struct OTPBounds {
 
 @interface Leg : NSObject
 
+@property (nonatomic, strong) NSString* route;
+@property (nonatomic, strong) NSString* mode;
+
 @property (nonatomic, strong) NSDate* startTime;
 @property (nonatomic, strong) NSDate* endTime;
 @property (nonatomic, strong) NSNumber* distance;
