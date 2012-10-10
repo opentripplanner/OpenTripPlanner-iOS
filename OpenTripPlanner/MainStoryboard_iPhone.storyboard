@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--View Controller - Search-->
@@ -101,6 +100,10 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Kyn-yv-am1" id="VVs-Bn-JD9"/>
+                            <outlet property="delegate" destination="Kyn-yv-am1" id="vt4-As-ju2"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Transit Times" id="ov9-jf-3uI">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="j35-eL-8rW">
@@ -276,29 +279,30 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="peN-Jn-A0e" id="Ods-Dk-AFC"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" id="J7m-s0-nnv" customClass="OTPVerticalGradientView">
                                 <rect key="frame" x="0.0" y="44" width="320" height="77"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="mav-FO-sJG" customClass="OTPGeocodedTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="mav-FO-sJG" customClass="OTPGeocodedTextField">
                                         <rect key="frame" x="50" y="6" width="265" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <action selector="doneEditingTextField:" destination="peN-Jn-A0e" eventType="editingDidEnd" id="6HI-SC-YNm"/>
                                             <action selector="updatedTextField:" destination="peN-Jn-A0e" eventType="editingChanged" id="eoN-Y1-SAQ"/>
                                             <outlet property="delegate" destination="peN-Jn-A0e" id="Rve-S5-X0g"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="Uks-WC-M9Y" customClass="OTPGeocodedTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="Uks-WC-M9Y" customClass="OTPGeocodedTextField">
                                         <rect key="frame" x="50" y="41" width="265" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <action selector="doneEditingTextField:" destination="peN-Jn-A0e" eventType="editingDidEnd" id="FWF-FT-FBb"/>
                                             <action selector="updatedTextField:" destination="peN-Jn-A0e" eventType="editingChanged" id="5rE-cg-h4i"/>
                                             <outlet property="delegate" destination="peN-Jn-A0e" id="ycu-ky-184"/>
                                         </connections>
@@ -460,7 +464,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPDirectionsInputViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDirectionsInputViewController.h"/>
             <relationships>
-                <relationship kind="action" name="doneEditingTextField:"/>
                 <relationship kind="action" name="go:"/>
                 <relationship kind="action" name="modeChanged:"/>
                 <relationship kind="action" name="showUserLocation:"/>

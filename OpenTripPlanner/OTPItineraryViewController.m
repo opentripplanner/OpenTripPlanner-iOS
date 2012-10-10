@@ -39,7 +39,6 @@
     [self.view addSubview:self.revealSideViewController.view];
     
     self.itineraryMapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
-    self.itineraryTableViewController.itineraryMapViewController = self.itineraryMapViewController;
     self.itineraryMapViewController.itinerary = self.itinerary;
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController displayItinerary];

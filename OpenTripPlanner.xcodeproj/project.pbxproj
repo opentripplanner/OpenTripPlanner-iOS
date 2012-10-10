@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930531F21620E33C00F9A230 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 930531F11620E33C00F9A230 /* Step.m */; };
 		9378875B16154885007CF24C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378875016154866007CF24C /* libRestKit.a */; };
 		9378877C16154DA1007CF24C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378877616154AF2007CF24C /* libMapView.a */; };
 		9388194116193310002021EA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388193F161927A6002021EA /* MBProgressHUD.m */; };
@@ -133,6 +134,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		930531F01620E33C00F9A230 /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
+		930531F11620E33C00F9A230 /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		9378874416154865007CF24C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		9378876A16154AF2007CF24C /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = MapBox/MapView/MapView.xcodeproj; sourceTree = "<group>"; };
 		9388193E161927A5002021EA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 				CC9CFC6B15EFC3030070712C /* Place.m */,
 				CC9CFC6C15EFC3030070712C /* Plan.h */,
 				CC9CFC6D15EFC3030070712C /* Plan.m */,
+				930531F01620E33C00F9A230 /* Step.h */,
+				930531F11620E33C00F9A230 /* Step.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -413,12 +418,12 @@
 				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
 				CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */,
 				CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */,
+				CCE81920160131FD0034E8AC /* OTPCallout.m */,
 				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
 				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
 				CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */,
 				CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */,
 				CCE8191F160131FD0034E8AC /* OTPCallout.h */,
-				CCE81920160131FD0034E8AC /* OTPCallout.m */,
 				CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */,
 				CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */,
 				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
@@ -661,6 +666,7 @@
 				CC2463B31619FCA6009B3468 /* PPRevealSideViewController.m in Sources */,
 				CC922FB5161A1A940072E22F /* OTPItineraryMapViewController.m in Sources */,
 				CC922FB8161A1AD20072E22F /* OTPItineraryTableViewController.m in Sources */,
+				930531F21620E33C00F9A230 /* Step.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

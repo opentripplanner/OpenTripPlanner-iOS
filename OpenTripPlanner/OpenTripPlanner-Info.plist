@@ -55,8 +55,8 @@
 		<string>MKDirectionsModeSubway</string>
 		<string>MKDirectionsModeTrain</string>
 		<string>MKDirectionsModeOther</string>
-		<string>MKDirectionsModeStreetcar</string>
 		<string>MKDirectionsModeFerry</string>
+		<string>MKDirectionsModeStreetCar</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>

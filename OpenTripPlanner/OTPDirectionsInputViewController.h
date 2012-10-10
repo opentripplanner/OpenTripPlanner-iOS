@@ -49,7 +49,6 @@ typedef enum {
 
 - (IBAction)go:(id)sender;
 - (IBAction)updatedTextField:(id)sender;
-- (IBAction)doneEditingTextField:(id)sender;
 - (IBAction)modeChanged:(id)sender;
 - (IBAction)showUserLocation:(id)sender;
 

@@ -15,7 +15,6 @@
 @interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate>
 
 @property(strong, nonatomic) Itinerary *itinerary;
-@property(strong, nonatomic) OTPItineraryMapViewController *itineraryMapViewController;
 @property(strong, nonatomic) IBOutlet RMMapView *mapView;
 
 - (void)displayItinerary;

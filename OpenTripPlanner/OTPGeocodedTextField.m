@@ -23,26 +23,33 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.isDirty = NO;
     }
     return self;
 }
 
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    if (!self.isGeocoded) {
+        [self setText:text andLocation:nil];
+    }
+}
+
 - (void)setText:(NSString *)text andLocation:(CLLocation *)location
 {
-    if ([text isEqualToString:@""] || text == nil) {
+    if (text.length == 0) {
         // Reset
-        self.text = nil;
+        [super setText:nil];
         _location = nil;
         self.rightView = nil;
-    } else if (![text isEqualToString:@""] && text != nil && location != nil) {
+    } else if (text.length > 0 && location != nil) {
         // Valid text and location
-        self.text = text;
+        [super setText:text];
         _location = location;
         self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
-    } else if (![text isEqualToString:@""] && text != nil && location == nil) {
+    } else if (text.length > 0 && location == nil) {
         // Invalid location for text
-        self.text = text;
+        [super setText:text];
         _location = nil;
         self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x.png"]];
     }
@@ -52,21 +59,35 @@
 {
     NSString *tmpText = self.text;
     CLLocation *tmpLocation = self.location;
-    BOOL tmpIsDirty = self.isDirty;
     
     [self setText:self.otherTextField.text andLocation:self.otherTextField.location];
-    self.isDirty = self.otherTextField.isDirty;
     
     [self.otherTextField setText:tmpText andLocation:tmpLocation];
-    self.otherTextField.isDirty = tmpIsDirty;
 }
 
 - (BOOL)isGeocoded
 {
-    if (self.location != nil && self.text != nil && ![self.text isEqualToString:@""]) {
+    return self.location != nil && self.text.length > 0;
+    return NO;
+}
+
+-(BOOL)isCurrentLocation
+{
+    if ([self.text isEqualToString:@"Current Location"] && self.location != nil) {
         return YES;
     }
     return NO;
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    if (copy) {
+        [copy setText:[self.text copyWithZone:zone] andLocation:[self.location copyWithZone:zone]];
+        [copy setOtherTextField:[self.otherTextField copyWithZone:zone]];
+    }
+    return copy;
 }
 
 /*
