@@ -29,7 +29,6 @@ struct OTPBounds {
 @property (nonatomic, strong) NSNumber *duration;
 @property (nonatomic, strong) NSString* route;
 @property (nonatomic, strong) NSString* mode;
-@property (nonatomic, strong) NSNumber* duration;
 @property (nonatomic, readonly) NSArray *decodedLegGeometry;
 @property (nonatomic, readonly) struct OTPBounds bounds;
 
