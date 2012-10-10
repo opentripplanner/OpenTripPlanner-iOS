@@ -353,7 +353,7 @@
 			path = XYOrigami;
 			sourceTree = "<group>";
 		};
-		CC2316D11626067D00EE0F48 /* Resources */ = {
+		CC2316D11626067D00EE0F48 /* MapBoxResources */ = {
 			isa = PBXGroup;
 			children = (
 				CC2316D21626067D00EE0F48 /* HeadingAngleSmall.png */,
@@ -369,7 +369,7 @@
 				CC2316DC1626067D00EE0F48 /* TrackingLocation.png */,
 				CC2316DD1626067D00EE0F48 /* TrackingLocation@2x.png */,
 			);
-			name = Resources;
+			name = MapBoxResources;
 			path = MapBox/MapView/Map/Resources;
 			sourceTree = "<group>";
 		};
@@ -395,7 +395,6 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
-				CC2316D11626067D00EE0F48 /* Resources */,
 				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
 				9378874416154865007CF24C /* RestKit.xcodeproj */,
 				CC0A1F781603B47A003085B2 /* XYOrigami */,
@@ -405,6 +404,7 @@
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
 				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
 				CC088DE515F69DD900C6F372 /* Images */,
+				CC2316D11626067D00EE0F48 /* MapBoxResources */,
 			);
 			sourceTree = "<group>";
 		};
