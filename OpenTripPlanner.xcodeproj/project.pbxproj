@@ -36,6 +36,34 @@
 		CC2316E71626067D00EE0F48 /* TrackingHeading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316DB1626067D00EE0F48 /* TrackingHeading@2x.png */; };
 		CC2316E81626067D00EE0F48 /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316DC1626067D00EE0F48 /* TrackingLocation.png */; };
 		CC2316E91626067D00EE0F48 /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316DD1626067D00EE0F48 /* TrackingLocation@2x.png */; };
+		CC23170716260F9200EE0F48 /* geolocate.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EB16260F9200EE0F48 /* geolocate.png */; };
+		CC23170816260F9200EE0F48 /* geolocate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EC16260F9200EE0F48 /* geolocate@2x.png */; };
+		CC23170916260F9200EE0F48 /* joyride-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316ED16260F9200EE0F48 /* joyride-logo.png */; };
+		CC23170A16260F9200EE0F48 /* joyride-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */; };
+		CC23170B16260F9200EE0F48 /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EF16260F9200EE0F48 /* magnifier.png */; };
+		CC23170C16260F9200EE0F48 /* magnifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F016260F9200EE0F48 /* magnifier@2x.png */; };
+		CC23170D16260F9200EE0F48 /* marker-end.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F116260F9200EE0F48 /* marker-end.png */; };
+		CC23170E16260F9200EE0F48 /* marker-end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F216260F9200EE0F48 /* marker-end@2x.png */; };
+		CC23170F16260F9200EE0F48 /* marker-start.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F316260F9200EE0F48 /* marker-start.png */; };
+		CC23171016260F9200EE0F48 /* marker-start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F416260F9200EE0F48 /* marker-start@2x.png */; };
+		CC23171116260F9200EE0F48 /* mode-bike.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F516260F9200EE0F48 /* mode-bike.png */; };
+		CC23171216260F9200EE0F48 /* mode-bike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F616260F9200EE0F48 /* mode-bike@2x.png */; };
+		CC23171316260F9200EE0F48 /* mode-multi.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F716260F9200EE0F48 /* mode-multi.png */; };
+		CC23171416260F9200EE0F48 /* mode-multi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F816260F9200EE0F48 /* mode-multi@2x.png */; };
+		CC23171516260F9200EE0F48 /* mode-on-bike.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F916260F9200EE0F48 /* mode-on-bike.png */; };
+		CC23171616260F9200EE0F48 /* mode-on-bike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FA16260F9200EE0F48 /* mode-on-bike@2x.png */; };
+		CC23171716260F9200EE0F48 /* mode-on-multi.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FB16260F9200EE0F48 /* mode-on-multi.png */; };
+		CC23171816260F9200EE0F48 /* mode-on-multi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FC16260F9200EE0F48 /* mode-on-multi@2x.png */; };
+		CC23171916260F9200EE0F48 /* mode-on-transit.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FD16260F9200EE0F48 /* mode-on-transit.png */; };
+		CC23171A16260F9200EE0F48 /* mode-on-transit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FE16260F9200EE0F48 /* mode-on-transit@2x.png */; };
+		CC23171B16260F9200EE0F48 /* mode-on-walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316FF16260F9200EE0F48 /* mode-on-walk.png */; };
+		CC23171C16260F9200EE0F48 /* mode-on-walk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170016260F9200EE0F48 /* mode-on-walk@2x.png */; };
+		CC23171D16260F9200EE0F48 /* mode-transit.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170116260F9200EE0F48 /* mode-transit.png */; };
+		CC23171E16260F9200EE0F48 /* mode-transit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170216260F9200EE0F48 /* mode-transit@2x.png */; };
+		CC23171F16260F9200EE0F48 /* mode-walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170316260F9200EE0F48 /* mode-walk.png */; };
+		CC23172016260F9200EE0F48 /* mode-walk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170416260F9200EE0F48 /* mode-walk@2x.png */; };
+		CC23172116260F9200EE0F48 /* path.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170516260F9200EE0F48 /* path.png */; };
+		CC23172216260F9200EE0F48 /* path@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170616260F9200EE0F48 /* path@2x.png */; };
 		CC2463B31619FCA6009B3468 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
@@ -189,6 +217,34 @@
 		CC2316DB1626067D00EE0F48 /* TrackingHeading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingHeading@2x.png"; sourceTree = "<group>"; };
 		CC2316DC1626067D00EE0F48 /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingLocation.png; sourceTree = "<group>"; };
 		CC2316DD1626067D00EE0F48 /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingLocation@2x.png"; sourceTree = "<group>"; };
+		CC2316EB16260F9200EE0F48 /* geolocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geolocate.png; sourceTree = "<group>"; };
+		CC2316EC16260F9200EE0F48 /* geolocate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geolocate@2x.png"; sourceTree = "<group>"; };
+		CC2316ED16260F9200EE0F48 /* joyride-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joyride-logo.png"; sourceTree = "<group>"; };
+		CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joyride-logo@2x.png"; sourceTree = "<group>"; };
+		CC2316EF16260F9200EE0F48 /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
+		CC2316F016260F9200EE0F48 /* magnifier@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnifier@2x.png"; sourceTree = "<group>"; };
+		CC2316F116260F9200EE0F48 /* marker-end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-end.png"; sourceTree = "<group>"; };
+		CC2316F216260F9200EE0F48 /* marker-end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-end@2x.png"; sourceTree = "<group>"; };
+		CC2316F316260F9200EE0F48 /* marker-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-start.png"; sourceTree = "<group>"; };
+		CC2316F416260F9200EE0F48 /* marker-start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-start@2x.png"; sourceTree = "<group>"; };
+		CC2316F516260F9200EE0F48 /* mode-bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-bike.png"; sourceTree = "<group>"; };
+		CC2316F616260F9200EE0F48 /* mode-bike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-bike@2x.png"; sourceTree = "<group>"; };
+		CC2316F716260F9200EE0F48 /* mode-multi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-multi.png"; sourceTree = "<group>"; };
+		CC2316F816260F9200EE0F48 /* mode-multi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-multi@2x.png"; sourceTree = "<group>"; };
+		CC2316F916260F9200EE0F48 /* mode-on-bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-bike.png"; sourceTree = "<group>"; };
+		CC2316FA16260F9200EE0F48 /* mode-on-bike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-bike@2x.png"; sourceTree = "<group>"; };
+		CC2316FB16260F9200EE0F48 /* mode-on-multi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-multi.png"; sourceTree = "<group>"; };
+		CC2316FC16260F9200EE0F48 /* mode-on-multi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-multi@2x.png"; sourceTree = "<group>"; };
+		CC2316FD16260F9200EE0F48 /* mode-on-transit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-transit.png"; sourceTree = "<group>"; };
+		CC2316FE16260F9200EE0F48 /* mode-on-transit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-transit@2x.png"; sourceTree = "<group>"; };
+		CC2316FF16260F9200EE0F48 /* mode-on-walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-walk.png"; sourceTree = "<group>"; };
+		CC23170016260F9200EE0F48 /* mode-on-walk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-on-walk@2x.png"; sourceTree = "<group>"; };
+		CC23170116260F9200EE0F48 /* mode-transit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-transit.png"; sourceTree = "<group>"; };
+		CC23170216260F9200EE0F48 /* mode-transit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-transit@2x.png"; sourceTree = "<group>"; };
+		CC23170316260F9200EE0F48 /* mode-walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-walk.png"; sourceTree = "<group>"; };
+		CC23170416260F9200EE0F48 /* mode-walk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-walk@2x.png"; sourceTree = "<group>"; };
+		CC23170516260F9200EE0F48 /* path.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = path.png; sourceTree = "<group>"; };
+		CC23170616260F9200EE0F48 /* path@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "path@2x.png"; sourceTree = "<group>"; };
 		CC2463AC1619F6C1009B3468 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
 		CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -373,6 +429,42 @@
 			path = MapBox/MapView/Map/Resources;
 			sourceTree = "<group>";
 		};
+		CC2316EA16260F9200EE0F48 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				CC2316EB16260F9200EE0F48 /* geolocate.png */,
+				CC2316EC16260F9200EE0F48 /* geolocate@2x.png */,
+				CC2316ED16260F9200EE0F48 /* joyride-logo.png */,
+				CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */,
+				CC2316EF16260F9200EE0F48 /* magnifier.png */,
+				CC2316F016260F9200EE0F48 /* magnifier@2x.png */,
+				CC2316F116260F9200EE0F48 /* marker-end.png */,
+				CC2316F216260F9200EE0F48 /* marker-end@2x.png */,
+				CC2316F316260F9200EE0F48 /* marker-start.png */,
+				CC2316F416260F9200EE0F48 /* marker-start@2x.png */,
+				CC2316F516260F9200EE0F48 /* mode-bike.png */,
+				CC2316F616260F9200EE0F48 /* mode-bike@2x.png */,
+				CC2316F716260F9200EE0F48 /* mode-multi.png */,
+				CC2316F816260F9200EE0F48 /* mode-multi@2x.png */,
+				CC2316F916260F9200EE0F48 /* mode-on-bike.png */,
+				CC2316FA16260F9200EE0F48 /* mode-on-bike@2x.png */,
+				CC2316FB16260F9200EE0F48 /* mode-on-multi.png */,
+				CC2316FC16260F9200EE0F48 /* mode-on-multi@2x.png */,
+				CC2316FD16260F9200EE0F48 /* mode-on-transit.png */,
+				CC2316FE16260F9200EE0F48 /* mode-on-transit@2x.png */,
+				CC2316FF16260F9200EE0F48 /* mode-on-walk.png */,
+				CC23170016260F9200EE0F48 /* mode-on-walk@2x.png */,
+				CC23170116260F9200EE0F48 /* mode-transit.png */,
+				CC23170216260F9200EE0F48 /* mode-transit@2x.png */,
+				CC23170316260F9200EE0F48 /* mode-walk.png */,
+				CC23170416260F9200EE0F48 /* mode-walk@2x.png */,
+				CC23170516260F9200EE0F48 /* path.png */,
+				CC23170616260F9200EE0F48 /* path@2x.png */,
+			);
+			name = Icons;
+			path = icons;
+			sourceTree = "<group>";
+		};
 		CC9CFC6315EFC29E0070712C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +496,7 @@
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
 				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
 				CC088DE515F69DD900C6F372 /* Images */,
+				CC2316EA16260F9200EE0F48 /* Icons */,
 				CC2316D11626067D00EE0F48 /* MapBoxResources */,
 			);
 			sourceTree = "<group>";
@@ -658,6 +751,34 @@
 				CC2316E71626067D00EE0F48 /* TrackingHeading@2x.png in Resources */,
 				CC2316E81626067D00EE0F48 /* TrackingLocation.png in Resources */,
 				CC2316E91626067D00EE0F48 /* TrackingLocation@2x.png in Resources */,
+				CC23170716260F9200EE0F48 /* geolocate.png in Resources */,
+				CC23170816260F9200EE0F48 /* geolocate@2x.png in Resources */,
+				CC23170916260F9200EE0F48 /* joyride-logo.png in Resources */,
+				CC23170A16260F9200EE0F48 /* joyride-logo@2x.png in Resources */,
+				CC23170B16260F9200EE0F48 /* magnifier.png in Resources */,
+				CC23170C16260F9200EE0F48 /* magnifier@2x.png in Resources */,
+				CC23170D16260F9200EE0F48 /* marker-end.png in Resources */,
+				CC23170E16260F9200EE0F48 /* marker-end@2x.png in Resources */,
+				CC23170F16260F9200EE0F48 /* marker-start.png in Resources */,
+				CC23171016260F9200EE0F48 /* marker-start@2x.png in Resources */,
+				CC23171116260F9200EE0F48 /* mode-bike.png in Resources */,
+				CC23171216260F9200EE0F48 /* mode-bike@2x.png in Resources */,
+				CC23171316260F9200EE0F48 /* mode-multi.png in Resources */,
+				CC23171416260F9200EE0F48 /* mode-multi@2x.png in Resources */,
+				CC23171516260F9200EE0F48 /* mode-on-bike.png in Resources */,
+				CC23171616260F9200EE0F48 /* mode-on-bike@2x.png in Resources */,
+				CC23171716260F9200EE0F48 /* mode-on-multi.png in Resources */,
+				CC23171816260F9200EE0F48 /* mode-on-multi@2x.png in Resources */,
+				CC23171916260F9200EE0F48 /* mode-on-transit.png in Resources */,
+				CC23171A16260F9200EE0F48 /* mode-on-transit@2x.png in Resources */,
+				CC23171B16260F9200EE0F48 /* mode-on-walk.png in Resources */,
+				CC23171C16260F9200EE0F48 /* mode-on-walk@2x.png in Resources */,
+				CC23171D16260F9200EE0F48 /* mode-transit.png in Resources */,
+				CC23171E16260F9200EE0F48 /* mode-transit@2x.png in Resources */,
+				CC23171F16260F9200EE0F48 /* mode-walk.png in Resources */,
+				CC23172016260F9200EE0F48 /* mode-walk@2x.png in Resources */,
+				CC23172116260F9200EE0F48 /* path.png in Resources */,
+				CC23172216260F9200EE0F48 /* path@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
