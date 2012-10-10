@@ -8,6 +8,7 @@
 
 #import "OTPTransitTimesViewController.h"
 #import "OTPItineraryTableViewController.h"
+#import "Itinerary.h"
 
 @interface OTPTransitTimesViewController ()
 
@@ -46,40 +47,35 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (section == 0) {
-        return 1;
-    } else if (section == 1) {
-        return self.itineraries.count;
-    }
-    
-    return 0;
+    return self.itineraries.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        static NSString *CellIdentifier = @"timeCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        // Configure the cell...
-        
-        return cell;
-    } else if (indexPath.section == 1) {
-        static NSString *CellIdentifier = @"itineraryCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        // Configure the cell...
-        
-        return cell;
-    }
-    return nil;
+    static NSString *CellIdentifier = @"itineraryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    // Configure the cell...
+    Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
+    
+    NSMutableArray *routes = [NSMutableArray array];
+    for (Leg *leg in itinerary.legs) {
+        if ([leg.mode isEqualToString:@"WALK"] == false) {
+            [routes addObject:leg.route];
+        }
+    }
+    
+    
+    NSString *routesStr = [routes componentsJoinedByString:@", "];
+
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d min)", routesStr, itinerary.duration.intValue/60000];
+    
+    return cell;    
 }
 
 /*

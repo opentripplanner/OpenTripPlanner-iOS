@@ -46,6 +46,8 @@
     
     RKObjectMapping* legMapping = [RKObjectMapping mappingForClass:[Leg class]];
     [legMapping mapKeyPathsToAttributes:
+     @"route", @"route",
+     @"mode", @"mode",
      @"startTime", @"startTime",
      @"endTime", @"endTime",
      @"distance", @"distance",
