@@ -18,5 +18,6 @@
 - (void)switchValuesWithOther;
 - (BOOL)isGeocoded;
 - (BOOL)isCurrentLocation;
+- (BOOL)isDroppedPin;
 
 @end

@@ -71,9 +71,17 @@
     return NO;
 }
 
--(BOOL)isCurrentLocation
+- (BOOL)isCurrentLocation
 {
     if ([self.text isEqualToString:@"Current Location"] && self.location != nil) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isDroppedPin
+{
+    if ([self.text hasPrefix:@"Dropped Pin"] && self.location != nil) {
         return YES;
     }
     return NO;
