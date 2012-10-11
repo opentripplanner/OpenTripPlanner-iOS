@@ -37,6 +37,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet OTPGeocodedTextField *toTextField;
 @property (nonatomic, strong) UISegmentedControl *switchFromAndToButton;
 @property (nonatomic, strong) IBOutlet RMMapView *mapView;
+@property (nonatomic, strong) IBOutlet UIButton *userLocationButton;
 @property (nonatomic, strong) NSNumber *arriveOrDepartByIndex;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) RMUserLocation *userLocation;

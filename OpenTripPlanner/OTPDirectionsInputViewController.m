@@ -157,11 +157,22 @@ Plan *currentPlan;
     topOfKeyboard = [NSNumber numberWithFloat:keyboardRect.origin.y - keyboardRect.size.height];
     
     [self panMapToCurrentGeocodedTextField];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.userLocationButton.center = CGPointMake(self.userLocationButton.center.x, self.userLocationButton.center.y - keyboardRect.size.height);
+    }];
 }
 
 - (void)willHideKeyboard:(NSNotification *)notification
 {
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    
     topOfKeyboard = nil;
+    
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.userLocationButton.center = CGPointMake(self.userLocationButton.center.x, self.userLocationButton.center.y + keyboardRect.size.height);
+    }];
 }
 
 
@@ -330,6 +341,10 @@ Plan *currentPlan;
         _toAnnotation = nil;
     }
     
+    if (textField.otherTextField.isDroppedPin) {
+        textField.otherTextField.text = @"Dropped Pin";
+    }
+    
     [textField setText:textField.text andLocation:nil];
 }
 
@@ -433,10 +448,11 @@ Plan *currentPlan;
     [self.mapView addAnnotation:annotation];
     
     NSString *text;
-    if (textField.otherTextField.isDroppedPin && [textField.otherTextField.text isEqualToString:@"Dropped Pin 1"]) {
+    if (textField.otherTextField.isDroppedPin && [textField.otherTextField.text isEqualToString:@"Dropped Pin"]) {
         text = @"Dropped Pin 2";
+        textField.otherTextField.text = @"Dropped Pin 1";
     } else {
-        text = @"Dropped Pin 1";
+        text = @"Dropped Pin";
     }
     [textField setText:text andLocation:location];
     
@@ -531,7 +547,8 @@ Plan *currentPlan;
     }
     
     CGPoint mapCenterScreen = [self.view convertPoint:self.mapView.center toView:nil];
-    CGFloat shift = mapCenterScreen.y - topOfKeyboard.floatValue + 10;
+    CGRect mapRectScreen = [self.view convertRect:self.mapView.frame toView:nil];
+    CGFloat shift = mapCenterScreen.y - topOfKeyboard.floatValue + ((topOfKeyboard.floatValue - mapRectScreen.origin.y) * 0.4);
     
     projectedLocation.y = projectedLocation.y - shift * self.mapView.metersPerPixel;
     

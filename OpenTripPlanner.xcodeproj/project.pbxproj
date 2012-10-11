@@ -958,6 +958,7 @@
 					"\"$(SRCROOT)/MapBox\"/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -980,6 +981,7 @@
 					"\"$(SRCROOT)/MapBox\"/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
