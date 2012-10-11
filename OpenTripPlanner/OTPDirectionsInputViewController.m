@@ -204,6 +204,7 @@ Plan *currentPlan;
                             @"toPlace", toString,
                             @"date", dateString,
                             @"mode", mode,
+                            @"showIntermediateStops", @"true",
                             nil];
     
     NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];

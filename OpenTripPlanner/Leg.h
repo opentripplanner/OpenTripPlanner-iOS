@@ -24,6 +24,7 @@ struct OTPBounds {
 @property (nonatomic, strong) NSNumber *distance;
 @property (nonatomic, strong) Place *from;
 @property (nonatomic, strong) Place *to;
+@property (nonatomic, strong) NSArray *intermediateStops;
 @property (nonatomic, strong) NSArray *steps;
 @property (nonatomic, strong) LegGeometry *legGeometry;
 @property (nonatomic, strong) NSNumber *duration;

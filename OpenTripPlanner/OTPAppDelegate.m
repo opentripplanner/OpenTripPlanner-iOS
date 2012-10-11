@@ -55,6 +55,7 @@
      nil];
     [legMapping mapKeyPath:@"from" toRelationship:@"from" withMapping:placeMapping];
     [legMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:placeMapping];
+    [legMapping mapKeyPath:@"intermediateStops" toRelationship:@"intermediateStops" withMapping:placeMapping];
     [legMapping mapKeyPath:@"legGeometry" toRelationship:@"legGeometry" withMapping:legGeometryMapping];
     
     RKObjectMapping* itineraryMapping = [RKObjectMapping mappingForClass:[Itinerary class]];

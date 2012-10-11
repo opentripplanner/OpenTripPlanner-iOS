@@ -7,12 +7,16 @@
 //
 
 #import "OTPItineraryTableViewController.h"
+#import "OTPTransitLegCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
 
 @interface OTPItineraryTableViewController ()
 {
     BOOL mapShowing;
+    NSArray *_distanceBasedModes;
+    NSArray *_stopBasedModes;
+    NSDictionary *_modeDisplayStrings;
 }
 @end
 
@@ -30,6 +34,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // WALK, BICYCLE, CAR, TRAM, SUBWAY, RAIL, BUS, FERRY, CABLE_CAR, GONDOLA, FUNICULAR, TRANSFER
+    
+    _distanceBasedModes = @[@"WALK", @"BICYCLE", @"CAR"];
+    _stopBasedModes = @[@"TRAM", @"SUBWAY", @"RAIL", @"BUS", @"FERRY", @"CABLE_CAR", @"GONDOLA", @"FUNICULAR"];
+    
+    _modeDisplayStrings = @{
+    @"WALK" : @"Walk",
+    @"BICYCLE" : @"Bike",
+    @"CAR" : @"Drive",
+    @"TRAM" : @"Tram",
+    @"SUBWAY" : @"Subway",
+    @"RAIL" : @"Train",
+    @"BUS" : @"Bus",
+    @"FERRY" : @"Ferry",
+    @"CABLE_CAR" : @"Cable car",
+    @"GONDOLA" : @"Gondola",
+    @"FUNICULAR" : @"Funicular",
+    @"TRANSFER" : @"Transfer"
+    };
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -92,6 +116,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -101,15 +129,45 @@
         
         return cell;
     } else {
-        static NSString *CellIdentifier = @"LegCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
+        
+//        if (leg.mode isEqualToString:@"") {
+//            <#statements#>
+//        }
+        
+        static NSString *CellIdentifier = @"TransitLegCell";
+        OTPTransitLegCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        NSString *timeText;
+        NSString *distanceText;
+        
+        if ([_distanceBasedModes containsObject:leg.mode]) {
+            timeText = leg.duration.stringValue;
+            distanceText = leg.distance.stringValue;
+        } else if ([_stopBasedModes containsObject:leg.mode]) {
+            timeText = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
+            distanceText = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count];
+        }
+        
+        cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+        cell.departureTimeLabel.text = timeText;
+        cell.stopsLabel.text = distanceText;
         
         // Configure the cell...
-        cell.backgroundColor = [UIColor redColor];
+        //cell.backgroundColor = [UIColor redColor];
         
         return cell;
     }
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row > 0) {
+        return 60;
+    }
+    return 44;
 }
 
 #pragma mark - Table view delegate
