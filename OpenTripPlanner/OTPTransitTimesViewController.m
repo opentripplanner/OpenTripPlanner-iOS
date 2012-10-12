@@ -9,6 +9,7 @@
 #import "OTPTransitTimesViewController.h"
 #import "OTPItineraryTableViewController.h"
 #import "Itinerary.h"
+#import "OTPItineraryCell.h"
 
 @interface OTPTransitTimesViewController ()
 
@@ -58,7 +59,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"itineraryCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    OTPItineraryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
@@ -67,14 +68,12 @@
     for (Leg *leg in itinerary.legs) {
         if ([leg.mode isEqualToString:@"WALK"] == false) {
             [routes addObject:leg.route];
+        } else {
+            [routes addObject:@"W"];
         }
     }
     
-    
-    NSString *routesStr = [routes componentsJoinedByString:@", "];
-
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d min)", routesStr, itinerary.duration.intValue/60000];
-    
+    cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];    
     return cell;    
 }
 
