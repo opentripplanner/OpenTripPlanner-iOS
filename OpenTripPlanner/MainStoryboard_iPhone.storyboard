@@ -166,7 +166,7 @@
                                 </view>
                                 <gestureRecognizers/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="WalkLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="WalkLegCell" rowHeight="60" id="IHW-ty-emz">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="DistanceBasedLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz">
                                 <rect key="frame" x="0.0" y="66" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -205,11 +205,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="TransitLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TransitLegCell" rowHeight="60" id="fOU-rm-GvD" customClass="OTPTransitLegCell">
-                                <rect key="frame" x="0.0" y="126" width="320" height="60"/>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="StopBasedLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="StopBasedLegCell" rowHeight="82" id="fOU-rm-GvD" customClass="OTPStopBasedLegCell">
+                                <rect key="frame" x="0.0" y="126" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" text="Icon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Em7-bb-AvR">
@@ -240,6 +240,13 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cqE-ir-rqU">
+                                            <rect key="frame" x="68" y="54" width="246" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -247,10 +254,11 @@
                                     <outlet property="departureTimeLabel" destination="q6c-ni-AU2" id="QQ8-dQ-NS0"/>
                                     <outlet property="instructionLabel" destination="gy9-5F-BdG" id="38r-Om-SUj"/>
                                     <outlet property="stopsLabel" destination="OBZ-yK-DhL" id="Lme-0f-73b"/>
+                                    <outlet property="toLabel" destination="cqE-ir-rqU" id="L0w-Xh-OX7"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="ArriveAtCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="ArriveAtCell" rowHeight="27" id="Zxz-2a-H0i">
-                                <rect key="frame" x="0.0" y="186" width="320" height="27"/>
+                                <rect key="frame" x="0.0" y="208" width="320" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="26"/>
@@ -291,7 +299,7 @@
                                 <gestureRecognizers/>
                             </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="ArrivalFooter" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ArrivalFooter" rowHeight="60" id="bSI-aJ-fM0">
-                                <rect key="frame" x="0.0" y="213" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="235" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
@@ -313,6 +321,24 @@
                                             <rect key="frame" x="71" y="8" width="139" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="TransferBasedLegCell" selectionStyle="blue" indentationWidth="10" id="nrX-q5-tRJ">
+                                <rect key="frame" x="0.0" y="295" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Transfer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kMQ-CM-Qdi">
+                                            <rect key="frame" x="139" y="11" width="64" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -633,12 +659,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPSearchBarWithActivity" superclassName="UISearchBar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPSearchBarWithActivity.h"/>
         </class>
-        <class className="OTPTransitLegCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitLegCell.h"/>
+        <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="departureTimeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stopsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OTPTransitTimeViewController" superclassName="UIViewController">

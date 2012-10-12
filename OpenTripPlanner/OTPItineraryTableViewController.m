@@ -7,7 +7,8 @@
 //
 
 #import "OTPItineraryTableViewController.h"
-#import "OTPTransitLegCell.h"
+#import "OTPStopBasedLegCell.h"
+#import "OTPDistanceBasedLegCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
 
@@ -16,6 +17,7 @@
     BOOL mapShowing;
     NSArray *_distanceBasedModes;
     NSArray *_stopBasedModes;
+    NSArray *_transferModes;
     NSDictionary *_modeDisplayStrings;
 }
 @end
@@ -39,6 +41,7 @@
     
     _distanceBasedModes = @[@"WALK", @"BICYCLE", @"CAR"];
     _stopBasedModes = @[@"TRAM", @"SUBWAY", @"RAIL", @"BUS", @"FERRY", @"CABLE_CAR", @"GONDOLA", @"FUNICULAR"];
+    _transferModes = @[@"TRANSFER"];
     
     _modeDisplayStrings = @{
     @"WALK" : @"Walk",
@@ -117,7 +120,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"h:mm";
+    dateFormatter.dateFormat = @"h:mm a";
     
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
@@ -131,42 +134,45 @@
         
         Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
         
-//        if (leg.mode isEqualToString:@"") {
-//            <#statements#>
-//        }
-        
-        static NSString *CellIdentifier = @"TransitLegCell";
-        OTPTransitLegCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        NSString *timeText;
-        NSString *distanceText;
-        
         if ([_distanceBasedModes containsObject:leg.mode]) {
-            timeText = leg.duration.stringValue;
-            distanceText = leg.distance.stringValue;
+            
+            OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
+            
+            return cell;
+            
         } else if ([_stopBasedModes containsObject:leg.mode]) {
-            timeText = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
-            distanceText = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count];
+            
+            OTPStopBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
+            
+            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+            cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
+            cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count];
+            
+            return cell;
+        } else if ([_transferModes containsObject:leg.mode]) {
+            OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
+            
+            return cell;
         }
-        
-        cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
-        cell.departureTimeLabel.text = timeText;
-        cell.stopsLabel.text = distanceText;
-        
-        // Configure the cell...
-        //cell.backgroundColor = [UIColor redColor];
-        
-        return cell;
     }
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row > 0) {
-        return 60;
-    }
     return 44;
+    
+    Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
+    
+    if ([_distanceBasedModes containsObject:leg.mode]) {
+        return 60;
+    } else if ([_stopBasedModes containsObject:leg.mode]) {
+        return 82;
+    } else if ([_transferModes containsObject:leg.mode]) {
+        return 44;
+    } else {
+        return 44;
+    }
 }
 
 #pragma mark - Table view delegate

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
-#import "OTPWalkLegCell.h"
+#import "OTPDistanceBasedLegCell.h"
 
-@implementation OTPWalkLegCell
+@implementation OTPDistanceBasedLegCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OTPWalkLegCell : UITableViewCell
+@interface OTPDistanceBasedLegCell : UITableViewCell
 
 @end

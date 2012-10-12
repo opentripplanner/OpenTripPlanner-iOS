@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
-#import "OTPTransitLegCell.h"
+#import "OTPStopBasedLegCell.h"
 
-@implementation OTPTransitLegCell
+@implementation OTPStopBasedLegCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

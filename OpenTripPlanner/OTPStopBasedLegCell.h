@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OTPTransitLegCell : UITableViewCell
+@interface OTPStopBasedLegCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *instructionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *departureTimeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *stopsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *toLabel;
 
 @end
