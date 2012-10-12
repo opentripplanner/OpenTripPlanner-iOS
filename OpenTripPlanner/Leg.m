@@ -18,6 +18,18 @@
 
 @implementation Leg
 
+- (void)setEpochStartTime:(NSNumber *)epochStartTime
+{
+    _epochStartTime = epochStartTime;
+    self.startTime = [NSDate dateWithTimeIntervalSince1970:epochStartTime.floatValue/1000];
+}
+
+- (void)setEpochEndTime:(NSNumber *)epochEndTime
+{
+    _epochEndTime = epochEndTime;
+    self.endTime = [NSDate dateWithTimeIntervalSince1970:epochEndTime.floatValue/1000];
+}
+
 - (void)setLegGeometry:(LegGeometry *)legGeometry
 {
     _legGeometry = legGeometry;

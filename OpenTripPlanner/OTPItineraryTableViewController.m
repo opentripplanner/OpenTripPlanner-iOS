@@ -117,8 +117,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    dateFormatter.dateFormat = @"h:mm";
     
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";

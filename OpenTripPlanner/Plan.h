@@ -12,6 +12,7 @@
 
 @interface Plan : NSObject
 
+@property (nonatomic, strong) NSNumber *epochDate;
 @property (nonatomic, strong) NSDate* date;
 @property (nonatomic, strong) Place* from;
 @property (nonatomic, strong) Place* to;

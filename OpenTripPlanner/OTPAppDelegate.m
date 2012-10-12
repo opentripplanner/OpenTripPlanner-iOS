@@ -48,8 +48,8 @@
     [legMapping mapKeyPathsToAttributes:
      @"route", @"route",
      @"mode", @"mode",
-     @"startTime", @"startTime",
-     @"endTime", @"endTime",
+     @"startTime", @"epochStartTime",
+     @"endTime", @"epochEndTime",
      @"distance", @"distance",
      @"duration", @"duration",
      nil];
@@ -75,7 +75,7 @@
     
     RKObjectMapping* planMapping = [RKObjectMapping mappingForClass:[Plan class]];
     [planMapping mapKeyPathsToAttributes:
-     @"plan.date", @"date",
+     @"plan.date", @"epochDate",
      nil];
     [planMapping mapKeyPath:@"plan.from" toRelationship:@"from" withMapping:placeMapping];
     [planMapping mapKeyPath:@"plan.to" toRelationship:@"to" withMapping:placeMapping];

@@ -13,6 +13,8 @@
 @interface Itinerary : NSObject
 
 @property (nonatomic, strong) NSNumber* duration;
+@property (nonatomic, strong) NSNumber *epochStartTime;
+@property (nonatomic, strong) NSNumber *epochEndTime;
 @property (nonatomic, strong) NSDate* startTime;
 @property (nonatomic, strong) NSDate* endTime;
 @property (nonatomic, strong) NSNumber* walkTime;
