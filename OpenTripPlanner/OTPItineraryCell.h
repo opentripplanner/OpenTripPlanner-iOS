@@ -10,5 +10,6 @@
 
 @interface OTPItineraryCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

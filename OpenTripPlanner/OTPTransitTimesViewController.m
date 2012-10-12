@@ -10,6 +10,7 @@
 #import "OTPItineraryTableViewController.h"
 #import "Itinerary.h"
 #import "OTPItineraryCell.h"
+#import "OTPLegCell.h"
 
 @interface OTPTransitTimesViewController ()
 
@@ -72,10 +73,27 @@
             [routes addObject:@"W"];
         }
     }
-    
+        
     cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];    
-    return cell;    
+    return cell;
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    Itinerary *itinerary = [self.itineraries objectAtIndex:section];
+    return (NSInteger)itinerary.legs.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"legCell";
+    OTPLegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
+    cell.legLabel.text = @"Hi";
+    return cell;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -134,6 +152,8 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     [(OTPItineraryTableViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
 }
+
+
 
 - (void)dismiss:(id)sender
 {
