@@ -30,8 +30,9 @@ struct OTPBounds {
 @property (nonatomic, strong) NSArray *steps;
 @property (nonatomic, strong) LegGeometry *legGeometry;
 @property (nonatomic, strong) NSNumber *duration;
-@property (nonatomic, strong) NSString* route;
-@property (nonatomic, strong) NSString* mode;
+@property (nonatomic, strong) NSString *route;
+@property (nonatomic, strong) NSString *headsign;
+@property (nonatomic, strong) NSString *mode;
 @property (nonatomic, readonly) NSArray *decodedLegGeometry;
 @property (nonatomic, readonly) struct OTPBounds bounds;
 

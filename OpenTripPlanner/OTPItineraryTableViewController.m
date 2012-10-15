@@ -159,9 +159,11 @@
             
             OTPStopBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
             
-            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ towards %@", leg.route, leg.headsign];
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
             cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count];
+            
+            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name];
             
             return cell;
         } else if ([_transferModes containsObject:leg.mode]) {
