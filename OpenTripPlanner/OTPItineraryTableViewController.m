@@ -11,6 +11,8 @@
 #import "OTPDistanceBasedLegCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
+#import "OTPUnitData.h"
+#import "OTPUnitFormatter.h"
 
 @interface OTPItineraryTableViewController ()
 {
@@ -126,9 +128,6 @@
         static NSString *CellIdentifier = @"OverviewCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        // Configure the cell...
-        cell.backgroundColor = [UIColor blueColor];
-        
         return cell;
     } else {
         
@@ -137,6 +136,22 @@
         if ([_distanceBasedModes containsObject:leg.mode]) {
             
             OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
+            
+            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+            
+            NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
+            NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
+            cell.timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
+            
+            OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
+            unitFormatter.cutoffMultiplier = @3.28084F;
+            unitFormatter.unitData = @[
+                [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"foot" pluralLabel:@"feet"],
+                [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"foot" pluralLabel:@"feet"],
+                [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mile" pluralLabel:@"miles"]
+            ];
+            
+            cell.distanceLabel.text = [unitFormatter numberToString:leg.distance];
             
             return cell;
             
@@ -160,9 +175,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    if (indexPath.row == 0) {
+        return 44;
+    }
     
-    Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
+    Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
     
     if ([_distanceBasedModes containsObject:leg.mode]) {
         return 60;
@@ -170,9 +187,8 @@
         return 82;
     } else if ([_transferModes containsObject:leg.mode]) {
         return 44;
-    } else {
-        return 44;
     }
+    return 44;
 }
 
 #pragma mark - Table view delegate

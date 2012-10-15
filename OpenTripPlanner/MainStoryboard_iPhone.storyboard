@@ -166,7 +166,7 @@
                                 </view>
                                 <gestureRecognizers/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="DistanceBasedLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="DistanceBasedLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz" customClass="OTPDistanceBasedLegCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -204,6 +204,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="distanceLabel" destination="xAH-6a-vIk" id="gmZ-0Q-BOL"/>
+                                    <outlet property="instructionLabel" destination="uir-cg-mig" id="JqR-kf-GFn"/>
+                                    <outlet property="timeLabel" destination="gXi-6I-u1k" id="y77-OW-h0k"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="StopBasedLegCell" selectionStyle="gray" indentationWidth="10" reuseIdentifier="StopBasedLegCell" rowHeight="82" id="fOU-rm-GvD" customClass="OTPStopBasedLegCell">
                                 <rect key="frame" x="0.0" y="126" width="320" height="82"/>
@@ -328,7 +333,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="TransferBasedLegCell" selectionStyle="blue" indentationWidth="10" id="nrX-q5-tRJ">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TransfereBasedLegCell" id="nrX-q5-tRJ">
                                 <rect key="frame" x="0.0" y="295" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -634,6 +639,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="timeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toTextField" candidateClass="OTPGeocodedTextField"/>
                 <relationship kind="outlet" name="userLocationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OTPDistanceBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDistanceBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OTPGeocodedTextField" superclassName="UITextField">

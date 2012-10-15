@@ -10,4 +10,8 @@
 
 @interface OTPDistanceBasedLegCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *instructionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
+
 @end
