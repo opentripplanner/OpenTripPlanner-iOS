@@ -77,7 +77,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"h:mm a"];
     cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
-    cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];;
+    cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];
     
     return cell;
 }

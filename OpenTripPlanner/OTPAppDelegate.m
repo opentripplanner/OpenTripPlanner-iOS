@@ -78,8 +78,8 @@
     RKObjectMapping* itineraryMapping = [RKObjectMapping mappingForClass:[Itinerary class]];
     [itineraryMapping mapKeyPathsToAttributes:
      @"duration", @"duration",
-     @"startTime", @"startTime",
-     @"endTime", @"endTime",
+     @"startTime", @"epochStartTime",
+     @"endTime", @"epochEndTime",
      @"walkTime", @"walkTime",
      @"transitTime", @"transitTime",
      @"waitingTime", @"waitingTime",
