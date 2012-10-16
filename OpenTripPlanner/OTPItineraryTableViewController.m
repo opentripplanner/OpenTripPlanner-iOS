@@ -9,6 +9,7 @@
 #import "OTPItineraryTableViewController.h"
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
+#import "OTPStepCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
 #import "OTPUnitData.h"
@@ -21,6 +22,8 @@
     NSArray *_stopBasedModes;
     NSArray *_transferModes;
     NSDictionary *_modeDisplayStrings;
+    NSDictionary *_relativeDirectionDisplayStrings;
+    NSDictionary *_absoluteDirectionDisplayStrings;
 }
 @end
 
@@ -58,6 +61,30 @@
     @"GONDOLA" : @"Gondola",
     @"FUNICULAR" : @"Funicular",
     @"TRANSFER" : @"Transfer"
+    };
+    
+    _relativeDirectionDisplayStrings = @{
+    @"HARD_LEFT" : @"Hard left",
+    @"LEFT" : @"Left",
+    @"SLIGHTLY_LEFT" : @"Slight left",
+    @"CONTINUE" : @"Continue",
+    @"SLIGHTLY_RIGHT" : @"Slight right",
+    @"RIGHT" : @"Right",
+    @"HARD_RIGHT" : @"Hard right",
+    @"CIRCLE_CLOCKWISE" : @"Circle clockwise",
+    @"CIRCLE_COUNTERCLOCKWISE" : @"Circle counterclockwise",
+    @"ELEVATOR" : @"Elevator"
+    };
+    
+    _absoluteDirectionDisplayStrings = @{
+    @"NORTH" : @"north",
+    @"NORTHEAST" : @"northeast",
+    @"EAST" : @"east",
+    @"SOUTHEAST" : @"southeast",
+    @"SOUTH" : @"south",
+    @"SOUTHWEST" : @"southwest",
+    @"WEST" : @"west",
+    @"NORTHWEST" : @"northwest"
     };
 
     // Uncomment the following line to preserve selection between presentations.
@@ -116,6 +143,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    // If we have a single leg with steps, it's a walk, bike, or drive itinierary
+    if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+        return ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1;
+    }
     return self.itinerary.legs.count + 1;
 }
 
@@ -130,6 +161,25 @@
         
         return cell;
     } else {
+        
+        if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+            Leg *leg = [self.itinerary.legs objectAtIndex:0];
+            Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+            OTPStepCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+            NSString *instruction;
+            if (indexPath.row == 1) {
+                instruction = [NSString stringWithFormat:@"%@ %@ on %@",
+                               [_modeDisplayStrings objectForKey:leg.mode],
+                               [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                               step.streetName];
+            } else {
+                instruction = [NSString stringWithFormat:@"%@ on %@",
+                               [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                               step.streetName];
+            }
+            cell.instructionLabel.text = instruction;
+            return cell;
+        }
         
         Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
         
@@ -161,7 +211,7 @@
             
             cell.instructionLabel.text = [NSString stringWithFormat:@"%@ towards %@", leg.route, leg.headsign];
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
-            cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count];
+            cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count+1];
             
             cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name];
             
@@ -178,6 +228,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        return 44;
+    }
+    
+    if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         return 44;
     }
     
@@ -200,6 +254,11 @@
     if (mapShowing) {
         if (indexPath.row == 0) {
             [self displayItineraryOverview];
+        } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+            Leg *leg = [self.itinerary.legs objectAtIndex:0];
+            Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+            [self.mapView setZoom:16];
+            [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
         } else {
             [self displayLeg:[self.itinerary.legs objectAtIndex:indexPath.row - 1]];
         }
@@ -207,6 +266,11 @@
         [self.tableView showOrigamiTransitionWith:self.mapView NumberOfFolds:3 Duration:0.3 Direction:XYOrigamiDirectionFromLeft completion:^(BOOL finished) {
             if (indexPath.row == 0) {
                 [self displayItineraryOverview];
+            } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+                Leg *leg = [self.itinerary.legs objectAtIndex:0];
+                Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+                [self.mapView setZoom:16];
+                [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
             } else {
                 [self displayLeg:[self.itinerary.legs objectAtIndex:indexPath.row - 1]];
             }

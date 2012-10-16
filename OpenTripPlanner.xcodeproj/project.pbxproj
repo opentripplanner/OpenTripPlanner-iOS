@@ -13,6 +13,7 @@
 		9388194116193310002021EA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388193F161927A6002021EA /* MBProgressHUD.m */; };
 		93B179C0162BBAB400F09EC6 /* OTPUnitFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B179BF162BBAB400F09EC6 /* OTPUnitFormatter.m */; };
 		93B179C3162BC69C00F09EC6 /* OTPUnitData.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B179C2162BC69C00F09EC6 /* OTPUnitData.m */; };
+		93B179C6162D253000F09EC6 /* OTPStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B179C5162D252F00F09EC6 /* OTPStepCell.m */; };
 		CC088DE715F69E4900C6F372 /* OP.png in Resources */ = {isa = PBXBuildFile; fileRef = CC088DE615F69E4900C6F372 /* OP.png */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
 		CC0A1F6416038F6B003085B2 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F5516038F6B003085B2 /* FacingView.m */; };
@@ -188,6 +189,8 @@
 		93B179BF162BBAB400F09EC6 /* OTPUnitFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPUnitFormatter.m; sourceTree = "<group>"; };
 		93B179C1162BC69B00F09EC6 /* OTPUnitData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPUnitData.h; sourceTree = "<group>"; };
 		93B179C2162BC69C00F09EC6 /* OTPUnitData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPUnitData.m; sourceTree = "<group>"; };
+		93B179C4162D252F00F09EC6 /* OTPStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPStepCell.h; sourceTree = "<group>"; };
+		93B179C5162D252F00F09EC6 /* OTPStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPStepCell.m; sourceTree = "<group>"; };
 		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
 		CC088DE615F69E4900C6F372 /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OP.png; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -590,6 +593,8 @@
 				93B179BF162BBAB400F09EC6 /* OTPUnitFormatter.m */,
 				93B179C1162BC69B00F09EC6 /* OTPUnitData.h */,
 				93B179C2162BC69C00F09EC6 /* OTPUnitData.m */,
+				93B179C4162D252F00F09EC6 /* OTPStepCell.h */,
+				93B179C5162D252F00F09EC6 /* OTPStepCell.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -869,6 +874,7 @@
 				CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */,
 				93B179C0162BBAB400F09EC6 /* OTPUnitFormatter.m in Sources */,
 				93B179C3162BC69C00F09EC6 /* OTPUnitData.m in Sources */,
+				93B179C6162D253000F09EC6 /* OTPStepCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

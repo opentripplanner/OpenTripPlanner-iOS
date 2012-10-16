@@ -1,0 +1,2106 @@
+{
+    "requestParameters": {
+        "optimize": "QUICK",
+        "time": "13:42",
+        "showIntermediateStops": "true",
+        "arriveBy": "false",
+        "routerId": "req-241",
+        "maxWalkDistance": "840",
+        "fromPlace": "40.728320,-73.945968",
+        "toPlace": "40.790939,-73.968372",
+        "date": "2012-10-15",
+        "mode": "WALK,TRANSIT"
+    },
+    "plan": {
+        "date": 1350322920000,
+        "from": {
+            "name": "Humboldt Street",
+            "stopId": null,
+            "stopCode": null,
+            "lon": -73.94588802666296,
+            "lat": 40.72833325761202,
+            "arrival": null,
+            "departure": null,
+            "orig": null,
+            "zoneId": null,
+            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.94588802666296,40.72833325761202]}"
+        },
+        "to": {
+            "name": "Columbus Avenue",
+            "stopId": null,
+            "stopCode": null,
+            "lon": -73.96873167460969,
+            "lat": 40.79120161955629,
+            "arrival": null,
+            "departure": null,
+            "orig": null,
+            "zoneId": null,
+            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96873167460969,40.79120161955629]}"
+        },
+        "itineraries": [
+            {
+                "duration": 2867000,
+                "startTime": 1350323058000,
+                "endTime": 1350325925000,
+                "walkTime": 951,
+                "transitTime": 1284,
+                "waitingTime": 452,
+                "walkDistance": 1235.7674999271137,
+                "elevationLost": 34.17105644155579,
+                "elevationGained": 1.0617977899443076,
+                "transfers": 2,
+                "fare": {
+                    "fare": {
+                        "regular": {
+                            "currency": {
+                                "symbol": "$",
+                                "currency": "USD",
+                                "currencyCode": "USD",
+                                "defaultFractionDigits": 2
+                            },
+                            "cents": 225
+                        }
+                    }
+                },
+                "legs": [
+                    {
+                        "startTime": 1350323058000,
+                        "endTime": 1350323639000,
+                        "distance": 753.4415871092123,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Humboldt Street",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.94588802666296,
+                            "lat": 40.72833325761202,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.94588802666296,40.72833325761202]}"
+                        },
+                        "to": {
+                            "name": "Nassau Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G28N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.951277,
+                            "lat": 40.724635,
+                            "arrival": 1350323700000,
+                            "departure": 1350323700000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.951277,40.724635]}"
+                        },
+                        "legGeometry": {
+                            "points": "awqwFxpibM~D_@BZt@fDt@dDt@dDn@rC|@tDt@hDx@jDx@_@dBy@",
+                            "levels": null,
+                            "length": 12
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 581000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 106.83073120846778,
+                                "relativeDirection": null,
+                                "streetName": "Humboldt Street",
+                                "absoluteDirection": "SOUTH",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94588802666296,
+                                "lat": 40.72833325761202,
+                                "elevation": "0,3.7,7,3.7,17,3.7,27,3.7,37,3.7,47,3.7,57,3.7,67,3.7,77,3.7,87,3.7,97,3.8,107,3.8"
+                            },
+                            {
+                                "distance": 12.259828377013879,
+                                "relativeDirection": "RIGHT",
+                                "streetName": "Norman St",
+                                "absoluteDirection": "WEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94573,
+                                "lat": 40.72738,
+                                "elevation": "0,3.8,12,3.8"
+                            },
+                            {
+                                "distance": 538.0215080510927,
+                                "relativeDirection": "CONTINUE",
+                                "streetName": "Norman Avenue",
+                                "absoluteDirection": "WEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94587,
+                                "lat": 40.72735,
+                                "elevation": "0,3.8,10,3.7,20,3.7,30,3.7,40,3.7,50,3.8,60,3.8,70,3.8,76,3.8,76,3.8,86,3.8,96,3.9,106,3.9,116,3.9,126,3.9,136,4.0,146,4.0,153,4.0,153,4.0,163,4.0,173,4.1,183,4.1,193,4.1,203,4.1,213,4.2,223,4.2,229,4.2,297,4.8,307,5.0,317,5.1,327,5.2,337,5.2,347,5.2,357,5.3,367,5.4,381,5.6"
+                            },
+                            {
+                                "distance": 96.32951947263791,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Manhattan Avenue",
+                                "absoluteDirection": "SOUTHEAST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.95173,
+                                "lat": 40.72543,
+                                "elevation": "0,4.8,10,4.8,20,4.8,35,4.7,35,4.7,45,4.7,55,4.7,65,4.7,75,4.7,85,4.7,96,4.6"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350323700000,
+                        "endTime": 1350324000000,
+                        "distance": 2830.201016693027,
+                        "mode": "SUBWAY",
+                        "route": "G",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "6CBE45",
+                        "routeId": "G",
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "LONG ISLAND CITY - COURT SQ",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_080700_G..N14R",
+                        "from": {
+                            "name": "Nassau Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G28N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.951277,
+                            "lat": 40.724635,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.951277,40.724635]}"
+                        },
+                        "to": {
+                            "name": "Long Island City - Court Sq",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G22N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.943832,
+                            "lat": 40.746554,
+                            "arrival": 1350324180000,
+                            "departure": 1350324180000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.943832,40.746554]}"
+                        },
+                        "legGeometry": {
+                            "points": "}_qwFnrjbM_i@xRmnAo\\qNyc@",
+                            "levels": null,
+                            "length": 4
+                        },
+                        "routeShortName": "G",
+                        "routeLongName": "Brooklyn-Queens Crosstown",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 300000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "Greenpoint Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "G26N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.954449,
+                                "lat": 40.731352,
+                                "arrival": 1350323784000,
+                                "departure": 1350323784000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.954449,40.731352]}"
+                            },
+                            {
+                                "name": "21 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "G24N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.949724,
+                                "lat": 40.744065,
+                                "arrival": 1350323934000,
+                                "departure": 1350323934000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.949724,40.744065]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324180000,
+                        "endTime": 1350324180000,
+                        "distance": 232.36774860105936,
+                        "mode": "TRANSFER",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Long Island City - Court Sq",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G22"
+                            },
+                            "stopCode": null,
+                            "lon": -73.943832,
+                            "lat": 40.746554,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.943832,40.746554]}"
+                        },
+                        "to": {
+                            "name": "23 St - Ely Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "F09"
+                            },
+                            "stopCode": null,
+                            "lon": -73.946,
+                            "lat": 40.747846,
+                            "arrival": 1350324360000,
+                            "departure": 1350324360000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.946,40.747846]}"
+                        },
+                        "legGeometry": {
+                            "points": "}huwF~cibMaGnL",
+                            "levels": null,
+                            "length": 2
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 0,
+                        "bogusNonTransitLeg": false,
+                        "steps": []
+                    },
+                    {
+                        "startTime": 1350324360000,
+                        "endTime": 1350324870000,
+                        "distance": 3803.752131245819,
+                        "mode": "SUBWAY",
+                        "route": "E",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "2850AD",
+                        "routeId": "E",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "WORLD TRADE CENTER",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_082100_E..S71R",
+                        "from": {
+                            "name": "23 St - Ely Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "F09S"
+                            },
+                            "stopCode": null,
+                            "lon": -73.946,
+                            "lat": 40.747846,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.946,40.747846]}"
+                        },
+                        "to": {
+                            "name": "50 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A25S"
+                            },
+                            "stopCode": null,
+                            "lon": -73.985984,
+                            "lat": 40.762456,
+                            "arrival": 1350325020000,
+                            "departure": 1350325020000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.985984,40.762456]}"
+                        },
+                        "legGeometry": {
+                            "points": "}huwF~cibMaGnLuFtf@O~@O~@Q~@S~@W`AW~@Y`A[`A]`A_@~@a@bAc@`Ac@`Ag@`Ai@bAkRpZGJILGJGLGJGLGLGLGLGLGLENGLELGNwOtf@iOpe@{BdHeH~TyBzGADkDtKGZEXCXAVAV@V@TDTDRFRJRJPLPNPPNtDbC",
+                            "levels": null,
+                            "length": 57
+                        },
+                        "routeShortName": "E",
+                        "routeLongName": "8 Avenue Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 510000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "Lexington Av/53 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "F11S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.969055,
+                                "lat": 40.757552,
+                                "arrival": 1350324570000,
+                                "departure": 1350324570000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.969055,40.757552]}"
+                            },
+                            {
+                                "name": "5 Av/53 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "F12S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.975224,
+                                "lat": 40.760167,
+                                "arrival": 1350324660000,
+                                "departure": 1350324660000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.975224,40.760167]}"
+                            },
+                            {
+                                "name": "7 Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "D14S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981637,
+                                "lat": 40.762862,
+                                "arrival": 1350324768000,
+                                "departure": 1350324768000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981637,40.762862]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350325020000,
+                        "endTime": 1350325494000,
+                        "distance": 3707.474111591785,
+                        "mode": "SUBWAY",
+                        "route": "C",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "2850AD",
+                        "routeId": "C",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "168 ST",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_081350_C..N04R",
+                        "from": {
+                            "name": "50 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A25N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.985984,
+                            "lat": 40.762456,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.985984,40.762456]}"
+                        },
+                        "to": {
+                            "name": "96 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A19N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.964696,
+                            "lat": 40.791642,
+                            "arrival": 1350325494000,
+                            "departure": 1350325494000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.964696,40.791642]}"
+                        },
+                        "legGeometry": {
+                            "points": "ilxwFlkqbMuDcCcImFuS_Nsl@i`@oc@sYuZeScc@kY",
+                            "levels": null,
+                            "length": 8
+                        },
+                        "routeShortName": "C",
+                        "routeLongName": "8 Avenue Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 474000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "59 St - Columbus Circle",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A24N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981736,
+                                "lat": 40.768296,
+                                "arrival": 1350325140000,
+                                "departure": 1350325140000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981736,40.768296]}"
+                            },
+                            {
+                                "name": "72 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A22N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.97641,
+                                "lat": 40.775594,
+                                "arrival": 1350325230000,
+                                "departure": 1350325230000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.97641,40.775594]}"
+                            },
+                            {
+                                "name": "81 St - Museum of Natural History",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A21N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.972143,
+                                "lat": 40.781433,
+                                "arrival": 1350325326000,
+                                "departure": 1350325326000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.972143,40.781433]}"
+                            },
+                            {
+                                "name": "86 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A20N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.968916,
+                                "lat": 40.785868,
+                                "arrival": 1350325404000,
+                                "departure": 1350325404000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.968916,40.785868]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350325555000,
+                        "endTime": 1350325925000,
+                        "distance": 482.3259128179013,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "97th Street Transverse",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96468642953846,
+                            "lat": 40.791664131692315,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96468642953846,40.791664131692315]}"
+                        },
+                        "to": {
+                            "name": "Columbus Avenue",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96873167460969,
+                            "lat": 40.79120161955629,
+                            "arrival": 1350325925000,
+                            "departure": 1350325925000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96873167460969,40.79120161955629]}"
+                        },
+                        "legGeometry": {
+                            "points": "{b~wFhfmbMA@kFrPdCbB|BxAdAt@",
+                            "levels": null,
+                            "length": 6
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 370000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 1.3156482292926166,
+                                "relativeDirection": null,
+                                "streetName": "97th Street Transverse",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96468642953846,
+                                "lat": 40.791664131692315,
+                                "elevation": "0,30.6,1,30.6"
+                            },
+                            {
+                                "distance": 271.24581327279355,
+                                "relativeDirection": "CONTINUE",
+                                "streetName": "West 96th Street",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.9647,
+                                "lat": 40.79167,
+                                "elevation": ""
+                            },
+                            {
+                                "distance": 209.76445131581517,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Columbus Avenue",
+                                "absoluteDirection": "SOUTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96752,
+                                "lat": 40.79285,
+                                "elevation": "0,31.0,10,31.4,20,31.8,30,32.2,40,32.6,50,33.0,60,33.3,70,33.7,80,34.0,85,34.2,85,34.2,95,34.6,105,35.0,115,35.4,125,35.7,135,36.1,145,36.4,155,36.6,164,36.8"
+                            }
+                        ]
+                    }
+                ],
+                "tooSloped": false
+            },
+            {
+                "duration": 2867000,
+                "startTime": 1350323658000,
+                "endTime": 1350326525000,
+                "walkTime": 951,
+                "transitTime": 1284,
+                "waitingTime": 452,
+                "walkDistance": 1235.7674999271137,
+                "elevationLost": 34.17105644155579,
+                "elevationGained": 1.0617977899443076,
+                "transfers": 2,
+                "fare": {
+                    "fare": {
+                        "regular": {
+                            "currency": {
+                                "symbol": "$",
+                                "currency": "USD",
+                                "currencyCode": "USD",
+                                "defaultFractionDigits": 2
+                            },
+                            "cents": 225
+                        }
+                    }
+                },
+                "legs": [
+                    {
+                        "startTime": 1350323658000,
+                        "endTime": 1350324239000,
+                        "distance": 753.4415871092123,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Humboldt Street",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.94588802666296,
+                            "lat": 40.72833325761202,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.94588802666296,40.72833325761202]}"
+                        },
+                        "to": {
+                            "name": "Nassau Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G28N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.951277,
+                            "lat": 40.724635,
+                            "arrival": 1350324300000,
+                            "departure": 1350324300000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.951277,40.724635]}"
+                        },
+                        "legGeometry": {
+                            "points": "awqwFxpibM~D_@BZt@fDt@dDt@dDn@rC|@tDt@hDx@jDx@_@dBy@",
+                            "levels": null,
+                            "length": 12
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 581000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 106.83073120846778,
+                                "relativeDirection": null,
+                                "streetName": "Humboldt Street",
+                                "absoluteDirection": "SOUTH",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94588802666296,
+                                "lat": 40.72833325761202,
+                                "elevation": "0,3.7,7,3.7,17,3.7,27,3.7,37,3.7,47,3.7,57,3.7,67,3.7,77,3.7,87,3.7,97,3.8,107,3.8"
+                            },
+                            {
+                                "distance": 12.259828377013879,
+                                "relativeDirection": "RIGHT",
+                                "streetName": "Norman St",
+                                "absoluteDirection": "WEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94573,
+                                "lat": 40.72738,
+                                "elevation": "0,3.8,12,3.8"
+                            },
+                            {
+                                "distance": 538.0215080510927,
+                                "relativeDirection": "CONTINUE",
+                                "streetName": "Norman Avenue",
+                                "absoluteDirection": "WEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94587,
+                                "lat": 40.72735,
+                                "elevation": "0,3.8,10,3.7,20,3.7,30,3.7,40,3.7,50,3.8,60,3.8,70,3.8,76,3.8,76,3.8,86,3.8,96,3.9,106,3.9,116,3.9,126,3.9,136,4.0,146,4.0,153,4.0,153,4.0,163,4.0,173,4.1,183,4.1,193,4.1,203,4.1,213,4.2,223,4.2,229,4.2,297,4.8,307,5.0,317,5.1,327,5.2,337,5.2,347,5.2,357,5.3,367,5.4,381,5.6"
+                            },
+                            {
+                                "distance": 96.32951947263791,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Manhattan Avenue",
+                                "absoluteDirection": "SOUTHEAST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.95173,
+                                "lat": 40.72543,
+                                "elevation": "0,4.8,10,4.8,20,4.8,35,4.7,35,4.7,45,4.7,55,4.7,65,4.7,75,4.7,85,4.7,96,4.6"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324300000,
+                        "endTime": 1350324600000,
+                        "distance": 2830.201016693027,
+                        "mode": "SUBWAY",
+                        "route": "G",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "6CBE45",
+                        "routeId": "G",
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "LONG ISLAND CITY - COURT SQ",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_081700_G..N14R",
+                        "from": {
+                            "name": "Nassau Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G28N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.951277,
+                            "lat": 40.724635,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.951277,40.724635]}"
+                        },
+                        "to": {
+                            "name": "Long Island City - Court Sq",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G22N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.943832,
+                            "lat": 40.746554,
+                            "arrival": 1350324840000,
+                            "departure": 1350324840000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.943832,40.746554]}"
+                        },
+                        "legGeometry": {
+                            "points": "}_qwFnrjbM_i@xRmnAo\\qNyc@",
+                            "levels": null,
+                            "length": 4
+                        },
+                        "routeShortName": "G",
+                        "routeLongName": "Brooklyn-Queens Crosstown",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 300000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "Greenpoint Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "G26N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.954449,
+                                "lat": 40.731352,
+                                "arrival": 1350324384000,
+                                "departure": 1350324384000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.954449,40.731352]}"
+                            },
+                            {
+                                "name": "21 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "G24N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.949724,
+                                "lat": 40.744065,
+                                "arrival": 1350324534000,
+                                "departure": 1350324534000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.949724,40.744065]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324840000,
+                        "endTime": 1350324840000,
+                        "distance": 232.36774860105936,
+                        "mode": "TRANSFER",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Long Island City - Court Sq",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "G22"
+                            },
+                            "stopCode": null,
+                            "lon": -73.943832,
+                            "lat": 40.746554,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.943832,40.746554]}"
+                        },
+                        "to": {
+                            "name": "23 St - Ely Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "F09"
+                            },
+                            "stopCode": null,
+                            "lon": -73.946,
+                            "lat": 40.747846,
+                            "arrival": 1350325020000,
+                            "departure": 1350325020000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.946,40.747846]}"
+                        },
+                        "legGeometry": {
+                            "points": "}huwF~cibMaGnL",
+                            "levels": null,
+                            "length": 2
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 0,
+                        "bogusNonTransitLeg": false,
+                        "steps": []
+                    },
+                    {
+                        "startTime": 1350325020000,
+                        "endTime": 1350325530000,
+                        "distance": 3803.752131245819,
+                        "mode": "SUBWAY",
+                        "route": "E",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "2850AD",
+                        "routeId": "E",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "WORLD TRADE CENTER",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_083300_E..S71R",
+                        "from": {
+                            "name": "23 St - Ely Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "F09S"
+                            },
+                            "stopCode": null,
+                            "lon": -73.946,
+                            "lat": 40.747846,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.946,40.747846]}"
+                        },
+                        "to": {
+                            "name": "50 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A25S"
+                            },
+                            "stopCode": null,
+                            "lon": -73.985984,
+                            "lat": 40.762456,
+                            "arrival": 1350325620000,
+                            "departure": 1350325620000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.985984,40.762456]}"
+                        },
+                        "legGeometry": {
+                            "points": "}huwF~cibMaGnLuFtf@O~@O~@Q~@S~@W`AW~@Y`A[`A]`A_@~@a@bAc@`Ac@`Ag@`Ai@bAkRpZGJILGJGLGJGLGLGLGLGLGLENGLELGNwOtf@iOpe@{BdHeH~TyBzGADkDtKGZEXCXAVAV@V@TDTDRFRJRJPLPNPPNtDbC",
+                            "levels": null,
+                            "length": 57
+                        },
+                        "routeShortName": "E",
+                        "routeLongName": "8 Avenue Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 510000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "Lexington Av/53 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "F11S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.969055,
+                                "lat": 40.757552,
+                                "arrival": 1350325230000,
+                                "departure": 1350325230000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.969055,40.757552]}"
+                            },
+                            {
+                                "name": "5 Av/53 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "F12S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.975224,
+                                "lat": 40.760167,
+                                "arrival": 1350325320000,
+                                "departure": 1350325320000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.975224,40.760167]}"
+                            },
+                            {
+                                "name": "7 Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "D14S"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981637,
+                                "lat": 40.762862,
+                                "arrival": 1350325428000,
+                                "departure": 1350325428000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981637,40.762862]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350325620000,
+                        "endTime": 1350326094000,
+                        "distance": 3707.474111591785,
+                        "mode": "SUBWAY",
+                        "route": "C",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "2850AD",
+                        "routeId": "C",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "168 ST",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_082350_C..N04R",
+                        "from": {
+                            "name": "50 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A25N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.985984,
+                            "lat": 40.762456,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.985984,40.762456]}"
+                        },
+                        "to": {
+                            "name": "96 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A19N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.964696,
+                            "lat": 40.791642,
+                            "arrival": 1350326094000,
+                            "departure": 1350326094000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.964696,40.791642]}"
+                        },
+                        "legGeometry": {
+                            "points": "ilxwFlkqbMuDcCcImFuS_Nsl@i`@oc@sYuZeScc@kY",
+                            "levels": null,
+                            "length": 8
+                        },
+                        "routeShortName": "C",
+                        "routeLongName": "8 Avenue Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 474000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "59 St - Columbus Circle",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A24N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981736,
+                                "lat": 40.768296,
+                                "arrival": 1350325740000,
+                                "departure": 1350325740000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981736,40.768296]}"
+                            },
+                            {
+                                "name": "72 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A22N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.97641,
+                                "lat": 40.775594,
+                                "arrival": 1350325830000,
+                                "departure": 1350325830000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.97641,40.775594]}"
+                            },
+                            {
+                                "name": "81 St - Museum of Natural History",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A21N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.972143,
+                                "lat": 40.781433,
+                                "arrival": 1350325926000,
+                                "departure": 1350325926000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.972143,40.781433]}"
+                            },
+                            {
+                                "name": "86 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A20N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.968916,
+                                "lat": 40.785868,
+                                "arrival": 1350326004000,
+                                "departure": 1350326004000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.968916,40.785868]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350326155000,
+                        "endTime": 1350326525000,
+                        "distance": 482.3259128179013,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "97th Street Transverse",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96468642953846,
+                            "lat": 40.791664131692315,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96468642953846,40.791664131692315]}"
+                        },
+                        "to": {
+                            "name": "Columbus Avenue",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96873167460969,
+                            "lat": 40.79120161955629,
+                            "arrival": 1350326525000,
+                            "departure": 1350326525000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96873167460969,40.79120161955629]}"
+                        },
+                        "legGeometry": {
+                            "points": "{b~wFhfmbMA@kFrPdCbB|BxAdAt@",
+                            "levels": null,
+                            "length": 6
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 370000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 1.3156482292926166,
+                                "relativeDirection": null,
+                                "streetName": "97th Street Transverse",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96468642953846,
+                                "lat": 40.791664131692315,
+                                "elevation": "0,30.6,1,30.6"
+                            },
+                            {
+                                "distance": 271.24581327279355,
+                                "relativeDirection": "CONTINUE",
+                                "streetName": "West 96th Street",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.9647,
+                                "lat": 40.79167,
+                                "elevation": ""
+                            },
+                            {
+                                "distance": 209.76445131581517,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Columbus Avenue",
+                                "absoluteDirection": "SOUTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96752,
+                                "lat": 40.79285,
+                                "elevation": "0,31.0,10,31.4,20,31.8,30,32.2,40,32.6,50,33.0,60,33.3,70,33.7,80,34.0,85,34.2,85,34.2,95,34.6,105,35.0,115,35.4,125,35.7,135,36.1,145,36.4,155,36.6,164,36.8"
+                            }
+                        ]
+                    }
+                ],
+                "tooSloped": false
+            },
+            {
+                "duration": 3222000,
+                "startTime": 1350323911000,
+                "endTime": 1350327133000,
+                "walkTime": 562,
+                "transitTime": 2091,
+                "waitingTime": 389,
+                "walkDistance": 716.5863462464216,
+                "elevationLost": 35.163613932552764,
+                "elevationGained": 2.0543552809412766,
+                "transfers": 2,
+                "fare": {
+                    "fare": {
+                        "regular": {
+                            "currency": {
+                                "symbol": "$",
+                                "currency": "USD",
+                                "currencyCode": "USD",
+                                "defaultFractionDigits": 2
+                            },
+                            "cents": 450
+                        }
+                    }
+                },
+                "legs": [
+                    {
+                        "startTime": 1350323911000,
+                        "endTime": 1350324004000,
+                        "distance": 118.38739963217945,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Humboldt Street",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.94588802666296,
+                            "lat": 40.72833325761202,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.94588802666296,40.72833325761202]}"
+                        },
+                        "to": {
+                            "name": "NORMAN AV - HUMBOLDT ST",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "303845"
+                            },
+                            "stopCode": null,
+                            "lon": -73.945602,
+                            "lat": 40.727467,
+                            "arrival": 1350324005000,
+                            "departure": 1350324005000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.945602,40.727467]}"
+                        },
+                        "legGeometry": {
+                            "points": "awqwFxpibM~D_@CY",
+                            "levels": null,
+                            "length": 3
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 93000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 106.83073120846778,
+                                "relativeDirection": null,
+                                "streetName": "Humboldt Street",
+                                "absoluteDirection": "SOUTH",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94588802666296,
+                                "lat": 40.72833325761202,
+                                "elevation": "0,3.7,7,3.7,17,3.7,27,3.7,37,3.7,47,3.7,57,3.7,67,3.7,77,3.7,87,3.7,97,3.8,107,3.8"
+                            },
+                            {
+                                "distance": 11.55666842371167,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Norman Avenue",
+                                "absoluteDirection": "EAST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94573,
+                                "lat": 40.72738,
+                                "elevation": "0,3.8,12,3.8"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324005000,
+                        "endTime": 1350324524000,
+                        "distance": 1897.9266264471823,
+                        "mode": "BUS",
+                        "route": "B48",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "FAA61A",
+                        "routeId": "B48",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "BED-STUY FULTON ST FRANKLIN AV",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "20120902EE_083500_B48_0044_B62_719",
+                        "from": {
+                            "name": "NORMAN AV - HUMBOLDT ST",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "303845"
+                            },
+                            "stopCode": null,
+                            "lon": -73.945602,
+                            "lat": 40.727467,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.945602,40.727467]}"
+                        },
+                        "to": {
+                            "name": "LORIMER ST - METROPOLITAN AV",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "303855"
+                            },
+                            "stopCode": null,
+                            "lon": -73.949387,
+                            "lat": 40.713718,
+                            "arrival": 1350324687000,
+                            "departure": 1350324687000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.949387,40.713718]}"
+                        },
+                        "legGeometry": {
+                            "points": "gqqwF~nibM?BBXDXDXl@lCt@dDv@dDH`@@@^bBHXv@fDl@nC@BFTv@jDRIBCrFiC~@c@|GcD@ALGPK|AzCXG`OsA~@K@?hAKnCWrBQ??TC@?DARAFAVCPC`AIlCWz@I??pAKhCU`AK",
+                            "levels": null,
+                            "length": 48
+                        },
+                        "routeShortName": "B48",
+                        "routeLongName": "Bedford-Stuyvesant - Greenpoint",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 519000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "NASSAU AV - NEWEL ST",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303848"
+                                },
+                                "stopCode": null,
+                                "lon": -73.948586,
+                                "lat": 40.726566,
+                                "arrival": 1350324087000,
+                                "departure": 1350324087000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.948586,40.726566]}"
+                            },
+                            {
+                                "name": "NORMAN AV - LEONARD ST",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303849"
+                                },
+                                "stopCode": null,
+                                "lon": -73.95079,
+                                "lat": 40.725838,
+                                "arrival": 1350324148000,
+                                "departure": 1350324148000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.95079,40.725838]}"
+                            },
+                            {
+                                "name": "MANHATTAN AV - NORMAN AV",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303850"
+                                },
+                                "stopCode": null,
+                                "lon": -73.951775,
+                                "lat": 40.725285,
+                                "arrival": 1350324180000,
+                                "departure": 1350324180000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.951775,40.725285]}"
+                            },
+                            {
+                                "name": "MANHATTAN AV - DRIGGS AV",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "305175"
+                                },
+                                "stopCode": null,
+                                "lon": -73.950043,
+                                "lat": 40.722309,
+                                "arrival": 1350324271000,
+                                "departure": 1350324271000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.950043,40.722309]}"
+                            },
+                            {
+                                "name": "LORIMER ST - BAYARD ST",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303852"
+                                },
+                                "stopCode": null,
+                                "lon": -73.950195,
+                                "lat": 40.71867,
+                                "arrival": 1350324384000,
+                                "departure": 1350324384000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.950195,40.71867]}"
+                            },
+                            {
+                                "name": "LORIMER ST - MEEKER AV",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303853"
+                                },
+                                "stopCode": null,
+                                "lon": -73.949921,
+                                "lat": 40.716995,
+                                "arrival": 1350324431000,
+                                "departure": 1350324431000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.949921,40.716995]}"
+                            },
+                            {
+                                "name": "LORIMER ST - SKILLMAN AV",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "303854"
+                                },
+                                "stopCode": null,
+                                "lon": -73.949623,
+                                "lat": 40.715157,
+                                "arrival": 1350324483000,
+                                "departure": 1350324483000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.949623,40.715157]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324688000,
+                        "endTime": 1350324779000,
+                        "distance": 113.16699309960998,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "Lorimer Street",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.94931222657219,
+                            "lat": 40.71373113587246,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.94931222657219,40.71373113587246]}"
+                        },
+                        "to": {
+                            "name": "Lorimer St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "L10N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.950275,
+                            "lat": 40.714063,
+                            "arrival": 1350324840000,
+                            "departure": 1350324840000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.950275,40.714063]}"
+                        },
+                        "legGeometry": {
+                            "points": "y{nwFffjbMw@HI??tD",
+                            "levels": null,
+                            "length": 4
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 91000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 36.890852600697,
+                                "relativeDirection": null,
+                                "streetName": "Lorimer Street",
+                                "absoluteDirection": "NORTH",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94931222657219,
+                                "lat": 40.71373113587246,
+                                "elevation": "0,8.1,10,8.0,20,8.0,32,7.8,32,7.8,37,7.8"
+                            },
+                            {
+                                "distance": 76.27614049891298,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Metropolitan Avenue",
+                                "absoluteDirection": "WEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.94937,
+                                "lat": 40.71406,
+                                "elevation": "0,7.8,10,7.5,20,7.3,30,7.0,40,6.8,50,6.6,60,6.4,70,6.2,76,6.1"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350324840000,
+                        "endTime": 1350325530000,
+                        "distance": 5261.969246431177,
+                        "mode": "SUBWAY",
+                        "route": "L",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "A7A9AC",
+                        "routeId": "L",
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "8 AV",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_082800_L..N01R",
+                        "from": {
+                            "name": "Lorimer St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "L10N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.950275,
+                            "lat": 40.714063,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.950275,40.714063]}"
+                        },
+                        "to": {
+                            "name": "8 Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "L01N"
+                            },
+                            "stopCode": null,
+                            "lon": -74.002578,
+                            "lat": 40.739777,
+                            "arrival": 1350325632000,
+                            "departure": 1350325632000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-74.002578,40.739777]}"
+                        },
+                        "legGeometry": {
+                            "points": "{}nwFfljbM?|C?N?NALANALALCNCLCLELELEJELGLGJkQr\\i{@z_BGHEJEHEJGLEJGJELELGLELGNELGNGNwTpr@yJb[cKv[}Nzd@gNdc@",
+                            "levels": null,
+                            "length": 39
+                        },
+                        "routeShortName": "L",
+                        "routeLongName": "14 St-Canarsie Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 690000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "Bedford Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "L08N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.956872,
+                                "lat": 40.717304,
+                                "arrival": 1350324930000,
+                                "departure": 1350324930000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.956872,40.717304]}"
+                            },
+                            {
+                                "name": "1 Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "L06N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981628,
+                                "lat": 40.730953,
+                                "arrival": 1350325170000,
+                                "departure": 1350325170000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981628,40.730953]}"
+                            },
+                            {
+                                "name": "3 Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "L05N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.986122,
+                                "lat": 40.732849,
+                                "arrival": 1350325230000,
+                                "departure": 1350325320000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.986122,40.732849]}"
+                            },
+                            {
+                                "name": "Union Sq - 14 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "L03N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.99073,
+                                "lat": 40.734789,
+                                "arrival": 1350325320000,
+                                "departure": 1350325320000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.99073,40.734789]}"
+                            },
+                            {
+                                "name": "6 Av",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "L02N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.996786,
+                                "lat": 40.737335,
+                                "arrival": 1350325428000,
+                                "departure": 1350325428000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.996786,40.737335]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350325632000,
+                        "endTime": 1350325632000,
+                        "distance": 144.9011972200978,
+                        "mode": "TRANSFER",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "8 Av",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "L01"
+                            },
+                            "stopCode": null,
+                            "lon": -74.002578,
+                            "lat": 40.739777,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-74.002578,40.739777]}"
+                        },
+                        "to": {
+                            "name": "14 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A31"
+                            },
+                            "stopCode": null,
+                            "lon": -74.00169,
+                            "lat": 40.740893,
+                            "arrival": 1350325812000,
+                            "departure": 1350325812000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-74.00169,40.740893]}"
+                        },
+                        "legGeometry": {
+                            "points": "q~swFbstbM_FqD",
+                            "levels": null,
+                            "length": 2
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 0,
+                        "bogusNonTransitLeg": false,
+                        "steps": []
+                    },
+                    {
+                        "startTime": 1350325812000,
+                        "endTime": 1350326694000,
+                        "distance": 6445.958579716392,
+                        "mode": "SUBWAY",
+                        "route": "C",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": 0,
+                        "routeColor": "2850AD",
+                        "routeId": "C",
+                        "routeTextColor": "FFFFFF",
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": "168 ST",
+                        "agencyId": "MTA NYCT",
+                        "tripId": "B20120610WKD_083350_C..N04R",
+                        "from": {
+                            "name": "14 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A31N"
+                            },
+                            "stopCode": null,
+                            "lon": -74.00169,
+                            "lat": 40.740893,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-74.00169,40.740893]}"
+                        },
+                        "to": {
+                            "name": "96 St",
+                            "stopId": {
+                                "agencyId": "MTA NYCT",
+                                "id": "A19N"
+                            },
+                            "stopCode": null,
+                            "lon": -73.964696,
+                            "lat": 40.791642,
+                            "arrival": 1350326694000,
+                            "departure": 1350326694000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.964696,40.791642]}"
+                        },
+                        "legGeometry": {
+                            "points": "q~swFbstbM_FqDi^wU{f@a\\k^{Ue_@mVuDcCcImFuS_Nsl@i`@oc@sYuZeScc@kY",
+                            "levels": null,
+                            "length": 13
+                        },
+                        "routeShortName": "C",
+                        "routeLongName": "8 Avenue Local",
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 882000,
+                        "bogusNonTransitLeg": false,
+                        "intermediateStops": [
+                            {
+                                "name": "23 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A30N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.998041,
+                                "lat": 40.745906,
+                                "arrival": 1350325914000,
+                                "departure": 1350325914000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.998041,40.745906]}"
+                            },
+                            {
+                                "name": "34 St - Penn Station",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A28N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.993391,
+                                "lat": 40.752287,
+                                "arrival": 1350326034000,
+                                "departure": 1350326130000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.993391,40.752287]}"
+                            },
+                            {
+                                "name": "42 St - Port Authority Bus Terminal",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A27N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.989735,
+                                "lat": 40.757308,
+                                "arrival": 1350326130000,
+                                "departure": 1350326220000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.989735,40.757308]}"
+                            },
+                            {
+                                "name": "50 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A25N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.985984,
+                                "lat": 40.762456,
+                                "arrival": 1350326220000,
+                                "departure": 1350326340000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.985984,40.762456]}"
+                            },
+                            {
+                                "name": "59 St - Columbus Circle",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A24N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.981736,
+                                "lat": 40.768296,
+                                "arrival": 1350326340000,
+                                "departure": 1350326340000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.981736,40.768296]}"
+                            },
+                            {
+                                "name": "72 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A22N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.97641,
+                                "lat": 40.775594,
+                                "arrival": 1350326430000,
+                                "departure": 1350326430000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.97641,40.775594]}"
+                            },
+                            {
+                                "name": "81 St - Museum of Natural History",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A21N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.972143,
+                                "lat": 40.781433,
+                                "arrival": 1350326526000,
+                                "departure": 1350326526000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.972143,40.781433]}"
+                            },
+                            {
+                                "name": "86 St",
+                                "stopId": {
+                                    "agencyId": "MTA NYCT",
+                                    "id": "A20N"
+                                },
+                                "stopCode": null,
+                                "lon": -73.968916,
+                                "lat": 40.785868,
+                                "arrival": 1350326604000,
+                                "departure": 1350326604000,
+                                "orig": null,
+                                "zoneId": null,
+                                "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.968916,40.785868]}"
+                            }
+                        ]
+                    },
+                    {
+                        "startTime": 1350326755000,
+                        "endTime": 1350327133000,
+                        "distance": 485.0319535146323,
+                        "mode": "WALK",
+                        "route": "",
+                        "agencyName": null,
+                        "agencyUrl": null,
+                        "agencyTimeZoneOffset": -14400000,
+                        "routeColor": null,
+                        "routeId": null,
+                        "routeTextColor": null,
+                        "interlineWithPreviousLeg": null,
+                        "tripShortName": null,
+                        "headsign": null,
+                        "agencyId": null,
+                        "tripId": null,
+                        "from": {
+                            "name": "97th Street Transverse",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96468642953846,
+                            "lat": 40.791664131692315,
+                            "arrival": null,
+                            "departure": null,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96468642953846,40.791664131692315]}"
+                        },
+                        "to": {
+                            "name": "Columbus Avenue",
+                            "stopId": null,
+                            "stopCode": null,
+                            "lon": -73.96873167460969,
+                            "lat": 40.79120161955629,
+                            "arrival": 1350327133000,
+                            "departure": 1350327133000,
+                            "orig": null,
+                            "zoneId": null,
+                            "geometry": "{\"type\": \"Point\", \"coordinates\": [-73.96873167460969,40.79120161955629]}"
+                        },
+                        "legGeometry": {
+                            "points": "{b~wFhfmbMA@fCbB|BzAmFpPdAt@",
+                            "levels": null,
+                            "length": 6
+                        },
+                        "routeShortName": null,
+                        "routeLongName": null,
+                        "boardRule": null,
+                        "alightRule": null,
+                        "rentedBike": null,
+                        "duration": 378000,
+                        "bogusNonTransitLeg": false,
+                        "steps": [
+                            {
+                                "distance": 1.3156482292926166,
+                                "relativeDirection": null,
+                                "streetName": "97th Street Transverse",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96468642953846,
+                                "lat": 40.791664131692315,
+                                "elevation": "0,30.6,1,30.6"
+                            },
+                            {
+                                "distance": 166.5835832485505,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Central Park West",
+                                "absoluteDirection": "SOUTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.9647,
+                                "lat": 40.79167,
+                                "elevation": "0,30.6,10,30.8,20,31.0,30,31.1,40,31.2,50,31.2,60,31.2,70,31.2,80,31.3,87,31.4"
+                            },
+                            {
+                                "distance": 271.5990260767429,
+                                "relativeDirection": "RIGHT",
+                                "streetName": "West 94th Street",
+                                "absoluteDirection": "NORTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96566,
+                                "lat": 40.79036,
+                                "elevation": "0,33.5,10,33.5,20,33.5,30,33.6,40,33.7,50,33.8,60,33.8,70,33.9,80,34.0,90,34.2,100,34.2,110,34.2,120,34.3,130,34.4,140,34.5,150,34.6,160,34.8,170,35.0,180,35.2,190,35.4,200,35.5,210,35.6,220,35.8,230,36.1,240,36.3,250,36.5,260,36.6,272,36.8"
+                            },
+                            {
+                                "distance": 45.53369596004623,
+                                "relativeDirection": "LEFT",
+                                "streetName": "Columbus Avenue",
+                                "absoluteDirection": "SOUTHWEST",
+                                "exit": null,
+                                "stayOn": false,
+                                "bogusName": false,
+                                "lon": -73.96847,
+                                "lat": 40.79156,
+                                "elevation": ""
+                            }
+                        ]
+                    }
+                ],
+                "tooSloped": false
+            }
+        ]
+    }
+}

@@ -27,6 +27,8 @@
     // Initialize RestKit
     RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://demo.opentripplanner.org/opentripplanner-api-webapp/ws"];
     
+    //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://sfbay.deployer.opentripplanner.org/opentripplanner-api-webapp/ws"];
+    
     // Enable automatic network activity indicator management
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
@@ -36,6 +38,19 @@
      @"lon", @"lon",
      @"lat", @"lat",
      @"geometry", @"geometry",
+     nil];
+    
+    RKObjectMapping* stepMapping = [RKObjectMapping mappingForClass:[Step class]];
+    [stepMapping mapKeyPathsToAttributes:
+     @"distance", @"distance",
+     @"relativeDirection", @"relativeDirection",
+     @"streetName", @"streetName",
+     @"absoluteDirection", @"absoluteDirection",
+     @"exit", @"exit",
+     @"stayOn", @"stayOn",
+     @"bogusName", @"bogusName",
+     @"lon", @"lon",
+     @"lat", @"lat",
      nil];
     
     RKObjectMapping* legGeometryMapping = [RKObjectMapping mappingForClass:[LegGeometry class]];
@@ -58,6 +73,7 @@
     [legMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:placeMapping];
     [legMapping mapKeyPath:@"intermediateStops" toRelationship:@"intermediateStops" withMapping:placeMapping];
     [legMapping mapKeyPath:@"legGeometry" toRelationship:@"legGeometry" withMapping:legGeometryMapping];
+    [legMapping mapKeyPath:@"steps" toRelationship:@"steps" withMapping:stepMapping];
     
     RKObjectMapping* itineraryMapping = [RKObjectMapping mappingForClass:[Itinerary class]];
     [itineraryMapping mapKeyPathsToAttributes:

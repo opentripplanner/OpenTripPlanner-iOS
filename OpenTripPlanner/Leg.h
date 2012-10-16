@@ -11,6 +11,7 @@
 
 #import "Place.h"
 #import "LegGeometry.h"
+#import "Step.h"
 
 struct OTPBounds {
     CLLocationCoordinate2D swCorner;
