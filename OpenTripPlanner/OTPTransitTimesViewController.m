@@ -69,18 +69,16 @@
     OTPItineraryCollectionView *collView = cell.collectionView;
     collView.exclusiveTouch = NO;
     collView.itinerary = itinerary;
-    
-//    NSMutableArray *routes = [NSMutableArray array];
-//    for (Leg *leg in itinerary.legs) {
-//        if ([leg.mode isEqualToString:@"WALK"] == false) {
-//            [routes addObject:leg.route];
-//        } else {
-//            [routes addObject:@"W"];
-//        }
-//    }
-    
+        
     // Set the duration label
     cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];
+    
+    // Set start and end times
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"h:mm a"];
+    cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
+    cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];;
+    
     return cell;
 }
 
