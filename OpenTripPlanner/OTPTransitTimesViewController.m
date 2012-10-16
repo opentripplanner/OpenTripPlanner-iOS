@@ -60,37 +60,46 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"itineraryCell";
-    OTPItineraryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    OTPItineraryCell *cell = (OTPItineraryCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Get the itinerary
     Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
     
-    NSMutableArray *routes = [NSMutableArray array];
-    for (Leg *leg in itinerary.legs) {
-        if ([leg.mode isEqualToString:@"WALK"] == false) {
-            [routes addObject:leg.route];
-        } else {
-            [routes addObject:@"W"];
-        }
-    }
-        
-    cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];    
+    // Store the itinerary for the collection view
+    OTPItineraryCollectionView *collView = cell.collectionView;
+    collView.itinerary = itinerary;
+    
+//    NSMutableArray *routes = [NSMutableArray array];
+//    for (Leg *leg in itinerary.legs) {
+//        if ([leg.mode isEqualToString:@"WALK"] == false) {
+//            [routes addObject:leg.route];
+//        } else {
+//            [routes addObject:@"W"];
+//        }
+//    }
+    
+    // Set the duration label
+    cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];
     return cell;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(OTPItineraryCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    Itinerary *itinerary = [self.itineraries objectAtIndex:section];
-    return (NSInteger)itinerary.legs.count;
+    return (NSInteger)collectionView.itinerary.legs.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(OTPItineraryCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"legCell";
     OTPLegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    
-    cell.legLabel.text = @"Hi";
+    Leg *leg = [collectionView.itinerary.legs objectAtIndex:indexPath.row];
+
+    if ([leg.mode isEqualToString:@"WALK"] == false) {
+        cell.legLabel.text = leg.route;
+    } else {
+        cell.legLabel.text = @"W";
+    }
+
     return cell;
 }
 

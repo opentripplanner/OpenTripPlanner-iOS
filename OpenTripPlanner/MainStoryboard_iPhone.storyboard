@@ -80,7 +80,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="X5M-Jv-gQM">
+                                        <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="X5M-Jv-gQM" customClass="OTPItineraryCollectionView">
                                             <rect key="frame" x="10" y="8" width="241" height="47"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -740,9 +740,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPItineraryCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="OTPItineraryCollectionView"/>
                 <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="OTPItineraryCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCollectionView.h"/>
         </class>
         <class className="OTPItineraryMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
@@ -808,6 +811,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="OTPSearchBarWithActivity"/>
+            </relationships>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">

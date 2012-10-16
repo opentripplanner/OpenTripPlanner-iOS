@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OTPItineraryCollectionView.h"
 
 @interface OTPItineraryCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet OTPItineraryCollectionView *collectionView;
 
 @end
