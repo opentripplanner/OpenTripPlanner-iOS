@@ -28,6 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.datePicker.date = self.date;
+    self.arrivingOrDepartingControl.selectedSegmentIndex = self.selectedSegment.intValue;
 }
 
 - (void)didReceiveMemoryWarning

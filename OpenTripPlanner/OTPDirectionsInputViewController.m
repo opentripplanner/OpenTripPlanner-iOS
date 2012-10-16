@@ -521,7 +521,8 @@ Plan *currentPlan;
     } else if ([segue.identifier isEqualToString:@"TransitTimes"]) {
         OTPTransitTimeViewController *vc = (OTPTransitTimeViewController *)segue.destinationViewController;
         vc.delegate = self;
-        vc.date = [[NSDate alloc] init];
+        vc.date = self.date;
+        vc.selectedSegment = self.arriveOrDepartByIndex;
     }
     
 }

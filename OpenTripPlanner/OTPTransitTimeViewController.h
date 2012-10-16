@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet UISegmentedControl *arrivingOrDepartingControl;
 @property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSNumber *selectedSegment;
 @property (nonatomic, strong) NSObject<OTPTransitTimeViewControllerDelegate> *delegate;
 
 - (IBAction)cancel:(id)sender;
