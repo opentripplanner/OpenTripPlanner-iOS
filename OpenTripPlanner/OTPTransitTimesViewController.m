@@ -117,9 +117,7 @@ NSDictionary *_modeIcons;
     Leg *leg = [collectionView.itinerary.legs objectAtIndex:indexPath.row];
     
     cell.legImageView.image = [_modeIcons objectForKey:leg.mode];
-    if ([leg.mode isEqualToString:@"WALK"] == false) {
-        cell.legLabel.text = leg.route;
-    } else {
+    if ([leg.mode isEqualToString:@"WALK"] || [leg.mode isEqualToString:@"BICYCLE"]) {
         OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
         unitFormatter.cutoffMultiplier = @3.28084F;
         unitFormatter.unitData = @[
@@ -129,6 +127,8 @@ NSDictionary *_modeIcons;
         ];
         
         cell.legLabel.text = [unitFormatter numberToString:leg.distance];
+    } else {
+        cell.legLabel.text = leg.route;
     }
 
     return cell;
