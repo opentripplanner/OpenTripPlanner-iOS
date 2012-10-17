@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CB95050162F4C6200CB52E5 /* temp_direction_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */; };
 		1CCFB9F1162EEAC800F40C8B /* temp_bicycle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */; };
 		1CCFB9F2162EEAC800F40C8B /* temp_bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E8162EEAC600F40C8B /* temp_bus.png */; };
 		1CCFB9F3162EEAC800F40C8B /* temp_cablecar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */; };
@@ -194,6 +195,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_direction_arrows.png; sourceTree = "<group>"; };
 		1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_bicycle.png; sourceTree = "<group>"; };
 		1CCFB9E8162EEAC600F40C8B /* temp_bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_bus.png; sourceTree = "<group>"; };
 		1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_cablecar.png; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				CC23170416260F9200EE0F48 /* mode-walk@2x.png */,
 				CC23170516260F9200EE0F48 /* path.png */,
 				CC23170616260F9200EE0F48 /* path@2x.png */,
+				1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */,
 				1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */,
 				1CCFB9E8162EEAC600F40C8B /* temp_bus.png */,
 				1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */,
@@ -869,6 +872,7 @@
 				1CCFB9F8162EEAC800F40C8B /* temp_train.png in Resources */,
 				1CCFB9F9162EEAC800F40C8B /* temp_tram.png in Resources */,
 				1CCFB9FA162EEAC800F40C8B /* temp_walk.png in Resources */,
+				1CB95050162F4C6200CB52E5 /* temp_direction_arrows.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
