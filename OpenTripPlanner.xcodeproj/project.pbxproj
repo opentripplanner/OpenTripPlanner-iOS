@@ -82,6 +82,7 @@
 		CC23172216260F9200EE0F48 /* path@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170616260F9200EE0F48 /* path@2x.png */; };
 		CC2317281627653500EE0F48 /* OTPStopBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */; };
 		CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */; };
+		CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23176C162F17A500EE0F48 /* OTPTransferCell.m */; };
 		CC2463B31619FCA6009B3468 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
@@ -289,6 +290,8 @@
 		CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPStopBasedLegCell.m; sourceTree = "<group>"; };
 		CC23172916276ABD00EE0F48 /* OTPDistanceBasedLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDistanceBasedLegCell.h; sourceTree = "<group>"; };
 		CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDistanceBasedLegCell.m; sourceTree = "<group>"; };
+		CC23176B162F17A500EE0F48 /* OTPTransferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPTransferCell.h; sourceTree = "<group>"; };
+		CC23176C162F17A500EE0F48 /* OTPTransferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransferCell.m; sourceTree = "<group>"; };
 		CC2463AC1619F6C1009B3468 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
 		CC2463AD1619F6C1009B3468 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -640,6 +643,8 @@
 				1CE5C55F16289707001E83D3 /* OTPLegCell.m */,
 				1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */,
 				1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */,
+				CC23176B162F17A500EE0F48 /* OTPTransferCell.h */,
+				CC23176C162F17A500EE0F48 /* OTPTransferCell.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -933,6 +938,7 @@
 				1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */,
 				1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */,
 				1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */,
+				CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

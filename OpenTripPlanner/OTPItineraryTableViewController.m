@@ -10,6 +10,7 @@
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
 #import "OTPStepCell.h"
+#import "OTPTransferCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
 #import "OTPUnitData.h"
@@ -24,6 +25,7 @@
     NSDictionary *_modeDisplayStrings;
     NSDictionary *_relativeDirectionDisplayStrings;
     NSDictionary *_absoluteDirectionDisplayStrings;
+    NSDictionary *_modeIcons;
 }
 @end
 
@@ -47,6 +49,22 @@
     _distanceBasedModes = @[@"WALK", @"BICYCLE", @"CAR"];
     _stopBasedModes = @[@"TRAM", @"SUBWAY", @"RAIL", @"BUS", @"FERRY", @"CABLE_CAR", @"GONDOLA", @"FUNICULAR"];
     _transferModes = @[@"TRANSFER"];
+    
+    _modeIcons = @{
+    @"WALK" : [UIImage imageNamed:@"temp_walk.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"temp_bicycle.png"],
+    @"CAR" : [UIImage imageNamed:@"temp_car.png"],
+    @"TRAM" : [UIImage imageNamed:@"temp_tram.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"temp_subway.png"],
+    @"RAIL" : [UIImage imageNamed:@"temp_train.png"],
+    @"BUS" : [UIImage imageNamed:@"temp_bus.png"],
+    @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
+    // TODO: FIX THESE
+    @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"temp_walk.png"]
+    };
     
     _modeDisplayStrings = @{
     @"WALK" : @"Walk",
@@ -187,6 +205,8 @@
             
             OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
             
+            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            
             cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
             
             NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
@@ -209,7 +229,10 @@
             
             OTPStopBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
             
-            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ towards %@", leg.route, leg.headsign];
+            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            
+            cell.iconLabel.text = leg.route;
+            cell.instructionLabel.text = [NSString stringWithFormat:@"Towards %@", leg.headsign];
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
             cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count+1];
             
@@ -217,8 +240,9 @@
             
             return cell;
         } else if ([_transferModes containsObject:leg.mode]) {
-            OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
-            
+            OTPTransferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
+            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            cell.instructionLabel.text = @"transfer to somewhere.";
             return cell;
         }
     }
@@ -232,7 +256,7 @@
     }
     
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        return 44;
+        return 60;
     }
     
     Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
@@ -242,7 +266,7 @@
     } else if ([_stopBasedModes containsObject:leg.mode]) {
         return 82;
     } else if ([_transferModes containsObject:leg.mode]) {
-        return 44;
+        return 60;
     }
     return 44;
 }

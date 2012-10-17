@@ -18,7 +18,7 @@
 
 @interface OTPTransitTimesViewController ()
 {
-NSDictionary *_modeIcons;
+    NSDictionary *_modeIcons;
 }
 @end
 
