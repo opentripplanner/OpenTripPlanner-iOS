@@ -295,7 +295,12 @@ Plan *currentPlan;
                 [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:result.location.coordinate] animated:YES];
             }
             
-            [textField setText:[(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "] andLocation:result.location];
+            // Filter out the country
+            NSArray *formattedAddressLines = (NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF != %@", result.country];
+            NSArray *filteredAddressLines = [formattedAddressLines filteredArrayUsingPredicate:predicate];
+
+            [textField setText:[filteredAddressLines componentsJoinedByString:@", "] andLocation:result.location];
             
             if (textField.otherTextField.isGeocoded) {
                 self.goButton.enabled = YES;
