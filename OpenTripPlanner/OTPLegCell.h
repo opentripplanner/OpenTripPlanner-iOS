@@ -10,5 +10,6 @@
 
 @interface OTPLegCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *legLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *legImageView;
 
 @end

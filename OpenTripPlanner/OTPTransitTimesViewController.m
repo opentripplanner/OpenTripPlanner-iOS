@@ -8,12 +8,18 @@
 
 #import "OTPTransitTimesViewController.h"
 #import "OTPItineraryTableViewController.h"
-#import "Itinerary.h"
 #import "OTPItineraryCell.h"
 #import "OTPLegCell.h"
+#import "OTPUnitData.h"
+#import "OTPUnitFormatter.h"
+
+#import "Itinerary.h"
+
 
 @interface OTPTransitTimesViewController ()
-
+{
+NSDictionary *_modeIcons;
+}
 @end
 
 @implementation OTPTransitTimesViewController
@@ -31,6 +37,23 @@
 {
     [super viewDidLoad];
 
+    _modeIcons = @{
+        @"WALK" : [UIImage imageNamed:@"temp_walk.png"],
+        @"BICYCLE" : [UIImage imageNamed:@"temp_bicycle.png"],
+        @"CAR" : [UIImage imageNamed:@"temp_car.png"],
+        @"TRAM" : [UIImage imageNamed:@"temp_tram.png"],
+        @"SUBWAY" : [UIImage imageNamed:@"temp_subway.png"],
+        @"RAIL" : [UIImage imageNamed:@"temp_train.png"],
+        @"BUS" : [UIImage imageNamed:@"temp_bus.png"],
+        @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
+        @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
+        @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
+        // TODO: FIX THESE
+        @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"],
+        @"TRANSFER" : [UIImage imageNamed:@"temp_walk.png"]
+    };
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -92,11 +115,20 @@
     static NSString *CellIdentifier = @"legCell";
     OTPLegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     Leg *leg = [collectionView.itinerary.legs objectAtIndex:indexPath.row];
-
+    
+    cell.legImageView.image = [_modeIcons objectForKey:leg.mode];
     if ([leg.mode isEqualToString:@"WALK"] == false) {
         cell.legLabel.text = leg.route;
     } else {
-        cell.legLabel.text = @"W";
+        OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
+        unitFormatter.cutoffMultiplier = @3.28084F;
+        unitFormatter.unitData = @[
+        [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"ft" pluralLabel:@"ft"],
+        [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"ft" pluralLabel:@"ft"],
+        [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mi" pluralLabel:@"mi"]
+        ];
+        
+        cell.legLabel.text = [unitFormatter numberToString:leg.distance];
     }
 
     return cell;
