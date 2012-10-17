@@ -50,7 +50,7 @@ NSDictionary *_modeIcons;
         @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
         // TODO: FIX THESE
         @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"],
-        @"TRANSFER" : [UIImage imageNamed:@"temp_walk.png"]
+        @"TRANSFER" : [UIImage imageNamed:@"temp_gondola.png"]
     };
 
     
@@ -101,10 +101,17 @@ NSDictionary *_modeIcons;
     [formatter setDateFormat:@"h:mm a"];
     cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
     cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];
-    
+
+    int legCnt = 0;
+    for(Leg *leg in itinerary.legs)
+    {
+        if ([leg.mode isEqualToString:@"TRANSFER"] == false) {
+            legCnt++;
+        }
+    }
 
     // TODO: There's a better way than this
-    if (itinerary.legs.count > 3) {
+    if (legCnt > 3) {
         cell.timesView.layer.masksToBounds = NO;
         cell.timesView.layer.shadowOffset = CGSizeMake(-2.0f, 0.0f);
         cell.timesView.layer.shadowRadius = 1.0;
@@ -125,22 +132,26 @@ NSDictionary *_modeIcons;
     OTPLegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     Leg *leg = [collectionView.itinerary.legs objectAtIndex:indexPath.row];
     
-    cell.legImageView.image = [_modeIcons objectForKey:leg.mode];
-    if ([leg.mode isEqualToString:@"WALK"] || [leg.mode isEqualToString:@"BICYCLE"]) {
-        OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
-        unitFormatter.cutoffMultiplier = @3.28084F;
-        unitFormatter.unitData = @[
-        [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"ft" pluralLabel:@"ft"],
-        [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"ft" pluralLabel:@"ft"],
-        [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mi" pluralLabel:@"mi"]
-        ];
+    if ([leg.mode isEqualToString:@"TRANSFER"] == false) {
+        cell.legImageView.image = [_modeIcons objectForKey:leg.mode];
+        if ([leg.mode isEqualToString:@"WALK"] || [leg.mode isEqualToString:@"BICYCLE"]) {
+            OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
+            unitFormatter.cutoffMultiplier = @3.28084F;
+            unitFormatter.unitData = @[
+            [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"ft" pluralLabel:@"ft"],
+            [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"ft" pluralLabel:@"ft"],
+            [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mi" pluralLabel:@"mi"]
+            ];
+            
+            cell.legLabel.text = [unitFormatter numberToString:leg.distance];
+        } else {
+            cell.legLabel.text = leg.route;
+        }
         
-        cell.legLabel.text = [unitFormatter numberToString:leg.distance];
+        return cell;
     } else {
-        cell.legLabel.text = leg.route;
+        return nil;
     }
-
-    return cell;
 }
 
 
