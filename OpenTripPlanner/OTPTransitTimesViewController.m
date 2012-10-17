@@ -10,6 +10,7 @@
 #import "OTPItineraryTableViewController.h"
 #import "OTPItineraryCell.h"
 #import "OTPLegCell.h"
+#import "OTPPlaceCell.h"
 #import "OTPUnitData.h"
 #import "OTPUnitFormatter.h"
 
@@ -72,53 +73,79 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.itineraries.count;
+    // Return the number of rows in the section.
+    if (section == 0) {
+        return 1;
+    } else if (section == 1) {
+        return self.itineraries.count;
+    }
+    
+    return 0;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 1) {
+        return @"Trip Options";
+    }
+    return nil;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"itineraryCell";
-    OTPItineraryCell *cell = (OTPItineraryCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Get the itinerary
-    Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
-    
-    // Store the itinerary for the collection view
-    OTPItineraryCollectionView *collView = cell.collectionView;
-    collView.exclusiveTouch = NO;
-    collView.itinerary = itinerary;
+    if (indexPath.section == 0) {
+        static NSString *CellIdentifier = @"placeCell";
+        OTPPlaceCell *cell = (OTPPlaceCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-    // Set the duration label
-    cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];
-    
-    // Set start and end times
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"h:mm a"];
-    cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
-    cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];
+        cell.fromLabelView.text = self.fromTextField.text;
+        cell.toLabelView.text = self.toTextField.text;
+        
+        return cell;
+    } else if (indexPath.section == 1) {
+        static NSString *CellIdentifier = @"itineraryCell";
+        OTPItineraryCell *cell = (OTPItineraryCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        // Get the itinerary
+        Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
+        
+        // Store the itinerary for the collection view
+        OTPItineraryCollectionView *collView = cell.collectionView;
+        collView.exclusiveTouch = NO;
+        collView.itinerary = itinerary;
+            
+        // Set the duration label
+        cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];
+        
+        // Set start and end times
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"h:mm a"];
+        cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
+        cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];
 
-    int legCnt = 0;
-    for(Leg *leg in itinerary.legs)
-    {
-        if ([leg.mode isEqualToString:@"TRANSFER"] == false) {
-            legCnt++;
+        int legCnt = 0;
+        for(Leg *leg in itinerary.legs)
+        {
+            if ([leg.mode isEqualToString:@"TRANSFER"] == false) {
+                legCnt++;
+            }
         }
-    }
 
-    // TODO: There's a better way than this
-    if (legCnt > 3) {
-        cell.timesView.layer.masksToBounds = NO;
-        cell.timesView.layer.shadowOffset = CGSizeMake(-2.0f, 0.0f);
-        cell.timesView.layer.shadowRadius = 1.0;
-        cell.timesView.layer.shadowOpacity = 0.2;
+        // TODO: There's a better way than this
+        if (legCnt > 3) {
+            cell.timesView.layer.masksToBounds = NO;
+            cell.timesView.layer.shadowOffset = CGSizeMake(-2.0f, 0.0f);
+            cell.timesView.layer.shadowRadius = 1.0;
+            cell.timesView.layer.shadowOpacity = 0.2;
+        }
+        
+        return cell;
     }
-    
-    return cell;
+    return nil;
 }
 
 - (NSInteger)collectionView:(OTPItineraryCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
