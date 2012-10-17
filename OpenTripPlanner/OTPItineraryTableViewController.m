@@ -61,9 +61,9 @@
     @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
     @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
     @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"temp_direction_arrows.png"],
     // TODO: FIX THESE
-    @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"temp_walk.png"]
+    @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"]
     };
     
     _modeDisplayStrings = @{
