@@ -242,7 +242,8 @@
         } else if ([_transferModes containsObject:leg.mode]) {
             OTPTransferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
             cell.iconView.image = [_modeIcons objectForKey:leg.mode];
-            cell.instructionLabel.text = @"transfer to somewhere.";
+            Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
+            cell.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route];
             return cell;
         }
     }
