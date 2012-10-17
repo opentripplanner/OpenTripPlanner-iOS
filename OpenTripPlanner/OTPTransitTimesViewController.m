@@ -90,7 +90,6 @@
     
     // Store the itinerary for the collection view
     OTPItineraryCollectionView *collView = cell.collectionView;
-    collView.exclusiveTouch = NO;
     collView.itinerary = itinerary;
         
     // Set the duration label
