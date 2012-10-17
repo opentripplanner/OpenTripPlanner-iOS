@@ -517,7 +517,10 @@ Plan *currentPlan;
 {
     // pass itineraries to next view controller
     if ([segue.identifier isEqualToString:@"ExploreItineraries"]) {
-        ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController).itineraries = currentPlan.itineraries;
+        OTPTransitTimesViewController *vc = ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController);
+        vc.itineraries = currentPlan.itineraries;
+        vc.fromTextField = self.fromTextField;
+        vc.toTextField = self.toTextField;
     } else if ([segue.identifier isEqualToString:@"TransitTimes"]) {
         OTPTransitTimeViewController *vc = (OTPTransitTimeViewController *)segue.destinationViewController;
         vc.delegate = self;

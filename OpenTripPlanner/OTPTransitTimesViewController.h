@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OTPGeocodedTextField.h"
 
 @interface OTPTransitTimesViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *itineraries;
+@property (nonatomic, strong) OTPGeocodedTextField *fromTextField;
+@property (nonatomic, strong) OTPGeocodedTextField *toTextField;
 
 - (IBAction)dismiss:(id)sender;
 

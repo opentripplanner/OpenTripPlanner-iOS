@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CB95050162F4C6200CB52E5 /* temp_direction_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */; };
 		1CCFB9F1162EEAC800F40C8B /* temp_bicycle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */; };
 		1CCFB9F2162EEAC800F40C8B /* temp_bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E8162EEAC600F40C8B /* temp_bus.png */; };
 		1CCFB9F3162EEAC800F40C8B /* temp_cablecar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */; };
@@ -20,6 +21,7 @@
 		1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */; };
 		1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55F16289707001E83D3 /* OTPLegCell.m */; };
 		1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */; };
+		1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */; };
 		930531F21620E33C00F9A230 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 930531F11620E33C00F9A230 /* Step.m */; };
 		9378875B16154885007CF24C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378875016154866007CF24C /* libRestKit.a */; };
 		9378877C16154DA1007CF24C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378877616154AF2007CF24C /* libMapView.a */; };
@@ -193,6 +195,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_direction_arrows.png; sourceTree = "<group>"; };
 		1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_bicycle.png; sourceTree = "<group>"; };
 		1CCFB9E8162EEAC600F40C8B /* temp_bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_bus.png; sourceTree = "<group>"; };
 		1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_cablecar.png; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 		1CE5C55F16289707001E83D3 /* OTPLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPLegCell.m; sourceTree = "<group>"; };
 		1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryCollectionView.h; sourceTree = "<group>"; };
 		1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryCollectionView.m; sourceTree = "<group>"; };
+		1CF66F3E162F40C50048FFC3 /* OTPPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPPlaceCell.h; sourceTree = "<group>"; };
+		1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPPlaceCell.m; sourceTree = "<group>"; };
 		930531F01620E33C00F9A230 /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		930531F11620E33C00F9A230 /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		9378874416154865007CF24C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -507,6 +512,7 @@
 				CC23170416260F9200EE0F48 /* mode-walk@2x.png */,
 				CC23170516260F9200EE0F48 /* path.png */,
 				CC23170616260F9200EE0F48 /* path@2x.png */,
+				1CB9504F162F4C6200CB52E5 /* temp_direction_arrows.png */,
 				1CCFB9E7162EEAC600F40C8B /* temp_bicycle.png */,
 				1CCFB9E8162EEAC600F40C8B /* temp_bus.png */,
 				1CCFB9E9162EEAC600F40C8B /* temp_cablecar.png */,
@@ -645,6 +651,8 @@
 				1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */,
 				CC23176B162F17A500EE0F48 /* OTPTransferCell.h */,
 				CC23176C162F17A500EE0F48 /* OTPTransferCell.m */,
+				1CF66F3E162F40C50048FFC3 /* OTPPlaceCell.h */,
+				1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -864,6 +872,7 @@
 				1CCFB9F8162EEAC800F40C8B /* temp_train.png in Resources */,
 				1CCFB9F9162EEAC800F40C8B /* temp_tram.png in Resources */,
 				1CCFB9FA162EEAC800F40C8B /* temp_walk.png in Resources */,
+				1CB95050162F4C6200CB52E5 /* temp_direction_arrows.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +948,7 @@
 				1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */,
 				1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */,
 				CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */,
+				1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
