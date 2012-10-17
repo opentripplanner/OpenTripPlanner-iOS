@@ -123,14 +123,35 @@
 
 - (NSInteger)collectionView:(OTPItineraryCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return (NSInteger)collectionView.itinerary.legs.count;
+    // We have to adjust the number of cells to ignore transfer legs.
+    int transferCount = 0;
+    for (Leg *leg in collectionView.itinerary.legs) {
+        if ([leg.mode isEqualToString:@"TRANSFER"]) {
+            transferCount++;
+        }
+    }
+    return collectionView.itinerary.legs.count - transferCount;
 }
 
 - (UICollectionViewCell *)collectionView:(OTPItineraryCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"legCell";
     OTPLegCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    Leg *leg = [collectionView.itinerary.legs objectAtIndex:indexPath.row];
+    
+    // We have to find the leg to display ignoring transfer legs. We can't use the indexPath.row directly because of this.
+    Leg *leg;
+    int nonTransferCount = 0;
+    for (Leg *legToTry in collectionView.itinerary.legs) {
+        if ([legToTry.mode isEqualToString:@"TRANSFER"]) {
+            continue;
+        }
+        
+        if (nonTransferCount == indexPath.row) {
+            leg = legToTry;
+            break;
+        }
+        nonTransferCount++;
+    }
     
     if ([leg.mode isEqualToString:@"TRANSFER"] == false) {
         cell.legImageView.image = [_modeIcons objectForKey:leg.mode];
