@@ -591,10 +591,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
-                        <segment title="W+T"/>
-                        <segment title="B+T"/>
-                        <segment title="B"/>
-                        <segment title="W"/>
+                        <segment title="" image="mode-transit.png"/>
+                        <segment title="" image="mode-bike-to-transit.png"/>
+                        <segment title="" image="mode-bike.png"/>
+                        <segment title="" image="mode-walk.png"/>
                     </segments>
                     <connections>
                         <action selector="modeChanged:" destination="peN-Jn-A0e" eventType="valueChanged" id="4gT-6R-0HK"/>
@@ -700,6 +700,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="geolocate.png" width="44" height="44"/>
+        <image name="mode-bike-to-transit.png" width="32" height="15"/>
+        <image name="mode-bike.png" width="25" height="21"/>
+        <image name="mode-transit.png" width="21" height="21"/>
+        <image name="mode-walk.png" width="14" height="21"/>
     </resources>
     <classes>
         <class className="OTPDirectionsInputViewController" superclassName="UIViewController">
@@ -842,6 +846,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
