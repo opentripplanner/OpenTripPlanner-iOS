@@ -142,7 +142,7 @@ Plan *currentPlan;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:HUD];
 	HUD.labelText = @"Routing";
-	HUD.dimBackground = YES;
+	HUD.dimBackground = NO;
     HUD.removeFromSuperViewOnHide = YES;
 	[HUD show:YES];
     

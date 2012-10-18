@@ -20,6 +20,5 @@
 @property (nonatomic, strong) Itinerary *itinerary;
 @property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;
-@property (nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
 
 @end

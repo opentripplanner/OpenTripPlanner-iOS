@@ -11,13 +11,8 @@
 #import "RouteMe.h"
 #import "Itinerary.h"
 
-@interface OTPItineraryMapViewController : UIViewController <RMMapViewDelegate>
+@interface OTPItineraryMapViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet RMMapView *mapView;
-@property (strong, nonatomic) Itinerary *itinerary;
-
-- (void)displayItinerary;
-- (void)displayItineraryOverview;
-- (void)displayLeg:(Leg*)leg;
 
 @end

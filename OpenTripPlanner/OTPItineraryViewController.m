@@ -29,20 +29,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
     self.itineraryTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryTableViewController"];
     self.itineraryTableViewController.itinerary = self.itinerary;
+    
     self.revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:self.itineraryTableViewController];
+    self.revealSideViewController.delegate = self.itineraryTableViewController;
+    [self.revealSideViewController resetOption:PPRevealSideOptionsBounceAnimations];
+    //[self.revealSideViewController resetOption:PPRevealSideOptionsShowShadows];
     [self.revealSideViewController setDirectionsToShowBounce:PPRevealSideDirectionNone];
-    [self.revealSideViewController setPanInteractionsWhenClosed:PPRevealSideInteractionNone];
+    [self.revealSideViewController setPanInteractionsWhenClosed:PPRevealSideInteractionContentView];
     [self.revealSideViewController setPanInteractionsWhenOpened:PPRevealSideInteractionContentView];
     [self.revealSideViewController setTapInteractionsWhenOpened:PPRevealSideInteractionNone];
-    [self.view addSubview:self.revealSideViewController.view];
     
-    self.itineraryMapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
-    self.itineraryMapViewController.itinerary = self.itinerary;
-    [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
-    [self.itineraryMapViewController displayItinerary];
-    [self.itineraryMapViewController displayItineraryOverview];
+    [self.view addSubview:self.revealSideViewController.view];
 }
 
 - (void)didReceiveMemoryWarning

@@ -717,7 +717,10 @@
     _rootViewController.view.layer.shadowOpacity = 0.75f;
     _rootViewController.view.layer.shadowRadius = 10.0f;
     _rootViewController.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    _rootViewController.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.layer.bounds].CGPath;
+    CGRect shadowRect = self.view.layer.bounds;
+    shadowRect.origin.y = shadowRect.origin.y - 500;
+    shadowRect.size.height = shadowRect.size.height + 1000;
+    _rootViewController.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:shadowRect].CGPath;
     _rootViewController.view.clipsToBounds = NO; 
 }
 
@@ -1120,26 +1123,27 @@
 
 #pragma mark - Gesture recognizer
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
     _panOrigin = _rootViewController.view.frame.origin;
     gestureRecognizer.enabled = YES;
     _currentPanDirection = [self getSideToClose];
     if (_currentPanDirection == PPRevealSideDirectionNone) _wasClosed = YES;
     else _wasClosed = NO;
-        
+    
     BOOL hasExceptionTouch = NO;
-    if ([touch.view isKindOfClass:[UIControl class]] && [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        if (![touch.view isKindOfClass:NSClassFromString(@"UINavigationButton")]) hasExceptionTouch = YES;
+    if ([gestureRecognizer.view isKindOfClass:[UIControl class]] && [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        if (![gestureRecognizer.view isKindOfClass:NSClassFromString(@"UINavigationButton")]) hasExceptionTouch = YES;
     }
-
+    
     BOOL hasExceptionDelegate = NO;
     if ([self.delegate respondsToSelector:@selector(pprevealSideViewController:shouldDeactivateGesture:forView:)])
         hasExceptionDelegate = [self.delegate pprevealSideViewController:self
                                                  shouldDeactivateGesture:gestureRecognizer
-                                                                 forView:touch.view];
+                                                                 forView:gestureRecognizer.view];
     
     if ([self.delegate respondsToSelector:@selector(pprevealSideViewController:directionsAllowedForPanningOnView:)]) {
-        _disabledPanGestureDirection = [self.delegate pprevealSideViewController:self directionsAllowedForPanningOnView:touch.view];
+        _disabledPanGestureDirection = [self.delegate pprevealSideViewController:self directionsAllowedForPanningOnView:gestureRecognizer.view];
     }
     else
         _disabledPanGestureDirection = PPRevealSideDirectionLeft | PPRevealSideDirectionRight | PPRevealSideDirectionTop | PPRevealSideDirectionBottom;
