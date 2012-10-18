@@ -11,11 +11,12 @@
 #import "Itinerary.h"
 #import "OTPItineraryMapViewController.h"
 #import "RouteMe.h"
+#import "PPRevealSideViewController.h"
 
-@interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate>
+@interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate, PPRevealSideViewControllerDelegate>
 
 @property(strong, nonatomic) Itinerary *itinerary;
-@property(strong, nonatomic) IBOutlet RMMapView *mapView;
+@property (nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
 
 - (void)displayItinerary;
 - (void)displayItineraryOverview;
