@@ -46,12 +46,12 @@
         // Valid text and location
         [super setText:text];
         _location = location;
-        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
+        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick-00b0d8.png"]];
     } else if (text.length > 0 && location == nil) {
         // Invalid location for text
         [super setText:text];
         _location = nil;
-        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x.png"]];
+        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross.png"]];
     }
 }
 

@@ -92,7 +92,7 @@ Plan *currentPlan;
     self.mapView.tileSource = source;
     self.mapView.delegate = self;
 	
-    self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"S", nil]];
+    self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
     CGRect controlFrame = self.switchFromAndToButton.frame;
     controlFrame.size.height = 40.f;

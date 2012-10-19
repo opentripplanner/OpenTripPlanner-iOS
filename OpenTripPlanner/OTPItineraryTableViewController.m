@@ -51,19 +51,19 @@
     _transferModes = @[@"TRANSFER"];
     
     _modeIcons = @{
-    @"WALK" : [UIImage imageNamed:@"temp_walk.png"],
-    @"BICYCLE" : [UIImage imageNamed:@"temp_bicycle.png"],
-    @"CAR" : [UIImage imageNamed:@"temp_car.png"],
-    @"TRAM" : [UIImage imageNamed:@"temp_tram.png"],
-    @"SUBWAY" : [UIImage imageNamed:@"temp_subway.png"],
-    @"RAIL" : [UIImage imageNamed:@"temp_train.png"],
-    @"BUS" : [UIImage imageNamed:@"temp_bus.png"],
-    @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
-    @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
-    @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"temp_direction_arrows.png"],
+    @"WALK" : [UIImage imageNamed:@"walk_52.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
+    @"CAR" : [UIImage imageNamed:@"car_52.png"],
+    @"TRAM" : [UIImage imageNamed:@"gondola_52.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
+    @"RAIL" : [UIImage imageNamed:@"train_52.png"],
+    @"BUS" : [UIImage imageNamed:@"bus_52.png"],
+    @"FERRY" : [UIImage imageNamed:@"ferry_52.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_52.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"gondola_52.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"transfer_52.png"],
     // TODO: FIX THESE
-    @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"]
+    @"FUNICULAR" : [UIImage imageNamed:@"train_52.png"]
     };
     
     _modeDisplayStrings = @{
@@ -211,7 +211,7 @@
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
             cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count+1];
             
-            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name];
+            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
             
             return cell;
         } else if ([_transferModes containsObject:leg.mode]) {
