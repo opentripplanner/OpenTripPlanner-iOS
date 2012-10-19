@@ -133,15 +133,6 @@
                 legCnt++;
             }
         }
-
-        // TODO: There's a better way than this
-        if (legCnt > 3) {
-            cell.timesView.layer.masksToBounds = NO;
-            cell.timesView.layer.shadowOffset = CGSizeMake(-2.0f, 0.0f);
-            cell.timesView.layer.shadowRadius = 1.0;
-            cell.timesView.layer.shadowOpacity = 0.2;
-        }
-        
         return cell;
     }
     return nil;
