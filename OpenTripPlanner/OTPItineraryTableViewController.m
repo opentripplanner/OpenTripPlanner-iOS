@@ -24,6 +24,7 @@
     NSArray *_transferModes;
     NSDictionary *_modeDisplayStrings;
     NSDictionary *_relativeDirectionDisplayStrings;
+    NSDictionary *_relativeDirectionIcons;
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
 }
@@ -79,6 +80,19 @@
     @"GONDOLA" : @"Gondola",
     @"FUNICULAR" : @"Funicular",
     @"TRANSFER" : @"Transfer"
+    };
+    
+    _relativeDirectionIcons = @{
+    @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+    @"LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+    @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_52.png"],
+    @"CONTINUE" : [UIImage imageNamed:@"continue_52.png"],
+    @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_52.png"],
+    @"RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+    @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+    @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_52.png"],
+    @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_52.png"],
+    @"ELEVATOR" : [UIImage imageNamed:@"elevator_52.png"]
     };
     
     _relativeDirectionDisplayStrings = @{
@@ -165,10 +179,12 @@
                                [_modeDisplayStrings objectForKey:leg.mode],
                                [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
                                step.streetName];
+                cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             } else {
                 instruction = [NSString stringWithFormat:@"%@ on %@",
                                [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
                                step.streetName];
+                cell.iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
             }
             cell.instructionLabel.text = instruction;
             return cell;
