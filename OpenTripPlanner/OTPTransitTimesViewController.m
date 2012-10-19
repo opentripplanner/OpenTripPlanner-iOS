@@ -39,19 +39,19 @@
     [super viewDidLoad];
 
     _modeIcons = @{
-        @"WALK" : [UIImage imageNamed:@"temp_walk.png"],
-        @"BICYCLE" : [UIImage imageNamed:@"temp_bicycle.png"],
-        @"CAR" : [UIImage imageNamed:@"temp_car.png"],
-        @"TRAM" : [UIImage imageNamed:@"temp_tram.png"],
-        @"SUBWAY" : [UIImage imageNamed:@"temp_subway.png"],
-        @"RAIL" : [UIImage imageNamed:@"temp_train.png"],
-        @"BUS" : [UIImage imageNamed:@"temp_bus.png"],
-        @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
-        @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
-        @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
-        // TODO: FIX THESE
-        @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"],
-        @"TRANSFER" : [UIImage imageNamed:@"temp_gondola.png"]
+    @"WALK" : [UIImage imageNamed:@"walk_32.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"bike_32.png"],
+    @"CAR" : [UIImage imageNamed:@"car_32.png"],
+    @"TRAM" : [UIImage imageNamed:@"gondola_32.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"train_32.png"],
+    @"RAIL" : [UIImage imageNamed:@"train_32.png"],
+    @"BUS" : [UIImage imageNamed:@"bus_32.png"],
+    @"FERRY" : [UIImage imageNamed:@"ferry_32.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_32.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"gondola_32.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"transfer_32.png"],
+    // TODO: FIX THESE
+    @"FUNICULAR" : [UIImage imageNamed:@"train_32.png"]
     };
 
     
@@ -145,6 +145,14 @@
         return cell;
     }
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 64;
+    }
+    return 88;
 }
 
 - (NSInteger)collectionView:(OTPItineraryCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

@@ -24,6 +24,7 @@
     NSArray *_transferModes;
     NSDictionary *_modeDisplayStrings;
     NSDictionary *_relativeDirectionDisplayStrings;
+    NSDictionary *_relativeDirectionIcons;
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
 }
@@ -51,19 +52,19 @@
     _transferModes = @[@"TRANSFER"];
     
     _modeIcons = @{
-    @"WALK" : [UIImage imageNamed:@"temp_walk.png"],
-    @"BICYCLE" : [UIImage imageNamed:@"temp_bicycle.png"],
-    @"CAR" : [UIImage imageNamed:@"temp_car.png"],
-    @"TRAM" : [UIImage imageNamed:@"temp_tram.png"],
-    @"SUBWAY" : [UIImage imageNamed:@"temp_subway.png"],
-    @"RAIL" : [UIImage imageNamed:@"temp_train.png"],
-    @"BUS" : [UIImage imageNamed:@"temp_bus.png"],
-    @"FERRY" : [UIImage imageNamed:@"temp_ferry.png"],
-    @"CABLE_CAR" : [UIImage imageNamed:@"temp_cablecar.png"],
-    @"GONDOLA" : [UIImage imageNamed:@"temp_gondola.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"temp_direction_arrows.png"],
+    @"WALK" : [UIImage imageNamed:@"walk_52.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
+    @"CAR" : [UIImage imageNamed:@"car_52.png"],
+    @"TRAM" : [UIImage imageNamed:@"gondola_52.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
+    @"RAIL" : [UIImage imageNamed:@"train_52.png"],
+    @"BUS" : [UIImage imageNamed:@"bus_52.png"],
+    @"FERRY" : [UIImage imageNamed:@"ferry_52.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_52.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"gondola_52.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"transfer_52.png"],
     // TODO: FIX THESE
-    @"FUNICULAR" : [UIImage imageNamed:@"temp_train.png"]
+    @"FUNICULAR" : [UIImage imageNamed:@"train_52.png"]
     };
     
     _modeDisplayStrings = @{
@@ -79,6 +80,19 @@
     @"GONDOLA" : @"Gondola",
     @"FUNICULAR" : @"Funicular",
     @"TRANSFER" : @"Transfer"
+    };
+    
+    _relativeDirectionIcons = @{
+    @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+    @"LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+    @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_52.png"],
+    @"CONTINUE" : [UIImage imageNamed:@"continue_52.png"],
+    @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_52.png"],
+    @"RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+    @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+    @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_52.png"],
+    @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_52.png"],
+    @"ELEVATOR" : [UIImage imageNamed:@"elevator_52.png"]
     };
     
     _relativeDirectionDisplayStrings = @{
@@ -165,10 +179,12 @@
                                [_modeDisplayStrings objectForKey:leg.mode],
                                [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
                                step.streetName];
+                cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             } else {
                 instruction = [NSString stringWithFormat:@"%@ on %@",
                                [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
                                step.streetName];
+                cell.iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
             }
             cell.instructionLabel.text = instruction;
             return cell;
@@ -211,7 +227,7 @@
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
             cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count+1];
             
-            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name];
+            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
             
             return cell;
         } else if ([_transferModes containsObject:leg.mode]) {
