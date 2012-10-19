@@ -94,6 +94,7 @@ Plan *currentPlan;
 	
     self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    self.switchFromAndToButton.tintColor = [UIColor blackColor];
     CGRect controlFrame = self.switchFromAndToButton.frame;
     controlFrame.size.height = 40.f;
     controlFrame.size.width = 40.f;

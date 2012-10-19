@@ -28,9 +28,9 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGColorRef startColor = CGColorRetain([UIColor colorWithRed:161.0/255.0 green:177.0/255.0 blue:203.0/255.0 alpha:1.0].CGColor);
-    CGColorRef endColor = CGColorRetain([UIColor colorWithRed:72.0/255.0 green:94.0/255.0 blue:136.0/255.0 alpha:1.0].CGColor);
-    CGColorRef highlightColor = CGColorRetain([UIColor colorWithRed:50.0/255.0 green:71.0/255.0 blue:110.0/255.0 alpha:1.0].CGColor);
+    CGColorRef startColor = CGColorRetain([UIColor colorWithRed:105.0/255.0 green:105.0/255.0 blue:105.0/255.0 alpha:1.0].CGColor);
+    CGColorRef endColor = CGColorRetain([UIColor colorWithRed:11.0/255.0 green:11.0/255.0 blue:11.0/255.0 alpha:1.0].CGColor);
+    CGColorRef highlightColor = CGColorRetain([UIColor colorWithRed:80.0/255.0 green:80.0/255.0 blue:80.0/255.0 alpha:1.0].CGColor);
     
     CGRect paperRect = self.bounds;
     

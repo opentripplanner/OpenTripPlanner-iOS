@@ -50,8 +50,7 @@
     @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_32.png"],
     @"GONDOLA" : [UIImage imageNamed:@"gondola_32.png"],
     @"TRANSFER" : [UIImage imageNamed:@"transfer_32.png"],
-    // TODO: FIX THESE
-    @"FUNICULAR" : [UIImage imageNamed:@"train_32.png"]
+    @"FUNICULAR" : [UIImage imageNamed:@"funicular_32.png"]
     };
 
     
