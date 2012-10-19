@@ -116,6 +116,7 @@
     [self.itineraryMapViewController.mapView setDelegate:self];
     
     [self displayItinerary];
+    [self displayItineraryOverview];
 }
 
 - (void)didReceiveMemoryWarning
