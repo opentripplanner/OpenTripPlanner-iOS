@@ -21,4 +21,6 @@
 @property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;
 
+- (IBAction)done:(UIBarButtonItem *)sender;
+
 @end
