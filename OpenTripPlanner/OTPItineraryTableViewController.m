@@ -223,7 +223,7 @@
             
             cell.iconLabel.text = leg.route;
             cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", leg.mode.capitalizedString, leg.headsign.capitalizedString];
-            cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
+            cell.departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
             
             int intermediateStops = leg.intermediateStops.count + 1;
             NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
