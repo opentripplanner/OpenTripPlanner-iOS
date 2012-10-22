@@ -418,8 +418,6 @@
 		CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPVerticalGradientView.h; sourceTree = "<group>"; };
 		CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HMAC.h"; sourceTree = "<group>"; };
 		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
-		CCBCD51E1635E16900037B29 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
-		CCBCD5201635E3FA00037B29 /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = usr/lib/system/libcorecrypto.dylib; sourceTree = SDKROOT; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -879,8 +877,6 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
-				CCBCD5201635E3FA00037B29 /* libcorecrypto.dylib */,
-				CCBCD51E1635E16900037B29 /* libcommonCrypto.dylib */,
 				CCF66A611632134F007A9634 /* home-icon@2x.png */,
 				CCF66A5F16321331007A9634 /* home-icon.png */,
 				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
