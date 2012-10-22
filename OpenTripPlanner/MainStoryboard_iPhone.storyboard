@@ -352,7 +352,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Distance" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="xAH-6a-vIk">
-                                            <rect key="frame" x="178" y="31" width="103" height="21"/>
+                                            <rect key="frame" x="205" y="31" width="103" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -394,7 +394,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="NumberOfStops" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="OBZ-yK-DhL">
-                                            <rect key="frame" x="191" y="32" width="94" height="21"/>
+                                            <rect key="frame" x="205" y="32" width="94" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -734,6 +734,155 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="mode-walk.png" width="14" height="21"/>
         <image name="path@2x.png" width="88" height="88"/>
     </resources>
+    <classes>
+        <class className="OTPDirectionsInputViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDirectionsInputViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="go:"/>
+                <relationship kind="action" name="modeChanged:"/>
+                <relationship kind="action" name="showUserLocation:"/>
+                <relationship kind="action" name="updatedTextField:"/>
+                <relationship kind="outlet" name="fromTextField" candidateClass="OTPGeocodedTextField"/>
+                <relationship kind="outlet" name="goButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="modeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="textFieldContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="timeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toTextField" candidateClass="OTPGeocodedTextField"/>
+                <relationship kind="outlet" name="userLocationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OTPDistanceBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDistanceBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPGeocodedTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodedTextField.h"/>
+        </class>
+        <class className="OTPItineraryCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="collectionView" candidateClass="OTPItineraryCollectionView"/>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timesView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCollectionView.h"/>
+        </class>
+        <class className="OTPItineraryDurationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryDurationView.h"/>
+        </class>
+        <class className="OTPItineraryMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="swipeLeftTableView:"/>
+                <relationship kind="action" name="swipeRightTableView:"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="OTPLegCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="legImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="legLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPPlaceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPPlaceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fromLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPSearchBarWithActivity" superclassName="UISearchBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPSearchBarWithActivity.h"/>
+        </class>
+        <class className="OTPStepCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="departureTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stopsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPTransferCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransferCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPTransitTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="arrivingOrDepartingControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="OTPTransitTimesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="OTPVerticalGradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
+        </class>
+        <class className="OTPViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="OTPSearchBarWithActivity"/>
+            </relationships>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
