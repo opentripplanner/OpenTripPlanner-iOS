@@ -422,6 +422,12 @@ Plan *currentPlan;
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
 {
     self.userLocation = userLocation;
+    // Keep any current location input field up to date
+    if (self.fromTextField.isCurrentLocation) {
+        [self.fromTextField setText:self.fromTextField.text andLocation:userLocation.location];
+    } else if (self.toTextField.isCurrentLocation) {
+        [self.toTextField setText:self.toTextField.text andLocation:userLocation.location];
+    }
     if (self.needsPanToUserLocation) {
         [self updateViewsForCurrentUserLocation];
     }
