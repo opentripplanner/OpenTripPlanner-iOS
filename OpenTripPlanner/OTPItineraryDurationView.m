@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "OTPItineraryDurationView.h"
-#import "OTPGraphicsCommon.h"
 
 @implementation OTPItineraryDurationView
 
@@ -27,8 +26,6 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
     rect = self.layer.bounds;
     
     self.layer.shadowColor = CGColorRetain([UIColor blackColor].CGColor);

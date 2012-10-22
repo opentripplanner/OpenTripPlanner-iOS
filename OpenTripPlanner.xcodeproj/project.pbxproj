@@ -80,6 +80,7 @@
 		CC9DC0481614F5F200C8B22E /* OTPVerticalGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */; };
 		CC9DC0491614F5F200C8B22E /* OTPGraphicsCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0441614F5F200C8B22E /* OTPGraphicsCommon.m */; };
 		CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */; };
+		CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD5231635FC9900037B29 /* OTPGradientView.m */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
 		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
@@ -418,6 +419,8 @@
 		CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPVerticalGradientView.h; sourceTree = "<group>"; };
 		CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HMAC.h"; sourceTree = "<group>"; };
 		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
+		CCBCD5221635FC9900037B29 /* OTPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGradientView.h; sourceTree = "<group>"; };
+		CCBCD5231635FC9900037B29 /* OTPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGradientView.m; sourceTree = "<group>"; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -986,6 +989,8 @@
 				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
 				CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */,
 				CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */,
+				CCBCD5221635FC9900037B29 /* OTPGradientView.h */,
+				CCBCD5231635FC9900037B29 /* OTPGradientView.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -1391,6 +1396,7 @@
 				CC23179A162F628D00EE0F48 /* PPRevealSideViewController.m in Sources */,
 				CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */,
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
+				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
