@@ -51,4 +51,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)done:(UIBarButtonItem *)sender {
+    [self dismissModalViewControllerAnimated:YES];
+     }
+
 @end

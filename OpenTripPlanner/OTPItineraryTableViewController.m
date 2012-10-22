@@ -222,11 +222,14 @@
             cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             
             cell.iconLabel.text = leg.route;
-            cell.instructionLabel.text = [NSString stringWithFormat:@"Towards %@", leg.headsign.capitalizedString];
+            cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", leg.mode.capitalizedString, leg.headsign.capitalizedString];
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
-            cell.stopsLabel.text = [NSString stringWithFormat:@"%u stops", leg.intermediateStops.count+1];
             
-            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
+            int intermediateStops = leg.intermediateStops.count + 1;
+            NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
+            cell.stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
+            
+            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
             
             return cell;
         } else if ([_transferModes containsObject:leg.mode]) {
@@ -257,7 +260,7 @@
     } else if ([_stopBasedModes containsObject:leg.mode]) {
         return 82;
     } else if ([_transferModes containsObject:leg.mode]) {
-        return 60;
+        return 40;
     }
     return 44;
 }
@@ -299,6 +302,9 @@
         return YES;
     }
     return NO;
+}
+
+- (IBAction)Done:(UIBarButtonItem *)sender {
 }
 
 - (void) displayItinerary
@@ -379,4 +385,7 @@
     mapShowing = NO;
 }
 
+- (IBAction)done:(UIBarButtonItem *)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end
