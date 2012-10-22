@@ -25,9 +25,11 @@
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     // Initialize RestKit
-    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://demo.opentripplanner.org/opentripplanner-api-webapp/ws"];
+    //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://demo.opentripplanner.org/opentripplanner-api-webapp/ws"];
     
     //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://sfbay.deployer.opentripplanner.org/opentripplanner-api-webapp/ws"];
+    
+    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://otpna.deployer.opentripplanner.org/opentripplanner-api-webapp/ws"];
     
     // Enable automatic network activity indicator management
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;

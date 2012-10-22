@@ -79,6 +79,7 @@
 		CC9DC0471614F5F200C8B22E /* OTPTransitTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0411614F5F200C8B22E /* OTPTransitTimeViewController.m */; };
 		CC9DC0481614F5F200C8B22E /* OTPVerticalGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */; };
 		CC9DC0491614F5F200C8B22E /* OTPGraphicsCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0441614F5F200C8B22E /* OTPGraphicsCommon.m */; };
+		CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
 		CCCDFB6A15EEAAC600B26133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6915EEAAC600B26133 /* Foundation.framework */; };
 		CCCDFB6C15EEAAC600B26133 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */; };
@@ -415,6 +416,10 @@
 		CC9DC0441614F5F200C8B22E /* OTPGraphicsCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGraphicsCommon.m; sourceTree = "<group>"; };
 		CC9DC0451614F5F200C8B22E /* OTPGraphicsCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGraphicsCommon.h; sourceTree = "<group>"; };
 		CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPVerticalGradientView.h; sourceTree = "<group>"; };
+		CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HMAC.h"; sourceTree = "<group>"; };
+		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
+		CCBCD51E1635E16900037B29 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		CCBCD5201635E3FA00037B29 /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = usr/lib/system/libcorecrypto.dylib; sourceTree = SDKROOT; };
 		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -874,6 +879,8 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
+				CCBCD5201635E3FA00037B29 /* libcorecrypto.dylib */,
+				CCBCD51E1635E16900037B29 /* libcommonCrypto.dylib */,
 				CCF66A611632134F007A9634 /* home-icon@2x.png */,
 				CCF66A5F16321331007A9634 /* home-icon.png */,
 				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
@@ -981,6 +988,8 @@
 				1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */,
 				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
 				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
+				CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */,
+				CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -1385,6 +1394,7 @@
 				1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */,
 				CC23179A162F628D00EE0F48 /* PPRevealSideViewController.m in Sources */,
 				CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */,
+				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1499,6 +1509,10 @@
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1522,6 +1536,10 @@
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

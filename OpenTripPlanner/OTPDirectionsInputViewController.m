@@ -13,6 +13,7 @@
 #import "OTPTransitTimesViewController.h"
 #import "OTPCallout.h"
 #import "SMCalloutView.h"
+#import "NSString+HMAC.h"
 
 NSString * const kTransitModeTypeArray[] = {
     @"WALK,TRANSIT",
@@ -194,12 +195,16 @@ Plan *currentPlan;
     NSString *mode = kTransitModeTypeArray[self.modeControl.selectedSegmentIndex];
     NSString *arriveBy = kArriveByArray[self.arriveOrDepartByIndex.intValue];
     
+    NSString *secret = @"8AcRe4usPEpEThuW";
+    NSString *apiKey = @"joyride";
+    NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
+    
     
     NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
                             @"optimize", @"QUICK",
                             @"time", timeString,
                             @"arriveBy", arriveBy,
-                            @"routerId", @"req-241",
+                            //@"routerId", @"req-241",
                             //@"routerId", @"req-92",
                             @"maxWalkDistance", @"840",
                             @"fromPlace", fromString,
@@ -207,6 +212,8 @@ Plan *currentPlan;
                             @"date", dateString,
                             @"mode", mode,
                             @"showIntermediateStops", @"true",
+                            @"apiKey", apiKey,
+                            @"signature", signature,
                             nil];
     
     NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
