@@ -136,7 +136,7 @@ Plan *currentPlan;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //[self.fromTextField becomeFirstResponder];
+
 }
 
 - (void)go:(id)sender
@@ -175,6 +175,61 @@ Plan *currentPlan;
     [UIView animateWithDuration:0.5 animations:^{
         self.userLocationButton.center = CGPointMake(self.userLocationButton.center.x, self.userLocationButton.center.y + keyboardRect.size.height);
     }];
+}
+
+- (void)updateTextField:(OTPGeocodedTextField *)textField withText:(NSString *)text andLocation:(CLLocation *)location
+{
+    // Set the text field properties so its views reflect current data
+    [textField setText:text andLocation:location];
+    
+    // Enable/disable go button
+    if (textField.isGeocoded && textField.otherTextField.isGeocoded) {
+        self.goButton.enabled = YES;
+    } else {
+        self.goButton.enabled = NO;
+    }
+    
+    // Manage map annotations
+    // If we are not geocoded, check if any corresponding map annotations exist and remove them
+    if (!textField.isGeocoded) {
+        // If the text field is associated with a pin, remove it from the map
+        if (textField == self.fromTextField && _fromAnnotation != nil) {
+            [self.mapView removeAnnotation:_fromAnnotation];
+            _fromAnnotation = nil;
+        } else if (textField == self.toTextField && _toAnnotation != nil) {
+            [self.mapView removeAnnotation:_toAnnotation];
+            _toAnnotation = nil;
+        }
+    } else {
+        if (!textField.isCurrentLocation) {
+            // We are geocoded and user location, so add an annotation to the map
+            RMAnnotation* placeAnnotation = [RMAnnotation
+                                             annotationWithMapView:self.mapView
+                                             coordinate:location.coordinate
+                                             andTitle:nil];
+            
+            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
+            marker.zPosition = 10;
+            
+            placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
+            
+            [self.mapView addAnnotation:placeAnnotation];
+            
+            if (textField == self.fromTextField) {
+                _fromAnnotation = placeAnnotation;
+            } else {
+                _toAnnotation = placeAnnotation;
+            }
+        }
+        if (self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) {
+            if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
+                [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:location.coordinate] animated:YES];
+            }
+        } else if (textField.isGeocoded && textField.otherTextField.isGeocoded) {
+            [self showFromAndToLocations];
+        }
+    }
 }
 
 
@@ -222,30 +277,6 @@ Plan *currentPlan;
     [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
-//- (void)planTripFromCurrentLocationTo:(CLLocationCoordinate2D)endPoint
-//{
-//    if (self.userLocation == nil) {
-//        needsRouting = YES;
-//        currentLocationRoutingSelector = @selector(planTripFromCurrentLocationTo:);
-//        currentLocationToOrFromPoint = endPoint;
-//        [self showUserLocation];
-//    } else {
-//        [self planTripFrom:self.userLocation.coordinate to:endPoint];
-//    }
-//}
-//
-//- (void)planTripToCurrentLocationFrom:(CLLocationCoordinate2D)startPoint
-//{
-//    if (self.userLocation == nil) {
-//        needsRouting = YES;
-//        currentLocationRoutingSelector = @selector(planTripToCurrentLocationFrom:);
-//        currentLocationToOrFromPoint = startPoint;
-//        [self showUserLocation];
-//    } else {
-//        [self planTripFrom:startPoint to:self.userLocation.coordinate];
-//    }
-//}
-
 - (void)geocodeStringInTextField:(OTPGeocodedTextField *)textField
 {
     // TODO: If we want to pass a region to the geocoder, we should have a coordinate property on this thing
@@ -257,8 +288,6 @@ Plan *currentPlan;
     [loadingIndicator startAnimating];
     textField.rightView = loadingIndicator;
     
-    self.goButton.enabled = NO;
-    
     [geocoder geocodeAddressString:textField.text inRegion:nil completionHandler:^(NSArray* placemarks, NSError* error) {
         if (placemarks.count == 0) {
             // no results
@@ -269,50 +298,12 @@ Plan *currentPlan;
             // Got one result, process it.
             CLPlacemark *result = [placemarks objectAtIndex:0];
             
-            //[self.mapView removeAllAnnotations];
-            
-            RMAnnotation* placeAnnotation = [RMAnnotation
-                                             annotationWithMapView:self.mapView
-                                             coordinate:result.location.coordinate
-                                             andTitle:@"Dropped Pin"];
-            
-            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
-            marker.zPosition = 10;
-            
-//            SMCalloutView *calloutView = [[SMCalloutView alloc] init];
-//            calloutView.title = [(NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"] objectAtIndex:0];
-//            
-//            OTPCallout *callout = [[OTPCallout alloc] initWithCallout:calloutView forMarker:marker inMap:self.mapView];
-//            
-//            marker.label = callout;
-            
-            placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
-            [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
-            
-            [self.mapView setZoom:13];
-            
-            [self.mapView addAnnotation:placeAnnotation];
-            
-            if (textField == self.fromTextField) {
-                _fromAnnotation = placeAnnotation;
-            } else {
-                _toAnnotation = placeAnnotation;
-            }
-            
-            if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
-                [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:result.location.coordinate] animated:YES];
-            }
-            
             // Filter out the country
             NSArray *formattedAddressLines = (NSArray *)[result.addressDictionary objectForKey:@"FormattedAddressLines"];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF != %@", result.country];
             NSArray *filteredAddressLines = [formattedAddressLines filteredArrayUsingPredicate:predicate];
 
-            [textField setText:[filteredAddressLines componentsJoinedByString:@", "] andLocation:result.location];
-            
-            if (textField.otherTextField.isGeocoded) {
-                self.goButton.enabled = YES;
-            }
+            [self updateTextField:textField withText:[filteredAddressLines componentsJoinedByString:@", "] andLocation:result.location];
         }
     }];
     
@@ -344,23 +335,13 @@ Plan *currentPlan;
 
 - (void)updatedTextField:(id)sender
 {
-    self.goButton.enabled = NO;
     OTPGeocodedTextField *textField = (OTPGeocodedTextField *)sender;
-    
-    // If the text field is associated with a pin, remove it from the map
-    if (textField == self.fromTextField && _fromAnnotation != nil) {
-        [self.mapView removeAnnotation:_fromAnnotation];
-        _fromAnnotation = nil;
-    } else if (textField == self.toTextField && _toAnnotation != nil) {
-        [self.mapView removeAnnotation:_toAnnotation];
-        _toAnnotation = nil;
-    }
     
     if (textField.otherTextField.isDroppedPin) {
         textField.otherTextField.text = @"Dropped Pin";
     }
     
-    [textField setText:textField.text andLocation:nil];
+    [self updateTextField:textField withText:textField.text andLocation:nil];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -385,13 +366,16 @@ Plan *currentPlan;
     return YES;
 }
 
-- (void)showUserLocation:(id)sender
+- (void)panToUserLocation:(id)sender
 {
-    if (self.userLocation) {
-        [self updateViewsForCurrentUserLocation];
-    }
     self.needsPanToUserLocation = YES;
+    [self enableUserLocation];
+}
+
+- (void)enableUserLocation
+{
     self.mapView.showsUserLocation = YES;
+    [self updateViewsForCurrentUserLocation];
 }
 
 - (void)updateViewsForCurrentUserLocation
@@ -399,22 +383,27 @@ Plan *currentPlan;
     if (self.userLocation == nil) {
         return;
     }
-    // Show user location on the map
-    [self.mapView setZoom:13];
-    [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:self.userLocation.coordinate] animated:YES];
     
     // Set the from or to textfields to user location
+    OTPGeocodedTextField *textField;
     if (![self.fromTextField isGeocoded] && ![self.toTextField isCurrentLocation]) {
-        [self.fromTextField setText:@"Current Location" andLocation:self.userLocation.location];
+        textField = self.fromTextField;
     } else if (![self.toTextField isGeocoded] && ![self.fromTextField isCurrentLocation]) {
-        [self.toTextField setText:@"Current Location" andLocation:self.userLocation.location];
+        textField = self.toTextField;
+    }
+    if (textField != nil) {
+        [self updateTextField:textField withText:@"Current Location" andLocation:self.userLocation.location];
     }
     
-    if (self.fromTextField.isGeocoded && self.toTextField.isGeocoded) {
-        self.goButton.enabled = YES;
+    // Show user location on the map
+    if (self.needsPanToUserLocation) {
+        [self.mapView setZoom:13];
+        [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:self.userLocation.coordinate] animated:YES];
+        self.needsPanToUserLocation = NO;
+    } else if (self.needsShowFromAndToLocations) {
+        [self showFromAndToLocations];
+        self.needsShowFromAndToLocations = NO;
     }
-    
-    self.needsPanToUserLocation = NO;
 }
 
 #pragma mark RMMapViewDelegate methods
@@ -428,7 +417,7 @@ Plan *currentPlan;
     } else if (self.toTextField.isCurrentLocation) {
         [self.toTextField setText:self.toTextField.text andLocation:userLocation.location];
     }
-    if (self.needsPanToUserLocation) {
+    if (self.needsPanToUserLocation || self.needsShowFromAndToLocations) {
         [self updateViewsForCurrentUserLocation];
     }
 }
@@ -440,6 +429,9 @@ Plan *currentPlan;
 
 - (void)singleTapOnMap:(RMMapView *)map at:(CGPoint)point
 {
+    if ((self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) && self.fromTextField.isGeocoded && self.toTextField.isGeocoded) {
+        [self showFromAndToLocations];
+    }
     [self.view endEditing:YES];
 }
 
@@ -448,25 +440,15 @@ Plan *currentPlan;
     CLLocationCoordinate2D coord = [self.mapView pixelToCoordinate:point];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     
-    RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:coord andTitle:@"pin"];
     OTPGeocodedTextField *textField;
     
     if (!self.fromTextField.isGeocoded) {
-        _fromAnnotation = annotation;
         textField = self.fromTextField;
     } else if (!self.toTextField.isGeocoded) {
-        _toAnnotation = annotation;
         textField = self.toTextField;
     } else {
         return;
     }
-    
-    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    RMMarker *layer = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor redColor]];
-    [userInfo setObject:layer forKey:@"layer"];
-    annotation.userInfo = userInfo;
-    
-    [self.mapView addAnnotation:annotation];
     
     NSString *text;
     if (textField.otherTextField.isDroppedPin && [textField.otherTextField.text isEqualToString:@"Dropped Pin"]) {
@@ -475,11 +457,7 @@ Plan *currentPlan;
     } else {
         text = @"Dropped Pin";
     }
-    [textField setText:text andLocation:location];
-    
-    if (self.fromTextField.isGeocoded && self.toTextField.isGeocoded) {
-        self.goButton.enabled = YES;
-    }
+    [self updateTextField:textField withText:text andLocation:location];
 }
 
 - (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
@@ -562,6 +540,29 @@ Plan *currentPlan;
         [self.mapView setZoom:13];
         [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:field.location.coordinate] animated:YES];
     }
+}
+
+- (void)showFromAndToLocations
+{
+    NSMutableArray *validLocations = [[NSMutableArray alloc] init];
+    if (self.fromTextField.location.coordinate.latitude != 0.0 && self.fromTextField.location.coordinate.latitude != 0.0) {
+        [validLocations addObject:self.fromTextField.location];
+    }
+    if (self.toTextField.location.coordinate.latitude != 0.0 && self.toTextField.location.coordinate.latitude != 0.0) {
+        [validLocations addObject:self.toTextField.location];
+    }
+    if (validLocations.count == 0) {
+        return;
+    }
+    CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(1000, 1000);
+    CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(-1000, -1000);
+    for (CLLocation *location in validLocations) {
+        sw.latitude = MIN(sw.latitude, location.coordinate.latitude);
+        sw.longitude = MIN(sw.longitude, location.coordinate.longitude);
+        ne.latitude = MAX(ne.latitude, location.coordinate.latitude);
+        ne.longitude = MAX(ne.longitude, location.coordinate.longitude);
+    }
+    [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
 }
 
 - (RMProjectedPoint)adjustPointForKeyboard:(CLLocationCoordinate2D)coordinate

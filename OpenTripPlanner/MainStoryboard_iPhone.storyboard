@@ -164,7 +164,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="legCell" id="4x5-lb-3Tk" customClass="OTPLegCell">
-                                                    <rect key="frame" x="0.0" y="4" width="40" height="58"/>
+                                                    <rect key="frame" x="0.0" y="2" width="40" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="58"/>
@@ -533,7 +533,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="showUserLocation:" destination="peN-Jn-A0e" eventType="touchUpInside" id="MrL-hK-Tfr"/>
+                                            <action selector="panToUserLocation:" destination="peN-Jn-A0e" eventType="touchUpInside" id="Acj-Z8-cqt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -751,7 +751,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="go:"/>
                 <relationship kind="action" name="modeChanged:"/>
-                <relationship kind="action" name="showUserLocation:"/>
+                <relationship kind="action" name="panToUserLocation:"/>
                 <relationship kind="action" name="updatedTextField:"/>
                 <relationship kind="outlet" name="fromTextField" candidateClass="OTPGeocodedTextField"/>
                 <relationship kind="outlet" name="goButton" candidateClass="UIBarButtonItem"/>
@@ -895,9 +895,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

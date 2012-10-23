@@ -15,7 +15,7 @@
 #import "Leg.h"
 #import "Itinerary.h"
 #import "Plan.h"
-#import "OTPViewController.h"
+#import "OTPDirectionsInputViewController.h"
 
 @implementation OTPAppDelegate
 
@@ -111,18 +111,21 @@
         MKDirectionsRequest* directionsInfo = [[MKDirectionsRequest alloc] initWithContentsOfURL:url];
         // TO DO: Plot and display the route using the
         //   source and destination properties of directionsInfo.
-        OTPViewController *viewContorller = (OTPViewController*)self.window.rootViewController;
+        OTPDirectionsInputViewController *viewContorller = (OTPDirectionsInputViewController*)self.window.rootViewController;
         
-//        if (directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
-//            [viewContorller planTripFromCurrentLocationTo:directionsInfo.destination.placemark.coordinate];
-//        } else if (!directionsInfo.source.isCurrentLocation && directionsInfo.destination.isCurrentLocation) {
-//            [viewContorller planTripToCurrentLocationFrom:directionsInfo.source.placemark.coordinate];
-//        } else if (!directionsInfo.source.isCurrentLocation && !directionsInfo.destination.isCurrentLocation) {
-//            [viewContorller planTripFrom:directionsInfo.source.placemark.coordinate
-//                                      to:directionsInfo.destination.placemark.coordinate];
-//        } else {
-//            return NO;
-//        }
+        if (directionsInfo.source.isCurrentLocation) {
+            [viewContorller updateTextField:viewContorller.toTextField withText:@"End Location" andLocation:directionsInfo.destination.placemark.location];
+            viewContorller.needsShowFromAndToLocations = YES;
+            [viewContorller enableUserLocation];
+        } else if (directionsInfo.destination.isCurrentLocation) {
+            [viewContorller updateTextField:viewContorller.fromTextField withText:@"Start Location" andLocation:directionsInfo.source.placemark.location];
+            viewContorller.needsShowFromAndToLocations = YES;
+            [viewContorller enableUserLocation];
+        } else {
+            [viewContorller updateTextField:viewContorller.fromTextField withText:@"Start Location" andLocation:directionsInfo.source.placemark.location];
+            [viewContorller updateTextField:viewContorller.toTextField withText:@"End Location" andLocation:directionsInfo.destination.placemark.location];
+            [viewContorller showFromAndToLocations];
+        }
         return YES;
     }
     else {
