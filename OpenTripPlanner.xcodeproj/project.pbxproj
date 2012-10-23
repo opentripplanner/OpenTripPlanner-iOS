@@ -421,7 +421,7 @@
 		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
 		CCBCD5221635FC9900037B29 /* OTPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGradientView.h; sourceTree = "<group>"; };
 		CCBCD5231635FC9900037B29 /* OTPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGradientView.m; sourceTree = "<group>"; };
-		CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCDFB6315EEAAC600B26133 /* Joyride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joyride.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -899,7 +899,7 @@
 		CCCDFB6415EEAAC600B26133 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */,
+				CCCDFB6315EEAAC600B26133 /* Joyride.app */,
 				CCCDFB7E15EEAAC600B26133 /* OpenTripPlannerTests.octest */,
 			);
 			name = Products;
@@ -1045,7 +1045,7 @@
 			);
 			name = OpenTripPlanner;
 			productName = OpenTripPlanner;
-			productReference = CCCDFB6315EEAAC600B26133 /* OpenTripPlanner.app */;
+			productReference = CCCDFB6315EEAAC600B26133 /* Joyride.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CCCDFB7D15EEAAC600B26133 /* OpenTripPlannerTests */ = {
@@ -1519,7 +1519,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Joyride;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1546,7 +1546,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Joyride;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F64AD11-2BAD-455C-AE62-8614CDE74B2D";
 				WRAPPER_EXTENSION = app;
 			};
