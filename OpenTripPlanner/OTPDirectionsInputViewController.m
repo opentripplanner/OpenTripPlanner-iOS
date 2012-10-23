@@ -527,6 +527,7 @@ Plan *currentPlan;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
 {
+    [HUD hide:YES];
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     NSLog(@"Hit error: %@", error);
