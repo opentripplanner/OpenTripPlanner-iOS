@@ -17,8 +17,8 @@
 
 NSString * const kTransitModeTypeArray[] = {
     @"WALK,TRANSIT",
-    @"BIKE,TRANSIT",
-    @"BIKE",
+    @"BICYCLE,TRANSIT",
+    @"BICYCLE",
     @"WALK"
 };
 
@@ -31,6 +31,8 @@ NSString * const kArriveByArray[] = {
 {
     RMAnnotation *_fromAnnotation;
     RMAnnotation *_toAnnotation;
+    UIImage *_fromPinImage;
+    UIImage *_toPinImage;
 }
 
 - (void)switchFromAndTo:(id)sender;
@@ -64,6 +66,9 @@ Plan *currentPlan;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _fromPinImage = [UIImage imageNamed:@"marker-start.png"];
+    _toPinImage = [UIImage imageNamed:@"marker-end.png"];
     
     self.goButton.enabled = NO;
     
@@ -208,19 +213,13 @@ Plan *currentPlan;
                                              coordinate:location.coordinate
                                              andTitle:nil];
             
-            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor blueColor]];
-            marker.zPosition = 10;
-            
-            placeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
-            [placeAnnotation.userInfo setObject:marker forKey:@"layer"];
-            
-            [self.mapView addAnnotation:placeAnnotation];
-            
             if (textField == self.fromTextField) {
                 _fromAnnotation = placeAnnotation;
             } else {
                 _toAnnotation = placeAnnotation;
             }
+            
+            [self.mapView addAnnotation:placeAnnotation];
         }
         if (self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) {
             //if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
@@ -317,6 +316,13 @@ Plan *currentPlan;
     _fromAnnotation = _toAnnotation;
     _toAnnotation = tmpAnnotation;
     
+    [self.mapView removeAllAnnotations];
+    if (_fromAnnotation != nil) {
+        [self.mapView addAnnotation:_fromAnnotation];
+    }
+    if (_toAnnotation != nil) {
+        [self.mapView addAnnotation:_toAnnotation];
+    }
     [self panMapToCurrentGeocodedTextField];
 }
 
@@ -467,7 +473,17 @@ Plan *currentPlan;
 
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-    return [annotation.userInfo objectForKey:@"layer"];
+    UIImage *image;
+    if (annotation == _fromAnnotation) {
+        image = _fromPinImage;
+    } else if (annotation == _toAnnotation) {
+        image = _toPinImage;
+    } else {
+        return nil;
+    }
+    RMMarker *marker = [[RMMarker alloc] initWithUIImage:image];
+    marker.zPosition = 10;
+    return marker;
 }
 
 - (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction
