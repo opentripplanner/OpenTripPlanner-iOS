@@ -223,9 +223,9 @@ Plan *currentPlan;
             }
         }
         if (self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) {
-            if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
-                [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:location.coordinate] animated:YES];
-            }
+            //if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
+                //[self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:location.coordinate] animated:YES];
+            //}
         } else if (textField.isGeocoded && textField.otherTextField.isGeocoded) {
             [self showFromAndToLocations];
         }
@@ -537,8 +537,8 @@ Plan *currentPlan;
         field = self.toTextField;
     }
     if (field && field.isGeocoded) {
-        [self.mapView setZoom:13];
-        [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:field.location.coordinate] animated:YES];
+        CLLocationCoordinate2D adjustedCoord = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:field.location.coordinate]];
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoord northEast:adjustedCoord animated:YES];
     }
 }
 
