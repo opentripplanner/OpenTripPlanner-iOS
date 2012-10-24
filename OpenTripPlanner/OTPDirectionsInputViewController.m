@@ -397,8 +397,8 @@ Plan *currentPlan;
     
     // Show user location on the map
     if (self.needsPanToUserLocation) {
-        [self.mapView setZoom:13];
-        [self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:self.userLocation.coordinate] animated:YES];
+        CLLocationCoordinate2D adjustedCoordinate = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:self.userLocation.coordinate]];
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoordinate northEast:adjustedCoordinate animated:YES];
         self.needsPanToUserLocation = NO;
     } else if (self.needsShowFromAndToLocations) {
         [self showFromAndToLocations];
