@@ -877,6 +877,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CCBCD5251639BE8C00037B29 /* ItineraryView */ = {
+			isa = PBXGroup;
+			children = (
+				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
+				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
+				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
+				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
+				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
+				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
+			);
+			name = ItineraryView;
+			sourceTree = "<group>";
+		};
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
@@ -930,6 +943,7 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				CCBCD5251639BE8C00037B29 /* ItineraryView */,
 				CC231798162F628D00EE0F48 /* PPRevealSideViewController.h */,
 				CC231799162F628D00EE0F48 /* PPRevealSideViewController.m */,
 				9388193E161927A5002021EA /* MBProgressHUD.h */,
@@ -959,12 +973,6 @@
 				CCE8191F160131FD0034E8AC /* OTPCallout.h */,
 				CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */,
 				CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */,
-				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
-				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
-				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
-				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
-				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
-				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
 				CC2317261627653500EE0F48 /* OTPStopBasedLegCell.h */,
 				CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */,
 				CC23172916276ABD00EE0F48 /* OTPDistanceBasedLegCell.h */,

@@ -804,6 +804,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="swipeLeftTableView:"/>
                 <relationship kind="action" name="swipeRightTableView:"/>
             </relationships>

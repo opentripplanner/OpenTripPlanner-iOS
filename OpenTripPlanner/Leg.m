@@ -48,14 +48,10 @@
             northEastPoint = point;
             southWestPoint = point;
         } else {
-            if (point.longitude > northEastPoint.longitude)
-                northEastPoint.longitude = point.longitude;
-            if(point.latitude > northEastPoint.latitude)
-                northEastPoint.latitude = point.latitude;
-            if (point.longitude < southWestPoint.longitude)
-                southWestPoint.longitude = point.longitude;
-            if (point.latitude < southWestPoint.latitude)
-                southWestPoint.latitude = point.latitude;
+            southWestPoint.longitude = MIN(southWestPoint.longitude, point.longitude);
+            southWestPoint.latitude = MIN(southWestPoint.latitude, point.latitude);
+            northEastPoint.longitude = MAX(northEastPoint.longitude, point.longitude);
+            northEastPoint.latitude = MAX(northEastPoint.latitude, point.latitude);
         }
         counter++;
     }

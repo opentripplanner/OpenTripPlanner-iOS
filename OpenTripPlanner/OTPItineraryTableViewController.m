@@ -27,7 +27,10 @@
     NSDictionary *_relativeDirectionIcons;
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
+    NSMutableArray *_shapesForLegs;
 }
+
+- (void)resetLegsWithColor:(UIColor *)color;
 @end
 
 @implementation OTPItineraryTableViewController
@@ -117,6 +120,8 @@
     @"WEST" : @"west",
     @"NORTHWEST" : @"northwest"
     };
+    
+    _shapesForLegs = [[NSMutableArray alloc] init];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -274,6 +279,7 @@
     }
     
     if (indexPath.row == 0) {
+        [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         Leg *leg = [self.itinerary.legs objectAtIndex:0];
@@ -281,6 +287,9 @@
         [self.itineraryMapViewController.mapView setZoom:16];
         [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
     } else {
+        [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
+        RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
+        shape.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
         [self displayLeg:[self.itinerary.legs objectAtIndex:indexPath.row - 1]];
     }
 }
@@ -317,19 +326,18 @@
             RMAnnotation* startAnnotation = [RMAnnotation
                                              annotationWithMapView:self.itineraryMapViewController.mapView
                                              coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
-                                             andTitle:leg.from.name];
-            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor greenColor]];
-            marker.zPosition = 10;
+                                             andTitle:nil];
+            RMMarker *marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"marker-start.png"]];
             startAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [startAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:startAnnotation];
-        } else if (legCounter == self.itinerary.legs.count - 1) {
+        }
+        if (legCounter == self.itinerary.legs.count - 1) {
             RMAnnotation* endAnnotation = [RMAnnotation
                                            annotationWithMapView:self.itineraryMapViewController.mapView
                                            coordinate:CLLocationCoordinate2DMake(leg.to.lat.floatValue, leg.to.lon.floatValue)
                                            andTitle:leg.from.name];
-            RMMarker *marker = [[RMMarker alloc] initWithMapBoxMarkerImage:nil tintColor:[UIColor redColor]];
-            marker.zPosition = 10;
+            RMMarker *marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"marker-end.png"]];
             endAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [endAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:endAnnotation];
@@ -353,6 +361,8 @@
             counter++;
         }
         
+        [_shapesForLegs addObject:polyline];
+        
         RMAnnotation *polylineAnnotation = [[RMAnnotation alloc] init];
         [polylineAnnotation setMapView:self.itineraryMapViewController.mapView];
         polylineAnnotation.coordinate = ((CLLocation*)[leg.decodedLegGeometry objectAtIndex:0]).coordinate;
@@ -360,6 +370,28 @@
         polylineAnnotation.userInfo = [[NSMutableDictionary alloc] init];
         [polylineAnnotation.userInfo setObject:polyline forKey:@"layer"];
         [self.itineraryMapViewController.mapView addAnnotation:polylineAnnotation];
+        
+        
+        RMShape *bbox = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
+        bbox.lineColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        bbox.lineWidth = 2;
+        bbox.lineCap = kCALineCapRound;
+        bbox.lineJoin = kCALineJoinRound;
+        bbox.zPosition = 0;
+        
+        [bbox moveToCoordinate:leg.bounds.swCorner];
+        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.swCorner.latitude, leg.bounds.neCorner.longitude)];
+        [bbox addLineToCoordinate:leg.bounds.neCorner];
+        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.neCorner.latitude, leg.bounds.swCorner.longitude)];
+        [bbox closePath];
+        
+        RMAnnotation *bboxAnnotation = [[RMAnnotation alloc] init];
+        [bboxAnnotation setMapView:self.itineraryMapViewController.mapView];
+        bboxAnnotation.coordinate = leg.bounds.swCorner;
+        [bboxAnnotation setBoundingBoxFromLocations:leg.decodedLegGeometry];
+        bboxAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+        [bboxAnnotation.userInfo setObject:bbox forKey:@"layer"];
+        [self.itineraryMapViewController.mapView addAnnotation:bboxAnnotation];
         
         legCounter++;
     }
@@ -378,6 +410,13 @@
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
     return [annotation.userInfo objectForKey:@"layer"];
+}
+
+- (void)resetLegsWithColor:(UIColor *)color
+{
+    for (RMShape *shape in _shapesForLegs) {
+        shape.lineColor = color;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
