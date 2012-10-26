@@ -258,7 +258,7 @@ Plan *currentPlan;
                             @"optimize", @"QUICK",
                             @"time", timeString,
                             @"arriveBy", arriveBy,
-                            @"routerId", @"req-241",
+                            //@"routerId", @"req-241",
                             //@"routerId", @"req-92",
                             @"maxWalkDistance", @"840",
                             @"fromPlace", fromString,
