@@ -256,7 +256,7 @@
             <objects>
                 <viewController autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Dt8-uf-am2">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="hD3-1b-1J4">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="hD3-1b-1J4">
                             <connections>
                                 <action selector="done:" destination="P28-S2-VM9" id="gGX-nJ-vmJ"/>
                             </connections>

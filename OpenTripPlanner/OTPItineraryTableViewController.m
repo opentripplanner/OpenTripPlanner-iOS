@@ -344,9 +344,6 @@
     return NO;
 }
 
-- (IBAction)Done:(UIBarButtonItem *)sender {
-}
-
 - (void) displayItinerary
 {
     [self.itineraryMapViewController.mapView removeAllAnnotations];
@@ -455,7 +452,4 @@
     mapShowing = NO;
 }
 
-- (IBAction)done:(UIBarButtonItem *)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
 @end
