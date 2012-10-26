@@ -133,6 +133,7 @@
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController.mapView setDelegate:self];
     self.itineraryMapViewController.mapView.topPadding = 100;
+    self.itineraryMapViewController.instructionLabel.hidden = YES;
     
     [self displayItinerary];
     [self displayItineraryOverview];
@@ -280,7 +281,11 @@
     }
     
     if (indexPath.row == 0) {
-        self.itineraryMapViewController.instructionLabel.hidden = YES;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+        } completion:^(BOOL finished) {
+            self.itineraryMapViewController.instructionLabel.hidden = YES;
+        }];
         self.itineraryMapViewController.mapView.topPadding = 0;
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
@@ -305,8 +310,14 @@
             self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route, [_modeDisplayStrings objectForKey:nextLeg.mode]];
         }
         
-        self.itineraryMapViewController.instructionLabel.hidden = NO;
         [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
         
         self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
         
