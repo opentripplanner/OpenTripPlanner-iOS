@@ -281,6 +281,16 @@
                             <view contentMode="scaleToFill" id="Bnn-XQ-jBQ" customClass="RMMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNf-0W-Obj" customClass="OTPInsetLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -288,6 +298,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="instructionLabel" destination="cNf-0W-Obj" id="e40-ro-Get"/>
                         <outlet property="mapView" destination="Bnn-XQ-jBQ" id="oS8-VS-5Ic"/>
                     </connections>
                 </viewController>
@@ -779,6 +790,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGradientView.h"/>
         </class>
+        <class className="OTPInsetLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPInsetLabel.h"/>
+        </class>
         <class className="OTPItineraryCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
             <relationships>
@@ -798,14 +812,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPItineraryMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
             </relationships>
         </class>
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="swipeLeftTableView:"/>
                 <relationship kind="action" name="swipeRightTableView:"/>
             </relationships>

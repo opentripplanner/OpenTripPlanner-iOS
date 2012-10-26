@@ -132,6 +132,7 @@
     self.itineraryMapViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController.mapView setDelegate:self];
+    self.itineraryMapViewController.mapView.topPadding = 100;
     
     [self displayItinerary];
     [self displayItineraryOverview];
@@ -202,7 +203,7 @@
             
             cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
             
             NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
             NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
@@ -279,6 +280,8 @@
     }
     
     if (indexPath.row == 0) {
+        self.itineraryMapViewController.instructionLabel.hidden = YES;
+        self.itineraryMapViewController.mapView.topPadding = 0;
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
@@ -290,7 +293,24 @@
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
         RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
         shape.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
-        [self displayLeg:[self.itinerary.legs objectAtIndex:indexPath.row - 1]];
+        
+        Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
+        
+        if ([_distanceBasedModes containsObject:leg.mode]) {
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@.", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
+        } else if ([_stopBasedModes containsObject:leg.mode]) {
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat: @"Take the %@ %@ towards %@ and get off at %@.", leg.route, leg.mode.capitalizedString, leg.headsign.capitalizedString, leg.to.name.capitalizedString];
+        } else if ([_transferModes containsObject:leg.mode]) {
+            Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route, [_modeDisplayStrings objectForKey:nextLeg.mode]];
+        }
+        
+        self.itineraryMapViewController.instructionLabel.hidden = NO;
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        
+        [self displayLeg:leg];
     }
 }
 
@@ -372,26 +392,26 @@
         [self.itineraryMapViewController.mapView addAnnotation:polylineAnnotation];
         
         
-        RMShape *bbox = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
-        bbox.lineColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-        bbox.lineWidth = 2;
-        bbox.lineCap = kCALineCapRound;
-        bbox.lineJoin = kCALineJoinRound;
-        bbox.zPosition = 0;
-        
-        [bbox moveToCoordinate:leg.bounds.swCorner];
-        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.swCorner.latitude, leg.bounds.neCorner.longitude)];
-        [bbox addLineToCoordinate:leg.bounds.neCorner];
-        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.neCorner.latitude, leg.bounds.swCorner.longitude)];
-        [bbox closePath];
-        
-        RMAnnotation *bboxAnnotation = [[RMAnnotation alloc] init];
-        [bboxAnnotation setMapView:self.itineraryMapViewController.mapView];
-        bboxAnnotation.coordinate = leg.bounds.swCorner;
-        [bboxAnnotation setBoundingBoxFromLocations:leg.decodedLegGeometry];
-        bboxAnnotation.userInfo = [[NSMutableDictionary alloc] init];
-        [bboxAnnotation.userInfo setObject:bbox forKey:@"layer"];
-        [self.itineraryMapViewController.mapView addAnnotation:bboxAnnotation];
+//        RMShape *bbox = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
+//        bbox.lineColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//        bbox.lineWidth = 2;
+//        bbox.lineCap = kCALineCapRound;
+//        bbox.lineJoin = kCALineJoinRound;
+//        bbox.zPosition = 0;
+//        
+//        [bbox moveToCoordinate:leg.bounds.swCorner];
+//        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.swCorner.latitude, leg.bounds.neCorner.longitude)];
+//        [bbox addLineToCoordinate:leg.bounds.neCorner];
+//        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.neCorner.latitude, leg.bounds.swCorner.longitude)];
+//        [bbox closePath];
+//        
+//        RMAnnotation *bboxAnnotation = [[RMAnnotation alloc] init];
+//        [bboxAnnotation setMapView:self.itineraryMapViewController.mapView];
+//        bboxAnnotation.coordinate = leg.bounds.swCorner;
+//        [bboxAnnotation setBoundingBoxFromLocations:leg.decodedLegGeometry];
+//        bboxAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+//        [bboxAnnotation.userInfo setObject:bbox forKey:@"layer"];
+//        [self.itineraryMapViewController.mapView addAnnotation:bboxAnnotation];
         
         legCounter++;
     }
