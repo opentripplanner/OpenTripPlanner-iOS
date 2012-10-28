@@ -228,8 +228,8 @@
             
             cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.iconLabel.text = leg.route;
-            cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", leg.mode.capitalizedString, leg.headsign.capitalizedString];
+            cell.iconLabel.text = leg.route.capitalizedString;
+            cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", [_modeDisplayStrings objectForKey:leg.mode] , leg.headsign.capitalizedString];
             cell.departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
             
             int intermediateStops = leg.intermediateStops.count + 1;
@@ -243,7 +243,7 @@
             OTPTransferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
             cell.iconView.image = [_modeIcons objectForKey:leg.mode];
             Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-            cell.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route];
+            cell.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
             return cell;
         }
     }
@@ -304,10 +304,10 @@
         if ([_distanceBasedModes containsObject:leg.mode]) {
             self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@.", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
         } else if ([_stopBasedModes containsObject:leg.mode]) {
-            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat: @"Take the %@ %@ towards %@ and get off at %@.", leg.route, leg.mode.capitalizedString, leg.headsign.capitalizedString, leg.to.name.capitalizedString];
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat: @"Take the %@ %@ towards %@ and get off at %@.", leg.route.capitalizedString, ((NSString*)[_modeDisplayStrings objectForKey:leg.mode]).lowercaseString, leg.headsign.capitalizedString, leg.to.name.capitalizedString];
         } else if ([_transferModes containsObject:leg.mode]) {
             Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route, [_modeDisplayStrings objectForKey:nextLeg.mode]];
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route.capitalizedString, [_modeDisplayStrings objectForKey:nextLeg.mode]];
         }
         
         [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];

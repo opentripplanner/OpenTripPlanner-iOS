@@ -97,6 +97,9 @@ Plan *currentPlan;
     self.mapView.adjustTilesForRetinaDisplay = NO;
     self.mapView.tileSource = source;
     self.mapView.delegate = self;
+    [self.mapView setConstraintsSouthWest:CLLocationCoordinate2DMake(20, -130) northEast:CLLocationCoordinate2DMake(53, -57)];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40, -95)];
+    [self.mapView setZoom:4];
 	
     self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -239,6 +242,8 @@ Plan *currentPlan;
     // TODO: Look at how time zone plays into all this.
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    // If the tracked date is before now, set the tracked date to now.
+    self.date = [[[NSDate alloc] init] laterDate:self.date];
     NSString *dateString = [dateFormatter stringFromDate:self.date];
     [dateFormatter setDateFormat:@"HH:mm"];
     NSString *timeString = [dateFormatter stringFromDate:self.date];

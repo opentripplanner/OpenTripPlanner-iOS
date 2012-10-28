@@ -190,7 +190,7 @@
             
             cell.legLabel.text = [unitFormatter numberToString:leg.distance];
         } else {
-            cell.legLabel.text = leg.route;
+            cell.legLabel.text = leg.route.capitalizedString;
         }
         
         return cell;
