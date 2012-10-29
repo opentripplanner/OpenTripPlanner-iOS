@@ -406,8 +406,10 @@ Plan *currentPlan;
     
     // Show user location on the map
     if (self.needsPanToUserLocation) {
-        CLLocationCoordinate2D adjustedCoordinate = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:self.userLocation.coordinate]];
-        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoordinate northEast:adjustedCoordinate animated:YES];
+        CLLocationCoordinate2D adjustedCoord = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:self.userLocation.coordinate]];
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(adjustedCoord.latitude - 0.0085, adjustedCoord.longitude - 0.005);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(adjustedCoord.latitude + 0.0085, adjustedCoord.longitude + 0.005);
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
         self.needsPanToUserLocation = NO;
     } else if (self.needsShowFromAndToLocations) {
         [self showFromAndToLocations];
@@ -573,7 +575,9 @@ Plan *currentPlan;
     }
     if (field && field.isGeocoded) {
         CLLocationCoordinate2D adjustedCoord = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:field.location.coordinate]];
-        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoord northEast:adjustedCoord animated:YES];
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(adjustedCoord.latitude - 0.0085, adjustedCoord.longitude - 0.005);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(adjustedCoord.latitude + 0.0085, adjustedCoord.longitude + 0.005);
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
     }
 }
 
