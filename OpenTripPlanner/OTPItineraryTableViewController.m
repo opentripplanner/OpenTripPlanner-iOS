@@ -292,6 +292,32 @@
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         Leg *leg = [self.itinerary.legs objectAtIndex:0];
         Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+        
+        NSString *instruction;
+        if (indexPath.row == 1) {
+            instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
+                           [_modeDisplayStrings objectForKey:leg.mode],
+                           [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                           step.streetName];
+        } else {
+            instruction = [NSString stringWithFormat:@"%@ on %@.",
+                           [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                           step.streetName];
+        }
+        self.itineraryMapViewController.instructionLabel.text = instruction;
+        
+        // TODO: Fix duplicate code.
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
+        
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        
         [self.itineraryMapViewController.mapView setZoom:16];
         [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
     } else {
