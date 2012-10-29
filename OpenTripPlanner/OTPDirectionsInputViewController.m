@@ -223,13 +223,15 @@ Plan *currentPlan;
             }
             
             [self.mapView addAnnotation:placeAnnotation];
+            
+            if (_fromTextField.isGeocoded && _toTextField.isGeocoded && ![placeAnnotation isAnnotationWithinBounds:self.mapView.bounds]) {
+                [self showFromAndToLocations];
+            }
         }
         if (self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) {
             //if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
                 //[self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:location.coordinate] animated:YES];
             //}
-        } else if (textField.isGeocoded && textField.otherTextField.isGeocoded) {
-            [self showFromAndToLocations];
         }
     }
 }
@@ -321,13 +323,9 @@ Plan *currentPlan;
     _fromAnnotation = _toAnnotation;
     _toAnnotation = tmpAnnotation;
     
-    [self.mapView removeAllAnnotations];
-    if (_fromAnnotation != nil) {
-        [self.mapView addAnnotation:_fromAnnotation];
-    }
-    if (_toAnnotation != nil) {
-        [self.mapView addAnnotation:_toAnnotation];
-    }
+    [(RMMarker*)_fromAnnotation.layer replaceUIImage:_fromPinImage];
+    [(RMMarker*)_toAnnotation.layer replaceUIImage:_toPinImage];
+    
     [self panMapToCurrentGeocodedTextField];
 }
 
@@ -488,7 +486,23 @@ Plan *currentPlan;
     }
     RMMarker *marker = [[RMMarker alloc] initWithUIImage:image];
     marker.zPosition = 10;
+    
+    if ([annotation isAnnotationWithinBounds:self.mapView.bounds]) {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+        animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(annotation.position.x, 0)];
+        animation.toValue = [NSValue valueWithCGPoint:annotation.position];
+        animation.duration = 0.2;
+        animation.delegate = self;
+        [marker addAnimation:animation forKey:@"position"];
+    }
     return marker;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (_fromTextField.isGeocoded && _toTextField.isGeocoded) {
+        [self showFromAndToLocations];
+    }
 }
 
 - (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction
