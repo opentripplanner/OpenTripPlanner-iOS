@@ -15,6 +15,7 @@
 #import "UIView+Origami.h"
 #import "OTPUnitData.h"
 #import "OTPUnitFormatter.h"
+#import "OTPSelectedSegment.h"
 
 @interface OTPItineraryTableViewController ()
 {
@@ -168,47 +169,46 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"h:mm a";
     
+    UITableViewCell *cell = nil;
+    
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        return cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     } else {
         
         if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
             Leg *leg = [self.itinerary.legs objectAtIndex:0];
             Step *step = [leg.steps objectAtIndex:indexPath.row-1];
-            OTPStepCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
             NSString *instruction;
             if (indexPath.row == 1) {
                 instruction = [NSString stringWithFormat:@"%@ %@ on %@",
                                [_modeDisplayStrings objectForKey:leg.mode],
                                [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
                                step.streetName];
-                cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+                ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             } else {
                 instruction = [NSString stringWithFormat:@"%@ on %@",
                                [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
                                step.streetName];
-                cell.iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
+                ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
             }
-            cell.instructionLabel.text = instruction;
-            return cell;
+            ((OTPStepCell *)cell).instructionLabel.text = instruction;
         }
         
         Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
         
         if ([_distanceBasedModes containsObject:leg.mode]) {
             
-            OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
             
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            ((OTPDistanceBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
+            ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
             
             NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
             NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
-            cell.timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
+            ((OTPDistanceBasedLegCell *)cell).timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
             
             OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
             unitFormatter.cutoffMultiplier = @3.28084F;
@@ -218,42 +218,37 @@
                 [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mile" pluralLabel:@"miles"]
             ];
             
-            cell.distanceLabel.text = [unitFormatter numberToString:leg.distance];
-            
-            return cell;
-            
+            ((OTPDistanceBasedLegCell *)cell).distanceLabel.text = [unitFormatter numberToString:leg.distance];
         } else if ([_stopBasedModes containsObject:leg.mode]) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
             
-            OTPStopBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
+            ((OTPStopBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
-            
-            cell.iconLabel.text = leg.route.capitalizedString;
-            cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", [_modeDisplayStrings objectForKey:leg.mode] , leg.headsign.capitalizedString];
-            cell.departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
+            ((OTPStopBasedLegCell *)cell).iconLabel.text = leg.route.capitalizedString;
+            ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", [_modeDisplayStrings objectForKey:leg.mode] , leg.headsign.capitalizedString];
+            ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
             
             int intermediateStops = leg.intermediateStops.count + 1;
             NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
-            cell.stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
+            ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
             
-            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
-            
-            return cell;
+            ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
         } else if ([_transferModes containsObject:leg.mode]) {
-            OTPTransferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
+            ((OTPTransferCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-            cell.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
-            return cell;
+            ((OTPTransferCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
         }
     }
-    return nil;
+    OTPSelectedSegment *selectedView = [[OTPSelectedSegment alloc] init];
+    cell.selectedBackgroundView = selectedView;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 44;
+        return 80;
     }
     
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
@@ -265,7 +260,7 @@
     if ([_distanceBasedModes containsObject:leg.mode]) {
         return 60;
     } else if ([_stopBasedModes containsObject:leg.mode]) {
-        return 82;
+        return 80;
     } else if ([_transferModes containsObject:leg.mode]) {
         return 40;
     }
