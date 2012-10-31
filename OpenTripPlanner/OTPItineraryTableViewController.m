@@ -29,6 +29,7 @@
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
     NSMutableArray *_shapesForLegs;
+    NSIndexPath *_selectedIndexPath;
 }
 
 - (void)resetLegsWithColor:(UIColor *)color;
@@ -271,6 +272,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _selectedIndexPath = indexPath;
+    
     if (!mapShowing) {
         [self.revealSideViewController pushOldViewControllerOnDirection:PPRevealSideDirectionLeft withOffset:60 animated:YES];
     }
@@ -349,11 +352,16 @@
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPushController:(UIViewController *)pushedController
 {
     mapShowing = YES;
+    if (_selectedIndexPath == nil) {
+        _selectedIndexPath = [[NSIndexPath alloc] initWithIndex:0];
+    }
+    [self.tableView selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController
 {
     mapShowing = NO;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (BOOL)pprevealSideViewController:(PPRevealSideViewController *)controller shouldDeactivateGesture:(UIGestureRecognizer *)gesture forView:(UIView *)view
