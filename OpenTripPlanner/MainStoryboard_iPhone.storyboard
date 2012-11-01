@@ -243,6 +243,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Trips" id="ov9-jf-3uI">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="j35-eL-8rW">
+                            <color key="tintColor" red="0.57506793479999996" green="0.57506793479999996" blue="0.57506793479999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="dismiss:" destination="Kyn-yv-am1" id="cGs-tF-fHQ"/>
                             </connections>
@@ -259,6 +260,7 @@
                 <viewController autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Directions" id="Dt8-uf-am2">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="hD3-1b-1J4">
+                            <color key="tintColor" red="0.57506793479999996" green="0.57506793479999996" blue="0.57506793479999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="done:" destination="P28-S2-VM9" id="gGX-nJ-vmJ"/>
                             </connections>
@@ -361,7 +363,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Depart:" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="6UI-jO-C55">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Depart" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="6UI-jO-C55">
                                             <rect key="frame" x="60" y="55" width="57" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
@@ -370,8 +372,8 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Arrive:" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="E7R-rF-Gkt">
-                                            <rect key="frame" x="202" y="55" width="45" height="17"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Arrive" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="E7R-rF-Gkt">
+                                            <rect key="frame" x="198" y="55" width="45" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -380,14 +382,14 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="12:00 PM" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="vV1-BV-tqM">
-                                            <rect key="frame" x="108" y="56" width="56" height="16"/>
+                                            <rect key="frame" x="105" y="56" width="56" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="12:00 PM" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="EON-k0-glU">
-                                            <rect key="frame" x="252" y="56" width="56" height="16"/>
+                                            <rect key="frame" x="248" y="56" width="56" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
