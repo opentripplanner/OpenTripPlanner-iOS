@@ -33,6 +33,7 @@ NSString * const kArriveByArray[] = {
     RMAnnotation *_toAnnotation;
     UIImage *_fromPinImage;
     UIImage *_toPinImage;
+    int _dragOffset;
 }
 
 - (void)switchFromAndTo:(id)sender;
@@ -69,6 +70,8 @@ Plan *currentPlan;
     
     _fromPinImage = [UIImage imageNamed:@"marker-start.png"];
     _toPinImage = [UIImage imageNamed:@"marker-end.png"];
+    
+    _dragOffset = 0;
     
     self.goButton.enabled = NO;
     
@@ -452,7 +455,6 @@ Plan *currentPlan;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     
     OTPGeocodedTextField *textField;
-    
     if (!self.fromTextField.isGeocoded) {
         textField = self.fromTextField;
     } else if (!self.toTextField.isGeocoded) {
@@ -460,15 +462,7 @@ Plan *currentPlan;
     } else {
         return;
     }
-    
-    NSString *text;
-    if (textField.otherTextField.isDroppedPin && [textField.otherTextField.text isEqualToString:@"Dropped Pin"]) {
-        text = @"Dropped Pin 2";
-        textField.otherTextField.text = @"Dropped Pin 1";
-    } else {
-        text = @"Dropped Pin";
-    }
-    [self updateTextField:textField withText:text andLocation:location];
+    [self updateTextField:textField withText:@"Dropped Pin" andLocation:location];
 }
 
 - (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
@@ -487,6 +481,7 @@ Plan *currentPlan;
         return nil;
     }
     RMMarker *marker = [[RMMarker alloc] initWithUIImage:image];
+    marker.enableDragging = YES;
     marker.zPosition = 10;
     
     if ([annotation isAnnotationWithinBounds:self.mapView.bounds]) {
@@ -498,6 +493,35 @@ Plan *currentPlan;
         [marker addAnimation:animation forKey:@"position"];
     }
     return marker;
+}
+
+- (BOOL)mapView:(RMMapView *)map shouldDragAnnotation:(RMAnnotation *)annotation
+{
+    return YES;
+}
+
+- (void)mapView:(RMMapView *)map didDragAnnotation:(RMAnnotation *)annotation withDelta:(CGPoint)delta
+{
+    if (_dragOffset < 10) {
+        delta.y = delta.y + _dragOffset;
+    }
+    annotation.position = CGPointMake(annotation.position.x - delta.x, annotation.position.y - delta.y);
+    _dragOffset++;
+}
+
+- (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation
+{
+    annotation.coordinate = [map pixelToCoordinate:annotation.position];
+    _dragOffset = 0;
+    
+    OTPGeocodedTextField *textField;
+    if (annotation == _fromAnnotation) {
+        textField = self.fromTextField;
+    } else {
+        textField = self.toTextField;
+    }
+    textField.text = @"Dropped Pin";
+    textField.location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
