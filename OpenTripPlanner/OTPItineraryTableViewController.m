@@ -9,6 +9,7 @@
 #import "OTPItineraryTableViewController.h"
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
+#import "OTPItineraryOverviewCell.h"
 #import "OTPStepCell.h"
 #import "OTPTransferCell.h"
 #import "PPRevealSideViewController.h"
@@ -192,6 +193,16 @@
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        ((OTPItineraryOverviewCell *)cell).fromLabel.text = self.fromTextField.text;
+        ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
+        
+        // Set start and end times
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"h:mm a"];
+        ((OTPItineraryOverviewCell *)cell).departTime.text = [formatter stringFromDate:self.itinerary.startTime];
+        ((OTPItineraryOverviewCell *)cell).arriveTime.text = [formatter stringFromDate:self.itinerary.endTime];
+        
     } else {
         
         if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {

@@ -100,7 +100,7 @@
     if (indexPath.section == 0) {
         static NSString *CellIdentifier = @"placeCell";
         OTPPlaceCell *cell = (OTPPlaceCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
+                
         cell.fromLabelView.text = self.fromTextField.text;
         cell.toLabelView.text = self.toTextField.text;
         
@@ -256,8 +256,11 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     [(OTPItineraryViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
+    
+    OTPItineraryViewController *vc = (OTPItineraryViewController *)((UINavigationController *)segue.destinationViewController);
+    vc.fromTextField = self.toTextField;
+    vc.toTextField = self.fromTextField;
 }
-
 
 
 - (void)dismiss:(id)sender

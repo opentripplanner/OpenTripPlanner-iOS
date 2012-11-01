@@ -14,12 +14,16 @@
 #import "PPRevealSideViewController.h"
 #import "OTPItineraryTableViewController.h"
 #import "OTPItineraryMapViewController.h"
+#import "OTPGeocodedTextField.h"
 
 @interface OTPItineraryViewController : UIViewController
 
 @property (nonatomic, strong) Itinerary *itinerary;
 @property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;
+@property (nonatomic, strong) OTPGeocodedTextField *fromTextField;
+@property (nonatomic, strong) OTPGeocodedTextField *toTextField;
+
 
 - (IBAction)done:(UIBarButtonItem *)sender;
 

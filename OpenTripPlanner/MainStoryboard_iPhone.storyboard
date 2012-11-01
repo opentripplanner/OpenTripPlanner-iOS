@@ -291,7 +291,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.12217854731529076" blue="0.45183055894156277" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     </label>
                                 </subviews>
@@ -320,7 +320,7 @@
                         <gestureRecognizers/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="OverviewCell" rowHeight="80" id="VqF-va-TZO">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="OverviewCell" rowHeight="80" id="VqF-va-TZO" customClass="OTPItineraryOverviewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -341,7 +341,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="To" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="V1H-Mb-x0N">
-                                            <rect key="frame" x="60" y="28" width="19" height="16"/>
+                                            <rect key="frame" x="75" y="32" width="19" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -357,14 +357,14 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="To label" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="gWS-Nf-Bzw">
-                                            <rect key="frame" x="82" y="28" width="228" height="16"/>
+                                            <rect key="frame" x="98" y="32" width="211" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Depart" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="6UI-jO-C55">
-                                            <rect key="frame" x="60" y="55" width="57" height="17"/>
+                                            <rect key="frame" x="54" y="55" width="57" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -373,7 +373,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Arrive" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="E7R-rF-Gkt">
-                                            <rect key="frame" x="198" y="55" width="45" height="17"/>
+                                            <rect key="frame" x="197" y="55" width="45" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -382,14 +382,14 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="12:00 PM" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="vV1-BV-tqM">
-                                            <rect key="frame" x="105" y="56" width="56" height="16"/>
+                                            <rect key="frame" x="99" y="56" width="56" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="12:00 PM" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="EON-k0-glU">
-                                            <rect key="frame" x="248" y="56" width="56" height="16"/>
+                                            <rect key="frame" x="247" y="56" width="56" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -399,6 +399,12 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="arriveTime" destination="EON-k0-glU" id="czd-03-5ZA"/>
+                                    <outlet property="departTime" destination="vV1-BV-tqM" id="hE9-PY-HjC"/>
+                                    <outlet property="fromLabel" destination="1Hj-45-vF1" id="2Sy-Vm-8M0"/>
+                                    <outlet property="toLabel" destination="gWS-Nf-Bzw" id="RST-pA-9bn"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz" customClass="OTPDistanceBasedLegCell">
                                 <rect key="frame" x="0.0" y="102" width="320" height="60"/>
@@ -450,28 +456,28 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" restorationIdentifier="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" text="TransitLegInstruction" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="246" id="gy9-5F-BdG">
-                                            <rect key="frame" x="60" y="6" width="246" height="23"/>
+                                            <rect key="frame" x="60" y="5" width="246" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="DepartureTime" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="q6c-ni-AU2">
-                                            <rect key="frame" x="60" y="32" width="144" height="21"/>
+                                            <rect key="frame" x="60" y="31" width="144" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="NumberOfStops" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="OBZ-yK-DhL">
-                                            <rect key="frame" x="208" y="32" width="94" height="21"/>
+                                            <rect key="frame" x="208" y="31" width="94" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="To label" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="cqE-ir-rqU">
-                                            <rect key="frame" x="60" y="57" width="246" height="21"/>
+                                            <rect key="frame" x="60" y="55" width="246" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="highlightedColor"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -482,7 +488,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Label" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="eTs-C0-dXw">
-                                            <rect key="frame" x="3" y="6" width="52" height="21"/>
+                                            <rect key="frame" x="3" y="5" width="52" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -876,6 +882,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryOverviewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryOverviewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="arriveTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="departTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">

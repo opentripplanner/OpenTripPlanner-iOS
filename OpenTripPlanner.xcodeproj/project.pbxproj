@@ -33,6 +33,7 @@
 		8DA2DD201641FC39000439EC /* popup-train@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2DD151641FC37000439EC /* popup-train@2x.png */; };
 		8DA2DD211641FC39000439EC /* popup-bus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2DD161641FC37000439EC /* popup-bus@2x.png */; };
 		8DA2DD221641FC39000439EC /* popup-car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2DD171641FC38000439EC /* popup-car@2x.png */; };
+		8DA2DD2816420C28000439EC /* OTPItineraryOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA2DD2716420C27000439EC /* OTPItineraryOverviewCell.m */; };
 		930531F21620E33C00F9A230 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 930531F11620E33C00F9A230 /* Step.m */; };
 		9378875B16154885007CF24C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378875016154866007CF24C /* libRestKit.a */; };
 		9378877C16154DA1007CF24C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378877616154AF2007CF24C /* libMapView.a */; };
@@ -359,6 +360,8 @@
 		8DA2DD151641FC37000439EC /* popup-train@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup-train@2x.png"; sourceTree = "<group>"; };
 		8DA2DD161641FC37000439EC /* popup-bus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup-bus@2x.png"; sourceTree = "<group>"; };
 		8DA2DD171641FC38000439EC /* popup-car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup-car@2x.png"; sourceTree = "<group>"; };
+		8DA2DD2616420C25000439EC /* OTPItineraryOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryOverviewCell.h; sourceTree = "<group>"; };
+		8DA2DD2716420C27000439EC /* OTPItineraryOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryOverviewCell.m; sourceTree = "<group>"; };
 		930531F01620E33C00F9A230 /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		930531F11620E33C00F9A230 /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		9378874416154865007CF24C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -1045,6 +1048,8 @@
 				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
 				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
 				CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */,
+				8DA2DD2616420C25000439EC /* OTPItineraryOverviewCell.h */,
+				8DA2DD2716420C27000439EC /* OTPItineraryOverviewCell.m */,
 				CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */,
 				CCE8191F160131FD0034E8AC /* OTPCallout.h */,
 				CC0B73FF160A6D56008A734A /* OTPSearchBarWithActivity.h */,
@@ -1505,6 +1510,7 @@
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
 				CC585328163B210000F25ABE /* OTPInsetLabel.m in Sources */,
 				93F551471640DE2B005E0BEB /* OTPSelectedSegment.m in Sources */,
+				8DA2DD2816420C28000439EC /* OTPItineraryOverviewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
