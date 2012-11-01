@@ -12,11 +12,15 @@
 #import "OTPItineraryMapViewController.h"
 #import "RouteMe.h"
 #import "PPRevealSideViewController.h"
+#import "OTPGeocodedTextField.h"
 
 @interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate, PPRevealSideViewControllerDelegate>
 
 @property(strong, nonatomic) Itinerary *itinerary;
-@property (nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
+@property(nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
+@property(strong, nonatomic) OTPGeocodedTextField *fromTextField;
+@property(strong, nonatomic) OTPGeocodedTextField *toTextField;
+
 
 - (void)displayItinerary;
 - (void)displayItineraryOverview;

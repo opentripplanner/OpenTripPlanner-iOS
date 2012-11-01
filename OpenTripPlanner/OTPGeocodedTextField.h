@@ -11,7 +11,7 @@
 
 @interface OTPGeocodedTextField : UITextField
 
-@property (nonatomic, strong, readonly) CLLocation *location;
+@property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) OTPGeocodedTextField *otherTextField;
 
 - (void)setText:(NSString *)text andLocation:(CLLocation *)location;

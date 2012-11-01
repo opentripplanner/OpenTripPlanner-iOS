@@ -33,6 +33,7 @@ NSString * const kArriveByArray[] = {
     RMAnnotation *_toAnnotation;
     UIImage *_fromPinImage;
     UIImage *_toPinImage;
+    int _dragOffset;
 }
 
 - (void)switchFromAndTo:(id)sender;
@@ -70,6 +71,8 @@ Plan *currentPlan;
     _fromPinImage = [UIImage imageNamed:@"marker-start.png"];
     _toPinImage = [UIImage imageNamed:@"marker-end.png"];
     
+    _dragOffset = 0;
+    
     self.goButton.enabled = NO;
     
     [self modeChanged:self.modeControl];
@@ -97,6 +100,9 @@ Plan *currentPlan;
     self.mapView.adjustTilesForRetinaDisplay = NO;
     self.mapView.tileSource = source;
     self.mapView.delegate = self;
+    [self.mapView setConstraintsSouthWest:CLLocationCoordinate2DMake(20, -130) northEast:CLLocationCoordinate2DMake(53, -57)];
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40, -95)];
+    [self.mapView setZoom:4];
 	
     self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -220,13 +226,15 @@ Plan *currentPlan;
             }
             
             [self.mapView addAnnotation:placeAnnotation];
+            
+            if (_fromTextField.isGeocoded && _toTextField.isGeocoded && ![placeAnnotation isAnnotationWithinBounds:self.mapView.bounds]) {
+                [self showFromAndToLocations];
+            }
         }
         if (self.fromTextField.isFirstResponder || self.toTextField.isFirstResponder) {
             //if ((!textField.otherTextField.isGeocoded && textField.otherTextField.isFirstResponder) || !textField.otherTextField.isFirstResponder) {
                 //[self.mapView setCenterProjectedPoint:[self adjustPointForKeyboard:location.coordinate] animated:YES];
             //}
-        } else if (textField.isGeocoded && textField.otherTextField.isGeocoded) {
-            [self showFromAndToLocations];
         }
     }
 }
@@ -239,6 +247,8 @@ Plan *currentPlan;
     // TODO: Look at how time zone plays into all this.
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    // If the tracked date is before now, set the tracked date to now.
+    self.date = [[[NSDate alloc] init] laterDate:self.date];
     NSString *dateString = [dateFormatter stringFromDate:self.date];
     [dateFormatter setDateFormat:@"HH:mm"];
     NSString *timeString = [dateFormatter stringFromDate:self.date];
@@ -258,7 +268,7 @@ Plan *currentPlan;
                             @"optimize", @"QUICK",
                             @"time", timeString,
                             @"arriveBy", arriveBy,
-                            @"routerId", @"req-241",
+                            //@"routerId", @"req-241",
                             //@"routerId", @"req-92",
                             @"maxWalkDistance", @"840",
                             @"fromPlace", fromString,
@@ -316,13 +326,9 @@ Plan *currentPlan;
     _fromAnnotation = _toAnnotation;
     _toAnnotation = tmpAnnotation;
     
-    [self.mapView removeAllAnnotations];
-    if (_fromAnnotation != nil) {
-        [self.mapView addAnnotation:_fromAnnotation];
-    }
-    if (_toAnnotation != nil) {
-        [self.mapView addAnnotation:_toAnnotation];
-    }
+    [(RMMarker*)_fromAnnotation.layer replaceUIImage:_fromPinImage];
+    [(RMMarker*)_toAnnotation.layer replaceUIImage:_toPinImage];
+    
     [self panMapToCurrentGeocodedTextField];
 }
 
@@ -408,8 +414,10 @@ Plan *currentPlan;
     
     // Show user location on the map
     if (self.needsPanToUserLocation) {
-        CLLocationCoordinate2D adjustedCoordinate = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:self.userLocation.coordinate]];
-        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoordinate northEast:adjustedCoordinate animated:YES];
+        CLLocationCoordinate2D adjustedCoord = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:self.userLocation.coordinate]];
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(adjustedCoord.latitude - 0.0085, adjustedCoord.longitude - 0.005);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(adjustedCoord.latitude + 0.0085, adjustedCoord.longitude + 0.005);
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
         self.needsPanToUserLocation = NO;
     } else if (self.needsShowFromAndToLocations) {
         [self showFromAndToLocations];
@@ -452,7 +460,6 @@ Plan *currentPlan;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     
     OTPGeocodedTextField *textField;
-    
     if (!self.fromTextField.isGeocoded) {
         textField = self.fromTextField;
     } else if (!self.toTextField.isGeocoded) {
@@ -460,15 +467,7 @@ Plan *currentPlan;
     } else {
         return;
     }
-    
-    NSString *text;
-    if (textField.otherTextField.isDroppedPin && [textField.otherTextField.text isEqualToString:@"Dropped Pin"]) {
-        text = @"Dropped Pin 2";
-        textField.otherTextField.text = @"Dropped Pin 1";
-    } else {
-        text = @"Dropped Pin";
-    }
-    [self updateTextField:textField withText:text andLocation:location];
+    [self updateTextField:textField withText:@"Dropped Pin" andLocation:location];
 }
 
 - (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
@@ -487,8 +486,54 @@ Plan *currentPlan;
         return nil;
     }
     RMMarker *marker = [[RMMarker alloc] initWithUIImage:image];
+    marker.enableDragging = YES;
     marker.zPosition = 10;
+    
+    if ([annotation isAnnotationWithinBounds:self.mapView.bounds]) {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+        animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(annotation.position.x, 0)];
+        animation.toValue = [NSValue valueWithCGPoint:annotation.position];
+        animation.duration = 0.2;
+        animation.delegate = self;
+        [marker addAnimation:animation forKey:@"position"];
+    }
     return marker;
+}
+
+- (BOOL)mapView:(RMMapView *)map shouldDragAnnotation:(RMAnnotation *)annotation
+{
+    return YES;
+}
+
+- (void)mapView:(RMMapView *)map didDragAnnotation:(RMAnnotation *)annotation withDelta:(CGPoint)delta
+{
+    if (_dragOffset < 10) {
+        delta.y = delta.y + _dragOffset;
+    }
+    annotation.position = CGPointMake(annotation.position.x - delta.x, annotation.position.y - delta.y);
+    _dragOffset++;
+}
+
+- (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation
+{
+    annotation.coordinate = [map pixelToCoordinate:annotation.position];
+    _dragOffset = 0;
+    
+    OTPGeocodedTextField *textField;
+    if (annotation == _fromAnnotation) {
+        textField = self.fromTextField;
+    } else {
+        textField = self.toTextField;
+    }
+    textField.text = @"Dropped Pin";
+    textField.location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (_fromTextField.isGeocoded && _toTextField.isGeocoded) {
+        [self showFromAndToLocations];
+    }
 }
 
 - (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction
@@ -559,7 +604,9 @@ Plan *currentPlan;
     }
     if (field && field.isGeocoded) {
         CLLocationCoordinate2D adjustedCoord = [self.mapView projectedPointToCoordinate:[self adjustPointForKeyboard:field.location.coordinate]];
-        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:adjustedCoord northEast:adjustedCoord animated:YES];
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(adjustedCoord.latitude - 0.0085, adjustedCoord.longitude - 0.005);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(adjustedCoord.latitude + 0.0085, adjustedCoord.longitude + 0.005);
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
     }
 }
 

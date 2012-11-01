@@ -9,12 +9,14 @@
 #import "OTPItineraryTableViewController.h"
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
+#import "OTPItineraryOverviewCell.h"
 #import "OTPStepCell.h"
 #import "OTPTransferCell.h"
 #import "PPRevealSideViewController.h"
 #import "UIView+Origami.h"
 #import "OTPUnitData.h"
 #import "OTPUnitFormatter.h"
+#import "OTPSelectedSegment.h"
 
 @interface OTPItineraryTableViewController ()
 {
@@ -28,6 +30,8 @@
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
     NSMutableArray *_shapesForLegs;
+    NSDictionary *_popuprModeIcons;
+    NSIndexPath *_selectedIndexPath;
 }
 
 - (void)resetLegsWithColor:(UIColor *)color;
@@ -121,6 +125,22 @@
     @"NORTHWEST" : @"northwest"
     };
     
+    _popuprModeIcons = @{
+    @"WALK" : [UIImage imageNamed:@"popup-walk.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"popup-bike.png"],
+    @"CAR" : [UIImage imageNamed:@"popup-car.png"],
+    @"TRAM" : [UIImage imageNamed:@"popup-gondola.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"popup-train.png"],
+    @"RAIL" : [UIImage imageNamed:@"popup-train.png"],
+    @"BUS" : [UIImage imageNamed:@"popup-bus.png"],
+    @"FERRY" : [UIImage imageNamed:@"popup-ferry.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"popup-cable-car.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"popup-gondola.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"popup-transfer.png"],
+    @"FUNICULAR" : [UIImage imageNamed:@"popup-funicular.png"]
+    };
+
+    
     _shapesForLegs = [[NSMutableArray alloc] init];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -132,6 +152,8 @@
     self.itineraryMapViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController.mapView setDelegate:self];
+    self.itineraryMapViewController.mapView.topPadding = 100;
+    self.itineraryMapViewController.instructionLabel.hidden = YES;
     
     [self displayItinerary];
     [self displayItineraryOverview];
@@ -166,47 +188,56 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"h:mm a";
     
+    UITableViewCell *cell = nil;
+    
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        return cell;
+        ((OTPItineraryOverviewCell *)cell).fromLabel.text = self.fromTextField.text;
+        ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
+        
+        // Set start and end times
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"h:mm a"];
+        ((OTPItineraryOverviewCell *)cell).departTime.text = [formatter stringFromDate:self.itinerary.startTime];
+        ((OTPItineraryOverviewCell *)cell).arriveTime.text = [formatter stringFromDate:self.itinerary.endTime];
+        
     } else {
         
         if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
             Leg *leg = [self.itinerary.legs objectAtIndex:0];
             Step *step = [leg.steps objectAtIndex:indexPath.row-1];
-            OTPStepCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
             NSString *instruction;
             if (indexPath.row == 1) {
                 instruction = [NSString stringWithFormat:@"%@ %@ on %@",
                                [_modeDisplayStrings objectForKey:leg.mode],
                                [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
                                step.streetName];
-                cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+                ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             } else {
                 instruction = [NSString stringWithFormat:@"%@ on %@",
                                [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
                                step.streetName];
-                cell.iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
+                ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
             }
-            cell.instructionLabel.text = instruction;
-            return cell;
+            ((OTPStepCell *)cell).instructionLabel.text = instruction;
         }
         
         Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
         
         if ([_distanceBasedModes containsObject:leg.mode]) {
             
-            OTPDistanceBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
             
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            ((OTPDistanceBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name];
+            ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
             
             NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
             NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
-            cell.timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
+            ((OTPDistanceBasedLegCell *)cell).timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
             
             OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
             unitFormatter.cutoffMultiplier = @3.28084F;
@@ -216,42 +247,37 @@
                 [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mile" pluralLabel:@"miles"]
             ];
             
-            cell.distanceLabel.text = [unitFormatter numberToString:leg.distance];
-            
-            return cell;
-            
+            ((OTPDistanceBasedLegCell *)cell).distanceLabel.text = [unitFormatter numberToString:leg.distance];
         } else if ([_stopBasedModes containsObject:leg.mode]) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
             
-            OTPStopBasedLegCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
+            ((OTPStopBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
-            
-            cell.iconLabel.text = leg.route;
-            cell.instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", leg.mode.capitalizedString, leg.headsign.capitalizedString];
-            cell.departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
+            ((OTPStopBasedLegCell *)cell).iconLabel.text = leg.route.capitalizedString;
+            ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", [_modeDisplayStrings objectForKey:leg.mode] , leg.headsign.capitalizedString];
+            ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
             
             int intermediateStops = leg.intermediateStops.count + 1;
             NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
-            cell.stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
+            ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
             
-            cell.toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
-            
-            return cell;
+            ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
         } else if ([_transferModes containsObject:leg.mode]) {
-            OTPTransferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
-            cell.iconView.image = [_modeIcons objectForKey:leg.mode];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
+            ((OTPTransferCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
             Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-            cell.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route];
-            return cell;
+            ((OTPTransferCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
         }
     }
-    return nil;
+    OTPSelectedSegment *selectedView = [[OTPSelectedSegment alloc] init];
+    cell.selectedBackgroundView = selectedView;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 44;
+        return 80;
     }
     
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
@@ -263,7 +289,7 @@
     if ([_distanceBasedModes containsObject:leg.mode]) {
         return 60;
     } else if ([_stopBasedModes containsObject:leg.mode]) {
-        return 82;
+        return 80;
     } else if ([_transferModes containsObject:leg.mode]) {
         return 40;
     }
@@ -274,34 +300,96 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _selectedIndexPath = indexPath;
+    
     if (!mapShowing) {
         [self.revealSideViewController pushOldViewControllerOnDirection:PPRevealSideDirectionLeft withOffset:60 animated:YES];
     }
     
     if (indexPath.row == 0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+        } completion:^(BOOL finished) {
+            self.itineraryMapViewController.instructionLabel.hidden = YES;
+        }];
+        self.itineraryMapViewController.mapView.topPadding = 0;
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         Leg *leg = [self.itinerary.legs objectAtIndex:0];
         Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+        
+        NSString *instruction;
+        if (indexPath.row == 1) {
+            instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
+                           [_modeDisplayStrings objectForKey:leg.mode],
+                           [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                           step.streetName];
+        } else {
+            instruction = [NSString stringWithFormat:@"%@ on %@.",
+                           [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                           step.streetName];
+        }
+        self.itineraryMapViewController.instructionLabel.text = instruction;
+        
+        // TODO: Fix duplicate code.
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
+        
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        
         [self.itineraryMapViewController.mapView setZoom:16];
         [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
     } else {
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
         RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
         shape.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
-        [self displayLeg:[self.itinerary.legs objectAtIndex:indexPath.row - 1]];
+        
+        Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
+        
+        if ([_distanceBasedModes containsObject:leg.mode]) {
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@.", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
+        } else if ([_stopBasedModes containsObject:leg.mode]) {
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat: @"Take the %@ %@ towards %@ and get off at %@.", leg.route.capitalizedString, ((NSString*)[_modeDisplayStrings objectForKey:leg.mode]).lowercaseString, leg.headsign.capitalizedString, leg.to.name.capitalizedString];
+        } else if ([_transferModes containsObject:leg.mode]) {
+            Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
+            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route.capitalizedString, [_modeDisplayStrings objectForKey:nextLeg.mode]];
+        }
+        
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
+        
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        
+        [self displayLeg:leg];
     }
 }
 
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPushController:(UIViewController *)pushedController
 {
     mapShowing = YES;
+    if (_selectedIndexPath == nil) {
+        _selectedIndexPath = [[NSIndexPath alloc] initWithIndex:0];
+    }
+    [self.tableView selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController
 {
     mapShowing = NO;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (BOOL)pprevealSideViewController:(PPRevealSideViewController *)controller shouldDeactivateGesture:(UIGestureRecognizer *)gesture forView:(UIView *)view
@@ -313,9 +401,6 @@
     return NO;
 }
 
-- (IBAction)Done:(UIBarButtonItem *)sender {
-}
-
 - (void) displayItinerary
 {
     [self.itineraryMapViewController.mapView removeAllAnnotations];
@@ -323,6 +408,7 @@
     int legCounter = 0;
     for (Leg* leg in self.itinerary.legs) {
         if (legCounter == 0) {
+            // start marker:
             RMAnnotation* startAnnotation = [RMAnnotation
                                              annotationWithMapView:self.itineraryMapViewController.mapView
                                              coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
@@ -331,8 +417,19 @@
             startAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [startAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:startAnnotation];
-        }
-        if (legCounter == self.itinerary.legs.count - 1) {
+            
+        } else if (legCounter == self.itinerary.legs.count - 1) {
+            // map mode popup for last leg:
+            RMAnnotation* modeAnnotation = [RMAnnotation
+                                            annotationWithMapView:self.itineraryMapViewController.mapView
+                                            coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
+                                            andTitle:leg.mode];
+            RMMarker *popupMarker = [[RMMarker alloc] initWithUIImage:[_popuprModeIcons objectForKey:leg.mode]];
+            modeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [modeAnnotation.userInfo setObject:popupMarker forKey:@"layer"];
+            [self.itineraryMapViewController.mapView addAnnotation:modeAnnotation];
+            
+            // end marker:
             RMAnnotation* endAnnotation = [RMAnnotation
                                            annotationWithMapView:self.itineraryMapViewController.mapView
                                            coordinate:CLLocationCoordinate2DMake(leg.to.lat.floatValue, leg.to.lon.floatValue)
@@ -341,7 +438,20 @@
             endAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [endAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:endAnnotation];
+            
+        } else {
+            // map mode popup:            
+            RMAnnotation* modeAnnotation = [RMAnnotation
+                                                annotationWithMapView:self.itineraryMapViewController.mapView
+                                                coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
+                                                andTitle:leg.mode];
+                    
+            RMMarker *popupMarker = [[RMMarker alloc] initWithUIImage:[_popuprModeIcons objectForKey:leg.mode]];
+            modeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [modeAnnotation.userInfo setObject:popupMarker forKey:@"layer"];
+            [self.itineraryMapViewController.mapView addAnnotation:modeAnnotation];
         }
+        
         
         RMShape *polyline = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
         polyline.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
@@ -372,26 +482,26 @@
         [self.itineraryMapViewController.mapView addAnnotation:polylineAnnotation];
         
         
-        RMShape *bbox = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
-        bbox.lineColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-        bbox.lineWidth = 2;
-        bbox.lineCap = kCALineCapRound;
-        bbox.lineJoin = kCALineJoinRound;
-        bbox.zPosition = 0;
-        
-        [bbox moveToCoordinate:leg.bounds.swCorner];
-        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.swCorner.latitude, leg.bounds.neCorner.longitude)];
-        [bbox addLineToCoordinate:leg.bounds.neCorner];
-        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.neCorner.latitude, leg.bounds.swCorner.longitude)];
-        [bbox closePath];
-        
-        RMAnnotation *bboxAnnotation = [[RMAnnotation alloc] init];
-        [bboxAnnotation setMapView:self.itineraryMapViewController.mapView];
-        bboxAnnotation.coordinate = leg.bounds.swCorner;
-        [bboxAnnotation setBoundingBoxFromLocations:leg.decodedLegGeometry];
-        bboxAnnotation.userInfo = [[NSMutableDictionary alloc] init];
-        [bboxAnnotation.userInfo setObject:bbox forKey:@"layer"];
-        [self.itineraryMapViewController.mapView addAnnotation:bboxAnnotation];
+//        RMShape *bbox = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
+//        bbox.lineColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//        bbox.lineWidth = 2;
+//        bbox.lineCap = kCALineCapRound;
+//        bbox.lineJoin = kCALineJoinRound;
+//        bbox.zPosition = 0;
+//        
+//        [bbox moveToCoordinate:leg.bounds.swCorner];
+//        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.swCorner.latitude, leg.bounds.neCorner.longitude)];
+//        [bbox addLineToCoordinate:leg.bounds.neCorner];
+//        [bbox addLineToCoordinate:CLLocationCoordinate2DMake(leg.bounds.neCorner.latitude, leg.bounds.swCorner.longitude)];
+//        [bbox closePath];
+//        
+//        RMAnnotation *bboxAnnotation = [[RMAnnotation alloc] init];
+//        [bboxAnnotation setMapView:self.itineraryMapViewController.mapView];
+//        bboxAnnotation.coordinate = leg.bounds.swCorner;
+//        [bboxAnnotation setBoundingBoxFromLocations:leg.decodedLegGeometry];
+//        bboxAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+//        [bboxAnnotation.userInfo setObject:bbox forKey:@"layer"];
+//        [self.itineraryMapViewController.mapView addAnnotation:bboxAnnotation];
         
         legCounter++;
     }
@@ -424,7 +534,4 @@
     mapShowing = NO;
 }
 
-- (IBAction)done:(UIBarButtonItem *)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
 @end
