@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1909CC164315EF00432963 /* curl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1909CA164315EC00432963 /* curl.png */; };
+		0D1909CD164315EF00432963 /* curl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1909CB164315ED00432963 /* curl@2x.png */; };
+		0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8936D163B4967002BC54C /* OTPAboutViewController.m */; };
 		1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */; };
 		1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55F16289707001E83D3 /* OTPLegCell.m */; };
 		1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */; };
@@ -102,8 +105,6 @@
 		CCCDFBDF15EEC16C00B26133 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */; };
 		CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */; };
 		CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE315EEC1BC00B26133 /* libz.dylib */; };
-		CCE8191D160120E70034E8AC /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8191B160120E70034E8AC /* check.png */; };
-		CCE8191E160120E70034E8AC /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8191C160120E70034E8AC /* x.png */; };
 		CCE81921160131FD0034E8AC /* OTPCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE81920160131FD0034E8AC /* OTPCallout.m */; };
 		CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */; };
 		CCF669521630BA6E007A9634 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6693A1630BA6E007A9634 /* home-icon.png */; };
@@ -305,6 +306,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D1909CA164315EC00432963 /* curl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curl.png; sourceTree = "<group>"; };
+		0D1909CB164315ED00432963 /* curl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "curl@2x.png"; sourceTree = "<group>"; };
+		0DE8936C163B4967002BC54C /* OTPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPAboutViewController.h; sourceTree = "<group>"; };
+		0DE8936D163B4967002BC54C /* OTPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPAboutViewController.m; sourceTree = "<group>"; };
 		1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryCell.h; sourceTree = "<group>"; };
 		1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryCell.m; sourceTree = "<group>"; };
 		1CE5C55E16289707001E83D3 /* OTPLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPLegCell.h; sourceTree = "<group>"; };
@@ -326,7 +331,6 @@
 		93B179C4162D252F00F09EC6 /* OTPStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPStepCell.h; sourceTree = "<group>"; };
 		93B179C5162D252F00F09EC6 /* OTPStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPStepCell.m; sourceTree = "<group>"; };
 		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
-		CC088DE615F69E4900C6F372 /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OP.png; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC0A1F5416038F6B003085B2 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
 		CC0A1F5516038F6B003085B2 /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
@@ -447,8 +451,6 @@
 		CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CCCDFBE315EEC1BC00B26133 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		CCE8191B160120E70034E8AC /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		CCE8191C160120E70034E8AC /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		CCE8191F160131FD0034E8AC /* OTPCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPCallout.h; sourceTree = "<group>"; };
 		CCE81920160131FD0034E8AC /* OTPCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPCallout.m; sourceTree = "<group>"; };
 		CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionsInputViewController.h; sourceTree = "<group>"; };
@@ -643,16 +645,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC088DE515F69DD900C6F372 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CC088DE615F69E4900C6F372 /* OP.png */,
-				CCE8191B160120E70034E8AC /* check.png */,
-				CCE8191C160120E70034E8AC /* x.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		CC0A1F5316038F6A003085B2 /* PaperFold */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +700,8 @@
 		CC2316EA16260F9200EE0F48 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				0D1909CA164315EC00432963 /* curl.png */,
+				0D1909CB164315ED00432963 /* curl@2x.png */,
 				CCF66A5116321120007A9634 /* funicular_32.png */,
 				CCF66A5216321122007A9634 /* funicular_32@2x.png */,
 				CCF66A5316321125007A9634 /* funicular_52.png */,
@@ -903,7 +897,6 @@
 				CCCDFB6415EEAAC600B26133 /* Products */,
 				CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */,
 				CCCDFB8515EEAAC600B26133 /* OpenTripPlannerTests */,
-				CC088DE515F69DD900C6F372 /* Images */,
 				CC2316EA16260F9200EE0F48 /* Icons */,
 				CC2316D11626067D00EE0F48 /* MapBoxResources */,
 			);
@@ -961,6 +954,8 @@
 				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
 				CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */,
+				0DE8936C163B4967002BC54C /* OTPAboutViewController.h */,
+				0DE8936D163B4967002BC54C /* OTPAboutViewController.m */,
 				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
 				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
 				CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */,
@@ -1165,8 +1160,6 @@
 			files = (
 				CCCDFB7215EEAAC600B26133 /* InfoPlist.strings in Resources */,
 				CC9CFCCC15EFCDA00070712C /* MainStoryboard_iPhone.storyboard in Resources */,
-				CCE8191D160120E70034E8AC /* check.png in Resources */,
-				CCE8191E160120E70034E8AC /* x.png in Resources */,
 				CC2316DE1626067D00EE0F48 /* HeadingAngleSmall.png in Resources */,
 				CC2316DF1626067D00EE0F48 /* HeadingAngleSmall@2x.png in Resources */,
 				CC2316E01626067D00EE0F48 /* LoadingTile.png in Resources */,
@@ -1326,6 +1319,8 @@
 				CCF66A5E16321132007A9634 /* Default-568h@2x.png in Resources */,
 				CCF66A6016321333007A9634 /* home-icon.png in Resources */,
 				CCF66A6216321352007A9634 /* home-icon@2x.png in Resources */,
+				0D1909CC164315EF00432963 /* curl.png in Resources */,
+				0D1909CD164315EF00432963 /* curl@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,6 +1400,7 @@
 				CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */,
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
+				0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

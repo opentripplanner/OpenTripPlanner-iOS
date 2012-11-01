@@ -51,6 +51,7 @@ typedef enum {
 - (IBAction)updatedTextField:(id)sender;
 - (IBAction)modeChanged:(id)sender;
 - (IBAction)panToUserLocation:(id)sender;
+- (IBAction)touchAboutButton:(id)sender;
 - (void)enableUserLocation;
 - (void)showFromAndToLocations;
 

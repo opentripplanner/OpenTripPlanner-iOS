@@ -1,55 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Search-->
-        <scene sceneID="JSW-f5-gn2">
-            <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" id="poE-bm-fth" customClass="OTPViewController" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="lgc-1a-wc2">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="pLF-TG-xD3" customClass="RMMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="poE-bm-fth" id="mEx-OC-s4s"/>
-                                </connections>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search" id="bxA-Tu-CcD">
-                        <barButtonItem key="rightBarButtonItem" title="D" id="BhY-Cs-l86"/>
-                    </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="mapView" destination="pLF-TG-xD3" id="0gi-kD-pM7"/>
-                        <outlet property="searchBar" destination="ZJR-F6-MWN" id="RHO-up-LdQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5hx-FN-k35" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" placeholder="Type an address or drop a pin." id="ZJR-F6-MWN" customClass="OTPSearchBarWithActivity">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <scopeButtonTitles>
-                        <string>Title</string>
-                        <string>Title</string>
-                    </scopeButtonTitles>
-                    <connections>
-                        <outlet property="delegate" destination="poE-bm-fth" id="pvo-0O-3Gp"/>
-                    </connections>
-                </searchBar>
-            </objects>
-            <point key="canvasLocation" x="-311" y="-343"/>
-        </scene>
         <!--Transit Times View Controller - Itineraries-->
         <scene sceneID="ftX-6r-3qb">
             <objects>
@@ -494,20 +448,41 @@
             </objects>
             <point key="canvasLocation" x="1430" y="651"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fgO-2t-Irb">
+        <!--About View Controller-->
+        <scene sceneID="vts-Tq-U0g">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Twe-JX-DQ5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gar-h4-j2d">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                <viewController id="fWf-iG-znn" customClass="OTPAboutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Thw-Zw-Hrr">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="nZc-HK-Z13">
+                                <rect key="frame" x="13" y="242" width="287" height="206"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">JoyRide is a project of OpenPlans. This is version 1.0.  Routing by OpenTripPlanner.  Version 1.0 built with support from a group of generous folks from Kickstarter. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.18094004755434778" green="0.18094004755434778" blue="0.18094004755434778" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </view>
                     <connections>
-                        <segue destination="poE-bm-fth" kind="relationship" relationship="rootViewController" id="7ld-lJ-Tva"/>
+                        <outlet property="aboutTextView" destination="nZc-HK-Z13" id="iHz-MA-Yot"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PV8-lg-51h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afM-eD-4cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-711" y="-332"/>
+            <point key="canvasLocation" x="658" y="1276"/>
         </scene>
         <!--Directions Input View Controller-->
         <scene sceneID="rvb-Vq-5vq">
@@ -522,7 +497,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fCo-Vj-8Bb">
-                                        <rect key="frame" x="272" y="292" width="44" height="44"/>
+                                        <rect key="frame" x="7" y="289" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="geolocate.png">
@@ -534,6 +509,21 @@
                                         </state>
                                         <connections>
                                             <action selector="panToUserLocation:" destination="peN-Jn-A0e" eventType="touchUpInside" id="Acj-Z8-cqt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="qVh-Eq-Gv3">
+                                        <rect key="frame" x="286" y="296" width="34" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="curl.png">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchAboutButton:" destination="peN-Jn-A0e" eventType="touchDown" id="BLZ-Oj-4XV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -606,6 +596,7 @@
                         <outlet property="toTextField" destination="Uks-WC-M9Y" id="CtZ-3A-ndO"/>
                         <outlet property="userLocationButton" destination="fCo-Vj-8Bb" id="VdP-fR-foi"/>
                         <segue destination="BUL-qi-1dN" kind="modal" identifier="ExploreItineraries" id="Es9-n8-4Nl"/>
+                        <segue destination="fWf-iG-znn" kind="modal" identifier="showAbout" modalTransitionStyle="partialCurl" id="cL1-NJ-Sfv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcF-zl-uN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -716,7 +707,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWH-LF-9w3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128" y="706"/>
+            <point key="canvasLocation" x="160" y="1276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I77-Wo-faB">
@@ -738,6 +729,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="clock.png" width="20" height="20"/>
+        <image name="curl.png" width="34" height="44"/>
         <image name="geolocate.png" width="44" height="44"/>
         <image name="mode-bike-to-transit.png" width="32" height="15"/>
         <image name="mode-bike.png" width="25" height="21"/>
@@ -746,12 +738,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="path@2x.png" width="88" height="88"/>
     </resources>
     <classes>
+        <class className="OTPAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPAboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aboutTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
         <class className="OTPDirectionsInputViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDirectionsInputViewController.h"/>
             <relationships>
                 <relationship kind="action" name="go:"/>
                 <relationship kind="action" name="modeChanged:"/>
                 <relationship kind="action" name="panToUserLocation:"/>
+                <relationship kind="action" name="touchAboutButton:"/>
                 <relationship kind="action" name="updatedTextField:"/>
                 <relationship kind="outlet" name="fromTextField" candidateClass="OTPGeocodedTextField"/>
                 <relationship kind="outlet" name="goButton" candidateClass="UIBarButtonItem"/>
@@ -804,8 +803,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="swipeLeftTableView:"/>
                 <relationship kind="action" name="swipeRightTableView:"/>
             </relationships>
@@ -829,9 +826,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="fromLabelView" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="toLabelView" candidateClass="UILabel"/>
             </relationships>
-        </class>
-        <class className="OTPSearchBarWithActivity" superclassName="UISearchBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPSearchBarWithActivity.h"/>
         </class>
         <class className="OTPStepCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
@@ -875,13 +869,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="OTPVerticalGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
-        </class>
-        <class className="OTPViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="OTPSearchBarWithActivity"/>
-            </relationships>
         </class>
         <class className="RMMapView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>

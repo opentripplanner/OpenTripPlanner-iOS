@@ -378,6 +378,11 @@ Plan *currentPlan;
     [self enableUserLocation];
 }
 
+- (IBAction)touchAboutButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"showAbout" sender:self];    
+}
+
 - (void)enableUserLocation
 {
     self.mapView.showsUserLocation = YES;
