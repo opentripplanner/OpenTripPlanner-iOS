@@ -29,6 +29,7 @@
     NSDictionary *_absoluteDirectionDisplayStrings;
     NSDictionary *_modeIcons;
     NSMutableArray *_shapesForLegs;
+    NSDictionary *_popuprModeIcons;
     NSIndexPath *_selectedIndexPath;
 }
 
@@ -122,6 +123,22 @@
     @"WEST" : @"west",
     @"NORTHWEST" : @"northwest"
     };
+    
+    _popuprModeIcons = @{
+    @"WALK" : [UIImage imageNamed:@"popup-walk.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"popup-bike.png"],
+    @"CAR" : [UIImage imageNamed:@"popup-car.png"],
+    @"TRAM" : [UIImage imageNamed:@"popup-gondola.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"popup-train.png"],
+    @"RAIL" : [UIImage imageNamed:@"popup-train.png"],
+    @"BUS" : [UIImage imageNamed:@"popup-bus.png"],
+    @"FERRY" : [UIImage imageNamed:@"popup-ferry.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"popup-cable-car.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"popup-gondola.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"popup-transfer.png"],
+    @"FUNICULAR" : [UIImage imageNamed:@"popup-funicular.png"]
+    };
+
     
     _shapesForLegs = [[NSMutableArray alloc] init];
 
@@ -380,6 +397,7 @@
     int legCounter = 0;
     for (Leg* leg in self.itinerary.legs) {
         if (legCounter == 0) {
+            // start marker:
             RMAnnotation* startAnnotation = [RMAnnotation
                                              annotationWithMapView:self.itineraryMapViewController.mapView
                                              coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
@@ -388,8 +406,19 @@
             startAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [startAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:startAnnotation];
-        }
-        if (legCounter == self.itinerary.legs.count - 1) {
+            
+        } else if (legCounter == self.itinerary.legs.count - 1) {
+            // map mode popup for last leg:
+            RMAnnotation* modeAnnotation = [RMAnnotation
+                                            annotationWithMapView:self.itineraryMapViewController.mapView
+                                            coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
+                                            andTitle:leg.mode];
+            RMMarker *popupMarker = [[RMMarker alloc] initWithUIImage:[_popuprModeIcons objectForKey:leg.mode]];
+            modeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [modeAnnotation.userInfo setObject:popupMarker forKey:@"layer"];
+            [self.itineraryMapViewController.mapView addAnnotation:modeAnnotation];
+            
+            // end marker:
             RMAnnotation* endAnnotation = [RMAnnotation
                                            annotationWithMapView:self.itineraryMapViewController.mapView
                                            coordinate:CLLocationCoordinate2DMake(leg.to.lat.floatValue, leg.to.lon.floatValue)
@@ -398,7 +427,20 @@
             endAnnotation.userInfo = [[NSMutableDictionary alloc] init];
             [endAnnotation.userInfo setObject:marker forKey:@"layer"];
             [self.itineraryMapViewController.mapView addAnnotation:endAnnotation];
+            
+        } else {
+            // map mode popup:            
+            RMAnnotation* modeAnnotation = [RMAnnotation
+                                                annotationWithMapView:self.itineraryMapViewController.mapView
+                                                coordinate:CLLocationCoordinate2DMake(leg.from.lat.floatValue, leg.from.lon.floatValue)
+                                                andTitle:leg.mode];
+                    
+            RMMarker *popupMarker = [[RMMarker alloc] initWithUIImage:[_popuprModeIcons objectForKey:leg.mode]];
+            modeAnnotation.userInfo = [[NSMutableDictionary alloc] init];
+            [modeAnnotation.userInfo setObject:popupMarker forKey:@"layer"];
+            [self.itineraryMapViewController.mapView addAnnotation:modeAnnotation];
         }
+        
         
         RMShape *polyline = [[RMShape alloc] initWithView:self.itineraryMapViewController.mapView];
         polyline.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];

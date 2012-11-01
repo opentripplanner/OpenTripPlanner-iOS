@@ -89,7 +89,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if(section == 1) {
-        return @"Trip Options";
+        return @"Select a Trip:";
     }
     return nil;
 }
