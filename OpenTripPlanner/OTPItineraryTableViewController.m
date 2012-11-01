@@ -62,7 +62,7 @@
     @"WALK" : [UIImage imageNamed:@"walk_52.png"],
     @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
     @"CAR" : [UIImage imageNamed:@"car_52.png"],
-    @"TRAM" : [UIImage imageNamed:@"gondola_52.png"],
+    @"TRAM" : [UIImage imageNamed:@"cable-car_52.png"],
     @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
     @"RAIL" : [UIImage imageNamed:@"train_52.png"],
     @"BUS" : [UIImage imageNamed:@"bus_52.png"],
@@ -129,7 +129,7 @@
     @"WALK" : [UIImage imageNamed:@"popup-walk.png"],
     @"BICYCLE" : [UIImage imageNamed:@"popup-bike.png"],
     @"CAR" : [UIImage imageNamed:@"popup-car.png"],
-    @"TRAM" : [UIImage imageNamed:@"popup-gondola.png"],
+    @"TRAM" : [UIImage imageNamed:@"popup-cable-car.png"],
     @"SUBWAY" : [UIImage imageNamed:@"popup-train.png"],
     @"RAIL" : [UIImage imageNamed:@"popup-train.png"],
     @"BUS" : [UIImage imageNamed:@"popup-bus.png"],
@@ -183,6 +183,47 @@
     return self.itinerary.legs.count + 1;
 }
 
+-(void) setHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
+    
+    UIColor *_textColor = [UIColor colorWithRed:0.36 green:0.72 blue:0.83 alpha:1.0];
+    
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, 0, 200, 44);
+    UIView* _headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = YES;
+    
+    CGRect titleFrame = CGRectMake(0, 2, 198, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:16];
+    titleView.textAlignment = UITextAlignmentCenter;
+    titleView.textColor = _textColor;
+    titleView.shadowColor = [UIColor darkGrayColor];
+    titleView.shadowOffset = CGSizeMake(0, -1);
+    titleView.text = headerTitle;
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22, 198, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont systemFontOfSize:12];
+    subtitleView.textAlignment = UITextAlignmentCenter;
+    subtitleView.textColor = _textColor;
+    subtitleView.shadowColor = [UIColor darkGrayColor];
+    subtitleView.shadowOffset = CGSizeMake(0, -1);
+    subtitleView.text = headerSubtitle;
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:subtitleView];
+    
+    _headerTitleSubtitleView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin |
+                                                 UIViewAutoresizingFlexibleRightMargin |
+                                                 UIViewAutoresizingFlexibleTopMargin |
+                                                 UIViewAutoresizingFlexibleBottomMargin);
+    
+    self.navBar.topItem.titleView = _headerTitleSubtitleView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -200,8 +241,8 @@
         // Set start and end times
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"h:mm a"];
-        ((OTPItineraryOverviewCell *)cell).departTime.text = [formatter stringFromDate:self.itinerary.startTime];
-        ((OTPItineraryOverviewCell *)cell).arriveTime.text = [formatter stringFromDate:self.itinerary.endTime];
+        
+        [self setHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
         
     } else {
         
@@ -277,7 +318,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 80;
+        return 56;
     }
     
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {

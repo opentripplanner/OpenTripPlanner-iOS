@@ -20,7 +20,7 @@
 @property(nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
 @property(strong, nonatomic) OTPGeocodedTextField *fromTextField;
 @property(strong, nonatomic) OTPGeocodedTextField *toTextField;
-
+@property(strong, nonatomic) UINavigationBar *navBar;
 
 - (void)displayItinerary;
 - (void)displayItineraryOverview;
