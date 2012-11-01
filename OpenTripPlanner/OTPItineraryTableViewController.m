@@ -381,7 +381,7 @@
 {
     mapShowing = YES;
     if (_selectedIndexPath == nil) {
-        _selectedIndexPath = [[NSIndexPath alloc] initWithIndex:0];
+        _selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
     [self.tableView selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
