@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0D1909CC164315EF00432963 /* curl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1909CA164315EC00432963 /* curl.png */; };
 		0D1909CD164315EF00432963 /* curl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1909CB164315ED00432963 /* curl@2x.png */; };
+		0D4553A216432087006D4A3B /* OTPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45539D16432087006D4A3B /* OTPInsetLabel.m */; };
+		0D4553A316432087006D4A3B /* OTPItineraryOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */; };
+		0D4553A416432087006D4A3B /* OTPSelectedSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4553A116432087006D4A3B /* OTPSelectedSegment.m */; };
 		0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8936D163B4967002BC54C /* OTPAboutViewController.m */; };
 		1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */; };
 		1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55F16289707001E83D3 /* OTPLegCell.m */; };
@@ -308,6 +311,12 @@
 /* Begin PBXFileReference section */
 		0D1909CA164315EC00432963 /* curl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curl.png; sourceTree = "<group>"; };
 		0D1909CB164315ED00432963 /* curl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "curl@2x.png"; sourceTree = "<group>"; };
+		0D45539C16432087006D4A3B /* OTPInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPInsetLabel.h; sourceTree = "<group>"; };
+		0D45539D16432087006D4A3B /* OTPInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPInsetLabel.m; sourceTree = "<group>"; };
+		0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryOverviewCell.h; sourceTree = "<group>"; };
+		0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryOverviewCell.m; sourceTree = "<group>"; };
+		0D4553A016432087006D4A3B /* OTPSelectedSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPSelectedSegment.h; sourceTree = "<group>"; };
+		0D4553A116432087006D4A3B /* OTPSelectedSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPSelectedSegment.m; sourceTree = "<group>"; };
 		0DE8936C163B4967002BC54C /* OTPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPAboutViewController.h; sourceTree = "<group>"; };
 		0DE8936D163B4967002BC54C /* OTPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPAboutViewController.m; sourceTree = "<group>"; };
 		1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryCell.h; sourceTree = "<group>"; };
@@ -936,6 +945,12 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				0D45539C16432087006D4A3B /* OTPInsetLabel.h */,
+				0D45539D16432087006D4A3B /* OTPInsetLabel.m */,
+				0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */,
+				0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */,
+				0D4553A016432087006D4A3B /* OTPSelectedSegment.h */,
+				0D4553A116432087006D4A3B /* OTPSelectedSegment.m */,
 				CCBCD5251639BE8C00037B29 /* ItineraryView */,
 				CC231798162F628D00EE0F48 /* PPRevealSideViewController.h */,
 				CC231799162F628D00EE0F48 /* PPRevealSideViewController.m */,
@@ -1401,6 +1416,9 @@
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
 				0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */,
+				0D4553A216432087006D4A3B /* OTPInsetLabel.m in Sources */,
+				0D4553A316432087006D4A3B /* OTPItineraryOverviewCell.m in Sources */,
+				0D4553A416432087006D4A3B /* OTPSelectedSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
