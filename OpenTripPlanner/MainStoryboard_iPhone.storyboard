@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="placeCell" id="3Nd-nm-LNw" customClass="OTPPlaceCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="placeCell" id="3Nd-nm-LNw" customClass="OTPPlaceCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,14 +21,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="148 Lafayette St, New York, NY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i1S-Cz-ePi">
-                                            <rect key="frame" x="45" y="8" width="268" height="21"/>
+                                            <rect key="frame" x="52" y="8" width="268" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="22 N 3rd St, Philadelphia, PA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M8C-F3-Y1r">
-                                            <rect key="frame" x="46" y="34" width="237" height="21"/>
+                                            <rect key="frame" x="52" y="34" width="237" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -95,7 +95,7 @@
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="18:88 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ni9-i0-ba1">
-                                                    <rect key="frame" x="174" y="0.0" width="48" height="21"/>
+                                                    <rect key="frame" x="175" y="0.0" width="48" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -165,7 +165,7 @@
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mcb-6i-SRZ">
-                                                    <rect key="frame" x="7" y="47" width="49" height="21"/>
+                                                    <rect key="frame" x="7" y="39" width="49" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -483,22 +483,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arrive at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zaq-M4-QeV">
-                                            <rect key="frame" x="60" y="4" width="53" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scheduled Arrival" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zaq-M4-QeV">
+                                            <rect key="frame" x="60" y="28" width="102" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" text="Destination" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eqg-Qe-eMj">
-                                            <rect key="frame" x="60" y="25" width="247" height="21"/>
+                                            <rect key="frame" x="60" y="6" width="247" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arrival Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lRo-61-aMV">
-                                            <rect key="frame" x="141" y="4" width="106" height="21"/>
+                                            <rect key="frame" x="170" y="28" width="106" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -818,6 +818,172 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="mode-walk.png" width="14" height="21"/>
         <image name="pin_52.png" width="52" height="52"/>
     </resources>
+    <classes>
+        <class className="OTPAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPAboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aboutTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="OTPArrivalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPArrivalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="arrivalTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="destinationText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPDirectionsInputViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDirectionsInputViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="go:"/>
+                <relationship kind="action" name="modeChanged:"/>
+                <relationship kind="action" name="panToUserLocation:"/>
+                <relationship kind="action" name="touchAboutButton:"/>
+                <relationship kind="action" name="updatedTextField:"/>
+                <relationship kind="outlet" name="fromTextField" candidateClass="OTPGeocodedTextField"/>
+                <relationship kind="outlet" name="goButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="modeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="textFieldContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="timeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toTextField" candidateClass="OTPGeocodedTextField"/>
+                <relationship kind="outlet" name="userLocationButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="OTPDistanceBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDistanceBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPGeocodedTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodedTextField.h"/>
+        </class>
+        <class className="OTPGradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGradientView.h"/>
+        </class>
+        <class className="OTPInsetLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPInsetLabel.h"/>
+        </class>
+        <class className="OTPItineraryCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="collectionView" candidateClass="OTPItineraryCollectionView"/>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timesView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCollectionView.h"/>
+        </class>
+        <class className="OTPItineraryDurationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryDurationView.h"/>
+        </class>
+        <class className="OTPItineraryMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="RMMapView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryOverviewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryOverviewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="arriveTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="departTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
+        </class>
+        <class className="OTPItineraryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="OTPLegCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="legImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="legLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPPlaceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPPlaceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fromLabelView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPStepCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="departureTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stopsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPTransferCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransferCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPTransitTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="arrivingOrDepartingControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="OTPTransitTimesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="OTPVerticalGradientView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -642,8 +642,8 @@
 		CCF66A551632112B007A9634 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		CCF66A561632112D007A9634 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CCF66A571632112F007A9634 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CCF66A5F16321331007A9634 /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon.png"; sourceTree = "<group>"; };
-		CCF66A611632134F007A9634 /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@2x.png"; sourceTree = "<group>"; };
+		CCF66A5F16321331007A9634 /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-icon.png"; path = "../home-icon.png"; sourceTree = "<group>"; };
+		CCF66A611632134F007A9634 /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-icon@2x.png"; path = "../home-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -686,8 +686,6 @@
 		0D8259AB1644314800D5F446 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				9388193E161927A5002021EA /* MBProgressHUD.h */,
-				9388193F161927A6002021EA /* MBProgressHUD.m */,
 				CCE81920160131FD0034E8AC /* OTPCallout.m */,
 				CCE8191F160131FD0034E8AC /* OTPCallout.h */,
 				CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */,
@@ -743,8 +741,8 @@
 		0D8259AE1644322C00D5F446 /* Directions Input View */ = {
 			isa = PBXGroup;
 			children = (
-				CCBCD5221635FC9900037B29 /* OTPGradientView.h */,
-				CCBCD5231635FC9900037B29 /* OTPGradientView.m */,
+				9388193E161927A5002021EA /* MBProgressHUD.h */,
+				9388193F161927A6002021EA /* MBProgressHUD.m */,
 				CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */,
 				CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */,
 				CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */,
@@ -773,8 +771,12 @@
 		0D8259B0164433A900D5F446 /* Routing Params View */ = {
 			isa = PBXGroup;
 			children = (
+				CC9DC0421614F5F200C8B22E /* OTPTransitTimeViewController.h */,
+				CC9DC0411614F5F200C8B22E /* OTPTransitTimeViewController.m */,
 				CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */,
 				CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */,
+				CCBCD5221635FC9900037B29 /* OTPGradientView.h */,
+				CCBCD5231635FC9900037B29 /* OTPGradientView.m */,
 			);
 			name = "Routing Params View";
 			sourceTree = "<group>";
@@ -863,6 +865,8 @@
 		CC2316EA16260F9200EE0F48 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CCF66A611632134F007A9634 /* home-icon@2x.png */,
+				CCF66A5F16321331007A9634 /* home-icon.png */,
 				0D4553BA16432356006D4A3B /* popup-bike.png */,
 				0D4553BB16432356006D4A3B /* popup-bike@2x.png */,
 				0D4553BC16432356006D4A3B /* popup-bus.png */,
@@ -1062,8 +1066,6 @@
 			children = (
 				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
 				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
-				CC9DC0421614F5F200C8B22E /* OTPTransitTimeViewController.h */,
-				CC9DC0411614F5F200C8B22E /* OTPTransitTimeViewController.m */,
 				0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */,
 				0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */,
 				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
@@ -1079,8 +1081,6 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
-				CCF66A611632134F007A9634 /* home-icon@2x.png */,
-				CCF66A5F16321331007A9634 /* home-icon.png */,
 				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
 				9378874416154865007CF24C /* RestKit.xcodeproj */,
 				CC0A1F781603B47A003085B2 /* XYOrigami */,

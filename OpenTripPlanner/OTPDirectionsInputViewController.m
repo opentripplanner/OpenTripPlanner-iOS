@@ -55,15 +55,6 @@ NSNumber *topOfKeyboard;
 
 Plan *currentPlan;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -143,11 +134,6 @@ Plan *currentPlan;
     
     self.fromTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     self.toTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-
 }
 
 - (void)go:(id)sender
@@ -247,6 +233,7 @@ Plan *currentPlan;
     // TODO: Look at how time zone plays into all this.
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
     // If the tracked date is before now, set the tracked date to now.
     self.date = [[[NSDate alloc] init] laterDate:self.date];
     NSString *dateString = [dateFormatter stringFromDate:self.date];
@@ -262,7 +249,6 @@ Plan *currentPlan;
     NSString *secret = @"8AcRe4usPEpEThuW";
     NSString *apiKey = @"joyride";
     NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
-    
     
     NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
                             @"optimize", @"QUICK",
@@ -555,26 +541,40 @@ Plan *currentPlan;
 
 #pragma mark RKObjectLoaderDelegate methods
 
+RKResponse* _OTPResponse = nil;
+
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
 {
     NSLog(@"Loaded payload: %@", [response bodyAsString]);
+    _OTPResponse = response;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     NSLog(@"Loaded plan: %@", objects);
     [HUD hide:YES];
+
     currentPlan = (Plan*)[objects objectAtIndex:0];
-    //[self displayItinerary:[currentPlan.itineraries objectAtIndex:0]];
     [self performSegueWithIdentifier:@"ExploreItineraries" sender:self];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
 {
-    [HUD hide:YES];
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
     NSLog(@"Hit error: %@", error);
+    [HUD hide:YES];
+
+    if(_OTPResponse != nil) {
+        NSString *OTPError = [_OTPResponse bodyAsString];
+        OTPError = [OTPError stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                              
+        if([OTPError hasSuffix:@"is out of range"]) {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"We're not yet able to plan trips across cities--try a trip completely within your start or ending city." delegate:nil cancelButtonTitle:@"Got It" otherButtonTitles:nil];
+            [alert show];
+        }        
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -70,7 +70,6 @@ BOOL needsRouting = NO;
     [self.searchBar startActivity];
     
     [geocoder geocodeAddressString:searchBar.text inRegion:region completionHandler:^(NSArray* placemarks, NSError* error) {
-        
         [self.searchBar finishActivity];
         
         int counter = 0;

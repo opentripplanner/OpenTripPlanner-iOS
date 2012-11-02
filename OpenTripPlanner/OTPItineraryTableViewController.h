@@ -25,7 +25,5 @@
 - (void)displayItinerary;
 - (void)displayItineraryOverview;
 - (void)displayLeg:(Leg*)leg;
-- (IBAction)swipeRightTableView:(id)sender;
-- (IBAction)swipeLeftTableView:(id)sender;
 
 @end

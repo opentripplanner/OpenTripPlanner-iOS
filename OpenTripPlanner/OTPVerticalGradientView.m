@@ -13,17 +13,6 @@
 
 @implementation OTPVerticalGradientView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -43,8 +32,7 @@
     self.layer.shadowColor = CGColorRetain([UIColor blackColor].CGColor);
     self.layer.shadowOpacity = 0.3;
     self.layer.shadowRadius = 3;
-    self.layer.shadowOffset = CGSizeMake(0, 3);
-    
+    self.layer.shadowOffset = CGSizeMake(0, 3);    
 }
 
 @end

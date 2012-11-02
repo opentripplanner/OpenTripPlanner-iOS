@@ -15,15 +15,6 @@
 
 @implementation OTPAboutViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,7 +54,8 @@
     [self.receivedData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+}
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *dataString = [[NSString alloc] initWithData: self.receivedData encoding: NSASCIIStringEncoding];
