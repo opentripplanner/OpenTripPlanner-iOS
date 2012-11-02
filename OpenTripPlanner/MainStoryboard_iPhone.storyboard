@@ -543,7 +543,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">JoyRide is a project of OpenPlans. This is version 1.0.  Routing by OpenTripPlanner.  Version 1.0 built with support from a group of generous folks from Kickstarter. </string>
+                                        <string key="content">JoyRide is a project of OpenPlans. This is version BETA 1.  Routing by OpenTripPlanner.  Version 1.0 built with support from a group of generous folks from Kickstarter. </string>
                                         <attributes>
                                             <color key="NSColor" red="0.18094004755434778" green="0.18094004755434778" blue="0.18094004755434778" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="13" name="Helvetica"/>
