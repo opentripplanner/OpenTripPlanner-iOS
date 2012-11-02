@@ -183,7 +183,7 @@
     return self.itinerary.legs.count + 1;
 }
 
--(void) setHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
+-(void) createHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
     
     UIColor *_textColor = [UIColor colorWithRed:0.36 green:0.72 blue:0.83 alpha:1.0];
     
@@ -192,10 +192,10 @@
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
     _headerTitleSubtitleView.autoresizesSubviews = YES;
     
-    CGRect titleFrame = CGRectMake(0, 2, 198, 24);
+    CGRect titleFrame = CGRectMake(0, 0, 198, 22);
     UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:16];
+    titleView.font = [UIFont boldSystemFontOfSize:15];
     titleView.textAlignment = UITextAlignmentCenter;
     titleView.textColor = _textColor;
     titleView.shadowColor = [UIColor darkGrayColor];
@@ -204,10 +204,10 @@
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
-    CGRect subtitleFrame = CGRectMake(0, 22, 198, 44-24);
+    CGRect subtitleFrame = CGRectMake(0, 22, 198, 44-26);
     UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
     subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont systemFontOfSize:12];
+    subtitleView.font = [UIFont systemFontOfSize:11];
     subtitleView.textAlignment = UITextAlignmentCenter;
     subtitleView.textColor = _textColor;
     subtitleView.shadowColor = [UIColor darkGrayColor];
@@ -221,9 +221,15 @@
                                                  UIViewAutoresizingFlexibleTopMargin |
                                                  UIViewAutoresizingFlexibleBottomMargin);
     
-    self.navBar.topItem.titleView = _headerTitleSubtitleView;
+    [self performSelector:@selector(setHeaderTitle:) withObject:_headerTitleSubtitleView afterDelay:0.35];
 }
 
+-(void) setHeaderTitle:(UIView *)headerView
+{
+    self.navBar.topItem.titleView = headerView;
+}
+    
+    
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -242,7 +248,7 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"h:mm a"];
         
-        [self setHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
+        [self createHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
         
     } else {
         
