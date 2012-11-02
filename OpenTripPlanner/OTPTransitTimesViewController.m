@@ -244,11 +244,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    [(OTPItineraryViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
     
     OTPItineraryViewController *vc = (OTPItineraryViewController *)((UINavigationController *)segue.destinationViewController);
+    vc.itinerary = [self.itineraries objectAtIndex:indexPath.row];
     vc.fromTextField = self.fromTextField;
     vc.toTextField = self.toTextField;
+    vc.mapShowedUserLocation = self.mapShowedUserLocation;
 }
 
 

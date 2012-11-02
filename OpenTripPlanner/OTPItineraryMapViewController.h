@@ -16,5 +16,11 @@
 
 @property (strong, nonatomic) IBOutlet RMMapView *mapView;
 @property (strong, nonatomic) IBOutlet OTPInsetLabel *instructionLabel;
+@property (nonatomic, strong) RMUserLocation *userLocation;
+@property (nonatomic) BOOL needsPanToUserLocation;
+
+- (IBAction)panToUserLocation:(id)sender;
+- (void)enableUserLocation;
+- (void)updateViewsForCurrentUserLocation;
 
 @end

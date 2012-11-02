@@ -35,6 +35,7 @@
     self.itineraryTableViewController.fromTextField = self.fromTextField;
     self.itineraryTableViewController.toTextField = self.toTextField;
     self.itineraryTableViewController.navBar = self.navigationController.navigationBar;
+    self.itineraryTableViewController.mapShowedUserLocation = self.mapShowedUserLocation;
     
     self.revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:self.itineraryTableViewController];
     self.revealSideViewController.delegate = self.itineraryTableViewController;

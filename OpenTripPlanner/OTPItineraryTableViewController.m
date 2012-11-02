@@ -154,6 +154,7 @@
     [self.itineraryMapViewController.mapView setDelegate:self];
     self.itineraryMapViewController.mapView.topPadding = 100;
     self.itineraryMapViewController.instructionLabel.hidden = YES;
+    self.itineraryMapViewController.mapView.showsUserLocation = self.mapShowedUserLocation;
 
     [self calculateCellHeights];
     
@@ -645,6 +646,14 @@
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
     return [annotation.userInfo objectForKey:@"layer"];
+}
+
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
+{
+    self.itineraryMapViewController.userLocation = userLocation;
+    if (self.itineraryMapViewController.needsPanToUserLocation) {
+        [self.itineraryMapViewController updateViewsForCurrentUserLocation];
+    }
 }
 
 - (void)resetLegsWithColor:(UIColor *)color

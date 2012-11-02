@@ -22,6 +22,7 @@
 @property(strong, nonatomic) OTPGeocodedTextField *toTextField;
 @property(strong, nonatomic) UINavigationBar *navBar;
 @property(strong, nonatomic) NSMutableArray *cellHeights;
+@property(nonatomic) BOOL mapShowedUserLocation;
 
 - (void)displayItinerary;
 - (void)displayItineraryOverview;

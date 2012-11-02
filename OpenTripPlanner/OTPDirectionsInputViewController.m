@@ -585,6 +585,11 @@ RKResponse* _OTPResponse = nil;
         vc.itineraries = currentPlan.itineraries;
         vc.fromTextField = self.fromTextField;
         vc.toTextField = self.toTextField;
+        if (self.mapView.showsUserLocation) {
+            vc.mapShowedUserLocation = YES;
+        } else {
+            vc.mapShowedUserLocation = NO;
+        }
     } else if ([segue.identifier isEqualToString:@"TransitTimes"]) {
         OTPTransitTimeViewController *vc = (OTPTransitTimeViewController *)segue.destinationViewController;
         vc.delegate = self;

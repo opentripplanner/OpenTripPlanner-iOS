@@ -701,6 +701,8 @@
 		0D8259AC1644317E00D5F446 /* Itinerary Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
+				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
 				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
 				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
 				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
@@ -720,6 +722,8 @@
 		0D8259AD164431FD00D5F446 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */,
+				0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */,
 				8D9287711643A3C400170393 /* OTPArrivalCell.h */,
 				8D9287721643A3C400170393 /* OTPArrivalCell.m */,
 				CC2317261627653500EE0F48 /* OTPStopBasedLegCell.h */,
@@ -1070,10 +1074,6 @@
 			children = (
 				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
 				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
-				0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */,
-				0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */,
-				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
-				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
 			);
 			name = "Itinerary List View";
 			sourceTree = "<group>";

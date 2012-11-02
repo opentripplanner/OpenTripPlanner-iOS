@@ -23,6 +23,7 @@
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;
 @property (nonatomic, strong) OTPGeocodedTextField *fromTextField;
 @property (nonatomic, strong) OTPGeocodedTextField *toTextField;
+@property (nonatomic) BOOL mapShowedUserLocation;
 
 
 - (IBAction)done:(UIBarButtonItem *)sender;

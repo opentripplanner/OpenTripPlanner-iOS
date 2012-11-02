@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *itineraries;
 @property (nonatomic, strong) OTPGeocodedTextField *fromTextField;
 @property (nonatomic, strong) OTPGeocodedTextField *toTextField;
+@property (nonatomic) BOOL mapShowedUserLocation;
 
 - (IBAction)dismiss:(id)sender;
 

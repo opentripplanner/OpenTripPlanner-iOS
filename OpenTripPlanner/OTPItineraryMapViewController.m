@@ -50,6 +50,33 @@
     self.instructionLabel.insets = UIEdgeInsetsMake(7, 10, 7, 10);
 }
 
+- (void)panToUserLocation:(id)sender
+{
+    self.needsPanToUserLocation = YES;
+    [self enableUserLocation];
+}
+
+- (void)enableUserLocation
+{
+    self.mapView.showsUserLocation = YES;
+    [self updateViewsForCurrentUserLocation];
+}
+
+- (void)updateViewsForCurrentUserLocation
+{
+    if (self.userLocation == nil) {
+        return;
+    }
+    
+    // Show user location on the map
+    if (self.needsPanToUserLocation) {
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(self.userLocation.location.coordinate.latitude - 0.0085, self.userLocation.location.coordinate.longitude - 0.005);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(self.userLocation.location.coordinate.latitude + 0.0085, self.userLocation.location.coordinate.longitude + 0.005);
+        [self.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
+        self.needsPanToUserLocation = NO;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
