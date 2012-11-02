@@ -10,6 +10,7 @@
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
 #import "OTPItineraryOverviewCell.h"
+#import "OTPArrivalCell.h"
 #import "OTPStepCell.h"
 #import "OTPTransferCell.h"
 #import "PPRevealSideViewController.h"
@@ -178,9 +179,9 @@
     // Return the number of rows in the section.
     // If we have a single leg with steps, it's a walk, bike, or drive itinierary
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        return ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1;
+        return ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 2;
     }
-    return self.itinerary.legs.count + 1;
+    return self.itinerary.legs.count + 2;  // +2 for final arrival info
 }
 
 -(void) createHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
@@ -241,35 +242,75 @@
         static NSString *CellIdentifier = @"OverviewCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
+        // Set from/to in itinerary overview cell
         ((OTPItineraryOverviewCell *)cell).fromLabel.text = self.fromTextField.text;
         ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
         
-        // Set start and end times
+        // Set start and end times in header
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"h:mm a"];
         
         [self createHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
         
+    } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
+        
+        // if the last cell for legs, add destination/arrival info:
+        
+        static NSString *CellIdentifier = @"ArrivalCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"h:mm a"];
+        
+        ((OTPArrivalCell *)cell).arrivalTime.text = [formatter stringFromDate:self.itinerary.endTime];
+        
     } else {
         
         if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-            Leg *leg = [self.itinerary.legs objectAtIndex:0];
-            Step *step = [leg.steps objectAtIndex:indexPath.row-1];
-            cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
-            NSString *instruction;
-            if (indexPath.row == 1) {
-                instruction = [NSString stringWithFormat:@"%@ %@ on %@",
-                               [_modeDisplayStrings objectForKey:leg.mode],
-                               [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                               step.streetName];
-                ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
+            
+            // if the last cell for steps, add destination/arrival info:
+            
+            if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
+                
+                static NSString *CellIdentifier = @"ArrivalCell";
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
+                
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"h:mm a"];
+                
+                ((OTPArrivalCell *)cell).arrivalTime.text = [NSString stringWithFormat:@"~ %@", [formatter stringFromDate: self.itinerary.endTime]];
+                
             } else {
-                instruction = [NSString stringWithFormat:@"%@ on %@",
-                               [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                               step.streetName];
-                ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
+                
+            // otherwise add steps:
+            
+                cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+                
+                NSString *instruction;
+                Leg *leg = [self.itinerary.legs objectAtIndex:0];
+                Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+                
+                if (indexPath.row == 1) {
+                    instruction = [NSString stringWithFormat:@"%@ %@ on %@",
+                                   [_modeDisplayStrings objectForKey:leg.mode],
+                                   [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                                   step.streetName];
+                    ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
+                    
+                    ((OTPStepCell *)cell).instructionLabel.text = instruction;
+                    
+                } else {
+                    instruction = [NSString stringWithFormat:@"%@ on %@",
+                                   [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                                   step.streetName];
+                    ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
+                    
+                    ((OTPStepCell *)cell).instructionLabel.text = instruction;
+                }
             }
-            ((OTPStepCell *)cell).instructionLabel.text = instruction;
+            
         } else {
             Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
             
@@ -326,6 +367,9 @@
     if (indexPath.row == 0) {
         return 56;
     }
+    if (indexPath.row > self.itinerary.legs.count) { // for final arrival info cell
+        return 56;
+    }
     
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         return 60;
@@ -362,37 +406,53 @@
         self.itineraryMapViewController.mapView.topPadding = 0;
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
+        
+    } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
+        [self displayItineraryOverview];  // for final arrival info cell
+        
+        //TODO: change to center to final destination point
+        
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        Leg *leg = [self.itinerary.legs objectAtIndex:0];
-        Step *step = [leg.steps objectAtIndex:indexPath.row-1];
         
-        NSString *instruction;
-        if (indexPath.row == 1) {
-            instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
-                           [_modeDisplayStrings objectForKey:leg.mode],
-                           [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                           step.streetName];
+        if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
+            // for final arrival info cell
+            [self displayItineraryOverview];
+            
+            //TODO: change to center to final destination point
+            
         } else {
-            instruction = [NSString stringWithFormat:@"%@ on %@.",
-                           [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                           step.streetName];
+        
+            Leg *leg = [self.itinerary.legs objectAtIndex:0];
+            Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+            
+            NSString *instruction;
+            if (indexPath.row == 1) {
+                instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
+                               [_modeDisplayStrings objectForKey:leg.mode],
+                               [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                               step.streetName];
+            } else {
+                instruction = [NSString stringWithFormat:@"%@ on %@.",
+                               [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                               step.streetName];
+            }
+            self.itineraryMapViewController.instructionLabel.text = instruction;
+            
+            // TODO: Fix duplicate code.
+            [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+            if (self.itineraryMapViewController.instructionLabel.isHidden) {
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+                self.itineraryMapViewController.instructionLabel.hidden = NO;
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+                }];
+            }
+            
+            self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+            
+            [self.itineraryMapViewController.mapView setZoom:16];
+            [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
         }
-        self.itineraryMapViewController.instructionLabel.text = instruction;
-        
-        // TODO: Fix duplicate code.
-        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
-        if (self.itineraryMapViewController.instructionLabel.isHidden) {
-            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            self.itineraryMapViewController.instructionLabel.hidden = NO;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            }];
-        }
-        
-        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
-        
-        [self.itineraryMapViewController.mapView setZoom:16];
-        [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
     } else {
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
         RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
