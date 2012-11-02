@@ -568,7 +568,7 @@ RKResponse* _OTPResponse = nil;
         OTPError = [OTPError stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                               
         if([OTPError hasSuffix:@"is out of range"]) {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"We're not yet able to plan trips across cities--try a trip completely within your start or ending city." delegate:nil cancelButtonTitle:@"Got It" otherButtonTitles:nil];
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"We're not yet able to plan trips across cities. Try a trip completely within your start or ending city." delegate:nil cancelButtonTitle:@"Got It" otherButtonTitles:nil];
             [alert show];
         }        
     } else {

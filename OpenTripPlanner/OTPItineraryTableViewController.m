@@ -341,14 +341,20 @@
                 ((OTPStopBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
                 
                 ((OTPStopBasedLegCell *)cell).iconLabel.text = leg.route.capitalizedString;
-                ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ twds %@", [_modeDisplayStrings objectForKey:leg.mode] , leg.headsign.capitalizedString];
+
+                NSString *destination = leg.headsign.capitalizedString;
+                if(destination == nil) {
+                    destination = leg.to.name.capitalizedString;
+                }
+                
+                ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ towards %@", [_modeDisplayStrings objectForKey:leg.mode], destination];
                 ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
                 
                 int intermediateStops = leg.intermediateStops.count + 1;
                 NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
                 ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
                 
-                ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@ stop", leg.to.name.capitalizedString];
+                ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
             } else if ([_transferModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
                 ((OTPTransferCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];

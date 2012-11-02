@@ -701,8 +701,12 @@
 		0D8259AC1644317E00D5F446 /* Itinerary Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
+				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
 				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
 				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
+				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
+				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
 				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
 				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
 				1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */,
@@ -1068,10 +1072,6 @@
 				CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */,
 				0D45539E16432087006D4A3B /* OTPItineraryOverviewCell.h */,
 				0D45539F16432087006D4A3B /* OTPItineraryOverviewCell.m */,
-				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
-				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
-				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
-				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
 				CC922FB3161A1A940072E22F /* OTPItineraryMapViewController.h */,
 				CC922FB4161A1A940072E22F /* OTPItineraryMapViewController.m */,
 			);
