@@ -149,7 +149,7 @@
 }
 
 #pragma mark - Push and pop methods
-#define DefaultOffset 70.0
+#define DefaultOffset 60.0
 #define DefaultOffsetBouncing 5.0
 
 #define OpenAnimationTime 0.3
