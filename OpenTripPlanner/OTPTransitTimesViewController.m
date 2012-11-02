@@ -241,25 +241,14 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     [(OTPItineraryViewController *)segue.destinationViewController setItinerary:[self.itineraries objectAtIndex:indexPath.row]];
     
     OTPItineraryViewController *vc = (OTPItineraryViewController *)((UINavigationController *)segue.destinationViewController);
-    vc.fromTextField = self.toTextField;
-    vc.toTextField = self.fromTextField;
+    vc.fromTextField = self.fromTextField;
+    vc.toTextField = self.toTextField;
 }
 
 

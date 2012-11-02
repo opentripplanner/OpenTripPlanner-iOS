@@ -40,11 +40,15 @@
 
 @implementation OTPItineraryTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Set start and end times in header
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"h:mm a"];
+        
+        [self createHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
     }
     return self;
 }
@@ -60,127 +64,156 @@
     _transferModes = @[@"TRANSFER"];
     
     _modeIcons = @{
-    @"WALK" : [UIImage imageNamed:@"walk_52.png"],
-    @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
-    @"CAR" : [UIImage imageNamed:@"car_52.png"],
-    @"TRAM" : [UIImage imageNamed:@"cable-car_52.png"],
-    @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
-    @"RAIL" : [UIImage imageNamed:@"train_52.png"],
-    @"BUS" : [UIImage imageNamed:@"bus_52.png"],
-    @"FERRY" : [UIImage imageNamed:@"ferry_52.png"],
-    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_52.png"],
-    @"GONDOLA" : [UIImage imageNamed:@"gondola_52.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"transfer_52.png"],
-    @"FUNICULAR" : [UIImage imageNamed:@"funicular_52.png"]
+        @"WALK" : [UIImage imageNamed:@"walk_52.png"],
+        @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
+        @"CAR" : [UIImage imageNamed:@"car_52.png"],
+        @"TRAM" : [UIImage imageNamed:@"cable-car_52.png"],
+        @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
+        @"RAIL" : [UIImage imageNamed:@"train_52.png"],
+        @"BUS" : [UIImage imageNamed:@"bus_52.png"],
+        @"FERRY" : [UIImage imageNamed:@"ferry_52.png"],
+        @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_52.png"],
+        @"GONDOLA" : [UIImage imageNamed:@"gondola_52.png"],
+        @"TRANSFER" : [UIImage imageNamed:@"transfer_52.png"],
+        @"FUNICULAR" : [UIImage imageNamed:@"funicular_52.png"]
     };
     
     _modeDisplayStrings = @{
-    @"WALK" : @"Walk",
-    @"BICYCLE" : @"Bike",
-    @"CAR" : @"Drive",
-    @"TRAM" : @"Tram",
-    @"SUBWAY" : @"Subway",
-    @"RAIL" : @"Train",
-    @"BUS" : @"Bus",
-    @"FERRY" : @"Ferry",
-    @"CABLE_CAR" : @"Cable car",
-    @"GONDOLA" : @"Gondola",
-    @"FUNICULAR" : @"Funicular",
-    @"TRANSFER" : @"Transfer"
+        @"WALK" : @"Walk",
+        @"BICYCLE" : @"Bike",
+        @"CAR" : @"Drive",
+        @"TRAM" : @"Tram",
+        @"SUBWAY" : @"Subway",
+        @"RAIL" : @"Train",
+        @"BUS" : @"Bus",
+        @"FERRY" : @"Ferry",
+        @"CABLE_CAR" : @"Cable car",
+        @"GONDOLA" : @"Gondola",
+        @"FUNICULAR" : @"Funicular",
+        @"TRANSFER" : @"Transfer"
     };
     
     _relativeDirectionIcons = @{
-    @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
-    @"LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
-    @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_52.png"],
-    @"CONTINUE" : [UIImage imageNamed:@"continue_52.png"],
-    @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_52.png"],
-    @"RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
-    @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
-    @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_52.png"],
-    @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_52.png"],
-    @"ELEVATOR" : [UIImage imageNamed:@"elevator_52.png"]
+        @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+        @"LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
+        @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_52.png"],
+        @"CONTINUE" : [UIImage imageNamed:@"continue_52.png"],
+        @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_52.png"],
+        @"RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+        @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
+        @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_52.png"],
+        @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_52.png"],
+        @"ELEVATOR" : [UIImage imageNamed:@"elevator_52.png"]
     };
     
     _relativeDirectionDisplayStrings = @{
-    @"HARD_LEFT" : @"Hard left",
-    @"LEFT" : @"Left",
-    @"SLIGHTLY_LEFT" : @"Slight left",
-    @"CONTINUE" : @"Continue",
-    @"SLIGHTLY_RIGHT" : @"Slight right",
-    @"RIGHT" : @"Right",
-    @"HARD_RIGHT" : @"Hard right",
-    @"CIRCLE_CLOCKWISE" : @"Circle clockwise",
-    @"CIRCLE_COUNTERCLOCKWISE" : @"Circle counterclockwise",
-    @"ELEVATOR" : @"Elevator"
+        @"HARD_LEFT" : @"Hard left",
+        @"LEFT" : @"Left",
+        @"SLIGHTLY_LEFT" : @"Slight left",
+        @"CONTINUE" : @"Continue",
+        @"SLIGHTLY_RIGHT" : @"Slight right",
+        @"RIGHT" : @"Right",
+        @"HARD_RIGHT" : @"Hard right",
+        @"CIRCLE_CLOCKWISE" : @"Circle clockwise",
+        @"CIRCLE_COUNTERCLOCKWISE" : @"Circle counterclockwise",
+        @"ELEVATOR" : @"Elevator"
     };
     
     _absoluteDirectionDisplayStrings = @{
-    @"NORTH" : @"north",
-    @"NORTHEAST" : @"northeast",
-    @"EAST" : @"east",
-    @"SOUTHEAST" : @"southeast",
-    @"SOUTH" : @"south",
-    @"SOUTHWEST" : @"southwest",
-    @"WEST" : @"west",
-    @"NORTHWEST" : @"northwest"
+        @"NORTH" : @"north",
+        @"NORTHEAST" : @"northeast",
+        @"EAST" : @"east",
+        @"SOUTHEAST" : @"southeast",
+        @"SOUTH" : @"south",
+        @"SOUTHWEST" : @"southwest",
+        @"WEST" : @"west",
+        @"NORTHWEST" : @"northwest"
     };
     
     _popuprModeIcons = @{
-    @"WALK" : [UIImage imageNamed:@"popup-walk.png"],
-    @"BICYCLE" : [UIImage imageNamed:@"popup-bike.png"],
-    @"CAR" : [UIImage imageNamed:@"popup-car.png"],
-    @"TRAM" : [UIImage imageNamed:@"popup-cable-car.png"],
-    @"SUBWAY" : [UIImage imageNamed:@"popup-train.png"],
-    @"RAIL" : [UIImage imageNamed:@"popup-train.png"],
-    @"BUS" : [UIImage imageNamed:@"popup-bus.png"],
-    @"FERRY" : [UIImage imageNamed:@"popup-ferry.png"],
-    @"CABLE_CAR" : [UIImage imageNamed:@"popup-cable-car.png"],
-    @"GONDOLA" : [UIImage imageNamed:@"popup-gondola.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"popup-transfer.png"],
-    @"FUNICULAR" : [UIImage imageNamed:@"popup-funicular.png"]
+        @"WALK" : [UIImage imageNamed:@"popup-walk.png"],
+        @"BICYCLE" : [UIImage imageNamed:@"popup-bike.png"],
+        @"CAR" : [UIImage imageNamed:@"popup-car.png"],
+        @"TRAM" : [UIImage imageNamed:@"popup-cable-car.png"],
+        @"SUBWAY" : [UIImage imageNamed:@"popup-train.png"],
+        @"RAIL" : [UIImage imageNamed:@"popup-train.png"],
+        @"BUS" : [UIImage imageNamed:@"popup-bus.png"],
+        @"FERRY" : [UIImage imageNamed:@"popup-ferry.png"],
+        @"CABLE_CAR" : [UIImage imageNamed:@"popup-cable-car.png"],
+        @"GONDOLA" : [UIImage imageNamed:@"popup-gondola.png"],
+        @"TRANSFER" : [UIImage imageNamed:@"popup-transfer.png"],
+        @"FUNICULAR" : [UIImage imageNamed:@"popup-funicular.png"]
     };
 
     
     _shapesForLegs = [[NSMutableArray alloc] init];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _cellHeights = [[NSMutableArray alloc] initWithCapacity:[self cellCount]];
     
     self.itineraryMapViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController.mapView setDelegate:self];
     self.itineraryMapViewController.mapView.topPadding = 100;
     self.itineraryMapViewController.instructionLabel.hidden = YES;
+
+    [self calculateCellHeights];
     
     [self displayItinerary];
     [self displayItineraryOverview];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// FIXME: was having trouble dissecting the nexted if/else/elseif structures, so replicated it exactly here
+-(void) calculateCellHeights {
+    
+    for(int i = 0; i < [self cellCount]; i++) {
+        [_cellHeights setObject:[NSNumber numberWithFloat:60.0f] atIndexedSubscript:i];
+        
+        if (i == 0) {
+            
+        } else if (self.itinerary.legs.count != 1 && i == self.itinerary.legs.count + 1) {
+        
+        } else {
+            // single leg itinerary: use steps as legs
+            if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+                if (i == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
+        
+                } else {
+                
+                }
+            } else {
+                Leg *leg = [self.itinerary.legs objectAtIndex:i-1];
+            
+                if ([_distanceBasedModes containsObject:leg.mode]) {
+                    
+                } else if ([_stopBasedModes containsObject:leg.mode]) {
+                    NSString *destination = leg.headsign.capitalizedString;
+                    if(destination == nil) {
+                        destination = leg.to.name.capitalizedString;
+                    }
+                
+                    NSString *labelText = [NSString stringWithFormat: @"%@ towards %@",
+                                       [_modeDisplayStrings objectForKey:leg.mode],
+                                       destination];
+                
+                    CGSize textSize = [labelText
+                                   sizeWithFont:[UIFont boldSystemFontOfSize:14]
+                                   constrainedToSize:CGSizeMake(246, MAXFLOAT)
+                                   lineBreakMode:UILineBreakModeWordWrap];
+                
+                    [_cellHeights setObject:[NSNumber numberWithFloat:65.0f + textSize.height] atIndexedSubscript:i];
+                } else if ([_transferModes containsObject:leg.mode]) {
+        
+                }
+            }
+        }
+    }
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
+-(NSInteger)cellCount {
     // If we have a single leg with steps, it's a walk, bike, or drive itinierary
     if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         return ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 2;
     }
+    
     return self.itinerary.legs.count + 2;  // +2 for final arrival info
 }
 
@@ -221,16 +254,29 @@
                                                  UIViewAutoresizingFlexibleRightMargin |
                                                  UIViewAutoresizingFlexibleTopMargin |
                                                  UIViewAutoresizingFlexibleBottomMargin);
-    
-    [self performSelector:@selector(setHeaderTitle:) withObject:_headerTitleSubtitleView afterDelay:0.35];
+
+    self.navBar.topItem.titleView = _headerTitleSubtitleView;
 }
 
--(void) setHeaderTitle:(UIView *)headerView
+
+- (void)didReceiveMemoryWarning
 {
-    self.navBar.topItem.titleView = headerView;
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-    
-    
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self cellCount];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -238,6 +284,7 @@
     
     UITableViewCell *cell = nil;
     
+    // first cell
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -246,80 +293,66 @@
         ((OTPItineraryOverviewCell *)cell).fromLabel.text = self.fromTextField.text;
         ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
         
-        // Set start and end times in header
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"h:mm a"];
-        
-        [self createHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
-        
+    // last cell
     } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
-        
-        // if the last cell for legs, add destination/arrival info:
         
         static NSString *CellIdentifier = @"ArrivalCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
         ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
+        ((OTPArrivalCell *)cell).arrivalTime.text = [dateFormatter stringFromDate:self.itinerary.endTime];
+    
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"h:mm a"];
         
-        ((OTPArrivalCell *)cell).arrivalTime.text = [formatter stringFromDate:self.itinerary.endTime];
-        
+    // everything else
     } else {
         
+        
+        // single leg itinerary: use steps as legs
         if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-            
-            // if the last cell for steps, add destination/arrival info:
-            
+            // if the last cell for steps, add destination/arrival info:            
             if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
-                
                 static NSString *CellIdentifier = @"ArrivalCell";
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
                 ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
-                
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                [formatter setDateFormat:@"h:mm a"];
-                
-                ((OTPArrivalCell *)cell).arrivalTime.text = [NSString stringWithFormat:@"~ %@", [formatter stringFromDate: self.itinerary.endTime]];
-                
-            } else {
+                ((OTPArrivalCell *)cell).arrivalTime.text = [NSString stringWithFormat:@"~ %@", [dateFormatter stringFromDate: self.itinerary.endTime]];
                 
             // otherwise add steps:
-            
+            } else {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
                 
-                NSString *instruction;
                 Leg *leg = [self.itinerary.legs objectAtIndex:0];
                 Step *step = [leg.steps objectAtIndex:indexPath.row-1];
                 
                 if (indexPath.row == 1) {
-                    instruction = [NSString stringWithFormat:@"%@ %@ on %@",
+                    NSString *instruction = [NSString stringWithFormat:@"%@ %@ on %@",
                                    [_modeDisplayStrings objectForKey:leg.mode],
                                    [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
                                    step.streetName];
                     ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                    
                     ((OTPStepCell *)cell).instructionLabel.text = instruction;
                     
                 } else {
-                    instruction = [NSString stringWithFormat:@"%@ on %@",
+                    NSString *instruction = [NSString stringWithFormat:@"%@ on %@",
                                    [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
                                    step.streetName];
                     ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
-                    
                     ((OTPStepCell *)cell).instructionLabel.text = instruction;
                 }
             }
             
+            
+            
+        // multi-leg itinerary: don't use steps as legs            
         } else {
             Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
             
+            // walk leg
             if ([_distanceBasedModes containsObject:leg.mode]) {
-                
                 cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
                 
                 ((OTPDistanceBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                
                 ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
                 
                 NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
@@ -329,68 +362,55 @@
                 OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
                 unitFormatter.cutoffMultiplier = @3.28084F;
                 unitFormatter.unitData = @[
-                [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"foot" pluralLabel:@"feet"],
-                [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"foot" pluralLabel:@"feet"],
-                [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mile" pluralLabel:@"miles"]
+                    [OTPUnitData unitDataWithCutoff:@100 multiplier:@3.28084F roundingIncrement:@10 singularLabel:@"foot" pluralLabel:@"feet"],
+                    [OTPUnitData unitDataWithCutoff:@528 multiplier:@3.28084F roundingIncrement:@100 singularLabel:@"foot" pluralLabel:@"feet"],
+                    [OTPUnitData unitDataWithCutoff:@INT_MAX multiplier:@0.000621371F roundingIncrement:@0.1F singularLabel:@"mile" pluralLabel:@"miles"]
                 ];
                 
                 ((OTPDistanceBasedLegCell *)cell).distanceLabel.text = [unitFormatter numberToString:leg.distance];
+
+            // stopbased leg
             } else if ([_stopBasedModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
                 
                 ((OTPStopBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                
                 ((OTPStopBasedLegCell *)cell).iconLabel.text = leg.route.capitalizedString;
 
                 NSString *destination = leg.headsign.capitalizedString;
                 if(destination == nil) {
                     destination = leg.to.name.capitalizedString;
                 }
-                
                 ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ towards %@", [_modeDisplayStrings objectForKey:leg.mode], destination];
+                [((OTPStopBasedLegCell *)cell).instructionLabel sizeToFit];
+                
                 ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
                 
                 int intermediateStops = leg.intermediateStops.count + 1;
                 NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
                 ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
-                
                 ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
+            
+            // transfer leg
             } else if ([_transferModes containsObject:leg.mode]) {
-                cell = [tableView dequeueReusableCellWithIdentifier:@"TransfereBasedLegCell"];
+                cell = [tableView dequeueReusableCellWithIdentifier:@"TransferBasedLegCell"];
                 ((OTPTransferCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
+
                 Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
                 ((OTPTransferCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
             }
         }
     }
+    
     OTPSelectedSegment *selectedView = [[OTPSelectedSegment alloc] init];
     cell.selectedBackgroundView = selectedView;
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 56;
-    }
-    if (indexPath.row > self.itinerary.legs.count) { // for final arrival info cell
-        return 56;
-    }
-    
-    if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        return 60;
-    }
-    
-    Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
-    
-    if ([_distanceBasedModes containsObject:leg.mode]) {
-        return 60;
-    } else if ([_stopBasedModes containsObject:leg.mode]) {
-        return 80;
-    } else if ([_transferModes containsObject:leg.mode]) {
-        return 40;
-    }
-    return 44;
+    NSNumber *height = [_cellHeights objectAtIndex:indexPath.row];
+    return [height floatValue];
 }
 
 #pragma mark - Table view delegate
@@ -410,6 +430,7 @@
             self.itineraryMapViewController.instructionLabel.hidden = YES;
         }];
         self.itineraryMapViewController.mapView.topPadding = 0;
+
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
         
@@ -489,6 +510,8 @@
         [self displayLeg:leg];
     }
 }
+
+#pragma mark - Side view controller
 
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPushController:(UIViewController *)pushedController
 {

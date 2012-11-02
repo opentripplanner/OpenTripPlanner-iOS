@@ -703,8 +703,6 @@
 			children = (
 				CC922FB6161A1AD10072E22F /* OTPItineraryTableViewController.h */,
 				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
-				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
-				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
 				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
 				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
 				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
@@ -745,6 +743,8 @@
 		0D8259AE1644322C00D5F446 /* Directions Input View */ = {
 			isa = PBXGroup;
 			children = (
+				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
+				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
 				9388193E161927A5002021EA /* MBProgressHUD.h */,
 				9388193F161927A6002021EA /* MBProgressHUD.m */,
 				CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */,
