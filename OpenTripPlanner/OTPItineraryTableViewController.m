@@ -584,7 +584,6 @@
         polyline.lineWidth = 6;
         polyline.lineCap = kCALineCapRound;
         polyline.lineJoin = kCALineJoinRound;
-        polyline.zPosition = 0;
         
         int counter = 0;
         
@@ -645,7 +644,11 @@
 
 - (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-    return [annotation.userInfo objectForKey:@"layer"];
+    RMMapLayer* l = [annotation.userInfo objectForKey:@"layer"];
+    if ([l isKindOfClass:[RMShape class]]) {
+        l.zPosition = -999.0;
+    }
+    return l;
 }
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation
