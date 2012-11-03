@@ -55,8 +55,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)done:(UIBarButtonItem *)sender {
+- (IBAction)done:(UIBarButtonItem *)sender
+{
+    [TestFlight passCheckpoint:@"ITINERARY_DONE"];
     [self dismissModalViewControllerAnimated:YES];
-     }
+}
 
 @end

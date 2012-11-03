@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad
 {
+    [TestFlight passCheckpoint:@"PARAMS_OPEN"];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.datePicker.date = self.date;
@@ -39,11 +40,13 @@
 
 - (void)cancel:(id)sender
 {
+    [TestFlight passCheckpoint:@"PARAMS_CANCEL"];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)done:(id)sender
 {
+    [TestFlight passCheckpoint:@"PARAMS_DONE"];
     if ([self.delegate conformsToProtocol:@protocol(OTPTransitTimeViewControllerDelegate)]) {
         [self.delegate transitTimeViewController:self
                didChooseArrivingOrDepartingIndex:[NSNumber numberWithInt:self.arrivingOrDepartingControl.selectedSegmentIndex]

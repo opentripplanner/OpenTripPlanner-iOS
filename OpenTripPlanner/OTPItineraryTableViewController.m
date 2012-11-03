@@ -425,6 +425,7 @@
     }
     
     if (indexPath.row == 0) {
+        [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_OVERVIEW"];
         [UIView animateWithDuration:0.3 animations:^{
             self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
         } completion:^(BOOL finished) {
@@ -436,12 +437,13 @@
         [self displayItineraryOverview];
         
     } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
+        [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_ARRIVAL"];
         [self displayItineraryOverview];  // for final arrival info cell
         
         //TODO: change to center to final destination point
         
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        
+        [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];
         if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
             // for final arrival info cell
             [self displayItineraryOverview];
@@ -482,6 +484,7 @@
             [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
         }
     } else {
+        [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_LEG"];
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
         RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
         shape.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
@@ -518,13 +521,17 @@
 {
     mapShowing = YES;
     if (_selectedIndexPath == nil) {
+        [TestFlight passCheckpoint:@"ITINERARY_SHOW_MAP_WITH_SWIPE"];
         _selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    } else {
+        [TestFlight passCheckpoint:@"ITINERARY_SHOW_MAP_FROM_TAP"];
     }
     [self.tableView selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController
 {
+    [TestFlight passCheckpoint:@"ITINERARY_HIDE_MAP_WITH_SWIPE"];
     mapShowing = NO;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }

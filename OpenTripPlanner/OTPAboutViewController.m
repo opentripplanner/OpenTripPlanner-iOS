@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad
 {
+    [TestFlight passCheckpoint:@"ABOUT"];
+    
     [super viewDidLoad];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: @"http://www.joyrideit.com/THANKS.txt"]

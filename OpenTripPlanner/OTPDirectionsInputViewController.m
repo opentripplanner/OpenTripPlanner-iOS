@@ -138,6 +138,7 @@ Plan *currentPlan;
 
 - (void)go:(id)sender
 {
+    [TestFlight passCheckpoint:@"DIRECTIONS_GO"];
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.view addSubview:HUD];
 	HUD.labelText = @"Routing";
@@ -306,6 +307,8 @@ Plan *currentPlan;
 
 - (void)switchFromAndTo:(id)sender
 {
+    [TestFlight passCheckpoint:@"DIRECTIONS_SWITCH_FROM_TO"];
+    
     [self.fromTextField switchValuesWithOther];
     
     RMAnnotation *tmpAnnotation = _fromAnnotation;
@@ -319,6 +322,7 @@ Plan *currentPlan;
 }
 
 - (IBAction)modeChanged:(id)sender {
+    [TestFlight passCheckpoint:@"DIRECTIONS_CHANGE_MODE"];
     if (((UISegmentedControl *)sender).selectedSegmentIndex < 2) {
         self.timeButton.enabled = YES;
     } else {
@@ -328,6 +332,7 @@ Plan *currentPlan;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [TestFlight passCheckpoint:@"DIRECTIONS_DID_TYPE_INTO_TEXTFIELD"];
     [self panMapToCurrentGeocodedTextField];
 }
 
@@ -366,6 +371,7 @@ Plan *currentPlan;
 
 - (void)panToUserLocation:(id)sender
 {
+    [TestFlight passCheckpoint:@"DIRECTIONS_PAN_TO_USER_LOCATION"];
     self.needsPanToUserLocation = YES;
     [self enableUserLocation];
 }
@@ -430,6 +436,7 @@ Plan *currentPlan;
 - (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
     // Alert user that location couldn't be detirmined.
+    [TestFlight passCheckpoint:@"DIRECTIONS_FAILED_TO_LOCATE_USER"];
 }
 
 - (void)singleTapOnMap:(RMMapView *)map at:(CGPoint)point
@@ -451,8 +458,10 @@ Plan *currentPlan;
     } else if (!self.toTextField.isGeocoded) {
         textField = self.toTextField;
     } else {
+        [TestFlight passCheckpoint:@"DIRECTIONS_LONG_TAP_NO_PIN_ALLOWED"];
         return;
     }
+    [TestFlight passCheckpoint:@"DIRECTIONS_LONG_TAP_DROP_PIN"];
     [self updateTextField:textField withText:@"Dropped Pin" andLocation:location];
 }
 
@@ -502,6 +511,7 @@ Plan *currentPlan;
 
 - (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation
 {
+    [TestFlight passCheckpoint:@"DIRECTIONS_DRAGGED_PIN"];
     annotation.coordinate = [map pixelToCoordinate:annotation.position];
     _dragOffset = 0;
     
@@ -545,13 +555,15 @@ RKResponse* _OTPResponse = nil;
 
 - (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response
 {
-    NSLog(@"Loaded payload: %@", [response bodyAsString]);
+    [TestFlight passCheckpoint:@"DIRECTIONS_RECEIVED_RESPONSE_FROM_API"];
+    //NSLog(@"Loaded payload: %@", [response bodyAsString]);
     _OTPResponse = response;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    NSLog(@"Loaded plan: %@", objects);
+    [TestFlight passCheckpoint:@"DIRECTIONS_LOADED_PLAN_FROM_API_RESPONSE"];
+    //NSLog(@"Loaded plan: %@", objects);
     [HUD hide:YES];
 
     currentPlan = (Plan*)[objects objectAtIndex:0];
@@ -560,7 +572,8 @@ RKResponse* _OTPResponse = nil;
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didFailWithError:(NSError*)error
 {
-    NSLog(@"Hit error: %@", error);
+    //NSLog(@"Hit error: %@", error);
+    [TestFlight passCheckpoint:@"DIRECTIONS_RECEIVED_ERROR_FROM_API"];
     [HUD hide:YES];
 
     if(_OTPResponse != nil) {

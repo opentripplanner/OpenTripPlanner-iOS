@@ -21,6 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    #define TESTING 1
+    #ifdef TESTING
+        [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    #endif
+    [TestFlight takeOff:@"b6cabd426fa7b67e7671bfb043872d5f_MTI1NzEzMjAxMi0wOC0yNyAxNDo1NToyNy43MjE2MDk"];
+    
 //    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
@@ -108,6 +114,8 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
     if ([MKDirectionsRequest isDirectionsRequestURL:url]) {
+        [TestFlight passCheckpoint:@"LAUNCHED_BY_URL"];
+        
         MKDirectionsRequest* directionsInfo = [[MKDirectionsRequest alloc] initWithContentsOfURL:url];
         // TO DO: Plot and display the route using the
         //   source and destination properties of directionsInfo.

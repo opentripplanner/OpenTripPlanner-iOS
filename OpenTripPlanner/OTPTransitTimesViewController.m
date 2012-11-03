@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    [TestFlight passCheckpoint:@"ITINERARIES_VIEW"];
     [super viewDidLoad];
 
     _modeIcons = @{
@@ -243,6 +244,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [TestFlight passCheckpoint:@"ITINERARIES_SELECTED_ONE"];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
     OTPItineraryViewController *vc = (OTPItineraryViewController *)((UINavigationController *)segue.destinationViewController);
@@ -255,6 +257,7 @@
 
 - (void)dismiss:(id)sender
 {
+    [TestFlight passCheckpoint:@"ITINERARIES_DONE"];
     [self dismissModalViewControllerAnimated:YES];
 }
 
