@@ -1722,6 +1722,7 @@
 				);
 				PRODUCT_NAME = Joyride;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1750,6 +1751,7 @@
 				);
 				PRODUCT_NAME = Joyride;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9CA498C8-E9A5-448F-8BD6-2A479593DD97";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
