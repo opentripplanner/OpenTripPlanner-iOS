@@ -1749,7 +1749,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Joyride;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F64AD11-2BAD-455C-AE62-8614CDE74B2D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9CA498C8-E9A5-448F-8BD6-2A479593DD97";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
