@@ -59,44 +59,46 @@
     _bounds.neCorner = northEastPoint;
 }
 
-// http://code.google.com/apis/maps/documentation/utilities/polylinealgorithm.html
+// http://objc.id.au/post/9245961184/mapkit-encoded-polylines
 -(NSMutableArray *)decodePolyLine:(NSString *)encodedStr
 {
-    NSMutableString *encoded = [[NSMutableString alloc] initWithCapacity:[encodedStr length]];
-    [encoded appendString:encodedStr];
-    [encoded replaceOccurrencesOfString:@"\\\\" withString:@"\\"
-                                options:NSLiteralSearch
-                                  range:NSMakeRange(0, [encoded length])];
-    NSInteger len = [encoded length];
-    NSInteger index = 0;
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSInteger lat=0;
-    NSInteger lng=0;
-    while (index < len) {
-        NSInteger b;
-        NSInteger shift = 0;
-        NSInteger result = 0;
+    const char *bytes = [encodedStr UTF8String];
+    NSUInteger length = [encodedStr lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger idx = 0;
+    
+    float latitude = 0;
+    float longitude = 0;
+    while (idx < length) {
+        char byte = 0;
+        int res = 0;
+        char shift = 0;
+        
         do {
-            b = [encoded characterAtIndex:index++] - 63;
-            result |= (b & 0x1f) << shift;
+            byte = bytes[idx++] - 63;
+            res |= (byte & 0x1F) << shift;
             shift += 5;
-        } while (b >= 0x20);
-        NSInteger dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
-        lat += dlat;
+        } while (byte >= 0x20);
+        
+        float deltaLat = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        latitude += deltaLat;
+        
         shift = 0;
-        result = 0;
+        res = 0;
+        
         do {
-            b = [encoded characterAtIndex:index++] - 63;
-            result |= (b & 0x1f) << shift;
+            byte = bytes[idx++] - 0x3F;
+            res |= (byte & 0x1F) << shift;
             shift += 5;
-        } while (b >= 0x20);
-        NSInteger dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
-        lng += dlng;
-        NSNumber *latitude = [[NSNumber alloc] initWithFloat:lat * 1e-5];
-        NSNumber *longitude = [[NSNumber alloc] initWithFloat:lng * 1e-5];
-        //          printf("[%f,", [latitude doubleValue]);
-        //          printf("%f]", [longitude doubleValue]);
-        CLLocation *loc = [[CLLocation alloc] initWithLatitude:[latitude floatValue] longitude:[longitude floatValue]];
+        } while (byte >= 0x20);
+        
+        float deltaLon = ((res & 1) ? ~(res >> 1) : (res >> 1));
+        longitude += deltaLon;
+        
+        float finalLat = latitude * 1E-5;
+        float finalLon = longitude * 1E-5;
+        
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:finalLat longitude:finalLon];
         [array addObject:loc];
     }
     return array;
