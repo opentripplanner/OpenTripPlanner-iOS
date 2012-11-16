@@ -275,16 +275,22 @@ Plan *currentPlan;
 
 - (void)geocodeStringInTextField:(OTPGeocodedTextField *)textField
 {
-    // TODO: If we want to pass a region to the geocoder, we should have a coordinate property on this thing
-    // that the parent view controller can optionally set using the user's location or map center.
-//    CLLocationCoordinate2D regionCoordinate;
-//    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:regionCoordinate radius:2000 identifier:@"test"];
+    // Create a region based on either the user's current location or the map center
+    // using a width of the larger of the width of the displayed map area or 200km.
+    CLLocationCoordinate2D regionCoordinate;
+    if (self.userLocation != nil && self.mapView.showsUserLocation) {
+        regionCoordinate = self.userLocation.location.coordinate;
+    } else {
+        regionCoordinate = self.mapView.centerCoordinate;
+    }
+    double radius = MAX(self.mapView.projectedViewSize.width/2, 100000);
+    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:regionCoordinate radius:radius identifier:@"GEOCODE_REGION"];
     
     UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [loadingIndicator startAnimating];
     textField.rightView = loadingIndicator;
     
-    [geocoder geocodeAddressString:textField.text inRegion:nil completionHandler:^(NSArray* placemarks, NSError* error) {
+    [geocoder geocodeAddressString:textField.text inRegion:region completionHandler:^(NSArray* placemarks, NSError* error) {
         if (placemarks.count == 0) {
             // no results
             [textField setText:textField.text andLocation:nil];
