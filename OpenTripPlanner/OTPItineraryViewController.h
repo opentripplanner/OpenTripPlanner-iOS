@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "RouteMe.h"
-#import "PaperFoldView.h"
 #import "Itinerary.h"
 #import "PPRevealSideViewController.h"
 #import "OTPItineraryTableViewController.h"

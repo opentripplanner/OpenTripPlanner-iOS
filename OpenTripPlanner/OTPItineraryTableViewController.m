@@ -14,7 +14,6 @@
 #import "OTPStepCell.h"
 #import "OTPTransferCell.h"
 #import "PPRevealSideViewController.h"
-#import "UIView+Origami.h"
 #import "OTPUnitData.h"
 #import "OTPUnitFormatter.h"
 #import "OTPSelectedSegment.h"
