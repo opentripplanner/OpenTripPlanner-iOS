@@ -12,6 +12,7 @@
 #import "RouteMe.h"
 
 #import "OTPTransitTimeViewController.h"
+#import "OTPGeocodeDisambigationViewController.h"
 #import "OTPGeocodedTextField.h"
 #import "MBProgressHUD.h"
 
@@ -24,7 +25,7 @@ typedef enum {
 
 @protocol OTPDirectionsInputViewControllerDelegate;
 
-@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate, OTPTransitTimeViewControllerDelegate>
+@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate, OTPTransitTimeViewControllerDelegate, OTPGeocodeDisambigationViewControllerDelegate>
 {
     MBProgressHUD *HUD;
 }

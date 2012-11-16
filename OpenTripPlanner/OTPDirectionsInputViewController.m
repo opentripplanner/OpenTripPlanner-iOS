@@ -31,6 +31,8 @@ NSString * const kArriveByArray[] = {
 {
     RMAnnotation *_fromAnnotation;
     RMAnnotation *_toAnnotation;
+    OTPGeocodedTextField *_textFieldToDisambiguate;
+    NSArray *_placemarksToDisambiguate;
     UIImage *_fromPinImage;
     UIImage *_toPinImage;
     int _dragOffset;
@@ -296,6 +298,9 @@ Plan *currentPlan;
             [textField setText:textField.text andLocation:nil];
         } else if (placemarks.count > 1) {
             // TODO: disambigate
+            _textFieldToDisambiguate = textField;
+            _placemarksToDisambiguate = placemarks;
+            [self performSegueWithIdentifier:@"DisambiguateGeocode" sender:self];
         } else {
             // Got one result, process it.
             CLPlacemark *result = [placemarks objectAtIndex:0];
@@ -555,6 +560,22 @@ Plan *currentPlan;
     self.date = time;
 }
 
+#pragma mark OTPGeocodeDisambigationViewControllerDelegate methods
+- (void)userSelectedPlacemark:(CLPlacemark *)placemark
+{
+    // Filter out the country
+    NSArray *formattedAddressLines = (NSArray *)[placemark.addressDictionary objectForKey:@"FormattedAddressLines"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF != %@", placemark.country];
+    NSArray *filteredAddressLines = [formattedAddressLines filteredArrayUsingPredicate:predicate];
+    
+    [self updateTextField:_textFieldToDisambiguate withText:[filteredAddressLines componentsJoinedByString:@", "] andLocation:placemark.location];
+}
+
+- (void)userCanceledDisambiguation
+{
+    [self updateTextField:_textFieldToDisambiguate withText:nil andLocation:nil];
+}
+
 #pragma mark RKObjectLoaderDelegate methods
 
 RKResponse* _OTPResponse = nil;
@@ -614,6 +635,10 @@ RKResponse* _OTPResponse = nil;
         vc.delegate = self;
         vc.date = self.date;
         vc.selectedSegment = self.arriveOrDepartByIndex;
+    } else if ([segue.identifier isEqualToString:@"DisambiguateGeocode"]) {
+        UINavigationController *vc = (UINavigationController *)segue.destinationViewController;
+        ((OTPGeocodeDisambigationViewController *)vc.topViewController).placemarks = _placemarksToDisambiguate;
+        ((OTPGeocodeDisambigationViewController *)vc.topViewController).delegate = self;
     }
     
 }

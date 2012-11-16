@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Transit Times View Controller - Trips-->
@@ -693,6 +693,7 @@
                         <outlet property="userLocationButton" destination="fCo-Vj-8Bb" id="VdP-fR-foi"/>
                         <segue destination="BUL-qi-1dN" kind="modal" identifier="ExploreItineraries" id="Es9-n8-4Nl"/>
                         <segue destination="fWf-iG-znn" kind="modal" identifier="showAbout" modalTransitionStyle="partialCurl" id="cL1-NJ-Sfv"/>
+                        <segue destination="Wj7-1a-UWX" kind="modal" identifier="DisambiguateGeocode" id="r3p-Sy-bDd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcF-zl-uN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -711,6 +712,55 @@
                 </segmentedControl>
             </objects>
             <point key="canvasLocation" x="128" y="69"/>
+        </scene>
+        <!--Geocode Disambigation View Controller - Did you mean...?-->
+        <scene sceneID="2Yz-GV-gvv">
+            <objects>
+                <tableViewController id="ADZ-6x-bOR" customClass="OTPGeocodeDisambigationViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Bdc-pW-kBY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="5LB-df-yu3">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Did you mean...?" id="44J-nK-0QF">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="plain" id="dAj-Ss-IQ8">
+                            <connections>
+                                <action selector="cancel:" destination="ADZ-6x-bOR" id="I2f-iE-Zle"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKY-cg-2fs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-80" y="609"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KWH-Vf-um4">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Wj7-1a-UWX" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="g6l-b7-1lG">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ADZ-6x-bOR" kind="relationship" relationship="rootViewController" id="VgJ-Wp-37E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JkA-wV-Ni6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="609"/>
         </scene>
         <!--Transit Time View Controller - Transit Time-->
         <scene sceneID="Ymu-dt-ESH">
@@ -875,6 +925,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="OTPGeocodeDisambigationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodeDisambigationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="OTPGeocodedTextField" superclassName="UITextField">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodedTextField.h"/>
         </class>
@@ -998,9 +1055,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

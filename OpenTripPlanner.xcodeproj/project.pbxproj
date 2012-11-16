@@ -103,6 +103,7 @@
 		CC9DC0471614F5F200C8B22E /* OTPTransitTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0411614F5F200C8B22E /* OTPTransitTimeViewController.m */; };
 		CC9DC0481614F5F200C8B22E /* OTPVerticalGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */; };
 		CC9DC0491614F5F200C8B22E /* OTPGraphicsCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9DC0441614F5F200C8B22E /* OTPGraphicsCommon.m */; };
+		CCB1A9341656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB1A9331656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m */; };
 		CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */; };
 		CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD5231635FC9900037B29 /* OTPGradientView.m */; };
 		CCCDFB6815EEAAC600B26133 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFB6715EEAAC600B26133 /* UIKit.framework */; };
@@ -459,6 +460,8 @@
 		CC9DC0441614F5F200C8B22E /* OTPGraphicsCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGraphicsCommon.m; sourceTree = "<group>"; };
 		CC9DC0451614F5F200C8B22E /* OTPGraphicsCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGraphicsCommon.h; sourceTree = "<group>"; };
 		CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPVerticalGradientView.h; sourceTree = "<group>"; };
+		CCB1A9321656D2A1004791D6 /* OTPGeocodeDisambigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGeocodeDisambigationViewController.h; sourceTree = "<group>"; };
+		CCB1A9331656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodeDisambigationViewController.m; sourceTree = "<group>"; };
 		CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HMAC.h"; sourceTree = "<group>"; };
 		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
 		CCBCD5221635FC9900037B29 /* OTPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGradientView.h; sourceTree = "<group>"; };
@@ -1027,6 +1030,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CCB1A9311656D24E004791D6 /* Geocode Disambiguation View */ = {
+			isa = PBXGroup;
+			children = (
+				CCB1A9321656D2A1004791D6 /* OTPGeocodeDisambigationViewController.h */,
+				CCB1A9331656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m */,
+			);
+			name = "Geocode Disambiguation View";
+			sourceTree = "<group>";
+		};
 		CCBCD5251639BE8C00037B29 /* Itinerary List View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1100,7 @@
 			isa = PBXGroup;
 			children = (
 				CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */,
+				CCB1A9311656D24E004791D6 /* Geocode Disambiguation View */,
 				0D8259B11644344D00D5F446 /* About View */,
 				0D8259B0164433A900D5F446 /* Routing Params View */,
 				0D8259AF1644339700D5F446 /* Common */,
@@ -1525,6 +1538,7 @@
 				0D4553A316432087006D4A3B /* OTPItineraryOverviewCell.m in Sources */,
 				0D4553A416432087006D4A3B /* OTPSelectedSegment.m in Sources */,
 				8D9287731643A3C400170393 /* OTPArrivalCell.m in Sources */,
+				CCB1A9341656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
