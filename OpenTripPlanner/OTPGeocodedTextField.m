@@ -31,19 +31,28 @@
     if (text.length == 0) {
         // Reset
         [super setText:nil];
-        _location = nil;
-        self.rightView = nil;
+        [self setLocation:nil];
     } else if (text.length > 0 && location != nil) {
         // Valid text and location
         [super setText:text];
-        _location = location;
-        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick-00b0d8.png"]];
+        [self setLocation:location];
     } else if (text.length > 0 && location == nil) {
         // Invalid location for text
         [super setText:text];
-        _location = nil;
-        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross.png"]];
+        [self setLocation:nil];
     }
+}
+
+- (void)setLocation:(CLLocation *)location
+{
+    if (self.text.length > 0 && location != nil) {
+        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick-00b0d8.png"]];
+    } else if (self.text.length > 0 && location == nil) {
+        self.rightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross.png"]];
+    } else if (location == nil) {
+        self.rightView = nil;
+    }
+    _location = location;
 }
 
 - (void)switchValuesWithOther
@@ -77,17 +86,5 @@
     }
     return NO;
 }
-
--(id)copyWithZone:(NSZone *)zone
-{
-    id copy = [[[self class] alloc] init];
-    
-    if (copy) {
-        [copy setText:[self.text copyWithZone:zone] andLocation:[self.location copyWithZone:zone]];
-        [copy setOtherTextField:[self.otherTextField copyWithZone:zone]];
-    }
-    return copy;
-}
-
 
 @end

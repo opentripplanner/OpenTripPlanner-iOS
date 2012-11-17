@@ -351,11 +351,16 @@ Plan *currentPlan;
 {
     OTPGeocodedTextField *textField = (OTPGeocodedTextField *)sender;
     
-    if (textField.otherTextField.isDroppedPin) {
-        textField.otherTextField.text = @"Dropped Pin";
+    textField.location = nil;
+    // If the text field is associated with a pin, remove it from the map
+    // TODO: This needs to be DRY... Code repeated above.
+    if (textField == self.fromTextField && _fromAnnotation != nil) {
+        [self.mapView removeAnnotation:_fromAnnotation];
+        _fromAnnotation = nil;
+    } else if (textField == self.toTextField && _toAnnotation != nil) {
+        [self.mapView removeAnnotation:_toAnnotation];
+        _toAnnotation = nil;
     }
-    
-    [self updateTextField:textField withText:textField.text andLocation:nil];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
