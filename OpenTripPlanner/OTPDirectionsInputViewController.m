@@ -519,6 +519,7 @@ Plan *currentPlan;
 
 - (BOOL)mapView:(RMMapView *)map shouldDragAnnotation:(RMAnnotation *)annotation
 {
+    [self.view endEditing:YES];
     return YES;
 }
 
