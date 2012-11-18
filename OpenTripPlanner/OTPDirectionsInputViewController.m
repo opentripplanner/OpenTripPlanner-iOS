@@ -94,8 +94,14 @@ Plan *currentPlan;
     self.mapView.tileSource = source;
     self.mapView.delegate = self;
     [self.mapView setConstraintsSouthWest:CLLocationCoordinate2DMake(20, -130) northEast:CLLocationCoordinate2DMake(53, -57)];
-    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40, -95)];
-    [self.mapView setZoom:4];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    float zoom = [defaults floatForKey:@"mapZoom"] == 0 ? 4 : [defaults floatForKey:@"mapZoom"];
+    float lon = [defaults floatForKey:@"mapLon"] == 0 ? -95 : [defaults floatForKey:@"mapLon"];
+    float lat = [defaults floatForKey:@"mapLat"] == 0 ? 40 : [defaults floatForKey:@"mapLat"];
+    
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(lat, lon)];
+    [self.mapView setZoom:zoom];
 	
     self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -550,11 +556,16 @@ Plan *currentPlan;
 
 - (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction
 {
-    if (!wasUserAction && self.mapView.annotations.count > 0) {
-        RMAnnotation *annotation = [self.mapView.annotations objectAtIndex:0];
-        RMMarker* marker = [[annotation userInfo] objectForKey:@"layer"];
-        [((OTPCallout *)marker.label) toggle];
-    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setFloat:map.centerCoordinate.longitude forKey:@"mapLon"];
+    [defaults setFloat:map.centerCoordinate.latitude forKey:@"mapLat"];
+    [defaults synchronize];
+}
+
+- (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:map.zoom forKey:@"mapZoom"];
 }
 
 #pragma mark OTPTransitTimeViewControllerDelegate methods
