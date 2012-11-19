@@ -301,8 +301,6 @@
 
         ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
         ((OTPArrivalCell *)cell).arrivalTime.text = [dateFormatter stringFromDate:self.itinerary.endTime];
-    
-        
         
     // everything else
     } else {
@@ -423,6 +421,7 @@
         [self.revealSideViewController pushOldViewControllerOnDirection:PPRevealSideDirectionLeft withOffset:60 animated:YES];
     }
     
+    // Overview cell selected
     if (indexPath.row == 0) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_OVERVIEW"];
         [UIView animateWithDuration:0.3 animations:^{
@@ -434,54 +433,64 @@
 
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
-        
-    } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
+     
+    // Arrival cell (the last cell) selected
+    } else if ((self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) ||
+               (self.itinerary.legs.count == 1 && indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1)) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_ARRIVAL"];
-        [self displayItineraryOverview];  // for final arrival info cell
-        
-        //TODO: change to center to final destination point
-        
+        [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
+        Leg *leg = [self.itinerary.legs lastObject];
+        self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Arrive at %@.", self.toTextField.text];
+        // Ugh. DRY.
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(leg.to.lat.floatValue - 0.001, leg.to.lon.floatValue - 0.001);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(leg.to.lat.floatValue + 0.001, leg.to.lon.floatValue + 0.001);
+        [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
+       
+    // Handle step based segments
     } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];
-        if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
-            // for final arrival info cell
-            [self displayItineraryOverview];
-            
-            //TODO: change to center to final destination point
-            
-        } else {
+        Leg *leg = [self.itinerary.legs objectAtIndex:0];
+        Step *step = [leg.steps objectAtIndex:indexPath.row-1];
         
-            Leg *leg = [self.itinerary.legs objectAtIndex:0];
-            Step *step = [leg.steps objectAtIndex:indexPath.row-1];
-            
-            NSString *instruction;
-            if (indexPath.row == 1) {
-                instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
-                               [_modeDisplayStrings objectForKey:leg.mode],
-                               [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                               step.streetName];
-            } else {
-                instruction = [NSString stringWithFormat:@"%@ on %@.",
-                               [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                               step.streetName];
-            }
-            self.itineraryMapViewController.instructionLabel.text = instruction;
-            
-            // TODO: Fix duplicate code.
-            [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
-            if (self.itineraryMapViewController.instructionLabel.isHidden) {
-                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
-                self.itineraryMapViewController.instructionLabel.hidden = NO;
-                [UIView animateWithDuration:0.3 animations:^{
-                    self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
-                }];
-            }
-            
-            self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
-            
-            [self.itineraryMapViewController.mapView setZoom:16];
-            [self.itineraryMapViewController.mapView setCenterCoordinate:CLLocationCoordinate2DMake(step.lat.doubleValue, step.lon.doubleValue) animated:YES];
+        NSString *instruction;
+        if (indexPath.row == 1) {
+            instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
+                           [_modeDisplayStrings objectForKey:leg.mode],
+                           [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                           step.streetName];
+        } else {
+            instruction = [NSString stringWithFormat:@"%@ on %@.",
+                           [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                           step.streetName];
         }
+        self.itineraryMapViewController.instructionLabel.text = instruction;
+        
+        // TODO: Fix duplicate code.
+        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+        if (self.itineraryMapViewController.instructionLabel.isHidden) {
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            }];
+        }
+        
+        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+        
+        CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(step.lat.doubleValue - 0.002, step.lon.doubleValue - 0.002);
+        CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(step.lat.doubleValue + 0.002, step.lon.doubleValue + 0.002);
+        [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
+        
+    // Handle leg based segments
     } else {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_LEG"];
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
