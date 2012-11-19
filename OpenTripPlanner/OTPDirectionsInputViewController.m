@@ -361,8 +361,10 @@ Response *currentResponse;
 - (void)updatedTextField:(id)sender
 {
     OTPGeocodedTextField *textField = (OTPGeocodedTextField *)sender;
-    
     textField.location = nil;
+    
+    self.goButton.enabled = NO;
+    
     // If the text field is associated with a pin, remove it from the map
     // TODO: This needs to be DRY... Code repeated above.
     if (textField == self.fromTextField && _fromAnnotation != nil) {
