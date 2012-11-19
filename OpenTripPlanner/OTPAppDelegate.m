@@ -15,6 +15,7 @@
 #import "Leg.h"
 #import "Itinerary.h"
 #import "Plan.h"
+#import "Response.h"
 #import "OTPDirectionsInputViewController.h"
 
 @implementation OTPAppDelegate
@@ -100,13 +101,24 @@
     
     RKObjectMapping* planMapping = [RKObjectMapping mappingForClass:[Plan class]];
     [planMapping mapKeyPathsToAttributes:
-     @"plan.date", @"epochDate",
+     @"date", @"epochDate",
      nil];
-    [planMapping mapKeyPath:@"plan.from" toRelationship:@"from" withMapping:placeMapping];
-    [planMapping mapKeyPath:@"plan.to" toRelationship:@"to" withMapping:placeMapping];
-    [planMapping mapKeyPath:@"plan.itineraries" toRelationship:@"itineraries" withMapping:itineraryMapping];
+    [planMapping mapKeyPath:@"from" toRelationship:@"from" withMapping:placeMapping];
+    [planMapping mapKeyPath:@"to" toRelationship:@"to" withMapping:placeMapping];
+    [planMapping mapKeyPath:@"itineraries" toRelationship:@"itineraries" withMapping:itineraryMapping];
     
-    [objectManager.mappingProvider setObjectMapping:planMapping forResourcePathPattern:@"/plan"];
+    RKObjectMapping* errorMapping = [RKObjectMapping mappingForClass:[Error class]];
+    [errorMapping mapKeyPathsToAttributes:
+     @"id", @"id",
+     @"msg", @"msg",
+     @"noPath", @"noPath",
+     nil];
+    
+    RKObjectMapping* responseMapping = [RKObjectMapping mappingForClass:[Response class]];
+    [responseMapping mapKeyPath:@"plan" toRelationship:@"plan" withMapping:planMapping];
+    [responseMapping mapKeyPath:@"error" toRelationship:@"error" withMapping:errorMapping];
+    
+    [objectManager.mappingProvider setObjectMapping:responseMapping forResourcePathPattern:@"/plan"];
     
     return YES;
 }

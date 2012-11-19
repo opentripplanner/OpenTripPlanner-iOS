@@ -51,6 +51,8 @@
 		93EA08D3164582A500705096 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EA08CF164582A500705096 /* libTestFlight.a */; };
 		93EA08D4164582A500705096 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93EA08D0164582A500705096 /* README.md */; };
 		93EA08D5164582A500705096 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 93EA08D1164582A500705096 /* release_notes.md */; };
+		93F4D9DD1659B628002C2790 /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DC1659B628002C2790 /* Error.m */; };
+		93F4D9E01659B70B002C2790 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DF1659B70B002C2790 /* Response.m */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
 		CC0A1F771603AB3C003085B2 /* OTPItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */; };
 		CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */; };
@@ -387,6 +389,10 @@
 		93EA08D0164582A500705096 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		93EA08D1164582A500705096 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		93EA08D2164582A500705096 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		93F4D9DB1659B628002C2790 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		93F4D9DC1659B628002C2790 /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
+		93F4D9DE1659B70B002C2790 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		93F4D9DF1659B70B002C2790 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
 		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPItineraryViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1026,6 +1032,10 @@
 				CC9CFC6D15EFC3030070712C /* Plan.m */,
 				930531F01620E33C00F9A230 /* Step.h */,
 				930531F11620E33C00F9A230 /* Step.m */,
+				93F4D9DB1659B628002C2790 /* Error.h */,
+				93F4D9DC1659B628002C2790 /* Error.m */,
+				93F4D9DE1659B70B002C2790 /* Response.h */,
+				93F4D9DF1659B70B002C2790 /* Response.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1539,6 +1549,8 @@
 				0D4553A416432087006D4A3B /* OTPSelectedSegment.m in Sources */,
 				8D9287731643A3C400170393 /* OTPArrivalCell.m in Sources */,
 				CCB1A9341656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m in Sources */,
+				93F4D9DD1659B628002C2790 /* Error.m in Sources */,
+				93F4D9E01659B70B002C2790 /* Response.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

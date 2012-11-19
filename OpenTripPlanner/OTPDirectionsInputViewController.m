@@ -8,7 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-#import "Plan.h"
+#import "Response.h"
 #import "OTPDirectionsInputViewController.h"
 #import "OTPTransitTimesViewController.h"
 #import "OTPCallout.h"
@@ -55,7 +55,7 @@ CLPlacemark *fromPlacemark;
 CLPlacemark *toPlacemark;
 NSNumber *topOfKeyboard;
 
-Plan *currentPlan;
+Response *currentResponse;
 
 - (void)viewDidLoad
 {
@@ -610,7 +610,12 @@ RKResponse* _OTPResponse = nil;
     //NSLog(@"Loaded plan: %@", objects);
     [HUD hide:YES];
 
-    currentPlan = (Plan*)[objects objectAtIndex:0];
+    currentResponse = (Response*)[objects objectAtIndex:0];
+    if (currentResponse.error != nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:currentResponse.error.msg delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     [self performSegueWithIdentifier:@"ExploreItineraries" sender:self];
 }
 
@@ -639,7 +644,7 @@ RKResponse* _OTPResponse = nil;
     // pass itineraries to next view controller
     if ([segue.identifier isEqualToString:@"ExploreItineraries"]) {
         OTPTransitTimesViewController *vc = ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController);
-        vc.itineraries = currentPlan.itineraries;
+        vc.itineraries = currentResponse.plan.itineraries;
         vc.fromTextField = self.fromTextField;
         vc.toTextField = self.toTextField;
         if (self.mapView.showsUserLocation) {
