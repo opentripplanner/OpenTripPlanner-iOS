@@ -565,12 +565,15 @@ Response *currentResponse;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setFloat:map.centerCoordinate.longitude forKey:@"mapLon"];
     [defaults setFloat:map.centerCoordinate.latitude forKey:@"mapLat"];
+    [defaults setFloat:map.zoom forKey:@"mapZoom"];
     [defaults synchronize];
 }
 
 - (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setFloat:map.centerCoordinate.longitude forKey:@"mapLon"];
+    [defaults setFloat:map.centerCoordinate.latitude forKey:@"mapLat"];
     [defaults setFloat:map.zoom forKey:@"mapZoom"];
     [defaults synchronize];
 }
