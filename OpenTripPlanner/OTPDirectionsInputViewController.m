@@ -11,6 +11,7 @@
 #import "Response.h"
 #import "OTPDirectionsInputViewController.h"
 #import "OTPTransitTimesViewController.h"
+#import "OTPItineraryViewController.h"
 #import "OTPCallout.h"
 #import "SMCalloutView.h"
 #import "NSString+HMAC.h"
@@ -651,7 +652,23 @@ RKResponse* _OTPResponse = nil;
 {
     // pass itineraries to next view controller
     if ([segue.identifier isEqualToString:@"ExploreItineraries"]) {
-        OTPTransitTimesViewController *vc = ((OTPTransitTimesViewController*)((UINavigationController*)segue.destinationViewController).topViewController);
+        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
+        // If we only have one itinerary, just display it instead of the list of itineraries.
+        if (currentResponse.plan.itineraries.count == 1) {
+            OTPItineraryViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryViewController"];
+            vc.itinerary = [currentResponse.plan.itineraries objectAtIndex:0];
+            vc.fromTextField = self.fromTextField;
+            vc.toTextField = self.toTextField;
+            if (self.mapView.showsUserLocation) {
+                vc.mapShowedUserLocation = YES;
+            } else {
+                vc.mapShowedUserLocation = NO;
+            }
+            [navController setViewControllers:[NSArray arrayWithObject:vc] animated:NO];
+            return;
+        }
+        // Otherwise, display the list of itineraries.
+        OTPTransitTimesViewController *vc = (OTPTransitTimesViewController*)navController.topViewController;
         vc.itineraries = currentResponse.plan.itineraries;
         vc.fromTextField = self.fromTextField;
         vc.toTextField = self.toTextField;

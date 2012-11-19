@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="peN-Jn-A0e">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Transit Times View Controller - Trips-->
@@ -204,12 +204,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDL-hE-QiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="78"/>
+            <point key="canvasLocation" x="1019" y="-11"/>
         </scene>
         <!--Itinerary View Controller - Directions-->
         <scene sceneID="ZSM-u2-ndc">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItineraryViewController" autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Directions" id="Dt8-uf-am2">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="hD3-1b-1J4">
                             <color key="tintColor" red="0.57506793479999996" green="0.57506793479999996" blue="0.57506793479999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvf-qB-Jr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="78"/>
+            <point key="canvasLocation" x="1506" y="69"/>
         </scene>
         <!--Itinerary Map View Controller-->
         <scene sceneID="fzF-cM-vdx">
@@ -870,7 +870,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7M-ok-FTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="78"/>
+            <point key="canvasLocation" x="562" y="-11"/>
         </scene>
     </scenes>
     <resources>
