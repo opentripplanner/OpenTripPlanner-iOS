@@ -61,6 +61,8 @@ Response *currentResponse;
 {
     [super viewDidLoad];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     _fromPinImage = [UIImage imageNamed:@"marker-start.png"];
     _toPinImage = [UIImage imageNamed:@"marker-end.png"];
     
@@ -68,12 +70,12 @@ Response *currentResponse;
     
     self.goButton.enabled = NO;
     
+    int selectedModeIndex = [defaults integerForKey:@"selectedModeIndex"] < self.modeControl.numberOfSegments ? [defaults integerForKey:@"selectedModeIndex"] : 0;
+    self.modeControl.selectedSegmentIndex = selectedModeIndex;
     [self modeChanged:self.modeControl];
     
-    self.arriveOrDepartByIndex = [NSNumber numberWithInt:0];
-    self.modeControl.selectedSegmentIndex = 0;
+    self.arriveOrDepartByIndex = [NSNumber numberWithInt:[defaults integerForKey:@"arriveOrDepartByIndex"]];
     self.date = [[NSDate alloc] init];
-    
     self.navBar.topItem.titleView = self.modeControl;
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -95,7 +97,6 @@ Response *currentResponse;
     self.mapView.delegate = self;
     [self.mapView setConstraintsSouthWest:CLLocationCoordinate2DMake(20, -130) northEast:CLLocationCoordinate2DMake(53, -57)];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     float zoom = [defaults floatForKey:@"mapZoom"] == 0 ? 4 : [defaults floatForKey:@"mapZoom"];
     float lon = [defaults floatForKey:@"mapLon"] == 0 ? -95 : [defaults floatForKey:@"mapLon"];
     float lat = [defaults floatForKey:@"mapLat"] == 0 ? 40 : [defaults floatForKey:@"mapLat"];
@@ -345,6 +346,9 @@ Response *currentResponse;
     } else {
         self.timeButton.enabled = NO;
     }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:((UISegmentedControl *)sender).selectedSegmentIndex forKey:@"selectedModeIndex"];
+    [defaults synchronize];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -566,7 +570,8 @@ Response *currentResponse;
 - (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:map.zoom forKey:@"mapZoom"];
+    [defaults setFloat:map.zoom forKey:@"mapZoom"];
+    [defaults synchronize];
 }
 
 #pragma mark OTPTransitTimeViewControllerDelegate methods
@@ -575,6 +580,9 @@ Response *currentResponse;
 {
     self.arriveOrDepartByIndex = arrivingOrDepartingIndex;
     self.date = time;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:arrivingOrDepartingIndex.intValue forKey:@"arriveOrDepartByIndex"];
+    [defaults synchronize];
 }
 
 #pragma mark OTPGeocodeDisambigationViewControllerDelegate methods
