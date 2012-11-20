@@ -66,7 +66,7 @@ Response *currentResponse;
     
     int canShareUrls = [defaults integerForKey:@"canShareUrls"];
     if (canShareUrls == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Thanks for using Joyride" message:@"Would you like to share information about the trips you plan with Joyride, including the start and end locations of each trip, with the Joyride team? This information will help us improve the service for you." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Improve Joyride" message:@"Can Joyride include an anonymous device identifier with its routing requests? This information will help us improve Joyride for you." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
         alertView.tag = 0;
         [alertView show];
     }
@@ -277,20 +277,22 @@ Response *currentResponse;
     NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithKeysAndObjects:
-                            @"optimize", @"SAFE",
-                            @"time", timeString,
-                            @"arriveBy", arriveBy,
-                            //@"routerId", @"req-241",
-                            //@"routerId", @"req-92",
-                            @"maxWalkDistance", @"2000",
-                            @"fromPlace", fromString,
-                            @"toPlace", toString,
-                            @"date", dateString,
-                            @"mode", mode,
-                            @"showIntermediateStops", @"true",
-                            @"apiKey", apiKey,
-                            @"signature", signature,
-                            nil];
+                                   @"optimize", @"SAFE",
+                                   @"time", timeString,
+                                   @"arriveBy", arriveBy,
+                                   //@"routerId", @"req-241",
+                                   //@"routerId", @"req-92",
+                                   @"maxWalkDistance", @"2000",
+                                   @"fromPlace", fromString,
+                                   @"toPlace", toString,
+                                   @"fromLabel", self.fromTextField.text,
+                                   @"toLabel", self.toTextField.text,
+                                   @"date", dateString,
+                                   @"mode", mode,
+                                   @"showIntermediateStops", @"true",
+                                   @"apiKey", apiKey,
+                                   @"signature", signature,
+                                   nil];
     
     // If the user has given permission to log their trips, add the device id to the query.
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"canShareUrls"] == 2) {
