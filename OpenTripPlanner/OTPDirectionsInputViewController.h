@@ -25,7 +25,7 @@ typedef enum {
 
 @protocol OTPDirectionsInputViewControllerDelegate;
 
-@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate, OTPTransitTimeViewControllerDelegate, OTPGeocodeDisambigationViewControllerDelegate>
+@interface OTPDirectionsInputViewController : UIViewController <RKObjectLoaderDelegate, UITextFieldDelegate, RMMapViewDelegate, OTPTransitTimeViewControllerDelegate, OTPGeocodeDisambigationViewControllerDelegate, UIAlertViewDelegate>
 {
     MBProgressHUD *HUD;
 }

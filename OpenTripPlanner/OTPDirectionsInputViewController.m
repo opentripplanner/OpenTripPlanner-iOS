@@ -64,6 +64,13 @@ Response *currentResponse;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    int canShareUrls = [defaults integerForKey:@"canShareUrls"];
+    if (canShareUrls == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Thanks for using Joyride" message:@"Would you like to share information about the trips you plan with Joyride, including the start and end locations of each trip, with the Joyride team? This information will help us improve the service for you." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        alertView.tag = 0;
+        [alertView show];
+    }
+    
     _fromPinImage = [UIImage imageNamed:@"marker-start.png"];
     _toPinImage = [UIImage imageNamed:@"marker-end.png"];
     
@@ -144,6 +151,14 @@ Response *currentResponse;
     
     self.fromTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     self.toTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag != 0) return;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:buttonIndex+1 forKey:@"canShareUrls"];
+    [defaults synchronize];
 }
 
 - (void)go:(id)sender
@@ -261,7 +276,7 @@ Response *currentResponse;
     NSString *apiKey = @"joyride";
     NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
     
-    NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithKeysAndObjects:
                             @"optimize", @"SAFE",
                             @"time", timeString,
                             @"arriveBy", arriveBy,
@@ -277,7 +292,12 @@ Response *currentResponse;
                             @"signature", signature,
                             nil];
     
-    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters: params];
+    // If the user has given permission to log their trips, add the device id to the query.
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"canShareUrls"] == 2) {
+        [params setObject:[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceId"] forKey:@"uid"];
+    }
+    
+    NSString* resourcePath = [@"/plan" stringByAppendingQueryParameters:params];
     
     RKObjectManager* objectManager = [RKObjectManager sharedManager];
     [objectManager loadObjectsAtResourcePath:resourcePath delegate:self];

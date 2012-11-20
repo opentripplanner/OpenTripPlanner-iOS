@@ -17,6 +17,7 @@
 #import "Plan.h"
 #import "Response.h"
 #import "OTPDirectionsInputViewController.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @implementation OTPAppDelegate
 
@@ -27,6 +28,14 @@
         [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     #endif
     [TestFlight takeOff:@"b6cabd426fa7b67e7671bfb043872d5f_MTI1NzEzMjAxMi0wOC0yNyAxNDo1NToyNy43MjE2MDk"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *deviceId = [defaults stringForKey:@"deviceId"];
+    if (deviceId == nil) {
+        deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+        [defaults setObject:deviceId forKey:@"deviceId"];
+        [defaults synchronize];
+    }
     
 //    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);

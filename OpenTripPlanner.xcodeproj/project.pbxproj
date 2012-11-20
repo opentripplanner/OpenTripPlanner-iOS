@@ -129,6 +129,8 @@
 		CCCDFBDF15EEC16C00B26133 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */; };
 		CCCDFBE215EEC1AB00B26133 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */; };
 		CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE315EEC1BC00B26133 /* libz.dylib */; };
+		CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */; };
+		CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE01D66165C36B7008F873E /* UIDevice+IdentifierAddition.m */; };
 		CCE81921160131FD0034E8AC /* OTPCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE81920160131FD0034E8AC /* OTPCallout.m */; };
 		CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */; };
 		CCF669521630BA6E007A9634 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6693A1630BA6E007A9634 /* home-icon.png */; };
@@ -498,6 +500,10 @@
 		CCCDFBDE15EEC16C00B26133 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CCCDFBE115EEC1AB00B26133 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CCCDFBE315EEC1BC00B26133 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CCE01D63165C36B7008F873E /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		CCE01D65165C36B7008F873E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		CCE01D66165C36B7008F873E /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		CCE8191F160131FD0034E8AC /* OTPCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPCallout.h; sourceTree = "<group>"; };
 		CCE81920160131FD0034E8AC /* OTPCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPCallout.m; sourceTree = "<group>"; };
 		CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionsInputViewController.h; sourceTree = "<group>"; };
@@ -752,6 +758,10 @@
 		0D8259AF1644339700D5F446 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CCE01D63165C36B7008F873E /* NSString+MD5Addition.h */,
+				CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */,
+				CCE01D65165C36B7008F873E /* UIDevice+IdentifierAddition.h */,
+				CCE01D66165C36B7008F873E /* UIDevice+IdentifierAddition.m */,
 				CCBCD51B1635E0E300037B29 /* NSString+HMAC.h */,
 				CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */,
 				CC9DC0451614F5F200C8B22E /* OTPGraphicsCommon.h */,
@@ -1551,6 +1561,8 @@
 				CCB1A9341656D2A1004791D6 /* OTPGeocodeDisambigationViewController.m in Sources */,
 				93F4D9DD1659B628002C2790 /* Error.m in Sources */,
 				93F4D9E01659B70B002C2790 /* Response.m in Sources */,
+				CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */,
+				CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
