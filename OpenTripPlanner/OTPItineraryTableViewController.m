@@ -32,6 +32,9 @@
     NSMutableArray *_shapesForLegs;
     NSDictionary *_popuprModeIcons;
     NSIndexPath *_selectedIndexPath;
+    NSArray *_stepModeFilteredLegs;
+    NSArray *_allSteps;
+    BOOL _shouldDisplaySteps;
 }
 
 - (void)resetLegsWithColor:(UIColor *)color;
@@ -148,6 +151,15 @@
     _shapesForLegs = [[NSMutableArray alloc] init];
     _cellHeights = [[NSMutableArray alloc] initWithCapacity:[self cellCount]];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mode == %@ OR mode == %@ OR mode == %@", @"BICYCLE", @"WALK", @"CAR"];
+    _stepModeFilteredLegs = [self.itinerary.legs filteredArrayUsingPredicate:predicate];
+    _allSteps = [self.itinerary.legs valueForKeyPath:@"@unionOfArrays.steps"];
+    if (_stepModeFilteredLegs.count == self.itinerary.legs.count) {
+        _shouldDisplaySteps = YES;
+    } else {
+        _shouldDisplaySteps = NO;
+    }
+    
     self.itineraryMapViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
     [self.revealSideViewController preloadViewController:self.itineraryMapViewController forSide:PPRevealSideDirectionLeft];
     [self.itineraryMapViewController.mapView setDelegate:self];
@@ -169,51 +181,43 @@
         
         if (i == 0) {
             
-        } else if (self.itinerary.legs.count != 1 && i == self.itinerary.legs.count + 1) {
+        } else if ((!_shouldDisplaySteps && i == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && i == _allSteps.count + 1) || _shouldDisplaySteps) {
         
         } else {
             // single leg itinerary: use steps as legs
-            if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-                if (i == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
-        
-                } else {
-                
-                }
-            } else {
-                Leg *leg = [self.itinerary.legs objectAtIndex:i-1];
+            Leg *leg = [self.itinerary.legs objectAtIndex:i-1];
             
-                if ([_distanceBasedModes containsObject:leg.mode]) {
-                    
-                } else if ([_stopBasedModes containsObject:leg.mode]) {
-                    NSString *destination = leg.headsign.capitalizedString;
-                    if(destination == nil) {
-                        destination = leg.to.name.capitalizedString;
-                    }
+            if ([_distanceBasedModes containsObject:leg.mode]) {
                 
-                    NSString *labelText = [NSString stringWithFormat: @"%@ towards %@",
+            } else if ([_stopBasedModes containsObject:leg.mode]) {
+                NSString *destination = leg.headsign.capitalizedString;
+                if(destination == nil) {
+                    destination = leg.to.name.capitalizedString;
+                }
+                
+                NSString *labelText = [NSString stringWithFormat: @"%@ towards %@",
                                        [_modeDisplayStrings objectForKey:leg.mode],
                                        destination];
                 
-                    CGSize textSize = [labelText
+                CGSize textSize = [labelText
                                    sizeWithFont:[UIFont boldSystemFontOfSize:14]
                                    constrainedToSize:CGSizeMake(246, MAXFLOAT)
                                    lineBreakMode:UILineBreakModeWordWrap];
                 
-                    [_cellHeights setObject:[NSNumber numberWithFloat:65.0f + textSize.height] atIndexedSubscript:i];
-                } else if ([_transferModes containsObject:leg.mode]) {
-        
-                }
+                [_cellHeights setObject:[NSNumber numberWithFloat:65.0f + textSize.height] atIndexedSubscript:i];
+            } else if ([_transferModes containsObject:leg.mode]) {
+                
             }
         }
     }
 }
 
 -(NSInteger)cellCount {
-    // If we have a single leg with steps, it's a walk, bike, or drive itinierary
-    if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-        return ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 2;
-    }
     
+    // Check if we have any BIKE and/or WALK and/or CAR only legs
+    if (_shouldDisplaySteps) {
+        return _allSteps.count + 2;
+    }
     return self.itinerary.legs.count + 2;  // +2 for final arrival info
 }
 
@@ -294,7 +298,7 @@
         ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
         
     // last cell
-    } else if (self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) {
+    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
         
         static NSString *CellIdentifier = @"ArrivalCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -304,45 +308,35 @@
         
     // everything else
     } else {
-        
-        
-        // single leg itinerary: use steps as legs
-        if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
-            // if the last cell for steps, add destination/arrival info:            
-            if (indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1) {
-                static NSString *CellIdentifier = @"ArrivalCell";
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
-                ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
-                ((OTPArrivalCell *)cell).arrivalTime.text = [NSString stringWithFormat:@"~ %@", [dateFormatter stringFromDate: self.itinerary.endTime]];
-                
-            // otherwise add steps:
-            } else {
-                cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
-                
-                Leg *leg = [self.itinerary.legs objectAtIndex:0];
-                Step *step = [leg.steps objectAtIndex:indexPath.row-1];
-                
-                if (indexPath.row == 1) {
-                    NSString *instruction = [NSString stringWithFormat:@"%@ %@ on %@",
-                                   [_modeDisplayStrings objectForKey:leg.mode],
-                                   [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                                   step.streetName];
-                    ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                    ((OTPStepCell *)cell).instructionLabel.text = instruction;
-                    
-                } else {
-                    NSString *instruction = [NSString stringWithFormat:@"%@ on %@",
-                                   [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                                   step.streetName];
-                    ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
-                    ((OTPStepCell *)cell).instructionLabel.text = instruction;
+        // use steps as segments
+        if (_shouldDisplaySteps) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+            
+            Step *step = [_allSteps objectAtIndex:indexPath.row-1];
+            Leg *leg;
+            for (Leg* legToTest in self.itinerary.legs) {
+                if ([legToTest.steps containsObject:step]) {
+                    leg = legToTest;
+                    break;
                 }
             }
             
-            
-            
-        // multi-leg itinerary: don't use steps as legs            
+            if ([leg.steps indexOfObject:step] == 0) {
+                NSString *instruction = [NSString stringWithFormat:@"%@ %@ on %@",
+                                         [_modeDisplayStrings objectForKey:leg.mode],
+                                         [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                                         step.streetName];
+                ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
+                ((OTPStepCell *)cell).instructionLabel.text = instruction;
+                
+            } else {
+                NSString *instruction = [NSString stringWithFormat:@"%@ on %@",
+                                         [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                                         step.streetName];
+                ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
+                ((OTPStepCell *)cell).instructionLabel.text = instruction;
+            }
+        // multi-leg, non walk, bike, car itinerary: don't use steps as legs
         } else {
             Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
             
@@ -435,8 +429,8 @@
         [self displayItineraryOverview];
      
     // Arrival cell (the last cell) selected
-    } else if ((self.itinerary.legs.count != 1 && indexPath.row == self.itinerary.legs.count + 1) ||
-               (self.itinerary.legs.count == 1 && indexPath.row == ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count + 1)) {
+    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) ||
+               (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_ARRIVAL"];
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         Leg *leg = [self.itinerary.legs lastObject];
@@ -456,13 +450,19 @@
         [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
        
     // Handle step based segments
-    } else if (self.itinerary.legs.count == 1 && ((Leg *)[self.itinerary.legs objectAtIndex:0]).steps.count > 0) {
+    } else if (_shouldDisplaySteps) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];
-        Leg *leg = [self.itinerary.legs objectAtIndex:0];
-        Step *step = [leg.steps objectAtIndex:indexPath.row-1];
+        Step *step = [_allSteps objectAtIndex:indexPath.row-1];
+        Leg *leg;
+        for (Leg* legToTest in self.itinerary.legs) {
+            if ([legToTest.steps containsObject:step]) {
+                leg = legToTest;
+                break;
+            }
+        }
         
         NSString *instruction;
-        if (indexPath.row == 1) {
+        if ([leg.steps indexOfObject:step] == 0) {
             instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
                            [_modeDisplayStrings objectForKey:leg.mode],
                            [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
