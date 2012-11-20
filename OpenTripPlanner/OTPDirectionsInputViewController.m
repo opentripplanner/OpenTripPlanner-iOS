@@ -262,7 +262,7 @@ Response *currentResponse;
     NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
     
     NSDictionary* params = [NSDictionary dictionaryWithKeysAndObjects:
-                            @"optimize", @"QUICK",
+                            @"optimize", @"SAFE",
                             @"time", timeString,
                             @"arriveBy", arriveBy,
                             //@"routerId", @"req-241",
