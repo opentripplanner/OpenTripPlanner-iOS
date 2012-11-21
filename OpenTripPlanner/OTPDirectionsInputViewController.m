@@ -450,7 +450,11 @@ Response *currentResponse;
     
     // Set the from or to textfields to user location
     OTPGeocodedTextField *textField;
-    if (![self.fromTextField isGeocoded] && ![self.toTextField isCurrentLocation]) {
+    if ([self.fromTextField isFirstResponder] && ![self.toTextField isCurrentLocation]) {
+        textField = self.fromTextField;
+    } else if ([self.toTextField isFirstResponder] && ![self.fromTextField isCurrentLocation]) {
+        textField = self.toTextField;
+    } else if (![self.fromTextField isGeocoded] && ![self.toTextField isCurrentLocation]) {
         textField = self.fromTextField;
     } else if (![self.toTextField isGeocoded] && ![self.fromTextField isCurrentLocation]) {
         textField = self.toTextField;
