@@ -141,6 +141,7 @@
         // TO DO: Plot and display the route using the
         //   source and destination properties of directionsInfo.
         OTPDirectionsInputViewController *viewContorller = (OTPDirectionsInputViewController*)self.window.rootViewController;
+        viewContorller.launchedFromUrl = YES;
         // If the app is already open, dismiss any view controllers that are already displayed and reset the input fields
         [viewContorller dismissViewControllerAnimated:NO completion:nil];
         [viewContorller updateTextField:viewContorller.toTextField withText:nil andLocation:nil];

@@ -45,6 +45,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *timeButton;
 @property (nonatomic) BOOL needsPanToUserLocation;
 @property (nonatomic) BOOL needsShowFromAndToLocations;
+@property (nonatomic) BOOL launchedFromUrl;
 
 - (void) planTripFrom:(CLLocationCoordinate2D)startPoint to:(CLLocationCoordinate2D)endPoint;
 

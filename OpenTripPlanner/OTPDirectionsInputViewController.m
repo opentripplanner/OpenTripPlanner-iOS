@@ -151,6 +151,10 @@ Response *currentResponse;
     
     self.fromTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     self.toTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
+    
+    if (!self.launchedFromUrl) {
+        [self panToUserLocation:self];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
