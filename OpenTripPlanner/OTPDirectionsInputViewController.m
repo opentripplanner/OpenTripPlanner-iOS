@@ -508,6 +508,8 @@ Response *currentResponse;
 
 - (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point
 {
+    [self.view endEditing:YES];
+    
     CLLocationCoordinate2D coord = [self.mapView pixelToCoordinate:point];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     
