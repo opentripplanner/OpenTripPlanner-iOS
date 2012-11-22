@@ -183,6 +183,8 @@
             
         } else if ((!_shouldDisplaySteps && i == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && i == _allSteps.count + 1) || _shouldDisplaySteps) {
         
+        } else if ((!_shouldDisplaySteps && i == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && i == _allSteps.count + 2) || _shouldDisplaySteps) {
+            
         } else {
             // single leg itinerary: use steps as legs
             Leg *leg = [self.itinerary.legs objectAtIndex:i-1];
@@ -216,9 +218,9 @@
     
     // Check if we have any BIKE and/or WALK and/or CAR only legs
     if (_shouldDisplaySteps) {
-        return _allSteps.count + 2;
+        return _allSteps.count + 3;
     }
-    return self.itinerary.legs.count + 2;  // +2 for final arrival info
+    return self.itinerary.legs.count + 3;  // +3 for overview, final arrival info and feedback
 }
 
 -(void) createHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
@@ -306,6 +308,9 @@
         ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
         ((OTPArrivalCell *)cell).arrivalTime.text = [dateFormatter stringFromDate:self.itinerary.endTime];
         
+    // Feedback cell
+    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"FeedbackCell"];
     // everything else
     } else {
         // use steps as segments
@@ -411,7 +416,9 @@
 {
     _selectedIndexPath = indexPath;
     
-    if (!mapShowing) {
+    // Show the map if the selected cell is not the feedback cell
+    if (!mapShowing &&
+        !((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2))) {
         [self.revealSideViewController pushOldViewControllerOnDirection:PPRevealSideDirectionLeft withOffset:60 animated:YES];
     }
     
@@ -448,7 +455,11 @@
         CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(leg.to.lat.floatValue - 0.001, leg.to.lon.floatValue - 0.001);
         CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(leg.to.lat.floatValue + 0.001, leg.to.lon.floatValue + 0.001);
         [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
-       
+    // Handle feedback cell
+    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) ||
+               (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FeedbackViewController"];
+        [self.itineraryViewController.navigationController pushViewController:vc animated:YES];
     // Handle step based segments
     } else if (_shouldDisplaySteps) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];

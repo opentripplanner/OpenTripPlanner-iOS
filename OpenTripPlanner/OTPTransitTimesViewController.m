@@ -247,7 +247,7 @@
     [TestFlight passCheckpoint:@"ITINERARIES_SELECTED_ONE"];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
-    OTPItineraryViewController *vc = (OTPItineraryViewController *)((UINavigationController *)segue.destinationViewController);
+    OTPItineraryViewController *vc = (OTPItineraryViewController *)segue.destinationViewController;
     vc.itinerary = [self.itineraries objectAtIndex:indexPath.row];
     vc.fromTextField = self.fromTextField;
     vc.toTextField = self.toTextField;

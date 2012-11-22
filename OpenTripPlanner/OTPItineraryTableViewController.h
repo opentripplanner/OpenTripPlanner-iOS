@@ -16,6 +16,7 @@
 
 @interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate, PPRevealSideViewControllerDelegate>
 
+@property(strong, nonatomic) UIViewController *itineraryViewController;
 @property(strong, nonatomic) Itinerary *itinerary;
 @property(nonatomic, strong) OTPItineraryMapViewController *itineraryMapViewController;
 @property(strong, nonatomic) OTPGeocodedTextField *fromTextField;

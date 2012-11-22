@@ -15,7 +15,6 @@
 
 @property(nonatomic, strong) NSArray* placemarks;
 @property(nonatomic, strong) NSObject<OTPGeocodeDisambigationViewControllerDelegate> *delegate;
-@property(nonatomic, strong) IBOutlet UILabel *label;
 
 - (IBAction)cancel:(id)sender;
 
