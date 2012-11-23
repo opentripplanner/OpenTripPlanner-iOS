@@ -8,6 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+#import "OTPAppDelegate.h"
 #import "Response.h"
 #import "OTPDirectionsInputViewController.h"
 #import "OTPTransitTimesViewController.h"
@@ -648,6 +649,9 @@ RKResponse* _OTPResponse = nil;
     [TestFlight passCheckpoint:@"DIRECTIONS_RECEIVED_RESPONSE_FROM_API"];
     //NSLog(@"Loaded payload: %@", [response bodyAsString]);
     _OTPResponse = response;
+    // Save the URL so we can display it in the feedback email if needed.
+    OTPAppDelegate *deleage = (OTPAppDelegate *)[[UIApplication sharedApplication] delegate];
+    deleage.currentUrlString = request.URL.absoluteString;
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects

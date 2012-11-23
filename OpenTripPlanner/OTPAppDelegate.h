@@ -11,5 +11,6 @@
 @interface OTPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString *currentUrlString;
 
 @end

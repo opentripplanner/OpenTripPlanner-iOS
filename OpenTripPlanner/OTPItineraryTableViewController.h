@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 #import "Itinerary.h"
 #import "OTPItineraryMapViewController.h"
@@ -14,7 +15,7 @@
 #import "PPRevealSideViewController.h"
 #import "OTPGeocodedTextField.h"
 
-@interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate, PPRevealSideViewControllerDelegate>
+@interface OTPItineraryTableViewController : UITableViewController <RMMapViewDelegate, PPRevealSideViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property(strong, nonatomic) UIViewController *itineraryViewController;
 @property(strong, nonatomic) Itinerary *itinerary;
@@ -28,5 +29,6 @@
 - (void)displayItinerary;
 - (void)displayItineraryOverview;
 - (void)displayLeg:(Leg*)leg;
+- (IBAction)displayFeedback:(id)sender;
 
 @end

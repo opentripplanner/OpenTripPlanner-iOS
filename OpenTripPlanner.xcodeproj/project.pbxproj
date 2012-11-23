@@ -131,7 +131,7 @@
 		CCCDFBE415EEC1BC00B26133 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCDFBE315EEC1BC00B26133 /* libz.dylib */; };
 		CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */; };
 		CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE01D66165C36B7008F873E /* UIDevice+IdentifierAddition.m */; };
-		CCE01D9E165D9433008F873E /* OTPFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE01D9D165D9433008F873E /* OTPFeedbackViewController.m */; };
+		CCE01DA0165DF5F7008F873E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE01D9F165DF5F6008F873E /* MessageUI.framework */; };
 		CCE81921160131FD0034E8AC /* OTPCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE81920160131FD0034E8AC /* OTPCallout.m */; };
 		CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */; };
 		CCF669521630BA6E007A9634 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6693A1630BA6E007A9634 /* home-icon.png */; };
@@ -505,8 +505,7 @@
 		CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		CCE01D65165C36B7008F873E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		CCE01D66165C36B7008F873E /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
-		CCE01D9C165D9433008F873E /* OTPFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPFeedbackViewController.h; sourceTree = "<group>"; };
-		CCE01D9D165D9433008F873E /* OTPFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPFeedbackViewController.m; sourceTree = "<group>"; };
+		CCE01D9F165DF5F6008F873E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CCE8191F160131FD0034E8AC /* OTPCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPCallout.h; sourceTree = "<group>"; };
 		CCE81920160131FD0034E8AC /* OTPCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPCallout.m; sourceTree = "<group>"; };
 		CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionsInputViewController.h; sourceTree = "<group>"; };
@@ -649,6 +648,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE01DA0165DF5F7008F873E /* MessageUI.framework in Frameworks */,
 				9378877C16154DA1007CF24C /* libMapView.a in Frameworks */,
 				9378875B16154885007CF24C /* libRestKit.a in Frameworks */,
 				CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */,
@@ -1100,6 +1100,7 @@
 		CCCDFB6615EEAAC600B26133 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCE01D9F165DF5F6008F873E /* MessageUI.framework */,
 				CC088DE815F6A3B400C6F372 /* MapKit.framework */,
 				CCCDFBC015EEBA7600B26133 /* CFNetwork.framework */,
 				CCCDFBC215EEBA8F00B26133 /* CoreData.framework */,
@@ -1130,7 +1131,6 @@
 				0D8259AE1644322C00D5F446 /* Directions Input View */,
 				0D8259AC1644317E00D5F446 /* Itinerary Detail View */,
 				CCBCD5251639BE8C00037B29 /* Itinerary List View */,
-				CCE01D9B165D9404008F873E /* Feedback View */,
 				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
 				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
@@ -1168,15 +1168,6 @@
 				CCCDFB8815EEAAC600B26133 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CCE01D9B165D9404008F873E /* Feedback View */ = {
-			isa = PBXGroup;
-			children = (
-				CCE01D9C165D9433008F873E /* OTPFeedbackViewController.h */,
-				CCE01D9D165D9433008F873E /* OTPFeedbackViewController.m */,
-			);
-			name = "Feedback View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1576,7 +1567,6 @@
 				93F4D9E01659B70B002C2790 /* Response.m in Sources */,
 				CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */,
 				CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */,
-				CCE01D9E165D9433008F873E /* OTPFeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

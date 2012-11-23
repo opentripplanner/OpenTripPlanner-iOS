@@ -534,20 +534,29 @@
                                     <outlet property="destinationText" destination="Eqg-Qe-eMj" id="ye1-kP-8bz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FeedbackCell" rowHeight="60" id="Rrs-Tx-pbs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedbackCell" rowHeight="60" id="Rrs-Tx-pbs">
                                 <rect key="frame" x="0.0" y="374" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Provide Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zj1-uc-oBJ">
-                                            <rect key="frame" x="91" y="19" width="138" height="21"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dcg-NJ-hru">
+                                            <rect key="frame" x="62" y="8" width="212" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" title="Send Directions Feedback">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="displayFeedback:" destination="txw-ao-UKg" eventType="touchUpInside" id="fX7-8Q-JTi"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -565,59 +574,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crK-H6-tlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1430" y="651"/>
-        </scene>
-        <!--Feedback View Controller - Feedback-->
-        <scene sceneID="fmU-Wu-MTu">
-            <objects>
-                <viewController storyboardIdentifier="FeedbackViewController" id="sk3-K4-zAf" customClass="OTPFeedbackViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rS6-E6-YLD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Dzh-Pd-Ll7">
-                                <rect key="frame" x="0.0" y="55" width="320" height="361"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="sk3-K4-zAf" id="Ezw-Uk-N5U"/>
-                                </connections>
-                            </textView>
-                            <view contentMode="scaleToFill" id="zOK-yg-LJF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="What did you think of these Joyride directions?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TBA-pj-FRH">
-                                        <rect key="frame" x="9" y="8" width="302" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.84147843070652173" green="0.84147843070652173" blue="0.84147843070652173" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Feedback" id="iWF-y0-Ssp">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" style="done" id="dhY-sj-UuE">
-                            <connections>
-                                <action selector="submit:" destination="sk3-K4-zAf" id="7xK-u1-Ee0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <connections>
-                        <outlet property="submitButton" destination="dhY-sj-UuE" id="QAh-jn-WSg"/>
-                        <outlet property="textView" destination="Dzh-Pd-Ll7" id="65i-R6-2bE"/>
-                        <outlet property="topView" destination="zOK-yg-LJF" id="Da5-zv-E9d"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EtE-3L-RVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1868" y="651"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="vts-Tq-U0g">
@@ -991,55 +947,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="userLocationButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="OTPDistanceBasedLegCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDistanceBasedLegCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="OTPFeedbackViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPFeedbackViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="submit:"/>
-                <relationship kind="action" name="updatedText:"/>
-                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="OTPGeocodeDisambigationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodeDisambigationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-            </relationships>
-        </class>
         <class className="OTPGeocodedTextField" superclassName="UITextField">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodedTextField.h"/>
         </class>
         <class className="OTPGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGradientView.h"/>
         </class>
-        <class className="OTPInsetLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPInsetLabel.h"/>
-        </class>
         <class className="OTPItineraryCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="collectionView" candidateClass="OTPItineraryCollectionView"/>
-                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timesView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="OTPItineraryCollectionView" superclassName="UICollectionView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCollectionView.h"/>
-        </class>
-        <class className="OTPItineraryDurationView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryDurationView.h"/>
         </class>
         <class className="OTPItineraryMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
@@ -1051,13 +966,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="OTPItineraryOverviewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryOverviewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="arriveTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="departTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
@@ -1082,13 +990,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="toLabelView" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="OTPStepCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
             <relationships>
@@ -1100,22 +1001,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="OTPTransferCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransferCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="OTPTransitTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="arrivingOrDepartingControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
         <class className="OTPTransitTimesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimesViewController.h"/>
             <relationships>
@@ -1125,12 +1010,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="OTPVerticalGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
         </class>
-        <class className="RMMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -1139,9 +1018,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

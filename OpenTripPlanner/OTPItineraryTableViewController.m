@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
+#import "OTPAppDelegate.h"
 #import "OTPItineraryTableViewController.h"
 #import "OTPStopBasedLegCell.h"
 #import "OTPDistanceBasedLegCell.h"
@@ -458,8 +459,8 @@
     // Handle feedback cell
     } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) ||
                (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FeedbackViewController"];
-        [self.itineraryViewController.navigationController pushViewController:vc animated:YES];
+        //UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FeedbackViewController"];
+        //[self.itineraryViewController.navigationController pushViewController:vc animated:YES];
     // Handle step based segments
     } else if (_shouldDisplaySteps) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];
@@ -532,6 +533,46 @@
         
         [self displayLeg:leg];
     }
+}
+
+- (void)displayFeedback:(id)sender
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        OTPAppDelegate *deleage = (OTPAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        NSString *line = @"Please provide feedback above this line and leave everything below this line intact.";
+        
+        NSMutableArray *legStrings = [[NSMutableArray alloc] init];
+        [legStrings addObject:self.itinerary.startTime];
+        for (Leg *leg in self.itinerary.legs) {
+            NSString *legString = [NSString stringWithFormat:@"%@(%@)", leg.mode, leg.route];
+            [legStrings addObject:legString];
+        }
+        NSString *legsString = [legStrings componentsJoinedByString:@", "];
+        
+        NSString *body = [NSString stringWithFormat:@"\n\n\n\n%@\n\n%@\n\n%@", line, deleage.currentUrlString, legsString];
+        
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        controller.navigationBar.tintColor = [UIColor lightGrayColor];
+        [controller setToRecipients:@[@"joyride@openplans.org"]];
+        [controller setSubject:@"Joyride Directions Feedback"];
+        [controller setMessageBody:body isHTML:NO];
+        if (controller) [self.itineraryViewController presentViewController:controller animated:YES completion:nil];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send feedback on this device" message:@"You can still send us feedback by emailing joyride@openplans.org." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    if (result == MFMailComposeResultSent) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Thanks for your feedback." delegate:nil cancelButtonTitle:@"No Problem" otherButtonTitles: nil];
+        [alert show];
+    }
+    [self.itineraryViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Side view controller
