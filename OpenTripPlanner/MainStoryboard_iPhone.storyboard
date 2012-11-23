@@ -195,7 +195,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Trips" id="ov9-jf-3uI">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="j35-eL-8rW">
-                            <color key="tintColor" red="0.57506793479999996" green="0.57506793479999996" blue="0.57506793479999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="dismiss:" destination="Kyn-yv-am1" id="cGs-tF-fHQ"/>
                             </connections>
@@ -212,7 +211,6 @@
                 <viewController storyboardIdentifier="ItineraryViewController" autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Directions" id="Dt8-uf-am2">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="hD3-1b-1J4">
-                            <color key="tintColor" red="0.57506793479999996" green="0.57506793479999996" blue="0.57506793479999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="done:" destination="P28-S2-VM9" id="gGX-nJ-vmJ"/>
                             </connections>
@@ -689,6 +687,7 @@
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="luo-OL-0uY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0039215688593685627" green="0.69411766529083252" blue="0.83137261867523193" alpha="1" colorSpace="deviceRGB"/>
                                 <items>
                                     <navigationItem title="Modes" id="Zsc-r6-gFg">
                                         <barButtonItem key="leftBarButtonItem" image="clock.png" id="NgW-76-3OQ">
@@ -781,9 +780,10 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="Wj7-1a-UWX" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="g6l-b7-1lG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6l-b7-1lG">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0039215688593685627" green="0.69411766529083252" blue="0.83137261867523193" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="ADZ-6x-bOR" kind="relationship" relationship="rootViewController" id="VgJ-Wp-37E"/>
@@ -814,12 +814,13 @@
                                         </segments>
                                     </segmentedControl>
                                 </subviews>
+                                <color key="backgroundColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="0.46353988363898208" green="0.49625426637386594" blue="0.60018257472826086" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="0.23322251315706807" green="0.30325747930597496" blue="0.35319718070652173" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -854,6 +855,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="V0I-Eg-d2J">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0039215688593685627" green="0.69411766529083252" blue="0.83137261867523193" alpha="1" colorSpace="deviceRGB"/>
                                 <items>
                                     <navigationItem title="Transit Time" id="qoA-h8-vqE">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="rFS-Sp-GtC">
@@ -894,6 +896,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="rmg-Jp-ftw">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0039215688593685627" green="0.69411766529083252" blue="0.83137261867523193" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Kyn-yv-am1" kind="relationship" relationship="rootViewController" id="uOk-tj-fRA"/>
@@ -947,14 +950,45 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="userLocationButton" candidateClass="UIButton"/>
             </relationships>
         </class>
+        <class className="OTPDistanceBasedLegCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPDistanceBasedLegCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPGeocodeDisambigationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodeDisambigationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+            </relationships>
+        </class>
         <class className="OTPGeocodedTextField" superclassName="UITextField">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGeocodedTextField.h"/>
         </class>
         <class className="OTPGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPGradientView.h"/>
         </class>
+        <class className="OTPInsetLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPInsetLabel.h"/>
+        </class>
         <class className="OTPItineraryCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="collectionView" candidateClass="OTPItineraryCollectionView"/>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timesView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="OTPItineraryCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryCollectionView.h"/>
+        </class>
+        <class className="OTPItineraryDurationView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryDurationView.h"/>
         </class>
         <class className="OTPItineraryMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryMapViewController.h"/>
@@ -966,9 +1000,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="OTPItineraryOverviewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryOverviewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="arriveTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="departTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="OTPItineraryTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displayFeedback:"/>
+            </relationships>
         </class>
         <class className="OTPItineraryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryViewController.h"/>
@@ -990,6 +1034,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="toLabelView" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="OTPStepCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
             <relationships>
@@ -1001,6 +1052,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="OTPTransferCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransferCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OTPTransitTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="arrivingOrDepartingControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
         <class className="OTPTransitTimesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransitTimesViewController.h"/>
             <relationships>
@@ -1009,6 +1076,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="OTPVerticalGradientView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>

@@ -115,7 +115,7 @@ Response *currentResponse;
 	
     self.switchFromAndToButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:[UIImage imageNamed:@"swap-addresses.png"], nil]];
     self.switchFromAndToButton.segmentedControlStyle = UISegmentedControlStyleBar;
-    self.switchFromAndToButton.tintColor = [UIColor blackColor];
+    self.switchFromAndToButton.tintColor = [UIColor colorWithRed:0.086 green:0.639 blue:0.792 alpha:1.000];
     CGRect controlFrame = self.switchFromAndToButton.frame;
     controlFrame.size.height = 40.f;
     controlFrame.size.width = 40.f;

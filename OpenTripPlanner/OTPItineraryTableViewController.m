@@ -555,7 +555,7 @@
         
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        controller.navigationBar.tintColor = [UIColor lightGrayColor];
+        controller.navigationBar.tintColor = [UIColor colorWithRed:0.004 green:0.694 blue:0.831 alpha:1.000];
         [controller setToRecipients:@[@"joyride@openplans.org"]];
         [controller setSubject:@"Joyride Directions Feedback"];
         [controller setMessageBody:body isHTML:NO];
