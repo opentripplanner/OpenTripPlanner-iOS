@@ -721,6 +721,8 @@ RKResponse* _OTPResponse = nil;
     } else if ([segue.identifier isEqualToString:@"TransitTimes"]) {
         OTPTransitTimeViewController *vc = (OTPTransitTimeViewController *)segue.destinationViewController;
         vc.delegate = self;
+        // If the current date is in the past, update it.
+        self.date = [[[NSDate alloc] init] laterDate:self.date];
         vc.date = self.date;
         vc.selectedSegment = self.arriveOrDepartByIndex;
     } else if ([segue.identifier isEqualToString:@"DisambiguateGeocode"]) {

@@ -29,6 +29,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.datePicker.date = self.date;
+    self.datePicker.minimumDate = [[[NSDate alloc] init] earlierDate:self.date];
     self.arrivingOrDepartingControl.selectedSegmentIndex = self.selectedSegment.intValue;
 }
 
