@@ -39,6 +39,8 @@
     NSArray *_stepModeFilteredLegs;
     NSArray *_allSteps;
     BOOL _shouldDisplaySteps;
+    OTPItineraryOverlayViewController *_overlayViewController;
+    OTPItineraryOverlayViewController *_mapOverlayViewController;
 }
 
 - (void)resetLegsWithColor:(UIColor *)color;
@@ -192,6 +194,16 @@
     
     [self displayItinerary];
     [self displayItineraryOverview];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"DID_SHOW_ITINERARY_OVERLAY"]) {
+        _overlayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryOverlay"];
+        _overlayViewController.delegate = self;
+        _overlayViewController.view.alpha = 0;
+        [self.navigationController.view addSubview:_overlayViewController.view];
+        [UIView animateWithDuration:0.5 animations:^{
+            _overlayViewController.view.alpha = 1;
+        }];
+    }
 }
 
 // FIXME: was having trouble dissecting the nexted if/else/elseif structures, so replicated it exactly here
@@ -510,6 +522,17 @@
 - (void)revealController:(ZUUIRevealController *)revealController didRevealRearViewController:(UIViewController *)rearViewController
 {
     if (revealController.currentFrontViewPosition == FrontViewPositionLeft) return;
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"DID_SHOW_ITINERARY_MAP_OVERLAY"]) {
+        _mapOverlayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapOverlay"];
+        _mapOverlayViewController.delegate = self;
+        _mapOverlayViewController.view.alpha = 0;
+        [self.navigationController.view addSubview:_mapOverlayViewController.view];
+        [UIView animateWithDuration:0.5 animations:^{
+            _mapOverlayViewController.view.alpha = 1;
+        }];
+    }
+    
     _mapShowing = YES;
     if (_selectedIndexPath == nil) {
         [TestFlight passCheckpoint:@"ITINERARY_SHOW_MAP_WITH_SWIPE"];
@@ -653,6 +676,15 @@
 {
     for (RMShape *shape in _shapesForLegs) {
         shape.lineColor = color;
+    }
+}
+
+- (void)userClosedOverlay:(UIView *)overlay
+{
+    if (overlay.tag == 0) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DID_SHOW_ITINERARY_OVERLAY"];
+    } else if (overlay.tag == 1) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DID_SHOW_ITINERARY_MAP_OVERLAY"];
     }
 }
 

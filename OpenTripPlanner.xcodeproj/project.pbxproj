@@ -91,6 +91,7 @@
 		CC2317281627653500EE0F48 /* OTPStopBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */; };
 		CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */; };
 		CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23176C162F17A500EE0F48 /* OTPTransferCell.m */; };
+		CC2C15201663FDF7006E4619 /* OTPItineraryOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2C151F1663FDF7006E4619 /* OTPItineraryOverlayViewController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
@@ -442,6 +443,8 @@
 		CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDistanceBasedLegCell.m; sourceTree = "<group>"; };
 		CC23176B162F17A500EE0F48 /* OTPTransferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPTransferCell.h; sourceTree = "<group>"; };
 		CC23176C162F17A500EE0F48 /* OTPTransferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransferCell.m; sourceTree = "<group>"; };
+		CC2C151E1663FDF7006E4619 /* OTPItineraryOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryOverlayViewController.h; sourceTree = "<group>"; };
+		CC2C151F1663FDF7006E4619 /* OTPItineraryOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryOverlayViewController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
@@ -1030,6 +1033,15 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		CC2C15091663DDE6006E4619 /* Overlay Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC2C151E1663FDF7006E4619 /* OTPItineraryOverlayViewController.h */,
+				CC2C151F1663FDF7006E4619 /* OTPItineraryOverlayViewController.m */,
+			);
+			name = "Overlay Views";
+			sourceTree = "<group>";
+		};
 		CC9CFC6315EFC29E0070712C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1137,6 +1149,7 @@
 				0D8259AE1644322C00D5F446 /* Directions Input View */,
 				0D8259AC1644317E00D5F446 /* Itinerary Detail View */,
 				CCBCD5251639BE8C00037B29 /* Itinerary List View */,
+				CC2C15091663DDE6006E4619 /* Overlay Views */,
 				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
 			);
@@ -1571,6 +1584,7 @@
 				CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */,
 				93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */,
 				93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */,
+				CC2C15201663FDF7006E4619 /* OTPItineraryOverlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
