@@ -14,15 +14,13 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat locations[] = { 0.0, 1.0 };
     
-    //CGColorRef colors[2];
-    //colors[0] = startColor;
-    //colors[1] = endColor;
-    //CFArrayRef colorsArray;
-    //colorsArray = CFArrayCreate(NULL, (void *)colors, 2, &kCFTypeArrayCallBacks);
-    NSArray *colors = [NSArray arrayWithObjects:(__bridge id)startColor, (__bridge id)endColor, nil];
+    CGColorRef colors[2];
+    colors[0] = startColor;
+    colors[1] = endColor;
+    CFArrayRef colorsArray;
+    colorsArray = CFArrayCreate(NULL, (void *)colors, 2, &kCFTypeArrayCallBacks);
     
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
-    //CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorsArray, locations);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorsArray, locations);
     
     CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
     CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
@@ -33,11 +31,11 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
     CGContextRestoreGState(context);
     
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorSpace);
-    //CFRelease(colorsArray);
 //    CGColorRelease(colors[0]);
 //    CGColorRelease(colors[1]);
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+    CFRelease(colorsArray);
 }
 
 CGRect rectFor1PxStroke(CGRect rect)

@@ -678,6 +678,17 @@
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.26274511218070984" green="0.70588237047195435" blue="0.83137261867523193" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.086274512112140656" green="0.63921570777893066" blue="0.79215693473815918" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
+                                        <color key="value" red="0.050980396568775177" green="0.4745098352432251" blue="0.59607845544815063" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="luo-OL-0uY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1069,7 +1080,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="dismiss:"/>
             </relationships>
         </class>
-        <class className="OTPVerticalGradientView" superclassName="UIView">
+        <class className="OTPVerticalGradientView" superclassName="OTPGradientView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPVerticalGradientView.h"/>
         </class>
         <class className="RMMapView" superclassName="UIView">
@@ -1086,6 +1097,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ZUUIRevealController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZUUIRevealController.h"/>

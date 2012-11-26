@@ -740,6 +740,8 @@
 		0D8259AE1644322C00D5F446 /* Directions Input View */ = {
 			isa = PBXGroup;
 			children = (
+				CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */,
+				CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */,
 				CC9CFCC315EFCCDE0070712C /* OTPViewController.h */,
 				CC9CFCC415EFCCDE0070712C /* OTPViewController.m */,
 				9388193E161927A5002021EA /* MBProgressHUD.h */,
@@ -782,8 +784,6 @@
 			children = (
 				CC9DC0421614F5F200C8B22E /* OTPTransitTimeViewController.h */,
 				CC9DC0411614F5F200C8B22E /* OTPTransitTimeViewController.m */,
-				CC9DC0461614F5F200C8B22E /* OTPVerticalGradientView.h */,
-				CC9DC0431614F5F200C8B22E /* OTPVerticalGradientView.m */,
 				CCBCD5221635FC9900037B29 /* OTPGradientView.h */,
 				CCBCD5231635FC9900037B29 /* OTPGradientView.m */,
 			);
