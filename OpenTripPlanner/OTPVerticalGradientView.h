@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OTPGradientView.h"
 
-@interface OTPVerticalGradientView : UIView
+@interface OTPVerticalGradientView : OTPGradientView
+
+@property(nonatomic, strong) UIColor *highlightColor;
 
 @end
