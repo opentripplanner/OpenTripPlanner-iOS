@@ -15,8 +15,8 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGColorRef startColor = CGColorRetain(self.startColor.CGColor);
-    CGColorRef endColor = CGColorRetain(self.endColor.CGColor);
+    CGColorRef startColor = self.startColor.CGColor;
+    CGColorRef endColor = self.endColor.CGColor;
     
     drawLinearGradient(context, rect, startColor, endColor);
 }

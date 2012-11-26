@@ -43,19 +43,6 @@
 
 @implementation OTPItineraryTableViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Set start and end times in header
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"h:mm a"];
-        
-        [self createHeaderTitle: [NSString stringWithFormat:@"About %d minutes", self.itinerary.duration.intValue/60000] andSubtitle: [NSString stringWithFormat:@"Start  %@ ~ %@  End", [formatter stringFromDate:self.itinerary.startTime], [formatter stringFromDate:self.itinerary.endTime]]];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -223,48 +210,6 @@
     }
     return self.itinerary.legs.count + 3;  // +3 for overview, final arrival info and feedback
 }
-
--(void) createHeaderTitle:(NSString*)headerTitle andSubtitle:(NSString*)headerSubtitle {
-    
-    UIColor *_textColor = [UIColor colorWithRed:0.36 green:0.72 blue:0.83 alpha:1.0];
-    
-    CGRect headerTitleSubtitleFrame = CGRectMake(0, 0, 200, 44);
-    UIView* _headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
-    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
-    _headerTitleSubtitleView.autoresizesSubviews = YES;
-    
-    CGRect titleFrame = CGRectMake(0, 0, 198, 22);
-    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:15];
-    titleView.textAlignment = UITextAlignmentCenter;
-    titleView.textColor = _textColor;
-    titleView.shadowColor = [UIColor darkGrayColor];
-    titleView.shadowOffset = CGSizeMake(0, -1);
-    titleView.text = headerTitle;
-    titleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:titleView];
-    
-    CGRect subtitleFrame = CGRectMake(0, 22, 198, 44-26);
-    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
-    subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont systemFontOfSize:11];
-    subtitleView.textAlignment = UITextAlignmentCenter;
-    subtitleView.textColor = _textColor;
-    subtitleView.shadowColor = [UIColor darkGrayColor];
-    subtitleView.shadowOffset = CGSizeMake(0, -1);
-    subtitleView.text = headerSubtitle;
-    subtitleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:subtitleView];
-    
-    _headerTitleSubtitleView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin |
-                                                 UIViewAutoresizingFlexibleRightMargin |
-                                                 UIViewAutoresizingFlexibleTopMargin |
-                                                 UIViewAutoresizingFlexibleBottomMargin);
-
-    self.navBar.topItem.titleView = _headerTitleSubtitleView;
-}
-
 
 - (void)didReceiveMemoryWarning
 {

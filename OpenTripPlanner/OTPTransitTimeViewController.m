@@ -42,7 +42,7 @@
 - (void)cancel:(id)sender
 {
     [TestFlight passCheckpoint:@"PARAMS_CANCEL"];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)done:(id)sender
@@ -53,7 +53,7 @@
                didChooseArrivingOrDepartingIndex:[NSNumber numberWithInt:self.arrivingOrDepartingControl.selectedSegmentIndex]
                                           atTime:self.datePicker.date];
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

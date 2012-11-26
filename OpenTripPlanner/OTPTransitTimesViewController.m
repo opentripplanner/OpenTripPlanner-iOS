@@ -258,7 +258,7 @@
 - (void)dismiss:(id)sender
 {
     [TestFlight passCheckpoint:@"ITINERARIES_DONE"];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

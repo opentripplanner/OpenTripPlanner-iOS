@@ -8,13 +8,20 @@
 
 #import "OTPGraphicsCommon.h"
 
-void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef  endColor) {
+void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef  endColor)
+{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat locations[] = { 0.0, 1.0 };
     
-    NSArray *colors = [NSArray arrayWithObjects:(__bridge id)startColor, (__bridge id)endColor, nil];
+    CGColorRef colors[2];
+    CFArrayRef colorsArray;
     
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
+    colors[0] = startColor;
+    colors[1] = endColor;
+    
+    colorsArray = CFArrayCreate(NULL, (void *)colors, 2, &kCFTypeArrayCallBacks);
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorsArray, locations);
     
     CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
     CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
@@ -27,13 +34,18 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
+    CFRelease(colorsArray);
+//    CGColorRelease(colors[0]);
+//    CGColorRelease(colors[1]);
 }
 
-CGRect rectFor1PxStroke(CGRect rect) {
+CGRect rectFor1PxStroke(CGRect rect)
+{
     return CGRectMake(rect.origin.x + 0.5, rect.origin.y + 0.5, rect.size.width - 1, rect.size.height - 1);
 }
 
-void draw1PxStroke(CGContextRef context, CGPoint startPoint, CGPoint endPoint, CGColorRef color) {
+void draw1PxStroke(CGContextRef context, CGPoint startPoint, CGPoint endPoint, CGColorRef color)
+{
     
     CGContextSaveGState(context);
     CGContextSetLineCap(context, kCGLineCapSquare);

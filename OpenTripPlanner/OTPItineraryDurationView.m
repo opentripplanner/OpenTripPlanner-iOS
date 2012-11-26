@@ -28,7 +28,7 @@
     // Drawing code
     rect = self.layer.bounds;
     
-    self.layer.shadowColor = CGColorRetain([UIColor blackColor].CGColor);
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOpacity = 0.3;
     self.layer.shadowRadius = 3;
     self.layer.shadowOffset = CGSizeMake(0, 0);
