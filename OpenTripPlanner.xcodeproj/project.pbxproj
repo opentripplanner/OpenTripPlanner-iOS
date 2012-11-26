@@ -53,6 +53,8 @@
 		93EA08D5164582A500705096 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 93EA08D1164582A500705096 /* release_notes.md */; };
 		93F4D9DD1659B628002C2790 /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DC1659B628002C2790 /* Error.m */; };
 		93F4D9E01659B70B002C2790 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DF1659B70B002C2790 /* Response.m */; };
+		93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */; };
+		93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
 		CC0A1F771603AB3C003085B2 /* OTPItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */; };
 		CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */; };
@@ -89,7 +91,6 @@
 		CC2317281627653500EE0F48 /* OTPStopBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */; };
 		CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */; };
 		CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23176C162F17A500EE0F48 /* OTPTransferCell.m */; };
-		CC23179A162F628D00EE0F48 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC231799162F628D00EE0F48 /* PPRevealSideViewController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
@@ -396,7 +397,10 @@
 		93F4D9DC1659B628002C2790 /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
 		93F4D9DE1659B70B002C2790 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		93F4D9DF1659B70B002C2790 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
-		CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = RoutingCoverage.geojson; sourceTree = "<group>"; };
+		93F4DA2F1662ED19002C2790 /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
+		93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
+		93F4DA3216630680002C2790 /* OTPDirectionPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionPanGestureRecognizer.h; sourceTree = "<group>"; };
+		93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDirectionPanGestureRecognizer.m; sourceTree = "<group>"; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPItineraryViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryViewController.m; sourceTree = "<group>"; };
@@ -438,8 +442,6 @@
 		CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDistanceBasedLegCell.m; sourceTree = "<group>"; };
 		CC23176B162F17A500EE0F48 /* OTPTransferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPTransferCell.h; sourceTree = "<group>"; };
 		CC23176C162F17A500EE0F48 /* OTPTransferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransferCell.m; sourceTree = "<group>"; };
-		CC231798162F628D00EE0F48 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
-		CC231799162F628D00EE0F48 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
@@ -706,11 +708,7 @@
 				CC922FB7161A1AD10072E22F /* OTPItineraryTableViewController.m */,
 				CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */,
 				CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */,
-				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
-				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
 				0D8259AD164431FD00D5F446 /* Cells */,
-				CC231798162F628D00EE0F48 /* PPRevealSideViewController.h */,
-				CC231799162F628D00EE0F48 /* PPRevealSideViewController.m */,
 				0D8259AB1644314800D5F446 /* Map */,
 			);
 			name = "Itinerary Detail View";
@@ -729,8 +727,6 @@
 				CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */,
 				93B179C4162D252F00F09EC6 /* OTPStepCell.h */,
 				93B179C5162D252F00F09EC6 /* OTPStepCell.m */,
-				1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */,
-				1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */,
 				1CE5C55E16289707001E83D3 /* OTPLegCell.h */,
 				1CE5C55F16289707001E83D3 /* OTPLegCell.m */,
 				CC23176B162F17A500EE0F48 /* OTPTransferCell.h */,
@@ -761,6 +757,8 @@
 		0D8259AF1644339700D5F446 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				93F4DA2F1662ED19002C2790 /* ZUUIRevealController.h */,
+				93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */,
 				CCE01D63165C36B7008F873E /* NSString+MD5Addition.h */,
 				CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */,
 				CCE01D65165C36B7008F873E /* UIDevice+IdentifierAddition.h */,
@@ -773,6 +771,8 @@
 				93B179BF162BBAB400F09EC6 /* OTPUnitFormatter.m */,
 				93B179C1162BC69B00F09EC6 /* OTPUnitData.h */,
 				93B179C2162BC69C00F09EC6 /* OTPUnitData.m */,
+				93F4DA3216630680002C2790 /* OTPDirectionPanGestureRecognizer.h */,
+				93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1065,6 +1065,10 @@
 		CCBCD5251639BE8C00037B29 /* Itinerary List View */ = {
 			isa = PBXGroup;
 			children = (
+				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
+				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
+				1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */,
+				1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */,
 				1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */,
 				1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */,
 				CC8D354015F922E500CA158D /* OTPTransitTimesViewController.h */,
@@ -1123,6 +1127,8 @@
 		CCCDFB6D15EEAAC600B26133 /* OpenTripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
+				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 				CC9CFCCB15EFCDA00070712C /* MainStoryboard_iPhone.storyboard */,
 				CCB1A9311656D24E004791D6 /* Geocode Disambiguation View */,
 				0D8259B11644344D00D5F446 /* About View */,
@@ -1133,8 +1139,6 @@
 				CCBCD5251639BE8C00037B29 /* Itinerary List View */,
 				CC9CFC6315EFC29E0070712C /* Model */,
 				CCCDFB6E15EEAAC600B26133 /* Supporting Files */,
-				CCCDFB7615EEAAC600B26133 /* OTPAppDelegate.h */,
-				CCCDFB7715EEAAC600B26133 /* OTPAppDelegate.m */,
 			);
 			path = OpenTripPlanner;
 			sourceTree = "<group>";
@@ -1146,7 +1150,6 @@
 				CCCDFB7015EEAAC600B26133 /* InfoPlist.strings */,
 				CCCDFB7315EEAAC600B26133 /* main.m */,
 				CCCDFB7515EEAAC600B26133 /* OpenTripPlanner-Prefix.pch */,
-				CC088DE215F6932500C6F372 /* RoutingCoverage.geojson */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1553,7 +1556,6 @@
 				1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */,
 				CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */,
 				1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */,
-				CC23179A162F628D00EE0F48 /* PPRevealSideViewController.m in Sources */,
 				CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */,
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
@@ -1567,6 +1569,8 @@
 				93F4D9E01659B70B002C2790 /* Response.m in Sources */,
 				CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */,
 				CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */,
+				93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */,
+				93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1674,7 +1678,8 @@
 		CCCDFB9115EEAAC600B26133 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Sutula (A4CW4AA7D5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Sutula (A4CW4AA7D5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1693,7 +1698,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Joyride;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9C53491F-48DE-455E-9650-04ADB65F5400";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C53491F-48DE-455E-9650-04ADB65F5400";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1703,7 +1709,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OpenPlans Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1722,7 +1728,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Joyride;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7903C8D-6769-4A24-8CC9-5D3FE5659390";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

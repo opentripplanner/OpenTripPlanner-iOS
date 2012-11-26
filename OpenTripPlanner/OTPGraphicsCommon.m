@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "OTPGraphicsCommon.h"
 
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef  endColor)

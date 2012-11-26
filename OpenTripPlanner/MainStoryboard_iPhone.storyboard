@@ -183,7 +183,7 @@
                                     <outlet property="endTimeLabel" destination="ni9-i0-ba1" id="Bqs-35-YFR"/>
                                     <outlet property="startTimeLabel" destination="e2h-ly-ykQ" id="iIZ-Zp-pIz"/>
                                     <outlet property="timesView" destination="2fN-cc-cSM" id="9Zh-E0-LTa"/>
-                                    <segue destination="P28-S2-VM9" kind="push" id="C3F-gs-wnj"/>
+                                    <segue destination="P28-S2-VM9" kind="push" id="gzL-RF-f0M"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -208,16 +208,15 @@
         <!--Itinerary View Controller - Directions-->
         <scene sceneID="ZSM-u2-ndc">
             <objects>
-                <viewController storyboardIdentifier="ItineraryViewController" autoresizesArchivedViewToFullSize="NO" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Directions" id="Dt8-uf-am2">
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="hD3-1b-1J4">
+                <viewController storyboardIdentifier="ItineraryViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P28-S2-VM9" customClass="OTPItineraryViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Directions" id="NH2-ot-uAz">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="2sn-f3-TSw">
                             <connections>
-                                <action selector="done:" destination="P28-S2-VM9" id="gGX-nJ-vmJ"/>
+                                <action selector="done:" destination="P28-S2-VM9" id="ufa-tI-uNK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvf-qB-Jr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -561,17 +560,13 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="txw-ao-UKg" id="aj7-R5-3tV"/>
-                            <outlet property="delegate" destination="txw-ao-UKg" id="YNY-86-mj3"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="xkW-sm-IzD"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crK-H6-tlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="651"/>
+            <point key="canvasLocation" x="1451" y="651"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="vts-Tq-U0g">
@@ -764,7 +759,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Did you mean...?" id="44J-nK-0QF">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="plain" id="dAj-Ss-IQ8">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dAj-Ss-IQ8">
                             <connections>
                                 <action selector="cancel:" destination="ADZ-6x-bOR" id="I2f-iE-Zle"/>
                             </connections>
@@ -1014,7 +1009,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="displayFeedback:"/>
             </relationships>
         </class>
-        <class className="OTPItineraryViewController" superclassName="UIViewController">
+        <class className="OTPItineraryViewController" superclassName="ZUUIRevealController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryViewController.h"/>
             <relationships>
                 <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
@@ -1091,6 +1086,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="ZUUIRevealController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZUUIRevealController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="frontViewController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="rearViewController" candidateClass="UIViewController"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
