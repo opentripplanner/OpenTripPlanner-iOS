@@ -15,6 +15,9 @@
 @property (nonatomic, strong) OTPGeocodedTextField *fromTextField;
 @property (nonatomic, strong) OTPGeocodedTextField *toTextField;
 @property (nonatomic) BOOL mapShowedUserLocation;
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) IBOutlet UILabel *headerFromLabel;
+@property (nonatomic, strong) IBOutlet UILabel *headerToLabel;
 
 - (IBAction)dismiss:(id)sender;
 

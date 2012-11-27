@@ -246,7 +246,6 @@
 		CCF66A371631BE00007A9634 /* transfer_32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A311631BDFC007A9634 /* transfer_32@2x.png */; };
 		CCF66A381631BE00007A9634 /* transfer_52.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A321631BDFD007A9634 /* transfer_52.png */; };
 		CCF66A391631BE00007A9634 /* transfer_52@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A331631BDFF007A9634 /* transfer_52@2x.png */; };
-		CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */; };
 		CCF66A471631F5EB007A9634 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A3D1631F5D8007A9634 /* cross.png */; };
 		CCF66A481631F5EB007A9634 /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A3E1631F5DA007A9634 /* cross@2x.png */; };
 		CCF66A491631F5EB007A9634 /* pin_32.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF66A3F1631F5DB007A9634 /* pin_32.png */; };
@@ -625,8 +624,6 @@
 		CCF66A311631BDFC007A9634 /* transfer_32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer_32@2x.png"; sourceTree = "<group>"; };
 		CCF66A321631BDFD007A9634 /* transfer_52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transfer_52.png; sourceTree = "<group>"; };
 		CCF66A331631BDFF007A9634 /* transfer_52@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer_52@2x.png"; sourceTree = "<group>"; };
-		CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryDurationView.h; sourceTree = "<group>"; };
-		CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryDurationView.m; sourceTree = "<group>"; };
 		CCF66A3D1631F5D8007A9634 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		CCF66A3E1631F5DA007A9634 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
 		CCF66A3F1631F5DB007A9634 /* pin_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_32.png; sourceTree = "<group>"; };
@@ -1077,8 +1074,6 @@
 		CCBCD5251639BE8C00037B29 /* Itinerary List View */ = {
 			isa = PBXGroup;
 			children = (
-				CCF66A3A1631CAC3007A9634 /* OTPItineraryDurationView.h */,
-				CCF66A3B1631CAC3007A9634 /* OTPItineraryDurationView.m */,
 				1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */,
 				1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */,
 				1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */,
@@ -1569,7 +1564,6 @@
 				1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */,
 				CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */,
 				1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */,
-				CCF66A3C1631CAC4007A9634 /* OTPItineraryDurationView.m in Sources */,
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
 				0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */,

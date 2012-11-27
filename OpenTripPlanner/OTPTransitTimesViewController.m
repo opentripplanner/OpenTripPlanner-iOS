@@ -54,6 +54,12 @@
     @"FUNICULAR" : [UIImage imageNamed:@"funicular_32.png"]
     };
 
+    self.headerFromLabel.text = self.fromTextField.text;
+    self.headerToLabel.text = self.toTextField.text;
+    self.headerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.headerView.layer.shadowOpacity = 0.2;
+    self.headerView.layer.shadowRadius = 2;
+    self.headerView.layer.shadowOffset = CGSizeMake(0, 2);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -73,23 +79,30 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 1;
-    } else if (section == 1) {
         return self.itineraries.count;
     }
-    
     return 0;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if(section == 1) {
+    if(section == 0) {
         return @"Select a Trip:";
     }
     return nil;
@@ -99,16 +112,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString *CellIdentifier = @"placeCell";
-        OTPPlaceCell *cell = (OTPPlaceCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-                
-        cell.fromLabelView.text = self.fromTextField.text;
-        cell.toLabelView.text = self.toTextField.text;
-        
-        return cell;
-    } else if (indexPath.section == 1) {
         static NSString *CellIdentifier = @"itineraryCell";
         OTPItineraryCell *cell = (OTPItineraryCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.tag = indexPath.row;
         
         // Get the itinerary
         Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
@@ -118,13 +124,13 @@
         collView.itinerary = itinerary;
             
         // Set the duration label
-        cell.durationLabel.text = [NSString stringWithFormat:@"%d", itinerary.duration.intValue/60000];
+        cell.durationLabel.text = [NSString stringWithFormat:@"%d min", itinerary.duration.intValue/60000];
         
         // Set start and end times
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"h:mm a"];
-        cell.startTimeLabel.text = [formatter stringFromDate:itinerary.startTime];
-        cell.endTimeLabel.text = [formatter stringFromDate:itinerary.endTime];
+        cell.startTimeLabel.text = [NSString stringWithFormat:@"START %@", [formatter stringFromDate:itinerary.startTime]];
+        cell.endTimeLabel.text = [NSString stringWithFormat:@"END %@", [formatter stringFromDate:itinerary.endTime]];
 
         int legCnt = 0;
         for(Leg *leg in itinerary.legs)
@@ -140,10 +146,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 64;
-    }
-    return 88;
+    return 70;
 }
 
 - (NSInteger)collectionView:(OTPItineraryCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
