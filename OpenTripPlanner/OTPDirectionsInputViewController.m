@@ -161,6 +161,11 @@ Response *currentResponse;
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag != 0) return;
+    if (buttonIndex == 0) {
+        [TestFlight passCheckpoint:@"UID_OPT_OUT"];
+    } else if (buttonIndex == 1) {
+        [TestFlight passCheckpoint:@"UID_OPT_IN"];
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:buttonIndex+1 forKey:@"canShareUrls"];
     [defaults synchronize];

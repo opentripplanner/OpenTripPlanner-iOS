@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OTPItineraryMapViewController.h"
+
 @interface OTPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *currentUrlString;
+@property (strong, nonatomic) OTPItineraryMapViewController *itineraryMapViewController;
 
 @end

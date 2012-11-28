@@ -37,6 +37,8 @@
         [defaults synchronize];
     }
     
+    self.itineraryMapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
+    
 //    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     

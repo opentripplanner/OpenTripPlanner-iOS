@@ -170,7 +170,7 @@
     self.itineraryTableViewController.tableView.dataSource = self;
     self.itineraryTableViewController.tableView.delegate = self;
     
-    self.itineraryMapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapViewController"];
+    self.itineraryMapViewController = ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController;
     
     self.delegate = self;
     
@@ -187,13 +187,10 @@
     
     [super viewDidLoad];
     
-    [self.itineraryMapViewController.mapView setDelegate:self];
+    self.itineraryMapViewController.mapView.delegate = self;
     self.itineraryMapViewController.mapView.topPadding = 100;
     self.itineraryMapViewController.instructionLabel.hidden = YES;
     self.itineraryMapViewController.mapView.showsUserLocation = self.mapShowedUserLocation;
-    
-    [self displayItinerary];
-    [self displayItineraryOverview];
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"DID_SHOW_ITINERARY_OVERLAY"]) {
         _overlayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryOverlay"];
@@ -204,6 +201,12 @@
             _overlayViewController.view.alpha = 1;
         }];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self displayItinerary];
+    [self displayItineraryOverview];
 }
 
 // FIXME: was having trouble dissecting the nexted if/else/elseif structures, so replicated it exactly here
