@@ -92,6 +92,14 @@
 		CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */; };
 		CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23176C162F17A500EE0F48 /* OTPTransferCell.m */; };
 		CC2C15201663FDF7006E4619 /* OTPItineraryOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2C151F1663FDF7006E4619 /* OTPItineraryOverlayViewController.m */; };
+		CC2C154A1666D28A006E4619 /* marker-dropped-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15421666D289006E4619 /* marker-dropped-cropped.png */; };
+		CC2C154B1666D28A006E4619 /* marker-dropped-cropped@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15431666D289006E4619 /* marker-dropped-cropped@2x.png */; };
+		CC2C154C1666D28A006E4619 /* marker-end-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15441666D289006E4619 /* marker-end-cropped.png */; };
+		CC2C154D1666D28A006E4619 /* marker-end-cropped@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15451666D289006E4619 /* marker-end-cropped@2x.png */; };
+		CC2C154E1666D28A006E4619 /* marker-start-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15461666D289006E4619 /* marker-start-cropped.png */; };
+		CC2C154F1666D28A006E4619 /* marker-start-cropped@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15471666D289006E4619 /* marker-start-cropped@2x.png */; };
+		CC2C15501666D28A006E4619 /* overview.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15481666D28A006E4619 /* overview.png */; };
+		CC2C15511666D28A006E4619 /* overview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15491666D28A006E4619 /* overview@2x.png */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
@@ -401,6 +409,7 @@
 		93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
 		93F4DA3216630680002C2790 /* OTPDirectionPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionPanGestureRecognizer.h; sourceTree = "<group>"; };
 		93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDirectionPanGestureRecognizer.m; sourceTree = "<group>"; };
+		CC03B5F116693B94006BD398 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPItineraryViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryViewController.m; sourceTree = "<group>"; };
@@ -444,6 +453,14 @@
 		CC23176C162F17A500EE0F48 /* OTPTransferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPTransferCell.m; sourceTree = "<group>"; };
 		CC2C151E1663FDF7006E4619 /* OTPItineraryOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryOverlayViewController.h; sourceTree = "<group>"; };
 		CC2C151F1663FDF7006E4619 /* OTPItineraryOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryOverlayViewController.m; sourceTree = "<group>"; };
+		CC2C15421666D289006E4619 /* marker-dropped-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-dropped-cropped.png"; sourceTree = "<group>"; };
+		CC2C15431666D289006E4619 /* marker-dropped-cropped@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-dropped-cropped@2x.png"; sourceTree = "<group>"; };
+		CC2C15441666D289006E4619 /* marker-end-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-end-cropped.png"; sourceTree = "<group>"; };
+		CC2C15451666D289006E4619 /* marker-end-cropped@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-end-cropped@2x.png"; sourceTree = "<group>"; };
+		CC2C15461666D289006E4619 /* marker-start-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-start-cropped.png"; sourceTree = "<group>"; };
+		CC2C15471666D289006E4619 /* marker-start-cropped@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-start-cropped@2x.png"; sourceTree = "<group>"; };
+		CC2C15481666D28A006E4619 /* overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overview.png; sourceTree = "<group>"; };
+		CC2C15491666D28A006E4619 /* overview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overview@2x.png"; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
@@ -853,6 +870,14 @@
 		CC2316EA16260F9200EE0F48 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CC2C15421666D289006E4619 /* marker-dropped-cropped.png */,
+				CC2C15431666D289006E4619 /* marker-dropped-cropped@2x.png */,
+				CC2C15441666D289006E4619 /* marker-end-cropped.png */,
+				CC2C15451666D289006E4619 /* marker-end-cropped@2x.png */,
+				CC2C15461666D289006E4619 /* marker-start-cropped.png */,
+				CC2C15471666D289006E4619 /* marker-start-cropped@2x.png */,
+				CC2C15481666D28A006E4619 /* overview.png */,
+				CC2C15491666D28A006E4619 /* overview@2x.png */,
 				CCF66A611632134F007A9634 /* home-icon@2x.png */,
 				CCF66A5F16321331007A9634 /* home-icon.png */,
 				0D4553BA16432356006D4A3B /* popup-bike.png */,
@@ -1087,6 +1112,7 @@
 		CCCDFB5815EEAAC600B26133 = {
 			isa = PBXGroup;
 			children = (
+				CC03B5F116693B94006BD398 /* CoreText.framework */,
 				93EA08CE164582A500705096 /* TestFlightSDK1 */,
 				9378876A16154AF2007CF24C /* MapView.xcodeproj */,
 				9378874416154865007CF24C /* RestKit.xcodeproj */,
@@ -1498,6 +1524,14 @@
 				0D4553E716432356006D4A3B /* transfer_walk.png in Resources */,
 				93EA08D4164582A500705096 /* README.md in Resources */,
 				93EA08D5164582A500705096 /* release_notes.md in Resources */,
+				CC2C154A1666D28A006E4619 /* marker-dropped-cropped.png in Resources */,
+				CC2C154B1666D28A006E4619 /* marker-dropped-cropped@2x.png in Resources */,
+				CC2C154C1666D28A006E4619 /* marker-end-cropped.png in Resources */,
+				CC2C154D1666D28A006E4619 /* marker-end-cropped@2x.png in Resources */,
+				CC2C154E1666D28A006E4619 /* marker-start-cropped.png in Resources */,
+				CC2C154F1666D28A006E4619 /* marker-start-cropped@2x.png in Resources */,
+				CC2C15501666D28A006E4619 /* overview.png in Resources */,
+				CC2C15511666D28A006E4619 /* overview@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,6 +1727,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
 					"\"$(SRCROOT)/MapBox\"/**",
+					"\"$(SRCROOT)/OHAttributedLabel\"/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1716,13 +1751,14 @@
 		CCCDFB9215EEAAC600B26133 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OpenPlans Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OpenPlans Inc";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenTripPlanner/OpenTripPlanner-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
 					"\"$(SRCROOT)/MapBox\"/**",
+					"\"$(SRCROOT)/OHAttributedLabel\"/**",
 				);
 				INFOPLIST_FILE = "OpenTripPlanner/OpenTripPlanner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1736,7 +1772,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Joyride;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "C7903C8D-6769-4A24-8CC9-5D3FE5659390";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E773ACC5-2A35-4AC1-A104-445C24ED4438";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

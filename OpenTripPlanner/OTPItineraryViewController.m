@@ -39,6 +39,9 @@
     NSArray *_stepModeFilteredLegs;
     NSArray *_allSteps;
     BOOL _shouldDisplaySteps;
+    NSMutableArray *_primaryInstructionStrings;
+    NSMutableArray *_secondaryInstructionStrings;
+    NSMutableArray *_cellIcons;
     OTPItineraryOverlayViewController *_overlayViewController;
     OTPItineraryOverlayViewController *_mapOverlayViewController;
 }
@@ -72,18 +75,18 @@
     _transferModes = @[@"TRANSFER"];
     
     _modeIcons = @{
-    @"WALK" : [UIImage imageNamed:@"walk_52.png"],
-    @"BICYCLE" : [UIImage imageNamed:@"bike_52.png"],
-    @"CAR" : [UIImage imageNamed:@"car_52.png"],
-    @"TRAM" : [UIImage imageNamed:@"cable-car_52.png"],
-    @"SUBWAY" : [UIImage imageNamed:@"train_52.png"],
-    @"RAIL" : [UIImage imageNamed:@"train_52.png"],
-    @"BUS" : [UIImage imageNamed:@"bus_52.png"],
-    @"FERRY" : [UIImage imageNamed:@"ferry_52.png"],
-    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_52.png"],
-    @"GONDOLA" : [UIImage imageNamed:@"gondola_52.png"],
-    @"TRANSFER" : [UIImage imageNamed:@"transfer_52.png"],
-    @"FUNICULAR" : [UIImage imageNamed:@"funicular_52.png"]
+    @"WALK" : [UIImage imageNamed:@"walk_32.png"],
+    @"BICYCLE" : [UIImage imageNamed:@"bike_32.png"],
+    @"CAR" : [UIImage imageNamed:@"car_32.png"],
+    @"TRAM" : [UIImage imageNamed:@"cable-car_32.png"],
+    @"SUBWAY" : [UIImage imageNamed:@"train_32.png"],
+    @"RAIL" : [UIImage imageNamed:@"train_32.png"],
+    @"BUS" : [UIImage imageNamed:@"bus_32.png"],
+    @"FERRY" : [UIImage imageNamed:@"ferry_32.png"],
+    @"CABLE_CAR" : [UIImage imageNamed:@"cable-car_32.png"],
+    @"GONDOLA" : [UIImage imageNamed:@"gondola_32.png"],
+    @"TRANSFER" : [UIImage imageNamed:@"transfer_32.png"],
+    @"FUNICULAR" : [UIImage imageNamed:@"funicular_32.png"]
     };
     
     _modeDisplayStrings = @{
@@ -102,16 +105,16 @@
     };
     
     _relativeDirectionIcons = @{
-    @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
-    @"LEFT" : [UIImage imageNamed:@"hard-left_52.png"],
-    @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_52.png"],
-    @"CONTINUE" : [UIImage imageNamed:@"continue_52.png"],
-    @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_52.png"],
-    @"RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
-    @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_52.png"],
-    @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_52.png"],
-    @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_52.png"],
-    @"ELEVATOR" : [UIImage imageNamed:@"elevator_52.png"]
+    @"HARD_LEFT" : [UIImage imageNamed:@"hard-left_32.png"],
+    @"LEFT" : [UIImage imageNamed:@"hard-left_32.png"],
+    @"SLIGHTLY_LEFT" : [UIImage imageNamed:@"slight-left_32.png"],
+    @"CONTINUE" : [UIImage imageNamed:@"continue_32.png"],
+    @"SLIGHTLY_RIGHT" : [UIImage imageNamed:@"slight-right_32.png"],
+    @"RIGHT" : [UIImage imageNamed:@"hard-right_32.png"],
+    @"HARD_RIGHT" : [UIImage imageNamed:@"hard-right_32.png"],
+    @"CIRCLE_CLOCKWISE" : [UIImage imageNamed:@"clockwise_32.png"],
+    @"CIRCLE_COUNTERCLOCKWISE" : [UIImage imageNamed:@"counterclockwise_32.png"],
+    @"ELEVATOR" : [UIImage imageNamed:@"elevator_32.png"]
     };
     
     _relativeDirectionDisplayStrings = @{
@@ -164,6 +167,68 @@
         _shouldDisplaySteps = NO;
     }
     
+    _primaryInstructionStrings = [[NSMutableArray alloc] init];
+    _secondaryInstructionStrings = [[NSMutableArray alloc] init];
+    _cellIcons = [[NSMutableArray alloc] init];
+    if (_shouldDisplaySteps) {
+        for (int i = 0; i < _allSteps.count; i++) {
+            Step *step = [_allSteps objectAtIndex:i];
+            Leg *leg;
+            for (Leg* legToTest in self.itinerary.legs) {
+                if ([legToTest.steps containsObject:step]) {
+                    leg = legToTest;
+                    break;
+                }
+            }
+            NSString *instruction;
+            if ([leg.steps indexOfObject:step] == 0) {
+                instruction = [NSString stringWithFormat:@"%@ %@ on %@",
+                                         [_modeDisplayStrings objectForKey:leg.mode],
+                                         [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
+                                         step.streetName];
+                [_cellIcons insertObject:[_modeIcons objectForKey:leg.mode] atIndex:i];
+            } else {
+                instruction = [NSString stringWithFormat:@"%@ on %@",
+                                         [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
+                                         step.streetName];
+                [_cellIcons insertObject:[_relativeDirectionIcons objectForKey:step.relativeDirection] atIndex:i];
+            }
+            [_primaryInstructionStrings insertObject:instruction atIndex:i];
+            [_secondaryInstructionStrings insertObject:[NSNull null] atIndex:i];
+        }
+    } else {
+        for (int i = 0; i < self.itinerary.legs.count; i++) {
+            Leg *leg = [self.itinerary.legs objectAtIndex:i];
+            
+            // distance based leg
+            if ([_distanceBasedModes containsObject:leg.mode]) {
+                [_cellIcons insertObject:[_modeIcons objectForKey:leg.mode] atIndex:i];
+                [_primaryInstructionStrings insertObject:[NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString] atIndex:i];
+                [_secondaryInstructionStrings insertObject:[NSNull null] atIndex:i];
+                
+            // stop based leg
+            } else if ([_stopBasedModes containsObject:leg.mode]) {
+                [_cellIcons insertObject:[_modeIcons objectForKey:leg.mode] atIndex:i];
+                
+                NSString *destination = leg.headsign.capitalizedString;
+                if(destination == nil) {
+                    destination = leg.to.name.capitalizedString;
+                }
+                [_primaryInstructionStrings insertObject:[NSString stringWithFormat: @"Take the %@ %@ towards %@", leg.route, [_modeDisplayStrings objectForKey:leg.mode], destination] atIndex:i];
+                [_secondaryInstructionStrings insertObject:[NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString] atIndex:i];
+                
+            // transfer leg
+            } else if ([_transferModes containsObject:leg.mode]) {
+                [_cellIcons insertObject:[_modeIcons objectForKey:leg.mode] atIndex:i];
+                Leg *nextLeg = [self.itinerary.legs objectAtIndex:i+1];
+                [_primaryInstructionStrings insertObject:[NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString] atIndex:i];
+                [_secondaryInstructionStrings insertObject:[NSNull null] atIndex:i];
+            }
+        }
+    }
+    [_primaryInstructionStrings addObject:[NSString stringWithFormat:@"Arrive at %@", self.toTextField.text]];
+    [_secondaryInstructionStrings addObject:[NSNull null]];
+    
     [self calculateCellHeights];
     
     self.itineraryTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryTableViewController"];
@@ -205,8 +270,18 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    // TODO: This should not run when feedback view is dismissed.
+    [super viewDidAppear:animated];
     [self displayItinerary];
     [self displayItineraryOverview];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    // TODO: If even necessary, this should not run when feedback modal is presented.
+//    [super viewDidDisappear:animated];
+//    self.itineraryMapViewController.mapView.delegate = nil;
+//    self.itineraryMapViewController = nil;
 }
 
 // FIXME: was having trouble dissecting the nexted if/else/elseif structures, so replicated it exactly here
@@ -240,7 +315,7 @@
                 CGSize textSize = [labelText
                                    sizeWithFont:[UIFont boldSystemFontOfSize:14]
                                    constrainedToSize:CGSizeMake(246, MAXFLOAT)
-                                   lineBreakMode:UILineBreakModeWordWrap];
+                                   lineBreakMode:NSLineBreakByWordWrapping];
                 
                 [_cellHeights setObject:[NSNumber numberWithFloat:65.0f + textSize.height] atIndexedSubscript:i];
             } else if ([_transferModes containsObject:leg.mode]) {
@@ -304,31 +379,9 @@
         // use steps as segments
         if (_shouldDisplaySteps) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
+            ((OTPStepCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+            ((OTPStepCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
             
-            Step *step = [_allSteps objectAtIndex:indexPath.row-1];
-            Leg *leg;
-            for (Leg* legToTest in self.itinerary.legs) {
-                if ([legToTest.steps containsObject:step]) {
-                    leg = legToTest;
-                    break;
-                }
-            }
-            
-            if ([leg.steps indexOfObject:step] == 0) {
-                NSString *instruction = [NSString stringWithFormat:@"%@ %@ on %@",
-                                         [_modeDisplayStrings objectForKey:leg.mode],
-                                         [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                                         step.streetName];
-                ((OTPStepCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                ((OTPStepCell *)cell).instructionLabel.text = instruction;
-                
-            } else {
-                NSString *instruction = [NSString stringWithFormat:@"%@ on %@",
-                                         [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                                         step.streetName];
-                ((OTPStepCell *)cell).iconView.image = [_relativeDirectionIcons objectForKey:step.relativeDirection];
-                ((OTPStepCell *)cell).instructionLabel.text = instruction;
-            }
             // multi-leg, non walk, bike, car itinerary: don't use steps as legs
         } else {
             Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
@@ -337,8 +390,9 @@
             if ([_distanceBasedModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
                 
-                ((OTPDistanceBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"%@ to %@", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
+                ((OTPDistanceBasedLegCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
+                ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+                [((OTPDistanceBasedLegCell *)cell).instructionLabel sizeToFit];
                 
                 NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
                 NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
@@ -358,14 +412,9 @@
             } else if ([_stopBasedModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"StopBasedLegCell"];
                 
-                ((OTPStopBasedLegCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
-                ((OTPStopBasedLegCell *)cell).iconLabel.text = leg.route.capitalizedString;
+                ((OTPStopBasedLegCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
                 
-                NSString *destination = leg.headsign.capitalizedString;
-                if(destination == nil) {
-                    destination = leg.to.name.capitalizedString;
-                }
-                ((OTPStopBasedLegCell *)cell).instructionLabel.text = [NSString stringWithFormat: @"%@ towards %@", [_modeDisplayStrings objectForKey:leg.mode], destination];
+                ((OTPStopBasedLegCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
                 [((OTPStopBasedLegCell *)cell).instructionLabel sizeToFit];
                 
                 ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
@@ -373,20 +422,21 @@
                 int intermediateStops = leg.intermediateStops.count + 1;
                 NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
                 ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
-                ((OTPStopBasedLegCell *)cell).toLabel.text = [NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString];
+                
+                ((OTPStopBasedLegCell *)cell).toLabel.text = [_secondaryInstructionStrings objectAtIndex:indexPath.row-1];
                 
                 // transfer leg
             } else if ([_transferModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"TransferBasedLegCell"];
-                ((OTPTransferCell *)cell).iconView.image = [_modeIcons objectForKey:leg.mode];
+                ((OTPTransferCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
                 
-                Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-                ((OTPTransferCell *)cell).instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString];
+                ((OTPTransferCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
             }
         }
     }
     
-    OTPSelectedSegment *selectedView = [[OTPSelectedSegment alloc] init];
+    UIView *selectedView = [[UIView alloc] init];
+    selectedView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     cell.selectedBackgroundView = selectedView;
     
     return cell;

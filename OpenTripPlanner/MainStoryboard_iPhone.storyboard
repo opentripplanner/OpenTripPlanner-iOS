@@ -73,7 +73,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="58"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4uH-ZD-gKn">
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="4uH-ZD-gKn">
                                                                 <rect key="frame" x="0.0" y="41" width="40" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -106,7 +106,7 @@
                                             <rect key="frame" x="230" y="5" width="95" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="999 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yPv-SA-PJF">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="999 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="yPv-SA-PJF">
                                                     <rect key="frame" x="7" y="7" width="73" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -114,7 +114,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="START 18:88 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e2h-ly-ykQ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="START 18:88 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="e2h-ly-ykQ">
                                                     <rect key="frame" x="7" y="27" width="73" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -123,7 +123,7 @@
                                                     <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="END 18:88 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ni9-i0-ba1">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="END 18:88 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="ni9-i0-ba1">
                                                     <rect key="frame" x="7" y="39" width="73" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -204,7 +204,7 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cNf-0W-Obj" customClass="OTPInsetLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="43"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -250,15 +250,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="OverviewCell" rowHeight="56" id="VqF-va-TZO" customClass="OTPItineraryOverviewCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="OverviewCell" rowHeight="56" id="VqF-va-TZO" customClass="OTPItineraryOverviewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView contentMode="scaleToFill" image="pin_52.png" id="Euo-sx-gcR">
-                                            <rect key="frame" x="8" y="6" width="44" height="44"/>
+                                        <imageView contentMode="scaleToFill" image="overview.png" id="Euo-sx-gcR">
+                                            <rect key="frame" x="8" y="4" width="44" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nnY-sv-L0U">
@@ -302,7 +302,7 @@
                                     <outlet property="toLabel" destination="gWS-Nf-Bzw" id="RST-pA-9bn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz" customClass="OTPDistanceBasedLegCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DistanceBasedLegCell" rowHeight="60" id="IHW-ty-emz" customClass="OTPDistanceBasedLegCell">
                                 <rect key="frame" x="0.0" y="78" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -331,7 +331,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" id="jqH-aQ-hb2">
-                                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                            <rect key="frame" x="14" y="14" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -344,7 +344,7 @@
                                     <outlet property="timeLabel" destination="gXi-6I-u1k" id="y77-OW-h0k"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="StopBasedLegCell" rowHeight="80" id="fOU-rm-GvD" customClass="OTPStopBasedLegCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="StopBasedLegCell" rowHeight="80" id="fOU-rm-GvD" customClass="OTPStopBasedLegCell">
                                 <rect key="frame" x="0.0" y="138" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -379,30 +379,21 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" id="wZ3-jA-YlR">
-                                            <rect key="frame" x="8" y="26" width="44" height="44"/>
+                                            <rect key="frame" x="14" y="24" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eTs-C0-dXw">
-                                            <rect key="frame" x="3" y="5" width="52" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                            <color key="textColor" red="1" green="0.0644436221" blue="0.46235830169999997" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="departureTimeLabel" destination="q6c-ni-AU2" id="QQ8-dQ-NS0"/>
-                                    <outlet property="iconLabel" destination="eTs-C0-dXw" id="Pih-0O-6KO"/>
                                     <outlet property="iconView" destination="wZ3-jA-YlR" id="CHL-2e-PaM"/>
                                     <outlet property="instructionLabel" destination="gy9-5F-BdG" id="38r-Om-SUj"/>
                                     <outlet property="stopsLabel" destination="OBZ-yK-DhL" id="Lme-0f-73b"/>
                                     <outlet property="toLabel" destination="cqE-ir-rqU" id="L0w-Xh-OX7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleAspectFit" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TransferBasedLegCell" rowHeight="40" id="nrX-q5-tRJ" customClass="OTPTransferCell">
+                            <tableViewCell contentMode="scaleAspectFit" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TransferBasedLegCell" rowHeight="40" id="nrX-q5-tRJ" customClass="OTPTransferCell">
                                 <rect key="frame" x="0.0" y="218" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -417,7 +408,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" id="Zw9-6l-hvN">
-                                            <rect key="frame" x="8" y="4" width="44" height="32"/>
+                                            <rect key="frame" x="14" y="4" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -428,7 +419,7 @@
                                     <outlet property="instructionLabel" destination="kMQ-CM-Qdi" id="0yo-Q8-0qg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="StepCell" rowHeight="60" id="sry-5X-U7K" customClass="OTPStepCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="StepCell" rowHeight="60" id="sry-5X-U7K" customClass="OTPStepCell">
                                 <rect key="frame" x="0.0" y="258" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -443,7 +434,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" id="Qce-v0-qfB">
-                                            <rect key="frame" x="8" y="9" width="44" height="44"/>
+                                            <rect key="frame" x="14" y="15" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -454,15 +445,15 @@
                                     <outlet property="instructionLabel" destination="Zyf-Uu-iHD" id="FEe-5Z-KyP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ArrivalCell" rowHeight="56" id="dcb-GO-JTM" customClass="OTPArrivalCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ArrivalCell" rowHeight="56" id="dcb-GO-JTM" customClass="OTPArrivalCell">
                                 <rect key="frame" x="0.0" y="318" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView contentMode="scaleToFill" image="pin_52.png" id="8Gt-fx-9QX">
-                                            <rect key="frame" x="8" y="6" width="44" height="44"/>
+                                        <imageView contentMode="scaleToFill" image="marker-end-cropped.png" id="8Gt-fx-9QX">
+                                            <rect key="frame" x="14" y="8" width="30" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scheduled Arrival" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zaq-M4-QeV">
@@ -983,11 +974,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="cross.png" width="20" height="20"/>
         <image name="curl.png" width="34" height="44"/>
         <image name="geolocate.png" width="44" height="44"/>
+        <image name="marker-end-cropped.png" width="30" height="40"/>
         <image name="mode-bike-to-transit.png" width="32" height="15"/>
         <image name="mode-bike.png" width="25" height="21"/>
         <image name="mode-transit.png" width="21" height="21"/>
         <image name="mode-walk.png" width="14" height="21"/>
-        <image name="pin_52.png" width="52" height="52"/>
+        <image name="overview.png" width="44" height="48"/>
     </resources>
     <classes>
         <class className="OTPAboutViewController" superclassName="UIViewController">
@@ -1114,9 +1106,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStopBasedLegCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="departureTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OHAttributedLabel"/>
                 <relationship kind="outlet" name="stopsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1163,6 +1154,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ZUUIRevealController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZUUIRevealController.h"/>

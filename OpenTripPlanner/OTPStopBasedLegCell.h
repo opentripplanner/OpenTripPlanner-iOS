@@ -11,7 +11,6 @@
 @interface OTPStopBasedLegCell : UITableViewCell
 
 @property(nonatomic, strong) IBOutlet UIImageView *iconView;
-@property(nonatomic, strong) IBOutlet UILabel *iconLabel;
 @property(strong, nonatomic) IBOutlet UILabel *instructionLabel;
 @property(strong, nonatomic) IBOutlet UILabel *departureTimeLabel;
 @property(strong, nonatomic) IBOutlet UILabel *stopsLabel;
