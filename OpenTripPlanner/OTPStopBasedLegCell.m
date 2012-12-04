@@ -34,6 +34,7 @@
     CGRect newFrame = self.toLabel.frame;
     newFrame.origin = CGPointMake(newFrame.origin.x, self.instructionLabel.frame.origin.y + self.instructionLabel.frame.size.height + 10);
     self.toLabel.frame = newFrame;
+    self.iconView.center = CGPointMake(self.iconView.center.x, self.bounds.size.height/2);
 }
 
 @end
