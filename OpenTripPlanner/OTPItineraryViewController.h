@@ -17,7 +17,7 @@
 #import "ZUUIRevealController.h"
 #import "OTPItineraryOverlayViewController.h"
 
-@interface OTPItineraryViewController : ZUUIRevealController <ZUUIRevealControllerDelegate, UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate, MFMailComposeViewControllerDelegate, OTPItineraryOverlayViewControllerDelegate>
+@interface OTPItineraryViewController : ZUUIRevealController <ZUUIRevealControllerDelegate, UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate, MFMailComposeViewControllerDelegate, OTPItineraryOverlayViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Itinerary *itinerary;
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;

@@ -37,9 +37,7 @@
 		0D4553E716432356006D4A3B /* transfer_walk.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4553D016432356006D4A3B /* transfer_walk.png */; };
 		0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE8936D163B4967002BC54C /* OTPAboutViewController.m */; };
 		1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */; };
-		1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C55F16289707001E83D3 /* OTPLegCell.m */; };
 		1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */; };
-		1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */; };
 		8D9287731643A3C400170393 /* OTPArrivalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9287721643A3C400170393 /* OTPArrivalCell.m */; };
 		930531F21620E33C00F9A230 /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 930531F11620E33C00F9A230 /* Step.m */; };
 		9378875B16154885007CF24C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9378875016154866007CF24C /* libRestKit.a */; };
@@ -100,6 +98,7 @@
 		CC2C154F1666D28A006E4619 /* marker-start-cropped@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15471666D289006E4619 /* marker-start-cropped@2x.png */; };
 		CC2C15501666D28A006E4619 /* overview.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15481666D28A006E4619 /* overview.png */; };
 		CC2C15511666D28A006E4619 /* overview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15491666D28A006E4619 /* overview@2x.png */; };
+		CC2D8CA5166E6346001A84F1 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2D8CA4166E6346001A84F1 /* OTPLegCell.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
@@ -377,12 +376,8 @@
 		0DE8936D163B4967002BC54C /* OTPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPAboutViewController.m; sourceTree = "<group>"; };
 		1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryCell.h; sourceTree = "<group>"; };
 		1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryCell.m; sourceTree = "<group>"; };
-		1CE5C55E16289707001E83D3 /* OTPLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPLegCell.h; sourceTree = "<group>"; };
-		1CE5C55F16289707001E83D3 /* OTPLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPLegCell.m; sourceTree = "<group>"; };
 		1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPItineraryCollectionView.h; sourceTree = "<group>"; };
 		1CE5C57D162C672E001E83D3 /* OTPItineraryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPItineraryCollectionView.m; sourceTree = "<group>"; };
-		1CF66F3E162F40C50048FFC3 /* OTPPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPPlaceCell.h; sourceTree = "<group>"; };
-		1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPPlaceCell.m; sourceTree = "<group>"; };
 		8D9287711643A3C400170393 /* OTPArrivalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPArrivalCell.h; sourceTree = "<group>"; };
 		8D9287721643A3C400170393 /* OTPArrivalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPArrivalCell.m; sourceTree = "<group>"; };
 		930531F01620E33C00F9A230 /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
@@ -461,6 +456,8 @@
 		CC2C15471666D289006E4619 /* marker-start-cropped@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-start-cropped@2x.png"; sourceTree = "<group>"; };
 		CC2C15481666D28A006E4619 /* overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overview.png; sourceTree = "<group>"; };
 		CC2C15491666D28A006E4619 /* overview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overview@2x.png"; sourceTree = "<group>"; };
+		CC2D8CA3166E6346001A84F1 /* OTPLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPLegCell.h; sourceTree = "<group>"; };
+		CC2D8CA4166E6346001A84F1 /* OTPLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPLegCell.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
@@ -744,12 +741,8 @@
 				CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */,
 				93B179C4162D252F00F09EC6 /* OTPStepCell.h */,
 				93B179C5162D252F00F09EC6 /* OTPStepCell.m */,
-				1CE5C55E16289707001E83D3 /* OTPLegCell.h */,
-				1CE5C55F16289707001E83D3 /* OTPLegCell.m */,
 				CC23176B162F17A500EE0F48 /* OTPTransferCell.h */,
 				CC23176C162F17A500EE0F48 /* OTPTransferCell.m */,
-				1CF66F3E162F40C50048FFC3 /* OTPPlaceCell.h */,
-				1CF66F3F162F40C50048FFC3 /* OTPPlaceCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1099,6 +1092,8 @@
 		CCBCD5251639BE8C00037B29 /* Itinerary List View */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D8CA3166E6346001A84F1 /* OTPLegCell.h */,
+				CC2D8CA4166E6346001A84F1 /* OTPLegCell.m */,
 				1CE5C55B16275187001E83D3 /* OTPItineraryCell.h */,
 				1CE5C55C16275187001E83D3 /* OTPItineraryCell.m */,
 				1CE5C57C162C672E001E83D3 /* OTPItineraryCollectionView.h */,
@@ -1594,10 +1589,8 @@
 				93B179C3162BC69C00F09EC6 /* OTPUnitData.m in Sources */,
 				93B179C6162D253000F09EC6 /* OTPStepCell.m in Sources */,
 				1CE5C55D16275187001E83D3 /* OTPItineraryCell.m in Sources */,
-				1CE5C56016289707001E83D3 /* OTPLegCell.m in Sources */,
 				1CE5C57E162C672E001E83D3 /* OTPItineraryCollectionView.m in Sources */,
 				CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */,
-				1CF66F40162F40C50048FFC3 /* OTPPlaceCell.m in Sources */,
 				CCBCD51D1635E0E300037B29 /* NSString+HMAC.m in Sources */,
 				CCBCD5241635FC9900037B29 /* OTPGradientView.m in Sources */,
 				0DE8936E163B4967002BC54C /* OTPAboutViewController.m in Sources */,
@@ -1613,6 +1606,7 @@
 				93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */,
 				93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */,
 				CC2C15201663FDF7006E4619 /* OTPItineraryOverlayViewController.m in Sources */,
+				CC2D8CA5166E6346001A84F1 /* OTPLegCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

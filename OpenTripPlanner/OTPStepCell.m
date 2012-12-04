@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.instructionLabel sizeToFit];
+    self.instructionLabel.center = CGPointMake(self.instructionLabel.center.x, self.bounds.size.height/2);
+    self.iconView.center = CGPointMake(self.iconView.center.x, self.bounds.size.height/2);
+}
+
 @end

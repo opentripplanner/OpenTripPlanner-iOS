@@ -23,7 +23,6 @@
 
 @interface OTPItineraryViewController ()
 {
-    NSMutableArray *_cellHeights;
     BOOL _mapShowing;
     NSArray *_distanceBasedModes;
     NSArray *_stopBasedModes;
@@ -65,7 +64,8 @@
 {
 	// Do any additional setup after loading the view.
     
-    _cellHeights = [[NSMutableArray alloc] init];
+    self.navigationController.delegate = self;
+    
     _mapShowing = NO;
     
     // WALK, BICYCLE, CAR, TRAM, SUBWAY, RAIL, BUS, FERRY, CABLE_CAR, GONDOLA, FUNICULAR, TRANSFER
@@ -214,22 +214,20 @@
                 if(destination == nil) {
                     destination = leg.to.name.capitalizedString;
                 }
-                [_primaryInstructionStrings insertObject:[NSString stringWithFormat: @"Take the %@ %@ towards %@", leg.route, [_modeDisplayStrings objectForKey:leg.mode], destination] atIndex:i];
+                [_primaryInstructionStrings insertObject:[NSString stringWithFormat: @"Take the %@ %@ towards %@", leg.route.capitalizedString, ((NSString*)[_modeDisplayStrings objectForKey:leg.mode]).lowercaseString, destination] atIndex:i];
                 [_secondaryInstructionStrings insertObject:[NSString stringWithFormat:@"Get off at %@", leg.to.name.capitalizedString] atIndex:i];
                 
             // transfer leg
             } else if ([_transferModes containsObject:leg.mode]) {
                 [_cellIcons insertObject:[_modeIcons objectForKey:leg.mode] atIndex:i];
                 Leg *nextLeg = [self.itinerary.legs objectAtIndex:i+1];
-                [_primaryInstructionStrings insertObject:[NSString stringWithFormat:@"Transfer to the %@", nextLeg.route.capitalizedString] atIndex:i];
+                [_primaryInstructionStrings insertObject:[NSString stringWithFormat:@"Transfer to the %@ %@", nextLeg.route.capitalizedString, ((NSString*)[_modeDisplayStrings objectForKey:nextLeg.mode]).lowercaseString] atIndex:i];
                 [_secondaryInstructionStrings insertObject:[NSNull null] atIndex:i];
             }
         }
     }
     [_primaryInstructionStrings addObject:[NSString stringWithFormat:@"Arrive at %@", self.toTextField.text]];
     [_secondaryInstructionStrings addObject:[NSNull null]];
-    
-    [self calculateCellHeights];
     
     self.itineraryTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryTableViewController"];
     self.itineraryTableViewController.tableView.dataSource = self;
@@ -268,60 +266,20 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    // TODO: This should not run when feedback view is dismissed.
-    [super viewDidAppear:animated];
-    [self displayItinerary];
-    [self displayItineraryOverview];
+     if (viewController != self) {
+        self.itineraryMapViewController.mapView.delegate = nil;
+        ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController.mapView.delegate = nil;
+        self.itineraryMapViewController = nil;
+    }
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    // TODO: If even necessary, this should not run when feedback modal is presented.
-//    [super viewDidDisappear:animated];
-//    self.itineraryMapViewController.mapView.delegate = nil;
-//    self.itineraryMapViewController = nil;
-}
-
-// FIXME: was having trouble dissecting the nexted if/else/elseif structures, so replicated it exactly here
--(void) calculateCellHeights {
-    
-    for(int i = 0; i < [self cellCount]; i++) {
-        [_cellHeights setObject:[NSNumber numberWithFloat:60.0f] atIndexedSubscript:i];
-        
-        if (i == 0) {
-            
-        } else if ((!_shouldDisplaySteps && i == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && i == _allSteps.count + 1) || _shouldDisplaySteps) {
-            
-        } else if ((!_shouldDisplaySteps && i == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && i == _allSteps.count + 2) || _shouldDisplaySteps) {
-            
-        } else {
-            // single leg itinerary: use steps as legs
-            Leg *leg = [self.itinerary.legs objectAtIndex:i-1];
-            
-            if ([_distanceBasedModes containsObject:leg.mode]) {
-                
-            } else if ([_stopBasedModes containsObject:leg.mode]) {
-                NSString *destination = leg.headsign.capitalizedString;
-                if(destination == nil) {
-                    destination = leg.to.name.capitalizedString;
-                }
-                
-                NSString *labelText = [NSString stringWithFormat: @"%@ towards %@",
-                                       [_modeDisplayStrings objectForKey:leg.mode],
-                                       destination];
-                
-                CGSize textSize = [labelText
-                                   sizeWithFont:[UIFont boldSystemFontOfSize:14]
-                                   constrainedToSize:CGSizeMake(246, MAXFLOAT)
-                                   lineBreakMode:NSLineBreakByWordWrapping];
-                
-                [_cellHeights setObject:[NSNumber numberWithFloat:65.0f + textSize.height] atIndexedSubscript:i];
-            } else if ([_transferModes containsObject:leg.mode]) {
-                
-            }
-        }
+    if (viewController == self) {
+        [self displayItinerary];
+        [self displayItineraryOverview];
     }
 }
 
@@ -451,9 +409,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSNumber *height = [_cellHeights objectAtIndex:indexPath.row];
-//    return [height floatValue];
-    
     // Overview cell
     if (indexPath.row == 0) {
         return 60;
@@ -476,7 +431,7 @@
         // use steps as segments
         if (_shouldDisplaySteps) {
             float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(250, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
-            return MAX(48, 8 + height + 8);
+            return MAX(60, 8 + height + 8);
             
         // Multi-leg, non walk, bike, car itinerary: don't use steps as legs
         } else {
@@ -495,7 +450,7 @@
             // Transfer leg
             } else if ([_transferModes containsObject:leg.mode]) {
                 float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(250, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
-                return MAX(48, 8 + height + 8);
+                return MAX(60, 8 + height + 8);
             }
         }
     }
@@ -526,102 +481,56 @@
         
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         [self displayItineraryOverview];
-        
-        // Arrival cell (the last cell) selected
-    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) ||
+        return;
+    }
+    
+    // Feedback cell
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) ||
+        (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
+        return;
+    }
+    
+    NSString *primaryInstruction = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+    NSObject *secondaryInstruction = [_secondaryInstructionStrings objectAtIndex:indexPath.row-1];
+    NSString *instruction = secondaryInstruction == [NSNull null] ?
+    [NSString stringWithFormat:@"%@.", primaryInstruction] :
+    [NSString stringWithFormat:@"%@ and %@.", primaryInstruction, [(NSString *)secondaryInstruction stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[(NSString *)secondaryInstruction substringToIndex:1].lowercaseString]];
+    
+    self.itineraryMapViewController.instructionLabel.text = instruction;
+    [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
+    if (self.itineraryMapViewController.instructionLabel.isHidden) {
+        self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
+        self.itineraryMapViewController.instructionLabel.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+        }];
+    }
+    self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
+    
+    // Arrival cell (the last cell) selected
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) ||
                (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_ARRIVAL"];
         [self resetLegsWithColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
         Leg *leg = [self.itinerary.legs lastObject];
-        self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Arrive at %@.", self.toTextField.text];
-        // Ugh. DRY.
-        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
-        if (self.itineraryMapViewController.instructionLabel.isHidden) {
-            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            self.itineraryMapViewController.instructionLabel.hidden = NO;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            }];
-        }
-        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
         CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(leg.to.lat.floatValue - 0.001, leg.to.lon.floatValue - 0.001);
         CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(leg.to.lat.floatValue + 0.001, leg.to.lon.floatValue + 0.001);
         [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
-        // Handle feedback cell
-    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) ||
-               (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
-        //UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FeedbackViewController"];
-        //[self.itineraryViewController.navigationController pushViewController:vc animated:YES];
-        // Handle step based segments
+    // Handle step based segments
     } else if (_shouldDisplaySteps) {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_STEP"];
         Step *step = [_allSteps objectAtIndex:indexPath.row-1];
-        Leg *leg;
-        for (Leg* legToTest in self.itinerary.legs) {
-            if ([legToTest.steps containsObject:step]) {
-                leg = legToTest;
-                break;
-            }
-        }
-        
-        NSString *instruction;
-        if ([leg.steps indexOfObject:step] == 0) {
-            instruction = [NSString stringWithFormat:@"%@ %@ on %@.",
-                           [_modeDisplayStrings objectForKey:leg.mode],
-                           [_absoluteDirectionDisplayStrings objectForKey:step.absoluteDirection],
-                           step.streetName];
-        } else {
-            instruction = [NSString stringWithFormat:@"%@ on %@.",
-                           [_relativeDirectionDisplayStrings objectForKey:step.relativeDirection],
-                           step.streetName];
-        }
-        self.itineraryMapViewController.instructionLabel.text = instruction;
-        
-        // TODO: Fix duplicate code.
-        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
-        if (self.itineraryMapViewController.instructionLabel.isHidden) {
-            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            self.itineraryMapViewController.instructionLabel.hidden = NO;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            }];
-        }
-        
-        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
-        
         CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(step.lat.doubleValue - 0.002, step.lon.doubleValue - 0.002);
         CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(step.lat.doubleValue + 0.002, step.lon.doubleValue + 0.002);
         [self.itineraryMapViewController.mapView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
         
-        // Handle leg based segments
+    // Handle leg based segments
     } else {
         [TestFlight passCheckpoint:@"ITINERARY_DISPLAY_LEG"];
         [self resetLegsWithColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5]];
         RMShape *shape = [_shapesForLegs objectAtIndex:indexPath.row - 1];
         shape.lineColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5];
-        
         Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row - 1];
-        
-        if ([_distanceBasedModes containsObject:leg.mode]) {
-            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"%@ to %@.", [_modeDisplayStrings objectForKey:leg.mode], leg.to.name.capitalizedString];
-        } else if ([_stopBasedModes containsObject:leg.mode]) {
-            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat: @"Take the %@ %@ towards %@ and get off at %@.", leg.route.capitalizedString, ((NSString*)[_modeDisplayStrings objectForKey:leg.mode]).lowercaseString, leg.headsign.capitalizedString, leg.to.name.capitalizedString];
-        } else if ([_transferModes containsObject:leg.mode]) {
-            Leg *nextLeg = [self.itinerary.legs objectAtIndex:indexPath.row];
-            self.itineraryMapViewController.instructionLabel.text = [NSString stringWithFormat:@"Transfer to the %@ %@.", nextLeg.route.capitalizedString, [_modeDisplayStrings objectForKey:nextLeg.mode]];
-        }
-        
-        [self.itineraryMapViewController.instructionLabel resizeHeightToFitText];
-        if (self.itineraryMapViewController.instructionLabel.isHidden) {
-            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            self.itineraryMapViewController.instructionLabel.hidden = NO;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
-            }];
-        }
-        
-        self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
-        
         [self displayLeg:leg];
     }
 }

@@ -10,7 +10,6 @@
 #import "OTPItineraryViewController.h"
 #import "OTPItineraryCell.h"
 #import "OTPLegCell.h"
-#import "OTPPlaceCell.h"
 #import "OTPUnitData.h"
 #import "OTPUnitFormatter.h"
 
@@ -132,8 +131,8 @@
         // Set start and end times
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"h:mm a"];
-        cell.startTimeLabel.text = [NSString stringWithFormat:@"START %@", [formatter stringFromDate:itinerary.startTime]];
-        cell.endTimeLabel.text = [NSString stringWithFormat:@"END %@", [formatter stringFromDate:itinerary.endTime]];
+        cell.startTimeLabel.text = [NSString stringWithFormat:@"Depart %@", [formatter stringFromDate:itinerary.startTime]];
+        cell.endTimeLabel.text = [NSString stringWithFormat:@"Arrive %@", [formatter stringFromDate:itinerary.endTime]];
 
         int legCnt = 0;
         for(Leg *leg in itinerary.legs)

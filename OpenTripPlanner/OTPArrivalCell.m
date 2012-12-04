@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.destinationText sizeToFit];
+    self.destinationText.center = CGPointMake(self.destinationText.center.x, self.bounds.size.height/2);
+    self.icon.center = CGPointMake(self.icon.center.x, self.bounds.size.height/2);
+}
+
 @end
