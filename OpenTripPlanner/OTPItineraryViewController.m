@@ -752,6 +752,9 @@
 - (IBAction)done:(UIBarButtonItem *)sender
 {
     [TestFlight passCheckpoint:@"ITINERARY_DONE"];
+    self.itineraryMapViewController.mapView.delegate = nil;
+    ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController.mapView.delegate = nil;
+    self.itineraryMapViewController = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

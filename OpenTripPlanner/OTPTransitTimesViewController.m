@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 OpenPlans. All rights reserved.
 //
 
+#import "OTPAppDelegate.h"
 #import "OTPTransitTimesViewController.h"
 #import "OTPItineraryViewController.h"
 #import "OTPItineraryCell.h"
@@ -263,6 +264,7 @@
 - (void)dismiss:(id)sender
 {
     [TestFlight passCheckpoint:@"ITINERARIES_DONE"];
+    ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController.mapView.delegate = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
