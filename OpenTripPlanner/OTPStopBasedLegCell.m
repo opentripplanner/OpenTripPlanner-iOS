@@ -26,4 +26,14 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.instructionLabel sizeToFit];
+    [self.toLabel sizeToFit];
+    CGRect newFrame = self.toLabel.frame;
+    newFrame.origin = CGPointMake(newFrame.origin.x, self.instructionLabel.frame.origin.y + self.instructionLabel.frame.size.height + 10);
+    self.toLabel.frame = newFrame;
+}
+
 @end

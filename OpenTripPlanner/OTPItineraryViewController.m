@@ -353,7 +353,10 @@
     
     UITableViewCell *cell = nil;
     
-    // first cell
+    UIView *selectedView = [[UIView alloc] init];
+    selectedView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    
+    // Overview cell
     if (indexPath.row == 0) {
         static NSString *CellIdentifier = @"OverviewCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -361,25 +364,33 @@
         // Set from/to in itinerary overview cell
         ((OTPItineraryOverviewCell *)cell).fromLabel.text = self.fromTextField.text;
         ((OTPItineraryOverviewCell *)cell).toLabel.text = self.toTextField.text;
-        
-        // last cell
-    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
+        cell.selectedBackgroundView = selectedView;
+        return cell;
+    }
+    
+    // Feedback cell
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"FeedbackCell"];
+        cell.selectedBackgroundView = selectedView;
+        return cell;
+    }
+    
+    NSString *primaryInstruction = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+    NSString *secondaryInstruction = [_secondaryInstructionStrings objectAtIndex:indexPath.row-1];
+    
+    // Arrival cell
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
         
         static NSString *CellIdentifier = @"ArrivalCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        ((OTPArrivalCell *)cell).destinationText.text = self.toTextField.text;
+        ((OTPArrivalCell *)cell).destinationText.text = primaryInstruction;
         ((OTPArrivalCell *)cell).arrivalTime.text = [dateFormatter stringFromDate:self.itinerary.endTime];
-        
-        // Feedback cell
-    } else if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"FeedbackCell"];
-        // everything else
     } else {
         // use steps as segments
         if (_shouldDisplaySteps) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"StepCell"];
-            ((OTPStepCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+            ((OTPStepCell *)cell).instructionLabel.text = primaryInstruction;
             ((OTPStepCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
             
             // multi-leg, non walk, bike, car itinerary: don't use steps as legs
@@ -391,11 +402,11 @@
                 cell = [tableView dequeueReusableCellWithIdentifier:@"DistanceBasedLegCell"];
                 
                 ((OTPDistanceBasedLegCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
-                ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+                ((OTPDistanceBasedLegCell *)cell).instructionLabel.text = primaryInstruction;
                 [((OTPDistanceBasedLegCell *)cell).instructionLabel sizeToFit];
                 
                 NSNumber *duration = [NSNumber numberWithFloat:roundf(leg.duration.floatValue/1000/60)];
-                NSString *unitLabel = duration.intValue == 1 ? @"minute" : @"minutes";
+                NSString *unitLabel = duration.intValue == 1 ? @"min" : @"min";
                 ((OTPDistanceBasedLegCell *)cell).timeLabel.text = [NSString stringWithFormat:@"%i %@", duration.intValue, unitLabel];
                 
                 OTPUnitFormatter *unitFormatter = [[OTPUnitFormatter alloc] init];
@@ -414,38 +425,81 @@
                 
                 ((OTPStopBasedLegCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
                 
-                ((OTPStopBasedLegCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+                ((OTPStopBasedLegCell *)cell).instructionLabel.text = primaryInstruction;
                 [((OTPStopBasedLegCell *)cell).instructionLabel sizeToFit];
                 
-                ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"Departs %@", [dateFormatter stringFromDate:leg.startTime]];
+                ((OTPStopBasedLegCell *)cell).departureTimeLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:leg.startTime]];
                 
                 int intermediateStops = leg.intermediateStops.count + 1;
                 NSString *stopUnitLabel = intermediateStops == 1 ? @"stop" : @"stops";
                 ((OTPStopBasedLegCell *)cell).stopsLabel.text = [NSString stringWithFormat:@"%u %@", intermediateStops, stopUnitLabel];
                 
-                ((OTPStopBasedLegCell *)cell).toLabel.text = [_secondaryInstructionStrings objectAtIndex:indexPath.row-1];
+                ((OTPStopBasedLegCell *)cell).toLabel.text = secondaryInstruction;
                 
                 // transfer leg
             } else if ([_transferModes containsObject:leg.mode]) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"TransferBasedLegCell"];
                 ((OTPTransferCell *)cell).iconView.image = [_cellIcons objectAtIndex:indexPath.row-1];
                 
-                ((OTPTransferCell *)cell).instructionLabel.text = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+                ((OTPTransferCell *)cell).instructionLabel.text = primaryInstruction;
             }
         }
     }
-    
-    UIView *selectedView = [[UIView alloc] init];
-    selectedView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     cell.selectedBackgroundView = selectedView;
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSNumber *height = [_cellHeights objectAtIndex:indexPath.row];
-    return [height floatValue];
+//    NSNumber *height = [_cellHeights objectAtIndex:indexPath.row];
+//    return [height floatValue];
+    
+    // Overview cell
+    if (indexPath.row == 0) {
+        return 60;
+    }
+    
+    // Feedback cell
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2)) {
+        return 60;
+    }
+    
+    NSString *primaryInstruction = [_primaryInstructionStrings objectAtIndex:indexPath.row-1];
+    NSString *secondaryInstruction = [_secondaryInstructionStrings objectAtIndex:indexPath.row-1];
+    
+    // Arrival cell
+    if ((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 1) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 1)) {
+        
+        float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(193, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+        return MAX(60, 8 + height + 8);
+    } else {
+        // use steps as segments
+        if (_shouldDisplaySteps) {
+            float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(250, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+            return MAX(48, 8 + height + 8);
+            
+        // Multi-leg, non walk, bike, car itinerary: don't use steps as legs
+        } else {
+            Leg *leg = [self.itinerary.legs objectAtIndex:indexPath.row-1];
+            // Distance based leg
+            if ([_distanceBasedModes containsObject:leg.mode]) {
+                float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(191, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+                return MAX(60, 8 + height + 8);
+                
+            // Stop based leg
+            } else if ([_stopBasedModes containsObject:leg.mode]) {
+                float height1 = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(191, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+                float height2 = [secondaryInstruction sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(191, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+                return MAX(60, 8 + height1 + 10 + height2 + 8);
+                
+            // Transfer leg
+            } else if ([_transferModes containsObject:leg.mode]) {
+                float height = [primaryInstruction sizeWithFont:[UIFont boldSystemFontOfSize:13] constrainedToSize:CGSizeMake(250, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping].height;
+                return MAX(48, 8 + height + 8);
+            }
+        }
+    }
+    return 60;
 }
 
 #pragma mark - Table view delegate

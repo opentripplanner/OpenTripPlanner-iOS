@@ -115,6 +115,9 @@
         static NSString *CellIdentifier = @"itineraryCell";
         OTPItineraryCell *cell = (OTPItineraryCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.tag = indexPath.row;
+        UIView *selectedView = [[UIView alloc] init];
+        selectedView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+        cell.selectedBackgroundView = selectedView;
         
         // Get the itinerary
         Itinerary *itinerary = [self.itineraries objectAtIndex:indexPath.row];
