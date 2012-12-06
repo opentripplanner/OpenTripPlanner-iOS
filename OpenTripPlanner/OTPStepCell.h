@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OTPInsetLabel.h"
 
 @interface OTPStepCell : UITableViewCell
 
 @property(nonatomic, strong) IBOutlet UIImageView *iconView;
-@property(nonatomic, strong) IBOutlet UILabel *instructionLabel;
+@property(nonatomic, strong) IBOutlet OTPInsetLabel *instructionLabel;
 
 @end

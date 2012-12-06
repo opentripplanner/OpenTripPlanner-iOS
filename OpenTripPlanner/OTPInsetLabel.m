@@ -26,7 +26,7 @@
 
 - (void)resizeHeightToFitText
 {
-    CGRect frame = [self bounds];
+    CGRect frame = self.frame;
     CGFloat textWidth = frame.size.width - (self.insets.left + self.insets.right);
     
     CGSize newSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(textWidth, 1000000) lineBreakMode:self.lineBreakMode];

@@ -29,7 +29,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.instructionLabel sizeToFit];
+    [self.instructionLabel resizeHeightToFitText];
     self.instructionLabel.center = CGPointMake(self.instructionLabel.center.x, self.bounds.size.height/2);
     self.iconView.center = CGPointMake(self.iconView.center.x, self.bounds.size.height/2);
 }

@@ -29,8 +29,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.instructionLabel sizeToFit];
-    [self.toLabel sizeToFit];
+    [self.instructionLabel resizeHeightToFitText];
+    [self.toLabel resizeHeightToFitText];
     CGRect newFrame = self.toLabel.frame;
     newFrame.origin = CGPointMake(newFrame.origin.x, self.instructionLabel.frame.origin.y + self.instructionLabel.frame.size.height + 10);
     self.toLabel.frame = newFrame;

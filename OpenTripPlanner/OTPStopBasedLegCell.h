@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OTPInsetLabel.h"
 
 @interface OTPStopBasedLegCell : UITableViewCell
 
 @property(nonatomic, strong) IBOutlet UIImageView *iconView;
-@property(strong, nonatomic) IBOutlet UILabel *instructionLabel;
+@property(strong, nonatomic) IBOutlet OTPInsetLabel *instructionLabel;
 @property(strong, nonatomic) IBOutlet UILabel *departureTimeLabel;
 @property(strong, nonatomic) IBOutlet UILabel *stopsLabel;
-@property(strong, nonatomic) IBOutlet UILabel *toLabel;
+@property(strong, nonatomic) IBOutlet OTPInsetLabel *toLabel;
 
 @end

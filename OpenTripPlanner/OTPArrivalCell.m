@@ -29,7 +29,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.destinationText sizeToFit];
+    [self.destinationText resizeHeightToFitText];
     self.destinationText.center = CGPointMake(self.destinationText.center.x, self.bounds.size.height/2);
     self.icon.center = CGPointMake(self.icon.center.x, self.bounds.size.height/2);
 }
