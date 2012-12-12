@@ -14,10 +14,10 @@
 #import "OTPItineraryTableViewController.h"
 #import "OTPItineraryMapViewController.h"
 #import "OTPGeocodedTextField.h"
-#import "IIViewDeckController.h"
+#import "ZUUIRevealController.h"
 #import "OTPItineraryOverlayViewController.h"
 
-@interface OTPItineraryViewController : IIViewDeckController <UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate, MFMailComposeViewControllerDelegate, OTPItineraryOverlayViewControllerDelegate, UINavigationControllerDelegate, IIViewDeckControllerDelegate>
+@interface OTPItineraryViewController : ZUUIRevealController <ZUUIRevealControllerDelegate, UITableViewDataSource, UITableViewDelegate, RMMapViewDelegate, MFMailComposeViewControllerDelegate, OTPItineraryOverlayViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Itinerary *itinerary;
 @property (nonatomic, strong) OTPItineraryTableViewController *itineraryTableViewController;

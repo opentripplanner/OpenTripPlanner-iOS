@@ -9,6 +9,8 @@
 #import "OTPAppDelegate.h"
 #import "OTPItineraryViewController.h"
 #import "Leg.h"
+#import "ZUUIRevealController.h"
+#import "OTPDirectionPanGestureRecognizer.h"
 #import "OTPItineraryOverviewCell.h"
 #import "OTPArrivalCell.h"
 #import "OTPStepCell.h"
@@ -21,6 +23,7 @@
 
 @interface OTPItineraryViewController ()
 {
+    BOOL _mapShowing;
     NSArray *_distanceBasedModes;
     NSArray *_stopBasedModes;
     NSArray *_transferModes;
@@ -62,6 +65,8 @@
 	// Do any additional setup after loading the view.
     
     self.navigationController.delegate = self;
+    
+    _mapShowing = NO;
     
     // WALK, BICYCLE, CAR, TRAM, SUBWAY, RAIL, BUS, FERRY, CABLE_CAR, GONDOLA, FUNICULAR, TRANSFER
     
@@ -228,16 +233,25 @@
     self.itineraryTableViewController.tableView.dataSource = self;
     self.itineraryTableViewController.tableView.delegate = self;
     
-    self.delegate = self;
-    
-    self.centerController = self.itineraryTableViewController;
-    self.elastic = NO;
-    self.leftLedge = 60;
-    
+    self.itineraryMapViewController = ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController;
     self.itineraryMapViewController.mapView.delegate = self;
     self.itineraryMapViewController.mapView.topPadding = 100;
-    self.itineraryMapViewController.instructionLabel.hidden = YES;
     self.itineraryMapViewController.mapView.showsUserLocation = self.mapShowedUserLocation;
+    
+    self.frontViewController = self.itineraryTableViewController;
+    self.rearViewController = self.itineraryMapViewController;
+    self.frontViewShadowRadius = 5;
+    self.rearViewRevealWidth = 260;
+    self.maxRearViewRevealOverdraw = 0;
+    self.toggleAnimationDuration = 0.1;
+    
+    self.delegate = self;
+    
+    OTPDirectionPanGestureRecognizer *navigationBarPanGestureRecognizer = [[OTPDirectionPanGestureRecognizer alloc] initWithTarget:self action:@selector(revealGesture:)];
+    navigationBarPanGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.frontViewController.view addGestureRecognizer:navigationBarPanGestureRecognizer];
+    
+    [super viewDidLoad];
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"DID_SHOW_ITINERARY_OVERLAY"]) {
         _overlayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryOverlay"];
@@ -264,10 +278,6 @@
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (viewController == self) {
-        self.itineraryMapViewController = ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController;
-        self.itineraryMapViewController.instructionLabel.hidden = YES;
-        self.leftController = self.itineraryMapViewController;
-        self.itineraryMapViewController.mapView.delegate = self;
         [self displayItinerary];
         [self displayItineraryOverview];
     }
@@ -461,9 +471,9 @@
     _selectedIndexPath = indexPath;
     
     // Show the map if the selected cell is not the feedback cell
-    if (self.leftControllerIsClosed &&
+    if (!_mapShowing &&
         !((!_shouldDisplaySteps && indexPath.row == self.itinerary.legs.count + 2) || (_shouldDisplaySteps && indexPath.row == _allSteps.count + 2))) {
-        [self toggleLeftViewAnimated:YES];
+        [self revealToggle:self];
     }
     
     // Overview cell selected
@@ -499,7 +509,7 @@
         self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y - self.itineraryMapViewController.instructionLabel.bounds.size.height);
         self.itineraryMapViewController.instructionLabel.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.center.y + self.itineraryMapViewController.instructionLabel.bounds.size.height);
+            self.itineraryMapViewController.instructionLabel.center = CGPointMake(self.itineraryMapViewController.instructionLabel.center.x, self.itineraryMapViewController.instructionLabel.bounds.size.height/2);
         }];
     }
     self.itineraryMapViewController.mapView.topPadding = self.itineraryMapViewController.instructionLabel.bounds.size.height;
@@ -532,8 +542,10 @@
     }
 }
 
-- (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated
+- (void)revealController:(ZUUIRevealController *)revealController didRevealRearViewController:(UIViewController *)rearViewController
 {
+    if (revealController.currentFrontViewPosition == FrontViewPositionLeft) return;
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"DID_SHOW_ITINERARY_MAP_OVERLAY"]) {
         _mapOverlayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ItineraryMapOverlay"];
         _mapOverlayViewController.delegate = self;
@@ -543,6 +555,8 @@
             _mapOverlayViewController.view.alpha = 1;
         }];
     }
+    
+    _mapShowing = YES;
     if (_selectedIndexPath == nil) {
         [TestFlight passCheckpoint:@"ITINERARY_SHOW_MAP_WITH_SWIPE"];
         _selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -552,9 +566,11 @@
     [self.itineraryTableViewController.tableView selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated
+- (void)revealController:(ZUUIRevealController *)revealController didHideRearViewController:(UIViewController *)rearViewController
 {
+    if (revealController.currentFrontViewPosition != FrontViewPositionLeft) return;
     [TestFlight passCheckpoint:@"ITINERARY_HIDE_MAP_WITH_SWIPE"];
+    _mapShowing = NO;
     [self.itineraryTableViewController.tableView deselectRowAtIndexPath:[self.itineraryTableViewController.tableView indexPathForSelectedRow] animated:YES];
 }
 
@@ -747,6 +763,11 @@
     ((OTPAppDelegate *)[[UIApplication sharedApplication] delegate]).itineraryMapViewController.mapView.delegate = nil;
     self.itineraryMapViewController = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    _mapShowing = NO;
 }
 
 @end

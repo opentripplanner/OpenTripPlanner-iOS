@@ -46,6 +46,7 @@
     self.instructionLabel.layer.shadowOpacity = 0.5;
     self.instructionLabel.layer.shadowRadius = 5.0;
     self.instructionLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.instructionLabel.hidden = YES;
     
     self.instructionLabel.insets = UIEdgeInsetsMake(7, 10, 7, 10);
 }

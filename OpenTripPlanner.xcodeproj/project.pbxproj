@@ -51,6 +51,8 @@
 		93EA08D5164582A500705096 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 93EA08D1164582A500705096 /* release_notes.md */; };
 		93F4D9DD1659B628002C2790 /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DC1659B628002C2790 /* Error.m */; };
 		93F4D9E01659B70B002C2790 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4D9DF1659B70B002C2790 /* Response.m */; };
+		93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */; };
+		93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */; };
 		CC088DE915F6A3B400C6F372 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC088DE815F6A3B400C6F372 /* MapKit.framework */; };
 		CC0A1F771603AB3C003085B2 /* OTPItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0A1F761603AB3C003085B2 /* OTPItineraryViewController.m */; };
 		CC0B7401160A6D56008A734A /* OTPSearchBarWithActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0B7400160A6D56008A734A /* OTPSearchBarWithActivity.m */; };
@@ -97,8 +99,6 @@
 		CC2C15501666D28A006E4619 /* overview.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15481666D28A006E4619 /* overview.png */; };
 		CC2C15511666D28A006E4619 /* overview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2C15491666D28A006E4619 /* overview@2x.png */; };
 		CC2D8CA5166E6346001A84F1 /* OTPLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2D8CA4166E6346001A84F1 /* OTPLegCell.m */; };
-		CC2D8CAC167015A4001A84F1 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2D8CAB167015A4001A84F1 /* IIViewDeckController.m */; };
-		CC2D8CAF167015DE001A84F1 /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2D8CAE167015DD001A84F1 /* WrapController.m */; };
 		CC65B89615FF9005002CFD97 /* OTPGeocodedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */; };
 		CC8B5A5C15F953E2004D8602 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8B5A5B15F953E2004D8602 /* SMCalloutView.m */; };
 		CC8D354215F922E500CA158D /* OTPTransitTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D354115F922E500CA158D /* OTPTransitTimesViewController.m */; };
@@ -400,6 +400,10 @@
 		93F4D9DC1659B628002C2790 /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
 		93F4D9DE1659B70B002C2790 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		93F4D9DF1659B70B002C2790 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		93F4DA2F1662ED19002C2790 /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
+		93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
+		93F4DA3216630680002C2790 /* OTPDirectionPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionPanGestureRecognizer.h; sourceTree = "<group>"; };
+		93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDirectionPanGestureRecognizer.m; sourceTree = "<group>"; };
 		CC03B5F116693B94006BD398 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CC088DE815F6A3B400C6F372 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CC0A1F751603AB3C003085B2 /* OTPItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPItineraryViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -454,10 +458,6 @@
 		CC2C15491666D28A006E4619 /* overview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overview@2x.png"; sourceTree = "<group>"; };
 		CC2D8CA3166E6346001A84F1 /* OTPLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPLegCell.h; sourceTree = "<group>"; };
 		CC2D8CA4166E6346001A84F1 /* OTPLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPLegCell.m; sourceTree = "<group>"; };
-		CC2D8CAA167015A4001A84F1 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		CC2D8CAB167015A4001A84F1 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		CC2D8CAD167015DD001A84F1 /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapController.h; sourceTree = "<group>"; };
-		CC2D8CAE167015DD001A84F1 /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapController.m; sourceTree = "<group>"; };
 		CC65B89415FF9005002CFD97 /* OTPGeocodedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OTPGeocodedTextField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CC65B89515FF9005002CFD97 /* OTPGeocodedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGeocodedTextField.m; sourceTree = "<group>"; };
 		CC8B5A5A15F953E2004D8602 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
@@ -769,10 +769,8 @@
 		0D8259AF1644339700D5F446 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CC2D8CAD167015DD001A84F1 /* WrapController.h */,
-				CC2D8CAE167015DD001A84F1 /* WrapController.m */,
-				CC2D8CAA167015A4001A84F1 /* IIViewDeckController.h */,
-				CC2D8CAB167015A4001A84F1 /* IIViewDeckController.m */,
+				93F4DA2F1662ED19002C2790 /* ZUUIRevealController.h */,
+				93F4DA301662ED1A002C2790 /* ZUUIRevealController.m */,
 				CCE01D63165C36B7008F873E /* NSString+MD5Addition.h */,
 				CCE01D64165C36B7008F873E /* NSString+MD5Addition.m */,
 				CCE01D65165C36B7008F873E /* UIDevice+IdentifierAddition.h */,
@@ -785,6 +783,8 @@
 				93B179BF162BBAB400F09EC6 /* OTPUnitFormatter.m */,
 				93B179C1162BC69B00F09EC6 /* OTPUnitData.h */,
 				93B179C2162BC69C00F09EC6 /* OTPUnitData.m */,
+				93F4DA3216630680002C2790 /* OTPDirectionPanGestureRecognizer.h */,
+				93F4DA3316630680002C2790 /* OTPDirectionPanGestureRecognizer.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1603,10 +1603,10 @@
 				93F4D9E01659B70B002C2790 /* Response.m in Sources */,
 				CCE01D67165C36B7008F873E /* NSString+MD5Addition.m in Sources */,
 				CCE01D68165C36B7008F873E /* UIDevice+IdentifierAddition.m in Sources */,
+				93F4DA311662ED1A002C2790 /* ZUUIRevealController.m in Sources */,
+				93F4DA3416630680002C2790 /* OTPDirectionPanGestureRecognizer.m in Sources */,
 				CC2C15201663FDF7006E4619 /* OTPItineraryOverlayViewController.m in Sources */,
 				CC2D8CA5166E6346001A84F1 /* OTPLegCell.m in Sources */,
-				CC2D8CAC167015A4001A84F1 /* IIViewDeckController.m in Sources */,
-				CC2D8CAF167015DE001A84F1 /* WrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

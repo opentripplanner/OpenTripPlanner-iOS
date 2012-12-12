@@ -987,9 +987,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="overview.png" width="44" height="48"/>
     </resources>
     <classes>
-        <class className="IIViewDeckController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
-        </class>
         <class className="OTPAboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPAboutViewController.h"/>
             <relationships>
@@ -1000,7 +997,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPArrivalCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="arrivalTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="destinationText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="destinationText" candidateClass="OTPInsetLabel"/>
                 <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -1028,7 +1025,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1091,7 +1088,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="displayFeedback:"/>
             </relationships>
         </class>
-        <class className="OTPItineraryViewController" superclassName="IIViewDeckController">
+        <class className="OTPItineraryViewController" superclassName="ZUUIRevealController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPItineraryViewController.h"/>
             <relationships>
                 <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
@@ -1108,7 +1105,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPStepCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
             </relationships>
         </class>
         <class className="OTPStopBasedLegCell" superclassName="UITableViewCell">
@@ -1116,16 +1113,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="departureTimeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
                 <relationship kind="outlet" name="stopsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="toLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="OTPInsetLabel"/>
             </relationships>
         </class>
         <class className="OTPTransferCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OTPTransferCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionLabel" candidateClass="OTPInsetLabel"/>
             </relationships>
         </class>
         <class className="OTPTransitTimeViewController" superclassName="UIViewController">
@@ -1164,8 +1161,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        <class className="ZUUIRevealController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZUUIRevealController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="frontViewController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="rearViewController" candidateClass="UIViewController"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
