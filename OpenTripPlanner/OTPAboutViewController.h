@@ -10,9 +10,4 @@
 
 @interface OTPAboutViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextView *aboutTextView;
-
-@property (strong, nonatomic) NSURLConnection *connection;
-@property (strong, nonatomic) NSMutableData *receivedData;
-
 @end

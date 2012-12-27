@@ -70,8 +70,6 @@
 		CC2316E91626067D00EE0F48 /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316DD1626067D00EE0F48 /* TrackingLocation@2x.png */; };
 		CC23170716260F9200EE0F48 /* geolocate.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EB16260F9200EE0F48 /* geolocate.png */; };
 		CC23170816260F9200EE0F48 /* geolocate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EC16260F9200EE0F48 /* geolocate@2x.png */; };
-		CC23170916260F9200EE0F48 /* joyride-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316ED16260F9200EE0F48 /* joyride-logo.png */; };
-		CC23170A16260F9200EE0F48 /* joyride-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */; };
 		CC23170B16260F9200EE0F48 /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316EF16260F9200EE0F48 /* magnifier.png */; };
 		CC23170C16260F9200EE0F48 /* magnifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F016260F9200EE0F48 /* magnifier@2x.png */; };
 		CC23170D16260F9200EE0F48 /* marker-end.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2316F116260F9200EE0F48 /* marker-end.png */; };
@@ -84,8 +82,6 @@
 		CC23171E16260F9200EE0F48 /* mode-transit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170216260F9200EE0F48 /* mode-transit@2x.png */; };
 		CC23171F16260F9200EE0F48 /* mode-walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170316260F9200EE0F48 /* mode-walk.png */; };
 		CC23172016260F9200EE0F48 /* mode-walk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170416260F9200EE0F48 /* mode-walk@2x.png */; };
-		CC23172116260F9200EE0F48 /* path.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170516260F9200EE0F48 /* path.png */; };
-		CC23172216260F9200EE0F48 /* path@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23170616260F9200EE0F48 /* path@2x.png */; };
 		CC2317281627653500EE0F48 /* OTPStopBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */; };
 		CC23172B16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23172A16276ABD00EE0F48 /* OTPDistanceBasedLegCell.m */; };
 		CC23176D162F17A600EE0F48 /* OTPTransferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23176C162F17A500EE0F48 /* OTPTransferCell.m */; };
@@ -143,8 +139,6 @@
 		CCE01DA0165DF5F7008F873E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE01D9F165DF5F6008F873E /* MessageUI.framework */; };
 		CCE81921160131FD0034E8AC /* OTPCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE81920160131FD0034E8AC /* OTPCallout.m */; };
 		CCF1D5DF15FE454100EEB827 /* OTPDirectionsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */; };
-		CCF669521630BA6E007A9634 /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6693A1630BA6E007A9634 /* home-icon.png */; };
-		CCF669531630BA6E007A9634 /* home-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6693B1630BA6E007A9634 /* home-icon@2x.png */; };
 		CCF669661630BA6E007A9634 /* marker-dropped.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6694E1630BA6E007A9634 /* marker-dropped.png */; };
 		CCF669671630BA6E007A9634 /* marker-dropped@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF6694F1630BA6E007A9634 /* marker-dropped@2x.png */; };
 		CCF669681630BA6E007A9634 /* mode-bike-to-transit.png in Resources */ = {isa = PBXBuildFile; fileRef = CCF669501630BA6E007A9634 /* mode-bike-to-transit.png */; };
@@ -424,8 +418,6 @@
 		CC2316DD1626067D00EE0F48 /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingLocation@2x.png"; sourceTree = "<group>"; };
 		CC2316EB16260F9200EE0F48 /* geolocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geolocate.png; sourceTree = "<group>"; };
 		CC2316EC16260F9200EE0F48 /* geolocate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geolocate@2x.png"; sourceTree = "<group>"; };
-		CC2316ED16260F9200EE0F48 /* joyride-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joyride-logo.png"; sourceTree = "<group>"; };
-		CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joyride-logo@2x.png"; sourceTree = "<group>"; };
 		CC2316EF16260F9200EE0F48 /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
 		CC2316F016260F9200EE0F48 /* magnifier@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnifier@2x.png"; sourceTree = "<group>"; };
 		CC2316F116260F9200EE0F48 /* marker-end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-end.png"; sourceTree = "<group>"; };
@@ -438,8 +430,6 @@
 		CC23170216260F9200EE0F48 /* mode-transit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-transit@2x.png"; sourceTree = "<group>"; };
 		CC23170316260F9200EE0F48 /* mode-walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-walk.png"; sourceTree = "<group>"; };
 		CC23170416260F9200EE0F48 /* mode-walk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-walk@2x.png"; sourceTree = "<group>"; };
-		CC23170516260F9200EE0F48 /* path.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = path.png; sourceTree = "<group>"; };
-		CC23170616260F9200EE0F48 /* path@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "path@2x.png"; sourceTree = "<group>"; };
 		CC2317261627653500EE0F48 /* OTPStopBasedLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPStopBasedLegCell.h; sourceTree = "<group>"; };
 		CC2317271627653500EE0F48 /* OTPStopBasedLegCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPStopBasedLegCell.m; sourceTree = "<group>"; };
 		CC23172916276ABD00EE0F48 /* OTPDistanceBasedLegCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDistanceBasedLegCell.h; sourceTree = "<group>"; };
@@ -493,7 +483,7 @@
 		CCBCD51C1635E0E300037B29 /* NSString+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMAC.m"; sourceTree = "<group>"; };
 		CCBCD5221635FC9900037B29 /* OTPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPGradientView.h; sourceTree = "<group>"; };
 		CCBCD5231635FC9900037B29 /* OTPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPGradientView.m; sourceTree = "<group>"; };
-		CCCDFB6315EEAAC600B26133 /* Joyride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joyride.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCDFB6315EEAAC600B26133 /* OTP Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OTP Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCDFB6715EEAAC600B26133 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CCCDFB6915EEAAC600B26133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CCCDFB6B15EEAAC600B26133 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -528,8 +518,6 @@
 		CCE81920160131FD0034E8AC /* OTPCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPCallout.m; sourceTree = "<group>"; };
 		CCF1D5DD15FE454100EEB827 /* OTPDirectionsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPDirectionsInputViewController.h; sourceTree = "<group>"; };
 		CCF1D5DE15FE454100EEB827 /* OTPDirectionsInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPDirectionsInputViewController.m; sourceTree = "<group>"; };
-		CCF6693A1630BA6E007A9634 /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon.png"; sourceTree = "<group>"; };
-		CCF6693B1630BA6E007A9634 /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@2x.png"; sourceTree = "<group>"; };
 		CCF6694E1630BA6E007A9634 /* marker-dropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-dropped.png"; sourceTree = "<group>"; };
 		CCF6694F1630BA6E007A9634 /* marker-dropped@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-dropped@2x.png"; sourceTree = "<group>"; };
 		CCF669501630BA6E007A9634 /* mode-bike-to-transit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode-bike-to-transit.png"; sourceTree = "<group>"; };
@@ -1019,16 +1007,12 @@
 				CCF669C91631B12A007A9634 /* walk_52@2x.png */,
 				CCF669CA1631B12A007A9634 /* swap-addresses.png */,
 				CCF669CB1631B12A007A9634 /* swap-addresses@2x.png */,
-				CCF6693A1630BA6E007A9634 /* home-icon.png */,
-				CCF6693B1630BA6E007A9634 /* home-icon@2x.png */,
 				CCF6694E1630BA6E007A9634 /* marker-dropped.png */,
 				CCF6694F1630BA6E007A9634 /* marker-dropped@2x.png */,
 				CCF669501630BA6E007A9634 /* mode-bike-to-transit.png */,
 				CCF669511630BA6E007A9634 /* mode-bike-to-transit@2x.png */,
 				CC2316EB16260F9200EE0F48 /* geolocate.png */,
 				CC2316EC16260F9200EE0F48 /* geolocate@2x.png */,
-				CC2316ED16260F9200EE0F48 /* joyride-logo.png */,
-				CC2316EE16260F9200EE0F48 /* joyride-logo@2x.png */,
 				CC2316EF16260F9200EE0F48 /* magnifier.png */,
 				CC2316F016260F9200EE0F48 /* magnifier@2x.png */,
 				CC2316F116260F9200EE0F48 /* marker-end.png */,
@@ -1041,8 +1025,6 @@
 				CC23170216260F9200EE0F48 /* mode-transit@2x.png */,
 				CC23170316260F9200EE0F48 /* mode-walk.png */,
 				CC23170416260F9200EE0F48 /* mode-walk@2x.png */,
-				CC23170516260F9200EE0F48 /* path.png */,
-				CC23170616260F9200EE0F48 /* path@2x.png */,
 			);
 			name = Icons;
 			path = icons;
@@ -1123,7 +1105,7 @@
 		CCCDFB6415EEAAC600B26133 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCCDFB6315EEAAC600B26133 /* Joyride.app */,
+				CCCDFB6315EEAAC600B26133 /* OTP Mobile.app */,
 				CCCDFB7E15EEAAC600B26133 /* OpenTripPlannerTests.octest */,
 			);
 			name = Products;
@@ -1221,7 +1203,7 @@
 			);
 			name = OpenTripPlanner;
 			productName = OpenTripPlanner;
-			productReference = CCCDFB6315EEAAC600B26133 /* Joyride.app */;
+			productReference = CCCDFB6315EEAAC600B26133 /* OTP Mobile.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CCCDFB7D15EEAAC600B26133 /* OpenTripPlannerTests */ = {
@@ -1347,8 +1329,6 @@
 				CC2316E91626067D00EE0F48 /* TrackingLocation@2x.png in Resources */,
 				CC23170716260F9200EE0F48 /* geolocate.png in Resources */,
 				CC23170816260F9200EE0F48 /* geolocate@2x.png in Resources */,
-				CC23170916260F9200EE0F48 /* joyride-logo.png in Resources */,
-				CC23170A16260F9200EE0F48 /* joyride-logo@2x.png in Resources */,
 				CC23170B16260F9200EE0F48 /* magnifier.png in Resources */,
 				CC23170C16260F9200EE0F48 /* magnifier@2x.png in Resources */,
 				CC23170D16260F9200EE0F48 /* marker-end.png in Resources */,
@@ -1361,10 +1341,6 @@
 				CC23171E16260F9200EE0F48 /* mode-transit@2x.png in Resources */,
 				CC23171F16260F9200EE0F48 /* mode-walk.png in Resources */,
 				CC23172016260F9200EE0F48 /* mode-walk@2x.png in Resources */,
-				CC23172116260F9200EE0F48 /* path.png in Resources */,
-				CC23172216260F9200EE0F48 /* path@2x.png in Resources */,
-				CCF669521630BA6E007A9634 /* home-icon.png in Resources */,
-				CCF669531630BA6E007A9634 /* home-icon@2x.png in Resources */,
 				CCF669661630BA6E007A9634 /* marker-dropped.png in Resources */,
 				CCF669671630BA6E007A9634 /* marker-dropped@2x.png in Resources */,
 				CCF669681630BA6E007A9634 /* mode-bike-to-transit.png in Resources */,
@@ -1734,7 +1710,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = Joyride;
+				PRODUCT_NAME = "OTP Mobile";
 				PROVISIONING_PROFILE = "70B10A69-2E7A-4667-8186-09B6FC108163";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "70B10A69-2E7A-4667-8186-09B6FC108163";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1765,7 +1741,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = Joyride;
+				PRODUCT_NAME = "OTP Mobile";
 				PROVISIONING_PROFILE = "C7903C8D-6769-4A24-8CC9-5D3FE5659390";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E773ACC5-2A35-4AC1-A104-445C24ED4438";
 				TARGETED_DEVICE_FAMILY = 1;

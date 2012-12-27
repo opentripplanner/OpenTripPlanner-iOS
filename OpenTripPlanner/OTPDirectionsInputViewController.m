@@ -67,7 +67,7 @@ Response *currentResponse;
     
     int canShareUrls = [defaults integerForKey:@"canShareUrls"];
     if (canShareUrls == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Improve Joyride" message:@"Can Joyride include an anonymous device identifier with its routing requests? This information will help us improve Joyride for you." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Improve OTP Mobile" message:@"Can OTP Mobile include an anonymous device identifier with its routing requests? This information will help us improve OTP Mobile for you." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
         alertView.tag = 0;
         [alertView show];
     }
@@ -282,16 +282,16 @@ Response *currentResponse;
     NSString *mode = kTransitModeTypeArray[self.modeControl.selectedSegmentIndex];
     NSString *arriveBy = kArriveByArray[self.arriveOrDepartByIndex.intValue];
     
-    NSString *secret = @"8AcRe4usPEpEThuW";
-    NSString *apiKey = @"joyride";
+    // If your server supports HMAC authentication...
+    NSString *secret = @"< Your shared secret >";
+    NSString *apiKey = @"< Your API key >";
     NSString *signature = [[[apiKey stringByAppendingString:fromString] stringByAppendingString:toString] HMACWithSecret:secret];
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithKeysAndObjects:
                                    @"optimize", @"SAFE",
                                    @"time", timeString,
                                    @"arriveBy", arriveBy,
-                                   //@"routerId", @"req-241",
-                                   //@"routerId", @"req-92",
+                                   @"routerId", @"req-241",
                                    @"maxWalkDistance", @"2000",
                                    @"fromPlace", fromString,
                                    @"toPlace", toString,

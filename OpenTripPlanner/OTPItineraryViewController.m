@@ -731,12 +731,12 @@
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
         controller.navigationBar.tintColor = [UIColor colorWithRed:0.004 green:0.694 blue:0.831 alpha:1.000];
-        [controller setToRecipients:@[@"joyride@openplans.org"]];
-        [controller setSubject:@"Joyride Directions Feedback"];
+        [controller setToRecipients:@[@"< Feedback email address >"]];
+        [controller setSubject:@"Directions Feedback"];
         [controller setMessageBody:body isHTML:NO];
         if (controller) [self presentViewController:controller animated:YES completion:nil];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send feedback on this device" message:@"You can still send us feedback by emailing joyride@openplans.org." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unable to send feedback on this device" message:@"You can still send us feedback by emailing < Feedback email address >." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
 }
@@ -744,7 +744,7 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     if (result == MFMailComposeResultSent) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank You" message:@"Your feedback will be used to improve Joyride." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank You" message:@"Your feedback will be used to improve OTP Mobile." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
         [alert show];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
